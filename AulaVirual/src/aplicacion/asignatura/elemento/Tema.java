@@ -16,4 +16,23 @@ public class Tema extends Elemento {
 		return Collections.unmodifiableList(elementos);
 	}
 	
+	public boolean anadirElemento(Elemento elemento){
+		return this.elementos.add(elemento);
+	}
+	
+	public boolean eliminarElemento(Elemento elemento){
+		return this.elementos.remove(elemento);
+	}
+
+	@Override
+	public String toString() {
+		String res = "";
+		res = res + super.toString();
+		for (Elemento ele:this.elementos){
+			res = res + "\n \t"+ele.toString(); 
+		}
+		
+		return res;
+	}
+	
 }

@@ -2,6 +2,12 @@ package aplicacion;
 
 import aplicacion.asignatura.elemento.test.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import aplicacion.asignatura.Asignatura;
+import aplicacion.asignatura.elemento.resolucion.*;
+
 public class Alumno {
 	private final String nia;
 	private final String contrasena;
@@ -9,6 +15,7 @@ public class Alumno {
 	private String nombre;
 	private String apellidos;
 	private String dni;
+	private List<Resolucion>resoluciones = new ArrayList<Resolucion>();
 	
 	public Alumno(String nia, String contrasena, String correo, String nombre, String apellidos, String dni) {
 		this.nia = nia;
@@ -43,11 +50,15 @@ public class Alumno {
 		return dni;
 	}
 
-	public void anadirResolucion(Test test) {
-		// TODO Auto-generated method stub
-		
+	public boolean anadirResolucion(Test test) {
+		Resolucion res = new Resolucion(test);
+		return this.resoluciones.add(res);
 	}
 	
+	public void enviarSolicitud(Asignatura asignatura, String texto){
+		Solicitud solicitud = new Solicitud(texto,this,asignatura);
+		asignatura.anadirSolicitud(solicitud);
+	}
 	
 	
 	

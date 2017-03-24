@@ -9,7 +9,7 @@ import aplicacion.*;
 
 public class Asignatura {
 
-	private String nombre;
+	private final String nombre;
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private List<Alumno> matriculados = new ArrayList<Alumno>();
 	private List<Alumno> expulsados = new ArrayList<Alumno>();
@@ -23,16 +23,39 @@ public class Asignatura {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
 	public List<Solicitud> getSolicitudes() {
 		return Collections.unmodifiableList(solicitudes);
 	}
 	
+	public boolean anadirSolicitud(Solicitud solicitud){
+		return this.solicitudes.add(solicitud);
+	}
+	
+	public boolean aceptarSolicitud(Solicitud solicitud){
+		if (this.solicitudes.contains(solicitud)){
+			this.matriculados.add(solicitud.getAlumno());
+			this.solicitudes.remove(solicitud);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void denegarSolicitud(Solicitud solicitud){
+	}
+	
 	public List<Alumno> getMatriculados() {
 		return Collections.unmodifiableList(matriculados);
+	}
+	
+	public void expulsarAlumno(Alumno alumno){
+		this.matriculados.remove(alumno);
+		this.expulsados.add(alumno);
+	}
+	
+	public void readmitirAlumno(Alumno alumno){
+		this.expulsados.remove(alumno);
+		this.matriculados.add(alumno);
 	}
 	
 	public List<Alumno> getExpulsados() {
@@ -43,4 +66,13 @@ public class Asignatura {
 		return Collections.unmodifiableList(elementos);
 	}
 	
+	public boolean anadirElemento(Elemento elemento){
+		return this.elementos.add(elemento);
+	}
+	
+	public boolean eliminarElemento(Elemento elemento){
+		return this.elementos.remove(elemento);
+	}
+	
+
 }

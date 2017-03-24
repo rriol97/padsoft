@@ -16,6 +16,11 @@ public class Apuntes extends Elemento {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+"\n"+texto;
+	}
 	
 	
 }

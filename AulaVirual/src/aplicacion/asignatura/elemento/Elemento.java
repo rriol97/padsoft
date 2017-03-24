@@ -2,21 +2,16 @@ package aplicacion.asignatura.elemento;
 
 public abstract class Elemento {
 	
-	private String nombre;
+	private final String nombre;
 	private boolean visible;
 	
 	public Elemento(String nombre, boolean visible) {
-		super();
 		this.nombre = nombre;
 		this.visible = visible;
 	}
 
 	public String getNombre() {
 		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public boolean isVisible() {
@@ -26,6 +21,12 @@ public abstract class Elemento {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
+
+	@Override
+	public String toString() {
+		return  nombre;
+	}
+	
 	
 	
 	
