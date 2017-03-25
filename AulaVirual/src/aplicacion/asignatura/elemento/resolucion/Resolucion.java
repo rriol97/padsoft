@@ -19,6 +19,7 @@ public class Resolucion {
 	public Resolucion(Test test) {
 		this.test = test;
 		this.fecha = LocalDate.now();
+		this.nota = -1.0;
 	}
 
 	public double getNota() {
@@ -83,6 +84,9 @@ public class Resolucion {
 	
 	public void calcularNota(){
 		double nota = 0.0;
+		if (this.nota == -1.0){
+			return;
+		}
 		estadoRespuestas();
 		for (Respuesta res:this.respuestas){
 			if (res.getEstado().equals(EstadoRespuesta.ACIERTO)){

@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import aplicacion.asignatura.Asignatura;
+
 public class Tema extends Elemento {
 
 	private List<Elemento> elementos = new ArrayList<Elemento>();
 
-	public Tema(String nombre, boolean visible) {
-		super(nombre, visible);
+	public Tema(String nombre, boolean visible, Asignatura asignatura) {
+		super(nombre, visible,asignatura);
 	}
 	
 	public List<Elemento> getElementos() {

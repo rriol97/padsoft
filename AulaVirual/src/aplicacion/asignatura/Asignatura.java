@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import aplicacion.asignatura.elemento.Elemento;
+import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.*;
 
 public class Asignatura {
@@ -28,20 +29,19 @@ public class Asignatura {
 	}
 	
 	public boolean anadirSolicitud(Solicitud solicitud){
-		return this.solicitudes.add(solicitud);
-	}
-	
-	public boolean aceptarSolicitud(Solicitud solicitud){
-		if (this.solicitudes.contains(solicitud)){
-			this.matriculados.add(solicitud.getAlumno());
-			this.solicitudes.remove(solicitud);
-			return true;
+		if (this.solicitudes.contains(solicitud) == false){
+			return this.solicitudes.add(solicitud);
 		}
-		
 		return false;
 	}
 	
+	public boolean aceptarSolicitud(Solicitud solicitud){
+		this.solicitudes.remove(solicitud);
+		return this.matriculados.add(solicitud.getAlumno());
+	}
+	
 	public void denegarSolicitud(Solicitud solicitud){
+		this.solicitudes.remove(solicitud);
 	}
 	
 	public List<Alumno> getMatriculados() {
@@ -49,11 +49,13 @@ public class Asignatura {
 	}
 	
 	public void expulsarAlumno(Alumno alumno){
+		alumno.eliminarAsignatura(this);
 		this.matriculados.remove(alumno);
 		this.expulsados.add(alumno);
 	}
 	
 	public void readmitirAlumno(Alumno alumno){
+		alumno.anadirAsignatura(this);
 		this.expulsados.remove(alumno);
 		this.matriculados.add(alumno);
 	}
@@ -74,5 +76,18 @@ public class Asignatura {
 		return this.elementos.remove(elemento);
 	}
 	
+	public double calcularNotaAsig(Alumno alumno){
+		double nota = 0.0;
+		if (this.matriculados.contains(alumno)){
+			for (Resolucion res:alumno.getResoluciones()){
+				if (res.getTest().getAsignatura().equals(this)){
+					res.calcularNota();
+					nota = nota + res.getNota() * res.getTest().getPeso();
+				}
+			}
+		}
+		
+		return nota;
+	}
 
 }

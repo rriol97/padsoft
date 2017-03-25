@@ -1,6 +1,7 @@
 package aplicacion.asignatura.elemento.test;
 
 import aplicacion.Alumno;
+import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 
@@ -20,8 +21,8 @@ public class Test extends Elemento {
 	private double peso;
 	private double valorDefecto;
 	
-	public Test(String nombre, boolean visible,String texto, int numPreguntas, LocalDate fechaIni, LocalDate fechaFin, boolean aleatorio, double peso, double valorDefecto) {
-		super(nombre, visible);
+	public Test(String nombre, boolean visible, Asignatura asignatura,String texto, int numPreguntas, LocalDate fechaIni, LocalDate fechaFin, boolean aleatorio, double peso, double valorDefecto) {
+		super(nombre, visible, asignatura);
 		this.texto = texto;
 		this.fechaIni = fechaIni;
 		this.fechaFin = fechaFin;

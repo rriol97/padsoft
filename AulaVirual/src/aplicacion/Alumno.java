@@ -3,6 +3,7 @@ package aplicacion;
 import aplicacion.asignatura.elemento.test.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import aplicacion.asignatura.Asignatura;
@@ -14,16 +15,16 @@ public class Alumno {
 	private final String correo;
 	private String nombre;
 	private String apellidos;
-	private String dni;
 	private List<Resolucion>resoluciones = new ArrayList<Resolucion>();
+	private List<Asignatura>asignaturas = new ArrayList<Asignatura>();
 	
-	public Alumno(String nia, String contrasena, String correo, String nombre, String apellidos, String dni) {
+	public Alumno(String nia, String contrasena, String correo, String nombre, String apellidos) {
 		this.nia = nia;
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.dni = dni;
+
 	}
 
 	public String getNia() {
@@ -45,9 +46,21 @@ public class Alumno {
 	public String getApellidos() {
 		return apellidos;
 	}
-
-	public String getDni() {
-		return dni;
+	
+	public List<Resolucion> getResoluciones() {
+		return Collections.unmodifiableList(this.resoluciones);
+	}
+	
+	public List<Asignatura> getAsignatura() {
+		return Collections.unmodifiableList(this.asignaturas);
+	}
+	
+	public boolean anadirAsignatura(Asignatura asig) {
+		return this.asignaturas.add(asig);
+	}
+	
+	public boolean eliminarAsignatura(Asignatura asig){
+		return this.asignaturas.remove(asig);
 	}
 
 	public boolean anadirResolucion(Test test) {
@@ -55,10 +68,35 @@ public class Alumno {
 		return this.resoluciones.add(res);
 	}
 	
-	public void enviarSolicitud(Asignatura asignatura, String texto){
-		Solicitud solicitud = new Solicitud(texto,this,asignatura);
-		asignatura.anadirSolicitud(solicitud);
+	public boolean eliminarResolucion(Resolucion res){
+		return this.resoluciones.remove(res);
 	}
+	
+	public boolean enviarSolicitud(Asignatura asignatura, String texto){
+		if (this.asignaturas.contains(asignatura)){
+			return false;
+		}
+		Solicitud solicitud = new Solicitud(texto,this,asignatura);
+		return asignatura.anadirSolicitud(solicitud);
+	}
+	
+	public Resolucion encontrarResolucion (Test test){
+		for (Resolucion res:this.resoluciones){
+			res.getTest().equals(test);
+			return res;
+		}
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [nia=" + nia + ", correo=" + correo + ", nombre=" + nombre
+				+ ", apellidos=" + apellidos +"]";
+	}
+	
+	
+
+	
 	
 	
 	
