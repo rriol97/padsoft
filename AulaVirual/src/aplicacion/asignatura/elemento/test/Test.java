@@ -1,6 +1,7 @@
 package aplicacion.asignatura.elemento.test;
 
-import aplicacion.Alumno;
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
@@ -11,7 +12,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Test extends Elemento {
+public class Test extends Elemento implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
 	private List<Resolucion> resoluciones = new ArrayList<Resolucion>();
 	private String texto;
@@ -43,11 +46,17 @@ public class Test extends Elemento {
 	}
 	
 	public boolean anadirPregunta(Pregunta pregunta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return this.preguntas.add(pregunta);
 	}
 	
-	public void eliminarPregunta(Pregunta pregunta){
-		this.preguntas.remove(pregunta);
+	public boolean eliminarPregunta(Pregunta pregunta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
+		return this.preguntas.remove(pregunta);
 	}
 	
 	public boolean anadirResolucion(Resolucion resolucion){
@@ -59,6 +68,9 @@ public class Test extends Elemento {
 	}
 
 	public boolean setTexto(String texto) {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			this.texto = texto;
 			return true;
@@ -82,6 +94,9 @@ public class Test extends Elemento {
 	}
 	
 	public boolean setFechaIni(LocalDate fechaIni) {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			if (LocalDate.now().isBefore(fechaIni)){
 				this.fechaIni= fechaIni;
@@ -92,6 +107,9 @@ public class Test extends Elemento {
 	}
 	
 	public boolean setFechaFin(LocalDate fechaFin) {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			this.fechaFin = fechaFin;
 			return true;
@@ -104,6 +122,9 @@ public class Test extends Elemento {
 	}
 
 	public boolean setAleatorio(boolean aleatorio){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			this.aleatorio = aleatorio;
 			return true;
@@ -117,6 +138,9 @@ public class Test extends Elemento {
 	}
 
 	public boolean setPeso(double peso) {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			this.peso = peso;
 			return true;
@@ -129,6 +153,9 @@ public class Test extends Elemento {
 	}
 
 	public boolean setValorDefecto(double valorDefecto) {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		if (isFechaValida()){
 			this.valorDefecto = valorDefecto;
 			return true;
@@ -140,9 +167,6 @@ public class Test extends Elemento {
 		for (Resolucion res:this.resoluciones){
 			res.calcularNota();
 		}
-	}
-	public void realizar(Alumno alumno){
-		alumno.anadirResolucion(this);
 	}
 
 	@Override

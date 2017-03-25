@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 import aplicacion.asignatura.Asignatura;
 
-public class Solicitud {
+public class Solicitud implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private final String texto;
 	private final LocalDate fecha;

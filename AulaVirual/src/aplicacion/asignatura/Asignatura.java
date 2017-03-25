@@ -8,8 +8,9 @@ import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.*;
 
-public class Asignatura {
-
+public class Asignatura implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private final String nombre;
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private List<Alumno> matriculados = new ArrayList<Alumno>();
@@ -29,18 +30,27 @@ public class Asignatura {
 	}
 	
 	public boolean anadirSolicitud(Solicitud solicitud){
-		if (this.solicitudes.contains(solicitud) == false){
-			return this.solicitudes.add(solicitud);
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+			return false;
 		}
-		return false;
+		if (this.solicitudes.contains(solicitud)){
+			return false;
+		}
+		return this.solicitudes.add(solicitud);
 	}
 	
 	public boolean aceptarSolicitud(Solicitud solicitud){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		this.solicitudes.remove(solicitud);
 		return this.matriculados.add(solicitud.getAlumno());
 	}
 	
 	public void denegarSolicitud(Solicitud solicitud){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return;
+		}
 		this.solicitudes.remove(solicitud);
 	}
 	
@@ -48,16 +58,22 @@ public class Asignatura {
 		return Collections.unmodifiableList(matriculados);
 	}
 	
-	public void expulsarAlumno(Alumno alumno){
+	public boolean expulsarAlumno(Alumno alumno){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		alumno.eliminarAsignatura(this);
 		this.matriculados.remove(alumno);
-		this.expulsados.add(alumno);
+		return this.expulsados.add(alumno);
 	}
 	
-	public void readmitirAlumno(Alumno alumno){
+	public boolean readmitirAlumno(Alumno alumno){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		alumno.anadirAsignatura(this);
 		this.expulsados.remove(alumno);
-		this.matriculados.add(alumno);
+		return this.matriculados.add(alumno);
 	}
 	
 	public List<Alumno> getExpulsados() {
@@ -69,10 +85,16 @@ public class Asignatura {
 	}
 	
 	public boolean anadirElemento(Elemento elemento){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return this.elementos.add(elemento);
 	}
 	
 	public boolean eliminarElemento(Elemento elemento){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return this.elementos.remove(elemento);
 	}
 	

@@ -1,11 +1,15 @@
 package aplicacion.asignatura.elemento.test;
 
-public class RespuestaLibre extends Pregunta{
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 
+public class RespuestaLibre extends Pregunta implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String solucion;
 	
-	public RespuestaLibre(String enunciado, double valor, double penalizacion, boolean aleatoria, int numRespuestas, int numAciertos,int numFallos, String solucion){
-		super(enunciado,valor,penalizacion,aleatoria,numRespuestas,numAciertos,numFallos);
+	public RespuestaLibre(String enunciado, double valor, double penalizacion, boolean aleatoria, String solucion){
+		super(enunciado,valor,penalizacion,aleatoria);
 		this.solucion = solucion;
 	}
 
@@ -14,7 +18,9 @@ public class RespuestaLibre extends Pregunta{
 	}
 
 	public void setSolucion(String solucion) {
-		this.solucion = solucion;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.solucion = solucion;
+		}
 	}
 
 	@Override

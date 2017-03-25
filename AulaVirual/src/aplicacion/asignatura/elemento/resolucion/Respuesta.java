@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.test.Opcion;
 import aplicacion.asignatura.elemento.test.Pregunta;
 
-public class Respuesta {
+public class Respuesta implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private EstadoRespuesta estado;
 	private String respuesta;
 	private List <Opcion> opcionesSeleccionadas = new ArrayList <Opcion> ();
@@ -24,10 +28,16 @@ public class Respuesta {
 	}
 	
 	public boolean anadirOpcion(Opcion opcion){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+			return false;
+		}
 		return this.opcionesSeleccionadas.add(opcion);
 	}
 	
 	public boolean eliminarRespuesta(Respuesta respuesta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+			return false;
+		}
 		return this.opcionesSeleccionadas.remove(respuesta);
 	}
 	
@@ -36,7 +46,9 @@ public class Respuesta {
 	}
 
 	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO)) {
+			this.respuesta = respuesta;
+		}
 	}
 
 	public void setEstado(EstadoRespuesta estado) {

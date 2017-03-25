@@ -4,27 +4,31 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.resolucion.*;
 
-public abstract class Pregunta {
+public abstract class Pregunta implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String enunciado;
 	private double valor;
 	private double penalizacion;
 	private boolean aleatoria;
-	private int numRespuesta;
+	private int numRespuestas;
 	private int numAciertos;
 	private int numFallos;
 	private List <Respuesta> respuestas = new ArrayList <Respuesta>();
 	
 	
-	public Pregunta(String enunciado, double valor, double penalizacion, boolean aleatoria, int numRespuesta, int numAciertos, int numFallos) {
+	public Pregunta(String enunciado, double valor, double penalizacion, boolean aleatoria) {
 		this.enunciado = enunciado;
 		this.valor = valor;
-		this.aleatoria = aleatoria;
-		this.numRespuesta = numRespuesta;
-		this.numAciertos = numAciertos;
-		this.numFallos = numFallos;
 		this.penalizacion = penalizacion;
+		this.aleatoria = aleatoria;
+		this.numRespuestas = 0;
+		this.numAciertos = 0;
+		this.numFallos = 0;
 	}
 	
 	public String getEnunciado() {
@@ -32,7 +36,10 @@ public abstract class Pregunta {
 	}
 
 	public void setEnunciado(String enunciado) {
-		this.enunciado = enunciado;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.enunciado = enunciado;
+		}
+		
 	}
 
 	public double getValor() {
@@ -40,7 +47,10 @@ public abstract class Pregunta {
 	}
 
 	public void setValor(double valor) {
-		this.valor = valor;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.valor = valor;
+		}
+		
 	}
 
 	public boolean isAleatoria() {
@@ -48,41 +58,64 @@ public abstract class Pregunta {
 	}
 
 	public void setAleatoria(boolean aleatoria) {
-		this.aleatoria = aleatoria;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.aleatoria = aleatoria;
+		}
+		
 	}
 
 	public int getNumRespuesta() {
-		return numRespuesta;
+		return numRespuestas;
 	}
 
 	public void setNumRespuesta(int numRespuesta) {
-		this.numRespuesta = numRespuesta;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.numRespuestas = numRespuesta;
+		}
+		
 	}
 
 	public double getPorcentajeciertos() {
-		return (double)(this.numAciertos)/(double)(this.numRespuesta) * 100.0;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return 0.0;
+		}
+		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
 
 	public double getPorcentajeFallos() {
-		return (double)(this.numFallos)/(double)(this.numRespuesta) * 100.0;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return 0.0;
+		}
+		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
 	public double getPorcentajeNsnc(){
-		return (double)(this.numRespuesta - this.numAciertos - this.numFallos)/(double)this.numRespuesta * 100.0;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return 0.0;
+		}
+		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
 	public double getPenalizacion() {
 		return penalizacion;
 	}
 
 	public void setPenalizacion(double penalizacion) {
-		this.penalizacion = penalizacion;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			this.penalizacion = penalizacion;
+		}
 	}
 	
 	public boolean anadirRespuesta(Respuesta respuesta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return this.respuestas.add(respuesta);
 	}
 	
 	public boolean eliminarRespuesta(Respuesta respuesta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return this.respuestas.remove(respuesta);
 	}
 	
@@ -91,6 +124,9 @@ public abstract class Pregunta {
 	}
 
 	public void calcularRespuestas() {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return;
+		}
 		EstadoRespuesta aux;
 		for (Respuesta r: respuestas) {
 			aux = r.getEstado();
@@ -99,7 +135,7 @@ public abstract class Pregunta {
 			} else if (aux.equals("ERROR")) {
 				this.numFallos++;
 			}
-			this.numRespuesta++;
+			this.numRespuestas++;
 		}
 		
 		return;

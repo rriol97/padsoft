@@ -1,8 +1,11 @@
 package aplicacion.asignatura.elemento;
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
-public abstract class Elemento {
+public abstract class Elemento implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private final String nombre;
 	private boolean visible;
@@ -23,7 +26,9 @@ public abstract class Elemento {
 	}
 
 	public void setVisible(boolean visible) {
-		this.visible = visible;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.visible = visible;
+		}
 	}
 	
 	public Asignatura getAsignatura(){

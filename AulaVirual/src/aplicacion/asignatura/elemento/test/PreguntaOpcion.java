@@ -4,19 +4,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class PreguntaOpcion extends Pregunta {
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
+
+public abstract class PreguntaOpcion extends Pregunta implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private List<Opcion> opciones = new ArrayList<Opcion>();
 	
-	public PreguntaOpcion(String enunciado, double valor, double penalizacion, boolean aleatoria, int numRespuestas, int numAciertos, int numFallos){
-		super(enunciado,valor, penalizacion,aleatoria,numRespuestas,numAciertos,numFallos);
+	public PreguntaOpcion(String enunciado, double valor, double penalizacion, boolean aleatoria){
+		super(enunciado, valor, penalizacion, aleatoria);
 	}
 	
-	public void anadirOpcion(Opcion opcion){
-		opciones.add(opcion);
-		return;
+	public boolean anadirOpcion(Opcion opcion){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
+		return opciones.add(opcion);
 	}
 	
 	public boolean eliminarOpcion(Opcion opcion){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+			return false;
+		}
 		return opciones.remove(opcion);
 	}
 

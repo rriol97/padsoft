@@ -1,5 +1,8 @@
 package aplicacion.asignatura.elemento.test;
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
+
 /**
  * 
  * Imlementacion de la clase Opcion.
@@ -10,8 +13,9 @@ package aplicacion.asignatura.elemento.test;
  * @date 07/03/2017
  *
  */
-public class Opcion {
-
+public class Opcion implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private final int num;
 	private String texto;
 	private boolean correcta;
@@ -41,7 +45,9 @@ public class Opcion {
 	}
 
 	public void setTexto(String texto) {
-		this.texto = texto;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.texto = texto;
+		}
 	}
 
 	public boolean isCorrecta() {
@@ -49,7 +55,10 @@ public class Opcion {
 	}
 
 	public void setCorrecta(boolean correcta) {
-		this.correcta = correcta;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.correcta = correcta;
+		}
+		
 	}
 
 	@Override

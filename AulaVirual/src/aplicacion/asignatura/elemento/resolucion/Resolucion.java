@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.test.Opcion;
 import aplicacion.asignatura.elemento.test.Pregunta;
 import aplicacion.asignatura.elemento.test.RespuestaLibre;
 import aplicacion.asignatura.elemento.test.Test;
 
-public class Resolucion {
+public class Resolucion implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private double nota;
 	private final LocalDate fecha;
 	private List <Respuesta> respuestas = new ArrayList <Respuesta>();
@@ -39,10 +43,16 @@ public class Resolucion {
 	}
 	
 	public boolean anadirRespuesta(Respuesta respuesta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+			return false;
+		}
 		 return this.respuestas.add(respuesta);
 	}
 	
 	public boolean eliminarRespuesta(Respuesta respuesta){
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+			return false;
+		}
 		return this.respuestas.remove(respuesta);
 	}
 

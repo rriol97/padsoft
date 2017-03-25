@@ -1,9 +1,12 @@
 package aplicacion.asignatura.elemento;
 
 
+import aplicacion.Aplicacion;
+import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
-public class Apuntes extends Elemento {
+public class Apuntes extends Elemento implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String texto;
 
@@ -17,7 +20,9 @@ public class Apuntes extends Elemento {
 	}
 
 	public void setTexto(String texto) {
-		this.texto = texto;
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			this.texto = texto;
+		}
 	}
 
 	@Override
