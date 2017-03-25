@@ -140,16 +140,6 @@ public abstract class Pregunta implements java.io.Serializable {
 		
 		return;
 	}
-	
-	public void responderPregunta(Resolucion res, Opcion opc, String tes){
-		Respuesta respuesta = new Respuesta(this);
-		if (this instanceof OpcionUnica || this instanceof OpcionMultiple || this instanceof SiNo){
-			respuesta.anadirOpcion(opc);
-	  	} else {
-	  		respuesta.setRespuesta(tes);
-	  	}
-	  	res.anadirRespuesta(respuesta);
-	}
 
 	@Override
 	public String toString() {

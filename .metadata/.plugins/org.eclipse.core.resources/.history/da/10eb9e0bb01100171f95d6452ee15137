@@ -135,7 +135,7 @@ public class Aplicacion {
         return true;
 	}
 	
-	public void save() throws FileNotFoundException, IOException {
+	private void save() throws FileNotFoundException, IOException {
 		ObjectOutputStream salida = new ObjectOutputStream (new FileOutputStream("apk.data"));
 		salida.writeObject(this.niaProfesor);
 		salida.writeObject(this.contrasenaProfesor);
@@ -146,7 +146,7 @@ public class Aplicacion {
 		salida.close();
 	}
 	
-	public void load() throws FileNotFoundException, IOException, ClassNotFoundException {
+	private void load() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream entrada = new ObjectInputStream (new FileInputStream("apk.data"));
       	this.niaProfesor = (String)entrada.readObject();
       	this.contrasenaProfesor = (String)entrada.readObject();

@@ -96,6 +96,7 @@ public class Aplicacion {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.NO_INI) == false) {
 			return false;
 		}
+		this.load();
 		if (this.niaProfesor.equals(nia) && this.contrasenaProfesor.equals(contrasena)){
 			this.tipoUsu = TipoUsuario.PROFESOR;
 			return true;
@@ -113,6 +114,7 @@ public class Aplicacion {
 	
 	public void logOut() throws FileNotFoundException, IOException{
 		this.tipoUsu = TipoUsuario.NO_INI;
+		this.save();
 	}
 	
 	public boolean leerAlumnosDeFichero(String archivo) throws IOException{
@@ -135,7 +137,7 @@ public class Aplicacion {
         return true;
 	}
 	
-	public void save() throws FileNotFoundException, IOException {
+	private void save() throws FileNotFoundException, IOException {
 		ObjectOutputStream salida = new ObjectOutputStream (new FileOutputStream("apk.data"));
 		salida.writeObject(this.niaProfesor);
 		salida.writeObject(this.contrasenaProfesor);
@@ -146,7 +148,7 @@ public class Aplicacion {
 		salida.close();
 	}
 	
-	public void load() throws FileNotFoundException, IOException, ClassNotFoundException {
+	private void load() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream entrada = new ObjectInputStream (new FileInputStream("apk.data"));
       	this.niaProfesor = (String)entrada.readObject();
       	this.contrasenaProfesor = (String)entrada.readObject();
