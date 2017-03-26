@@ -14,7 +14,14 @@ import java.util.List;
 
 import aplicacion.asignatura.Asignatura;
 
-
+/**
+ * Aplicacion. Clase que contiene todos los datos del programa.
+ * Es un singleton, es decir, es accesible desde cualquier clase.
+ * 
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class Aplicacion {
 	private static Aplicacion instance;
 	
@@ -25,12 +32,20 @@ public class Aplicacion {
 	private List <Alumno> alumnos = new ArrayList<Alumno>();
 	private List <Asignatura> asignaturas = new ArrayList<Asignatura>();
 
+	/**
+	 * Constructor de Aplicacion. Es privado porque Aplicacion es un singleton.
+	 */
 	private Aplicacion (){
 		this.niaProfesor = "profesor";
 		this.contrasenaProfesor = "profesor";
 		this.tipoUsu = TipoUsuario.NO_INI;
 	}
 	
+	/**
+	 * Metodo para obtener la instancia unica de la clase Aplicacion.
+	 * 
+	 * @return Aplicacion
+	 */
 	public static Aplicacion getInstance() {
 		if (instance == null) {
 			instance = new Aplicacion();
@@ -66,6 +81,13 @@ public class Aplicacion {
 		return Collections.unmodifiableList(alumnos);
 	}
 	
+	/**
+	 * Metodo que permite anadir una asignatura a la lista de asignaturas de la aplicacion.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param asig
+	 * @return boolean
+	 */
 	public boolean anadirAsignatura(Asignatura asig) {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -73,6 +95,13 @@ public class Aplicacion {
 		return this.asignaturas.add(asig);
 	}
 	
+	/**
+	 * Metodo que permite eliminar una asignatura de la lista de asignaturas de la aplicacion.
+	 * Solo es accesible por alumnos.
+	 * 
+	 * @param asig
+	 * @return boolean
+	 */
 	public boolean eliminarAsignatura(Asignatura asig){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -80,6 +109,13 @@ public class Aplicacion {
 		return this.asignaturas.remove(asig);
 	}
 	
+	/**
+	 * Metodo que permite anadir un alumno a la lista de alumnos de la aplicacion.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param alum
+	 * @return boolean
+	 */
 	public boolean anadirAlumno(Alumno alum) {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -87,6 +123,13 @@ public class Aplicacion {
 		return this.alumnos.add(alum);
 	}
 	
+	/**
+	 * Metodo que permite eliminar un alumno de la lista de alumnos de la aplicacion.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param alum
+	 * @return boolean
+	 */
 	public boolean eliminarAlumno(Alumno alum){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -94,11 +137,24 @@ public class Aplicacion {
 		return this.alumnos.remove(alum);
 	}
 	
+	/**
+	 * Metodo para iniciar sesion.
+	 * Detecta si se ha iniciado sesion como profesor o alumno y actualiza el valor de tipoUsu.
+	 * Si es alumno tambien se actualiza alumnoActual para que indique el alumno que ha iniciado sesion.
+	 * 
+	 * @param nia
+	 * @param contrasena
+	 * @return boolean
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public boolean logIn (String nia, String contrasena) throws FileNotFoundException, ClassNotFoundException, IOException{
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.NO_INI) == false) {
 			return false;
 		}
 		if (this.niaProfesor.equals(nia) && this.contrasenaProfesor.equals(contrasena)){
+			this.alumnoActual = null;
 			this.tipoUsu = TipoUsuario.PROFESOR;
 			return true;
 		} else{
@@ -114,10 +170,24 @@ public class Aplicacion {
 		return false;
 	}
 	
+	/**
+	 * Metodo para cerrar sesion.
+	 * Actualiza tipoUsu a no iniciado.
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void logOut() throws FileNotFoundException, IOException{
 		this.tipoUsu = TipoUsuario.NO_INI;
 	}
 	
+	/**
+	 * Metodo para cargar los datos de alumnos proporcionados en moodle.
+	 * 
+	 * @param archivo
+	 * @return boolean
+	 * @throws IOException
+	 */
 	public boolean leerAlumnosDeFichero(String archivo) throws IOException{
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.NO_INI) == false) {
 			return false;
@@ -138,6 +208,12 @@ public class Aplicacion {
         return true;
 	}
 	
+	/**
+	 * Metodo para guardar toda la informacion en un fichero "apk.data".
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void save() throws FileNotFoundException, IOException {
 		ObjectOutputStream salida = new ObjectOutputStream (new FileOutputStream("apk.data"));
 		salida.writeObject(this.niaProfesor);
@@ -149,6 +225,13 @@ public class Aplicacion {
 		salida.close();
 	}
 	
+	/**
+	 * Metodo para cargar toda la informacion de un fichero "apk.data".
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void load() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream entrada = new ObjectInputStream (new FileInputStream("apk.data"));
       	this.niaProfesor = (String)entrada.readObject();
