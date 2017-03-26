@@ -12,6 +12,12 @@ import aplicacion.asignatura.elemento.test.Pregunta;
 import aplicacion.asignatura.elemento.test.PreguntaOpcion;
 import aplicacion.asignatura.elemento.test.SiNo;
 
+/**
+ * Respuesta. Clase creada cuando un alumno responde una pregunta.
+ * 
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ */
 public class Respuesta implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,6 +26,11 @@ public class Respuesta implements java.io.Serializable {
 	private List <Opcion> opcionesSeleccionadas = new ArrayList <Opcion> ();
 	private final Pregunta pregunta;
 	
+	/**
+	 * Constructor de Respuesta.
+	 * 
+	 * @param p pregunta a responder
+	 */
 	public Respuesta(Pregunta p) {
 		this.estado = EstadoRespuesta.NSNC;
 		this.respuesta = "";
@@ -30,6 +41,13 @@ public class Respuesta implements java.io.Serializable {
 		return Collections.unmodifiableList(opcionesSeleccionadas);
 	}
 	
+	/**
+	 * Metodo que permite anadir una opcion a la lista de opciones de la respuesta.
+	 * Solo es accesible por alumnos.
+	 * 
+	 * @param opcion opcion a anadir
+	 * @return boolean true si se anade correctamente, false en caso contrario
+	 */
 	public boolean anadirOpcion(Opcion opcion){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
 			return false;
@@ -37,6 +55,13 @@ public class Respuesta implements java.io.Serializable {
 		return this.opcionesSeleccionadas.add(opcion);
 	}
 	
+	/**
+	 * Metodo que permite eliminar una opcion de la lista de opciones de la respuesta.
+	 * Solo es accesible por alumnos.
+	 * 
+	 * @param respuesta respuesta a eliminar
+	 * @return boolean true si se eimina correctamente, false en caso contrario
+	 */
 	public boolean eliminarRespuesta(Respuesta respuesta){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
 			return false;

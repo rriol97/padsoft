@@ -17,10 +17,12 @@ import aplicacion.asignatura.elemento.test.Pregunta;
 import aplicacion.asignatura.elemento.test.PreguntaOpcion;
 import aplicacion.asignatura.elemento.test.SiNo;
 import aplicacion.asignatura.elemento.test.Test;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class TesterAulaVirtual {
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException {
 		
 		Aplicacion.getInstance().leerAlumnosDeFichero("alumnos.txt");
 		
@@ -62,7 +64,7 @@ public class TesterAulaVirtual {
 		System.out.println(Aplicacion.getInstance().logIn("1264", "s.ll"));
 		
 		Alumno alum = Aplicacion.getInstance().getAlumnoActual();
-		Solicitud sol = new Solicitud("Hola soy"+alum.getNombre()+" "+alum.getApellidos()+"y quiero inscribirme en su asignatura", alum, edyl);
+		Solicitud sol = new Solicitud("Hola soy "+alum.getNombre()+" "+alum.getApellidos()+"y quiero inscribirme en su asignatura", alum, edyl);
 		alum.enviarSolicitud(sol);
 		
 		Aplicacion.getInstance().logOut();

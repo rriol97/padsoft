@@ -4,6 +4,14 @@ import aplicacion.Aplicacion;
 import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
+/**
+ * Elemento. Clase abstracta de la cual heredan Test, Apuntes y Tema. Contiene el numbre, un indicador de visibilidad y una referencia a la asignatura a la que pertenece.
+ * 
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ * 
+ *
+ */
 public abstract class Elemento implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -11,6 +19,13 @@ public abstract class Elemento implements java.io.Serializable {
 	private boolean visible;
 	private  final Asignatura asignatura;
 	
+	/**
+	 * Constructor de Elemento.
+	 * 
+	 * @param nombre nombre del elemento
+	 * @param visible visibilidad
+	 * @param asignatura asignatura del elemento
+	 */
 	public Elemento(String nombre, boolean visible, Asignatura asignatura) {
 		this.nombre = nombre;
 		this.visible = visible;

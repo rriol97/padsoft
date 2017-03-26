@@ -4,14 +4,10 @@ import aplicacion.Aplicacion;
 import aplicacion.TipoUsuario;
 
 /**
+ * Opcion. Clase utilizada para implementar preguntas con opciones. Contiene un numero de opcion, un texto y un indicador sobre si correcta.
  * 
- * Imlementacion de la clase Opcion.
- * 
- * @author Ricardo Riol Gonzalez y Adrian Fernandez Amador
- * 
- * @file Opcion.java
- * @date 07/03/2017
- *
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
  */
 public class Opcion implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,12 +18,12 @@ public class Opcion implements java.io.Serializable {
 	
 	
 	/**
-	 * Constructor de la clase Opcion
+	 * Constructor Opcion
 	 * 
-	 * @param num
-	 * @param texto
-	 * @param correcta
-	 * @param seleccionada
+	 * @param num numero de opcion
+	 * @param texto texto de la opcion
+	 * @param correcta opcion correcta o no
+	 * @param seleccionada si es sellecionada o no
 	 */
 	public Opcion(int num, String texto,boolean correcta,boolean seleccionada){
 		this.num = num;
@@ -49,7 +45,11 @@ public class Opcion implements java.io.Serializable {
 			this.texto = texto;
 		}
 	}
-
+	
+	/**
+	 * Metodo que sirve para saber si la opcion es correcta
+	 * @return booelan true si es correcta, false en caso contrario
+	 */
 	public boolean isCorrecta() {
 		return correcta;
 	}

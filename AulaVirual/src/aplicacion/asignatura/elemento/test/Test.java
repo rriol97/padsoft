@@ -5,13 +5,22 @@ import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
-
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Test. Clase que hereda de Elemento. Consiste en un texto, su fecha de inicio y fin, un indicador sobre si es aleatorio, el valor del examen en la asignatura y el valor de cada pregunta por defecto.
+ * Tambien continene una lista de preguntas y la lista de resoluciones realizadas.
+ * 
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class Test extends Elemento implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -24,6 +33,20 @@ public class Test extends Elemento implements java.io.Serializable {
 	private double peso;
 	private double valorDefecto;
 	
+	/**
+	 * Constructor de Test.
+	 * 
+	 * @param nombre nombre de test
+	 * @param visible visibilidad
+	 * @param asignatura asigantura del test
+	 * @param texto texto explicativo
+	 * @param numPreguntas numero de preguntas
+	 * @param fechaIni fecha de inicio del test
+	 * @param fechaFin fecha de final del test
+	 * @param aleatorio aleatorio o no
+	 * @param peso porcentaje del examen
+	 * @param valorDefecto valor que tiene una preguna del test por defecto
+	 */
 	public Test(String nombre, boolean visible, Asignatura asignatura,String texto, int numPreguntas, LocalDate fechaIni, LocalDate fechaFin, boolean aleatorio, double peso, double valorDefecto) {
 		super(nombre, visible, asignatura);
 		this.texto = texto;
@@ -45,6 +68,13 @@ public class Test extends Elemento implements java.io.Serializable {
 		return texto;
 	}
 	
+	/**
+	 * Metodo que permite anadir una pregunta a la lista de preguntas del test.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param pregunta pregunta a anadir
+	 * @return boolean true si se anade correctamente, false en caso contrario
+	 */
 	public boolean anadirPregunta(Pregunta pregunta){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -52,6 +82,13 @@ public class Test extends Elemento implements java.io.Serializable {
 		return this.preguntas.add(pregunta);
 	}
 	
+	/**
+	 * Metodo que permite eliminar una pregunta de la lista de preguntas del test.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param pregunta eliminar
+	 * @return boolean true si se elimina correctamente, false en caso contrario
+	 */
 	public boolean eliminarPregunta(Pregunta pregunta){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -59,10 +96,23 @@ public class Test extends Elemento implements java.io.Serializable {
 		return this.preguntas.remove(pregunta);
 	}
 	
+	/**
+	 * Metodo que permite anadir una resolucion a la lista de resoluciones del test.
+	 * Solo es accesible por alumnos.
+	 * 
+	 * @param resolucion resolucion a anadir
+	 * @return boolean true si se anade correctamente, false en caso contrario
+	 */
 	public boolean anadirResolucion(Resolucion resolucion){
 		return this.resoluciones.add(resolucion);
 	}
 	
+	/**
+	 * Metodo que permite eliminar una resolucion de la lista de resoluciones del test.
+	 * Solo es accesible por alumnos.
+	 * 
+	 * @param pregunta pregunta a eliminar
+	 */
 	public void eliminaResolucon(Pregunta pregunta){
 		this.resoluciones.remove(pregunta);
 	}
@@ -86,6 +136,11 @@ public class Test extends Elemento implements java.io.Serializable {
 		return fechaFin;
 	}
 
+	/**
+	 * Metodo que devuelve true si todavia no ha llegado la fecha de comienzo del test y false en caso contrario.
+	 * 
+	 * @return boolean true si es correcta correctamente, false en caso contrario
+	 */
 	private boolean isFechaValida(){
 		if (LocalDate.now().isBefore(this.fechaIni)){
 			return true;
@@ -117,6 +172,11 @@ public class Test extends Elemento implements java.io.Serializable {
 		return false;
 	}
 
+	/**
+	 * Metodo que devuelve el estado del atributo aleatorio.
+	 * 
+	 * @return boolean true si es aleatorio correctamente, false en caso contrario
+	 */
 	public boolean isAleatorio() {
 		return aleatorio;
 	}
@@ -163,7 +223,12 @@ public class Test extends Elemento implements java.io.Serializable {
 		return false;
 	}
 	
-	public void corregir(){
+	/**
+	 * Metodo que calcula la nota de todas las resoluciones individuales de un test.
+	 * @throws InvalidEmailAddressException exception
+	 * @throws FailedInternetConnectionException exception
+	 */
+	public void corregir() throws InvalidEmailAddressException, FailedInternetConnectionException{
 		for (Resolucion res:this.resoluciones){
 			res.calcularNota();
 		}

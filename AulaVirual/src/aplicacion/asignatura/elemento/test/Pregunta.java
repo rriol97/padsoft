@@ -8,6 +8,13 @@ import aplicacion.Aplicacion;
 import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.resolucion.*;
 
+/**
+ * Pregunta. Clase abstracta contenida en test. Sus atributos son un enunciado, el valor sobre el test, la penalizacion que se sufre si se falla y el numero de respuestas, fallos y erroros de los alumnos.
+ * Tambien contiene una lista con las respuestas de todos los alumnos. 
+ * 
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ */
 public abstract class Pregunta implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +27,14 @@ public abstract class Pregunta implements java.io.Serializable {
 	private int numFallos;
 	private List <Respuesta> respuestas = new ArrayList <Respuesta>();
 	
-	
+	/**
+	 * Constructor de Pregunta.
+	 * 
+	 * @param enunciado enunciado de la pregunta
+	 * @param valor valor de la pregunta
+	 * @param penalizacion oenalzacion de la pregunta si es fallada
+	 * @param aleatoria pregunta aleatoria o no.
+	 */
 	public Pregunta(String enunciado, double valor, double penalizacion, boolean aleatoria) {
 		this.enunciado = enunciado;
 		this.valor = valor;
@@ -74,14 +88,24 @@ public abstract class Pregunta implements java.io.Serializable {
 		}
 		
 	}
-
+	
+	/**
+	 * Metodo para calcular el porcentaje de aciertos en una pregunta.
+	 * 
+	 * @return double pocentaje de aciertos
+	 */
 	public double getPorcentajeciertos() {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
 		}
 		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
-
+	
+	/**
+	 * Metodo para calcular el porcentaje de fallos en una pregunta.
+	 * 
+	 * @return double el porcentaje de fallos
+	 */
 	public double getPorcentajeFallos() {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
@@ -89,6 +113,11 @@ public abstract class Pregunta implements java.io.Serializable {
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
+	/**
+	 * Metodo para calcular el porcentaje de respuestas en blanco en una pregunta.
+	 * 
+	 * @return double porcentaje de nsnc
+	 */
 	public double getPorcentajeNsnc(){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
@@ -105,6 +134,13 @@ public abstract class Pregunta implements java.io.Serializable {
 		}
 	}
 	
+	/**
+	 * Metodo que permite anadir una respuesta a la lista de respuestas de la pregunta.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param respuesta respuesta a anadir
+	 * @return boolean true si se anade correctamente, false en caso contrario
+	 */
 	public boolean anadirRespuesta(Respuesta respuesta){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -112,6 +148,13 @@ public abstract class Pregunta implements java.io.Serializable {
 		return this.respuestas.add(respuesta);
 	}
 	
+	/**
+	 * Metodo que permite eliminar una respuesta de la lista de respuestas de la pregunta.
+	 * Solo es accesible por profesores.
+	 * 
+	 * @param respuesta respuesta a eliminar
+	 * @return boolean true si se elimina correctamente, false en caso contrario
+	 */
 	public boolean eliminarRespuesta(Respuesta respuesta){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
@@ -123,6 +166,9 @@ public abstract class Pregunta implements java.io.Serializable {
 		return Collections.unmodifiableList(respuestas);
 	}
 
+	/**
+	 * Metodo para obtener los numero de respuestas, aciertos y fallos, que se guardan en los atributos numRespuestas, numAciertos y numFallos respectivamente.
+	 */
 	public void calcularRespuestas() {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return;
@@ -141,6 +187,13 @@ public abstract class Pregunta implements java.io.Serializable {
 		return;
 	}
 	
+	/**
+	 * Metodo para responder una pregunta dependiendo del tipo de pregunta que sea.
+	 * 
+	 * @param res resolucion de la pregunta
+	 * @param opc opcion contestada
+	 * @param tes solucion
+	 */
 	public void responderPregunta(Resolucion res, Opcion opc, String tes){
 		Respuesta respuesta = new Respuesta(this);
 		if (this instanceof OpcionUnica || this instanceof OpcionMultiple || this instanceof SiNo){
