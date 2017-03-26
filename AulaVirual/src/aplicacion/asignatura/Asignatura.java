@@ -65,6 +65,7 @@ public class Asignatura implements java.io.Serializable {
 	/**
 	 * Metodo para admitir a un alumno que haya solicitado ingrsar en una asignatura.
 	 * Solo es accesible por profesores.
+	 * 
 	 * @param solicitud solicitud a aceptar
 	 * @return boolean true si se acepta correctamente, false en caso contrario
 	 * @throws InvalidEmailAddressException exception
@@ -120,7 +121,9 @@ public class Asignatura implements java.io.Serializable {
 		if(EmailSystem.isValidEmailAddr(alumno.getCorreo())){
 			EmailSystem.send(alumno.getCorreo(),this.getNombre(), "Ha sido expulsado de la asignatura de "+this.getNombre());
 		}
-		
+		if (this.matriculados.contains(alumno) == false) {
+			return false;
+		}
 		alumno.eliminarAsignatura(this);
 		this.matriculados.remove(alumno);
 		return this.expulsados.add(alumno);
@@ -141,7 +144,10 @@ public class Asignatura implements java.io.Serializable {
 		}
 		if(EmailSystem.isValidEmailAddr(alumno.getCorreo())){
 			EmailSystem.send(alumno.getCorreo(),this.getNombre(), "Ha sido readmitido en la asignatura de " +this.getNombre());
-		}	
+		}
+		if (this.expulsados.contains(alumno) == false) {
+			return false;
+		}
 		alumno.anadirAsignatura(this);
 		this.expulsados.remove(alumno);
 		return this.matriculados.add(alumno);

@@ -77,7 +77,7 @@ public class Alumno implements java.io.Serializable {
 	/**
 	 * Metodo que permite anadir una asignatura a la lista de asignaturas de un alumno.
 	 * 
-	 * @param asig asigantura a añadir
+	 * @param asig asigantura a aï¿½adir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirAsignatura(Asignatura asig) {
@@ -158,16 +158,4 @@ public class Alumno implements java.io.Serializable {
 		return "Alumno [nia=" + nia + ", correo=" + correo + ", nombre=" + nombre
 				+ ", apellidos=" + apellidos +"]";
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

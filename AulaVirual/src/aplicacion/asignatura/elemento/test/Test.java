@@ -111,10 +111,10 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * Metodo que permite eliminar una resolucion de la lista de resoluciones del test.
 	 * Solo es accesible por alumnos.
 	 * 
-	 * @param pregunta pregunta a eliminar
+	 * @param resolucion resolucion a eliminar
 	 */
-	public void eliminaResolucon(Pregunta pregunta){
-		this.resoluciones.remove(pregunta);
+	public void eliminaResolucion(Resolucion resolucion){
+		this.resoluciones.remove(resolucion);
 	}
 
 	public boolean setTexto(String texto) {

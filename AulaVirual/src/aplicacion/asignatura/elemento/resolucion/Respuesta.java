@@ -59,14 +59,14 @@ public class Respuesta implements java.io.Serializable {
 	 * Metodo que permite eliminar una opcion de la lista de opciones de la respuesta.
 	 * Solo es accesible por alumnos.
 	 * 
-	 * @param respuesta respuesta a eliminar
-	 * @return boolean true si se eimina correctamente, false en caso contrario
+	 * @param opcion opcion a eliminar
+	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
-	public boolean eliminarRespuesta(Respuesta respuesta){
+	public boolean eliminarOpcion(Opcion opcion){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
 			return false;
 		}
-		return this.opcionesSeleccionadas.remove(respuesta);
+		return this.opcionesSeleccionadas.remove(opcion);
 	}
 	
 	public String getRespuesta() {

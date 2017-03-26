@@ -24,10 +24,9 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	 * @param enunciado enunciado de la pregunta
 	 * @param valor valor de la pregunta
 	 * @param penalizacion penalizacion de la pregunta en caso de fallo
-	 * @param aleatoria si es aleatoria o no
 	 */
-	public PreguntaOpcion(String enunciado, double valor, double penalizacion, boolean aleatoria){
-		super(enunciado, valor, penalizacion, aleatoria);
+	public PreguntaOpcion(String enunciado, double valor, double penalizacion){
+		super(enunciado, valor, penalizacion);
 	}
 	
 	/**

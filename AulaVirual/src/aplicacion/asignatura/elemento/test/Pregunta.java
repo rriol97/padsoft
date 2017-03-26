@@ -21,7 +21,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	private String enunciado;
 	private double valor;
 	private double penalizacion;
-	private boolean aleatoria;
 	private int numRespuestas;
 	private int numAciertos;
 	private int numFallos;
@@ -33,13 +32,11 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @param enunciado enunciado de la pregunta
 	 * @param valor valor de la pregunta
 	 * @param penalizacion oenalzacion de la pregunta si es fallada
-	 * @param aleatoria pregunta aleatoria o no.
 	 */
-	public Pregunta(String enunciado, double valor, double penalizacion, boolean aleatoria) {
+	public Pregunta(String enunciado, double valor, double penalizacion) {
 		this.enunciado = enunciado;
 		this.valor = valor;
 		this.penalizacion = penalizacion;
-		this.aleatoria = aleatoria;
 		this.numRespuestas = 0;
 		this.numAciertos = 0;
 		this.numFallos = 0;
@@ -67,22 +64,11 @@ public abstract class Pregunta implements java.io.Serializable {
 		
 	}
 
-	public boolean isAleatoria() {
-		return aleatoria;
-	}
-
-	public void setAleatoria(boolean aleatoria) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.aleatoria = aleatoria;
-		}
-		
-	}
-
-	public int getNumRespuesta() {
+	public int getNumRespuestas() {
 		return this.respuestas.size();
 	}
 
-	public void setNumRespuesta(int numRespuesta) {
+	public void setNumRespuestas(int numRespuesta) {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
 			this.numRespuestas = numRespuesta;
 		}
@@ -98,6 +84,7 @@ public abstract class Pregunta implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
 		}
+		this.calcularRespuestas();
 		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -110,6 +97,7 @@ public abstract class Pregunta implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
 		}
+		this.calcularRespuestas();
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -122,6 +110,7 @@ public abstract class Pregunta implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return 0.0;
 		}
+		this.calcularRespuestas();
 		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
 	public double getPenalizacion() {
@@ -202,6 +191,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	  		respuesta.setRespuesta(tes);
 	  	}
 	  	res.anadirRespuesta(respuesta);
+	  	this.respuestas.add(respuesta);
 	}
 
 	@Override

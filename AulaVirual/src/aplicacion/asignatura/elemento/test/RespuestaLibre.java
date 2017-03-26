@@ -21,11 +21,10 @@ public class RespuestaLibre extends Pregunta implements java.io.Serializable {
 	 * @param enunciado eenunciado de la pregunta
 	 * @param valor valor de la pregunta
 	 * @param penalizacion penalizacion de la pregunta si se falla
-	 * @param aleatoria si es aleatoria o no
 	 * @param solucion solucion de la pregunta
 	 */
-	public RespuestaLibre(String enunciado, double valor, double penalizacion, boolean aleatoria, String solucion){
-		super(enunciado,valor,penalizacion,aleatoria);
+	public RespuestaLibre(String enunciado, double valor, double penalizacion, String solucion){
+		super(enunciado,valor,penalizacion);
 		this.solucion = solucion;
 	}
 

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import aplicacion.asignatura.Asignatura;
 
 /**
- * Solicitud. Esta clse se genera cuando un alumno solicita ingresar en una asignatura y se destruye cuando se acepta o rechaza. Contiene un mensaje, la fecha de creación, una referencia al alumno que la realizo y otra referenca a la asignatura.
+ * Solicitud. Esta clse se genera cuando un alumno solicita ingresar en una asignatura y se destruye cuando se acepta o rechaza. Contiene un mensaje, la fecha de creacion, una referencia al alumno que la realizo y otra referenca a la asignatura.
  * 
  * @author Adrian Fernandez
  * @author Ricardo Riol
