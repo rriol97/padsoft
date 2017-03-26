@@ -65,7 +65,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public int getNumRespuesta() {
-		return numRespuestas;
+		return this.respuestas.size();
 	}
 
 	public void setNumRespuesta(int numRespuesta) {

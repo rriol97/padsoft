@@ -18,22 +18,8 @@ import aplicacion.asignatura.elemento.test.PreguntaOpcion;
 import aplicacion.asignatura.elemento.test.SiNo;
 import aplicacion.asignatura.elemento.test.Test;
 
-/**
- * TesterAulaVirtual. Clase utilizada para probar el funcionamiento general de la aplicacion.
- * 
- * @author Adrian Fernandez
- * @author Ricardo Riol
- *
- */
 public class TesterAulaVirtual {
 
-	/**
-	 * Metodo principal. Se encarga de crear varias instancias y de mostrarlas por pantalla para comprobar que los metodos de las clases involucradas funcionan correctamente.
-	 * 
-	 * @param args
-	 * @throws IOException
-	 * @throws ClassNotFoundException
-	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		Aplicacion.getInstance().leerAlumnosDeFichero("alumnos.txt");
@@ -60,6 +46,7 @@ public class TesterAulaVirtual {
 		tema1_edyl.anadirElemento(apuntes_tema1edyl);
 		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendr� 10 preguntas de diferentes tipos. Las preguntas tipo test bajar�n nota en el caso de que se falle y no puntur� si se dejan en blanco.", 10, LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
 		tema1_edyl.anadirElemento(test1_edyl);
+		//Intentar hacer con opcion
 		PreguntaOpcion p1 = new OpcionUnica("�Cu�ntas posibles contrase�as se pueden hacer, si la contrase�a es 4 d�gitos y solo se utilizan los n�meros del 1 al 10", 1, 0.5, false);
 		Opcion opcion_p11 = new Opcion (1, "10^3", false,false);
 		p1.anadirOpcion(opcion_p11);
@@ -94,7 +81,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(1,"10^3",false,true);
+				Opcion seleccionada = new Opcion(2,"10^4",true,true);
 				p.responderPregunta(res, seleccionada,"");
 			} else {
 				p.responderPregunta(res,null, "(respuesta)");
@@ -106,9 +93,13 @@ public class TesterAulaVirtual {
 		Aplicacion.getInstance().logOut();
 		System.out.println(Aplicacion.getInstance().logIn("profesor","profesor"));
 		
-		for (Pregunta p :test1_edyl.getPreguntas()){
-			System.out.println(p.getNumRespuesta());
+		
+		for (Resolucion resolution :test1_edyl.getResoluciones()){
+			resolution.calcularNota();
+			System.out.println(resolution);
 		}
+		
+		Aplicacion.getInstance().logOut();
 		
 		
 	}

@@ -24,6 +24,7 @@ public class Resolucion implements java.io.Serializable {
 		this.test = test;
 		this.fecha = LocalDate.now();
 		this.nota = -1.0;
+		test.anadirResolucion(this);
 	}
 
 	public double getNota() {
@@ -64,6 +65,8 @@ public class Resolucion implements java.io.Serializable {
 		for (Respuesta res:this.respuestas){
 			int flag = 0;
 			Pregunta p = res.getPregunta();
+			p.anadirRespuesta(res);
+			p.calcularRespuestas();
 			if (p instanceof RespuestaLibre){
 				if (((RespuestaLibre) p).getSolucion().equals(res.getRespuesta())){
 					res.setEstado(EstadoRespuesta.ACIERTO);
