@@ -134,8 +134,10 @@ public class Resolucion implements java.io.Serializable {
 	 */
 	public void calcularNota() throws InvalidEmailAddressException, FailedInternetConnectionException{
 		double nota = 0.0;
-		if (this.getFecha().isBefore(this.getTest().getFechaFin())){
-			return;
+			if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == true){
+			if (this.getFecha().isBefore(this.getTest().getFechaFin())){
+				return;
+			}
 		}
 		estadoRespuestas();
 		for (Respuesta res:this.respuestas){
@@ -158,8 +160,10 @@ public class Resolucion implements java.io.Serializable {
 	@Override
 	public String toString() {
 		String res="";
-		if (this.getFecha().isBefore(this.getTest().getFechaFin())){
-			return " Todavia no puede visaulizar el examen, espere a la fecha de fin para hacerlo.\n";
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == true){
+			if (this.getFecha().isBefore(this.getTest().getFechaFin())){
+				return " Todavia no puede visaulizar el examen, espere a la fecha de fin para hacerlo.\n";
+			}
 		}
 		int contador = 1;
 		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;

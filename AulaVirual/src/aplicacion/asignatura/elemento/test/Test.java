@@ -40,14 +40,13 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * @param visible visibilidad
 	 * @param asignatura asigantura del test
 	 * @param texto texto explicativo
-	 * @param numPreguntas numero de preguntas
 	 * @param fechaIni fecha de inicio del test
 	 * @param fechaFin fecha de final del test
 	 * @param aleatorio aleatorio o no
 	 * @param peso porcentaje del examen
 	 * @param valorDefecto valor que tiene una preguna del test por defecto
 	 */
-	public Test(String nombre, boolean visible, Asignatura asignatura,String texto, int numPreguntas, LocalDate fechaIni, LocalDate fechaFin, boolean aleatorio, double peso, double valorDefecto) {
+	public Test(String nombre, boolean visible, Asignatura asignatura,String texto, LocalDate fechaIni, LocalDate fechaFin, boolean aleatorio, double peso, double valorDefecto) {
 		super(nombre, visible, asignatura);
 		this.texto = texto;
 		this.fechaIni = fechaIni;

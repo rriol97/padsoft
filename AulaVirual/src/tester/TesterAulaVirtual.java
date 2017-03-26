@@ -46,7 +46,7 @@ public class TesterAulaVirtual {
 		Tema tema1_edyl = new Tema("Combinatoria", true, edyl);
 		Apuntes apuntes_tema1edyl = new Apuntes ("Introducci�n a la combinatoria", true, "(apuntes de combinatoria)", edyl);
 		tema1_edyl.anadirElemento(apuntes_tema1edyl);
-		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendr� 10 preguntas de diferentes tipos. Las preguntas tipo test bajar�n nota en el caso de que se falle y no puntur� si se dejan en blanco.", 10, LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
+		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendr� 10 preguntas de diferentes tipos. Las preguntas tipo test bajar�n nota en el caso de que se falle y no puntur� si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
 		tema1_edyl.anadirElemento(test1_edyl);
 		PreguntaOpcion p1 = new OpcionUnica("�Cu�ntas posibles contrase�as se pueden hacer, si la contrase�a es 4 d�gitos y solo se utilizan los n�meros del 1 al 10", 1, 0.5);
 		Opcion opcion_p11 = new Opcion (1, "10^3", false,false);

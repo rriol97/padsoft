@@ -65,7 +65,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public int getNumRespuestas() {
-		return this.respuestas.size();
+		return this.numRespuestas;
 	}
 
 	public void setNumRespuestas(int numRespuesta) {
@@ -134,6 +134,7 @@ public abstract class Pregunta implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
+		this.numRespuestas++;
 		return this.respuestas.add(respuesta);
 	}
 	
@@ -165,12 +166,11 @@ public abstract class Pregunta implements java.io.Serializable {
 		EstadoRespuesta aux;
 		for (Respuesta r: respuestas) {
 			aux = r.getEstado();
-			if (aux.equals("ACIERTO")) {
+			if (aux.equals(EstadoRespuesta.ACIERTO)) {
 				this.numAciertos++;
-			} else if (aux.equals("ERROR")) {
+			} else if (aux.equals(EstadoRespuesta.ERROR)) {
 				this.numFallos++;
 			}
-			this.numRespuestas++;
 		}
 		
 		return;
@@ -191,7 +191,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	  		respuesta.setRespuesta(tes);
 	  	}
 	  	res.anadirRespuesta(respuesta);
-	  	this.respuestas.add(respuesta);
 	}
 
 	@Override
