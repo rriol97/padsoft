@@ -94,9 +94,7 @@ public class Resolucion implements java.io.Serializable {
 	
 	public void calcularNota(){
 		double nota = 0.0;
-		if (this.nota == -1.0){
-			return;
-		}
+		
 		estadoRespuestas();
 		for (Respuesta res:this.respuestas){
 			if (res.getEstado().equals(EstadoRespuesta.ACIERTO)){
@@ -109,7 +107,18 @@ public class Resolucion implements java.io.Serializable {
 		this.setNota(nota);
 	}
 
-	
+	@Override
+	public String toString() {
+		String res="";
+		int contador = 1;
+		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
+		res = res +"\n\t"+this.getTest()+"\n"+"\t\tOpciones seleccionadas: \n";
+		for (Respuesta p :this.getRespuestas()){
+			res = res +"\n\n\t\t"+contador+"-"+ p;
+		}
+		
+		return res;
+	}
 	
 	
 }

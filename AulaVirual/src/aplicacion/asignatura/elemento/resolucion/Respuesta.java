@@ -7,7 +7,10 @@ import java.util.List;
 import aplicacion.Aplicacion;
 import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.test.Opcion;
+import aplicacion.asignatura.elemento.test.OpcionMultiple;
 import aplicacion.asignatura.elemento.test.Pregunta;
+import aplicacion.asignatura.elemento.test.PreguntaOpcion;
+import aplicacion.asignatura.elemento.test.SiNo;
 
 public class Respuesta implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
@@ -63,6 +66,21 @@ public class Respuesta implements java.io.Serializable {
 		return pregunta;
 	}
 
+	@Override
+	public String toString() {
+		String res = "";
+		if (this.getPregunta() instanceof PreguntaOpcion || this.getPregunta() instanceof OpcionMultiple || this.getPregunta() instanceof SiNo){
+			for (Opcion opc :this.getOpcionesSeleccionadas()){
+				res = res + opc;
+			}
+		} else {
+			res = res + this.respuesta;
+		}
+		
+		return res;
+	}
+
+	
 
 	
 }

@@ -63,7 +63,7 @@ public class Opcion implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return num +") " + texto;
+		return "\n\t\t\t"+num +") " + texto;
 	}
 	
 	

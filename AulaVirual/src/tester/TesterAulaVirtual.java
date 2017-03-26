@@ -52,7 +52,7 @@ public class TesterAulaVirtual {
 		p1.anadirOpcion(opcion_p11);
 		Opcion opcion_p12 = new Opcion (2, "10^4", true, false);
 		p1.anadirOpcion(opcion_p12);
-		Opcion opcion_p13 = new Opcion (1, "10^3", false,false);
+		Opcion opcion_p13 = new Opcion (3, "10^2", false,false);
 		p1.anadirOpcion(opcion_p13);
 		test1_edyl.anadirPregunta(p1);
 		System.out.println(tema1_edyl);
@@ -67,6 +67,7 @@ public class TesterAulaVirtual {
 		
 		Aplicacion.getInstance().logOut();
 		
+		System.out.println(sol);
 		System.out.println(Aplicacion.getInstance().logIn("profesor", "profesor"));
 		edyl.aceptarSolicitud(sol);
 		
@@ -80,7 +81,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(1,"",false,true);
+				Opcion seleccionada = new Opcion(1,"10^3",false,true);
 				p.responderPregunta(res, seleccionada,"");
 			} else {
 				p.responderPregunta(res,null, "(respuesta)");
@@ -88,6 +89,14 @@ public class TesterAulaVirtual {
 			
 		}
 		System.out.println(res);
+		
+		Aplicacion.getInstance().logOut();
+		System.out.println(Aplicacion.getInstance().logIn("profesor","profesor"));
+		
+		for (Pregunta p :test1_edyl.getPreguntas()){
+			System.out.println(p.getNumRespuesta());
+		}
+		
 		
 	}
 
