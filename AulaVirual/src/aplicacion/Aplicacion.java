@@ -16,7 +16,7 @@ import aplicacion.asignatura.Asignatura;
 
 
 public class Aplicacion {
-	private static Aplicacion INSTANCE;
+	private static Aplicacion instance;
 	
 	private String niaProfesor;
 	private String contrasenaProfesor;
@@ -25,15 +25,17 @@ public class Aplicacion {
 	private List <Alumno> alumnos = new ArrayList<Alumno>();
 	private List <Asignatura> asignaturas = new ArrayList<Asignatura>();
 
-	public Aplicacion (){
+	private Aplicacion (){
 		this.niaProfesor = "profesor";
 		this.contrasenaProfesor = "profesor";
 		this.tipoUsu = TipoUsuario.NO_INI;
 	}
 	
 	public static Aplicacion getInstance() {
-		if (INSTANCE == null) INSTANCE = new Aplicacion();
-		return INSTANCE;
+		if (instance == null) {
+			instance = new Aplicacion();
+		}
+		return instance;
 	}
 	
 	public Alumno getUsuarioActual() {
@@ -102,6 +104,7 @@ public class Aplicacion {
 		} else{
 			for (Alumno alu: this.alumnos){
 				if (alu.getNia().equals(nia) && alu.getContrasena().equals(contrasena)){
+					this.alumnoActual = alu;
 					this.tipoUsu = TipoUsuario.ALUMNO;
 					return true;
 				}

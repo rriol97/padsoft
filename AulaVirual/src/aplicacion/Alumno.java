@@ -79,15 +79,14 @@ public class Alumno implements java.io.Serializable {
 		return this.resoluciones.remove(res);
 	}
 	
-	public boolean enviarSolicitud(Asignatura asignatura, String texto){
+	public boolean enviarSolicitud(Solicitud sol){
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
 			return false;
 		}
-		if (this.asignaturas.contains(asignatura)){
+		if (this.asignaturas.contains(sol.getAsignatura())){
 			return false;
 		}
-		Solicitud solicitud = new Solicitud(texto,this,asignatura);
-		return asignatura.anadirSolicitud(solicitud);
+		return sol.getAsignatura().anadirSolicitud(sol);
 	}
 	
 	public Resolucion encontrarResolucion (Test test){

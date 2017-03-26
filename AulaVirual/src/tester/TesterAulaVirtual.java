@@ -22,25 +22,24 @@ public class TesterAulaVirtual {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
-		Aplicacion aulaVirtual = new Aplicacion ();
-		aulaVirtual.leerAlumnosDeFichero("alumnos.txt");
+		Aplicacion.getInstance().leerAlumnosDeFichero("alumnos.txt");
 		
-		for (Alumno alum : aulaVirtual.getAlumnos()){
+		for (Alumno alum : Aplicacion.getInstance().getAlumnos()){
 			System.out.println(alum);
 		}
 		
-		System.out.println(aulaVirtual.logIn("profesor","profesor"));
+		System.out.println(Aplicacion.getInstance().logIn("profesor","profesor"));
 		
 		Asignatura cirel = new Asignatura("CIREL");
-		aulaVirtual.anadirAsignatura(cirel);
+		Aplicacion.getInstance().anadirAsignatura(cirel);
 		Asignatura edyl = new Asignatura("EDyL");
-		aulaVirtual.anadirAsignatura(edyl);
+		Aplicacion.getInstance().anadirAsignatura(edyl);
 		Asignatura adsoft = new Asignatura("ADSOFT");
-		aulaVirtual.anadirAsignatura(adsoft);
-		System.out.println(aulaVirtual.getAsignaturas());
+		Aplicacion.getInstance().anadirAsignatura(adsoft);
+		System.out.println(Aplicacion.getInstance().getAsignaturas());
 		
-		aulaVirtual.eliminarAsignatura(cirel);
-		System.out.println(aulaVirtual.getAsignaturas());
+		Aplicacion.getInstance().eliminarAsignatura(cirel);
+		System.out.println(Aplicacion.getInstance().getAsignaturas());
 		
 		Tema tema1_edyl = new Tema("Combinatoria", true, edyl);
 		Apuntes apuntes_tema1edyl = new Apuntes ("Introducci�n a la combinatoria", true, "(apuntes de combinatoria)", edyl);
@@ -58,24 +57,23 @@ public class TesterAulaVirtual {
 		test1_edyl.anadirPregunta(p1);
 		System.out.println(tema1_edyl);
 		
-		aulaVirtual.logOut();
+		Aplicacion.getInstance().logOut();
 		
-		System.out.println(aulaVirtual.logIn("1264", "s.ll"));
+		System.out.println(Aplicacion.getInstance().logIn("1264", "s.ll"));
 		
-		Alumno alum = aulaVirtual.getAlumnoActual();
-		alum.enviarSolicitud(edyl,"Hola soy"+alum.getNombre()+" "+alum.getApellidos()+"y quiero inscribirme en su asignatura");
+		Alumno alum = Aplicacion.getInstance().getAlumnoActual();
+		Solicitud sol = new Solicitud("Hola soy"+alum.getNombre()+" "+alum.getApellidos()+"y quiero inscribirme en su asignatura", alum, edyl);
+		alum.enviarSolicitud(sol);
 		
-		aulaVirtual.logOut();
+		Aplicacion.getInstance().logOut();
 		
-		System.out.println(aulaVirtual.logIn("profesor", "profesor"));
-		for (Solicitud s : edyl.getSolicitudes()){
-			edyl.aceptarSolicitud(s);
-		}
+		System.out.println(Aplicacion.getInstance().logIn("profesor", "profesor"));
+		edyl.aceptarSolicitud(sol);
 		
-		aulaVirtual.logOut();
+		Aplicacion.getInstance().logOut();
 		
-		System.out.println(aulaVirtual.logIn("1264", "s.ll"));
-		Alumno alum2 = aulaVirtual.getAlumnoActual();
+		System.out.println(Aplicacion.getInstance().logIn("1264", "s.ll"));
+		Alumno alum2 = Aplicacion.getInstance().getAlumnoActual();
 		
 		Resolucion res = new Resolucion (test1_edyl);
 		alum2.anadirResolucion(res);
@@ -89,6 +87,7 @@ public class TesterAulaVirtual {
 			}
 			
 		}
+		System.out.println(res);
 		
 	}
 
