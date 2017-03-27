@@ -2,12 +2,15 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import aplicacion.Alumno;
+import aplicacion.Aplicacion;
 import aplicacion.Solicitud;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Apuntes;
@@ -27,7 +30,8 @@ public class AsignaturaTest {
 	private Solicitud sol;
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException {
+		Aplicacion.getInstance().logIn("profesor", "profesor");
 		asig = new Asignatura("Asignatura 1");
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 	}

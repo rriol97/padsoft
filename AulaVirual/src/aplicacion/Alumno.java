@@ -81,6 +81,9 @@ public class Alumno implements java.io.Serializable {
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirAsignatura(Asignatura asig) {
+		if (asig == null || this.asignaturas.contains(asig)){
+			return false;
+		}
 		return this.asignaturas.add(asig);
 	}
 	

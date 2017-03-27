@@ -19,9 +19,10 @@ public class AplicacionTest {
 	private Asignatura asig;
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException {
 		ap = Aplicacion.getInstance();
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		Aplicacion.getInstance().logIn("profesor", "profesor");
 		asig = new Asignatura("Asignatura 1");
 	}
 	
@@ -35,6 +36,12 @@ public class AplicacionTest {
 		ap.anadirAsignatura(asig);
 		assertFalse(ap.anadirAsignatura(asig));
 	}
+	
+	@Test
+	public void testAnadirAsignatura3() {
+		assertFalse(ap.anadirAsignatura(null));
+	}
+	
 	
 	@Test
 	public void testEliminarAsignatura1() {
@@ -59,7 +66,14 @@ public class AplicacionTest {
 	}
 	
 	@Test
-	public void testEliminarAlumno1() {
+	public void testAnadirAlumno3() {
+		assertFalse(ap.anadirAlumno(null));
+	}
+	
+	@Test
+	public void testEliminarAlumno1() throws FileNotFoundException, IOException, ClassNotFoundException {
+		ap.logOut();
+		ap.logIn("profesor", "profesor");
 		ap.anadirAlumno(alum);
 		assertTrue(ap.eliminarAlumno(alum));
 	}
@@ -71,6 +85,7 @@ public class AplicacionTest {
 	
 	@Test
 	public void testLogIn1() throws FileNotFoundException, ClassNotFoundException, IOException {
+		ap.logOut();
 		ap.anadirAlumno(alum);
 		assertTrue(ap.logIn("nia", "contrasena"));
 	}
@@ -88,6 +103,7 @@ public class AplicacionTest {
 	
 	@Test
 	public void testLeerAlumnosDeFichero() throws IOException {
+		ap.logOut();
 		assertTrue(ap.leerAlumnosDeFichero("alumnos.txt"));
 	}
 }

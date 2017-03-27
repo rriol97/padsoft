@@ -44,9 +44,13 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirElemento(Elemento elemento){
+		if (elemento == null){
+			return false;
+		}
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
+		
 		return this.elementos.add(elemento);
 	}
 	

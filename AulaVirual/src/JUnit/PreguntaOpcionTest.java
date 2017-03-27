@@ -2,8 +2,13 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import aplicacion.Aplicacion;
 import aplicacion.asignatura.elemento.test.*;
 
 public class PreguntaOpcionTest {
@@ -13,7 +18,8 @@ public class PreguntaOpcionTest {
 	private PreguntaOpcion popc3;
 	
 	@Before
-	public void setUp(){
+	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
+		Aplicacion.getInstance().logIn("profesor", "profesor");
 		popc1 = new OpcionUnica("¿Cuántos años tienes?",1.0,0.5);
 		popc2 = new OpcionMultiple("¿Cuántos hermanos tienes?", 1.0,0.5);
 		popc3 = new SiNo ("¿Cuántos ordenadores tienes?", 1.0,0.5);
@@ -21,6 +27,7 @@ public class PreguntaOpcionTest {
 	
 	@Test
 	public void testAnadirOpcion1() {
+		
 		Opcion opc1 = new Opcion(1,"Los piratas del Caribe",false);
 		assertTrue(popc1.anadirOpcion(opc1));
 		assertTrue(popc2.anadirOpcion(opc1));
@@ -58,7 +65,7 @@ public class PreguntaOpcionTest {
 	
 	@Test 
 	public void testEliminarOpcion3(){
-		assertTrue(popc1.eliminarOpcion(null));
+		assertFalse(popc1.eliminarOpcion(null));
 	}
 	
 	

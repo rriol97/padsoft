@@ -37,6 +37,9 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirOpcion(Opcion opcion){
+		if (opcion == null || this.opciones.contains(opcion)){
+			return false;
+		}
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}

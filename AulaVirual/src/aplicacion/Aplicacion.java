@@ -90,6 +90,9 @@ public class Aplicacion {
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirAsignatura(Asignatura asig) {
+		if (asig == null || this.asignaturas.contains(asig)){
+			return false;
+		}
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
@@ -118,6 +121,9 @@ public class Aplicacion {
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirAlumno(Alumno alum) {
+		if (alum == null || this.alumnos.contains(alum)){
+			return false;
+		}
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}

@@ -2,12 +2,15 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import aplicacion.Alumno;
+import aplicacion.Aplicacion;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 
@@ -21,8 +24,10 @@ public class AlumnoTest {
 	private Resolucion res;	
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException {
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		Aplicacion.getInstance().anadirAlumno(alum);
+		Aplicacion.getInstance().logIn("nia", "contrasena");
 		asig = new Asignatura("Asignatura 1");
 		fi = LocalDate.now();
 		ff = LocalDate.now().plusDays(5);
@@ -53,7 +58,9 @@ public class AlumnoTest {
 	}
 	
 	@Test
-	public void testAnadirResolucion1() {
+	public void testAnadirResolucion1() throws FileNotFoundException, ClassNotFoundException, IOException {
+		Aplicacion.getInstance().logOut();
+		Aplicacion.getInstance().logIn("nia", "contrasena");
 		assertTrue(alum.anadirResolucion(res));
 	}
 	

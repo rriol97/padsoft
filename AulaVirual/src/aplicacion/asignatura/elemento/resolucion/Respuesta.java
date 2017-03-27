@@ -49,7 +49,7 @@ public class Respuesta implements java.io.Serializable {
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirOpcion(Opcion opcion){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+		if (opcion == null || this.opcionesSeleccionadas.contains(opcion)){
 			return false;
 		}
 		return this.opcionesSeleccionadas.add(opcion);
@@ -63,9 +63,6 @@ public class Respuesta implements java.io.Serializable {
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarOpcion(Opcion opcion){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
-			return false;
-		}
 		return this.opcionesSeleccionadas.remove(opcion);
 	}
 	
