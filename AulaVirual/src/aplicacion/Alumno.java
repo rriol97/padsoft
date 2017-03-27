@@ -99,13 +99,12 @@ public class Alumno implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir una resolucion a la lista de resoluciones de un alumno.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param res resolucion a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirResolucion(Resolucion res) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+		if (res == null || this.resoluciones.contains(res)){
 			return false;
 		}
 		return this.resoluciones.add(res);
@@ -113,29 +112,21 @@ public class Alumno implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite eliminar una resolucion de la lista de resoluciones de un alumno.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param res resolucion a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarResolucion(Resolucion res){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
-			return false;
-		}
 		return this.resoluciones.remove(res);
 	}
 	
 	/**
 	 * Metodo para enviar una solicitud de ingreso a una asignatura.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param sol solicitud a enviar
 	 * @return boolean true si se envia correctamente, false en caso contrario
 	 */
 	public boolean enviarSolicitud(Solicitud sol){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
-			return false;
-		}
 		if (this.asignaturas.contains(sol.getAsignatura())){
 			return false;
 		}

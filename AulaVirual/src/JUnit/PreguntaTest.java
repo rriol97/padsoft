@@ -26,23 +26,18 @@ public class PreguntaTest {
 	private Asignatura asignatura;
 	private Respuesta respuesta;
 	private Resolucion resolucion;
+	private Alumno alum;
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException{
-		pregunta = new RespuestaLibre("¿Cuántas películas hay de Harry Potter?", 1.0,0.5,"ocho");
+		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		pregunta = new RespuestaLibre("ï¿½Cuantas pelï¿½culas hay de Harry Potter?", 1.0,0.5,"ocho");
 		asignatura = new Asignatura("CMC");
 		test = new aplicacion.asignatura.elemento.test.Test("test", true, asignatura, "",LocalDate.now(), LocalDate.now().plusDays(3), false, 20.0, 1.0 );
-		resolucion = new Resolucion(test);
-		respuesta = new Respuesta (pregunta);
-		
-		Aplicacion.getInstance().logIn("profesor","profesor");
-		Aplicacion.getInstance().anadirAsignatura(asignatura);
 		asignatura.anadirElemento(test);
-		test.anadirPregunta(pregunta);
-		Aplicacion.getInstance().logOut();
-		Aplicacion.getInstance().logIn("1264", "s.ll");
-		Alumno alum = Aplicacion.getInstance().getAlumnoActual();
-		alum.anadirResolucion(resolucion);
+		test.anadirPregunta(pregunta);		
+		resolucion = new Resolucion(test, alum);
+		respuesta = new Respuesta (pregunta);
 		resolucion.anadirRespuesta(respuesta);
 		test.anadirResolucion(resolucion);
 		respuesta.setRespuesta("ocho");

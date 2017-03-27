@@ -1,7 +1,5 @@
 package aplicacion.asignatura.elemento.test;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
@@ -27,7 +25,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	private List<Pregunta> preguntas = new ArrayList<Pregunta>();
 	private List<Resolucion> resoluciones = new ArrayList<Resolucion>();
 	private String texto;
-	private  LocalDate fechaIni;
+	private LocalDate fechaIni;
 	private LocalDate fechaFin;
 	private boolean aleatorio;
 	private double peso;
@@ -69,13 +67,12 @@ public class Test extends Elemento implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir una pregunta a la lista de preguntas del test.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param pregunta pregunta a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirPregunta(Pregunta pregunta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+		if (pregunta == null || this.preguntas.contains(pregunta)){
 			return false;
 		}
 		return this.preguntas.add(pregunta);
@@ -83,32 +80,29 @@ public class Test extends Elemento implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite eliminar una pregunta de la lista de preguntas del test.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param pregunta eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarPregunta(Pregunta pregunta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.preguntas.remove(pregunta);
 	}
 	
 	/**
 	 * Metodo que permite anadir una resolucion a la lista de resoluciones del test.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param resolucion resolucion a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirResolucion(Resolucion resolucion){
+		if (resolucion == null || this.resoluciones.contains(resolucion)){
+			return false;
+		}
 		return this.resoluciones.add(resolucion);
 	}
 	
 	/**
 	 * Metodo que permite eliminar una resolucion de la lista de resoluciones del test.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param resolucion resolucion a eliminar
 	 * @return boolean true si elimina correctamente, false en caso contrario
@@ -118,9 +112,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setTexto(String texto) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			this.texto = texto;
 			return true;
@@ -149,9 +140,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 	
 	public boolean setFechaIni(LocalDate fechaIni) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			if (LocalDate.now().isBefore(fechaIni)){
 				this.fechaIni= fechaIni;
@@ -162,9 +150,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 	
 	public boolean setFechaFin(LocalDate fechaFin) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			this.fechaFin = fechaFin;
 			return true;
@@ -182,9 +167,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setAleatorio(boolean aleatorio){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			this.aleatorio = aleatorio;
 			return true;
@@ -198,9 +180,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setPeso(double peso) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			this.peso = peso;
 			return true;
@@ -213,9 +192,6 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setValorDefecto(double valorDefecto) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (isFechaValida()){
 			this.valorDefecto = valorDefecto;
 			return true;
@@ -225,6 +201,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	
 	/**
 	 * Metodo que calcula la nota de todas las resoluciones individuales de un test.
+	 * 
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */

@@ -15,7 +15,7 @@ public class SolicitudTest {
 
 	@Test
 	public void TestSolicitud() {
-		Asignatura asig = new Asignatura ("Matemáticas");
+		Asignatura asig = new Asignatura ("Matematicas");
 		Alumno alum = new Alumno ("123","123","rri@es.ccom","Alfredo","Riol");
 		Solicitud opc = new Solicitud("Hola", alum, asig);
 		assertNotNull(opc);

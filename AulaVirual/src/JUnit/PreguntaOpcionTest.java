@@ -20,9 +20,9 @@ public class PreguntaOpcionTest {
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
 		Aplicacion.getInstance().logIn("profesor", "profesor");
-		popc1 = new OpcionUnica("¿Cuántos años tienes?",1.0,0.5);
-		popc2 = new OpcionMultiple("¿Cuántos hermanos tienes?", 1.0,0.5);
-		popc3 = new SiNo ("¿Cuántos ordenadores tienes?", 1.0,0.5);
+		popc1 = new OpcionUnica("Cuantos anyos tienes?",1.0,0.5);
+		popc2 = new OpcionMultiple("Cuantos hermanos tienes?", 1.0,0.5);
+		popc3 = new SiNo ("ï¿½Cuï¿½ntos ordenadores tienes?", 1.0,0.5);
 	}
 	
 	@Test

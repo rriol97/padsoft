@@ -32,7 +32,7 @@ public class AlumnoTest {
 		fi = LocalDate.now();
 		ff = LocalDate.now().plusDays(5);
 		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
-		res = new Resolucion(test);
+		res = new Resolucion(test, alum);
 	}
 	
 	@Test
@@ -59,36 +59,34 @@ public class AlumnoTest {
 	
 	@Test
 	public void testAnadirResolucion1() throws FileNotFoundException, ClassNotFoundException, IOException {
-		Aplicacion.getInstance().logOut();
-		Aplicacion.getInstance().logIn("nia", "contrasena");
+		alum.eliminarResolucion(res);
 		assertTrue(alum.anadirResolucion(res));
 	}
 	
 	@Test
 	public void testAnadirResolucion2() {
-		alum.anadirResolucion(res);
 		assertFalse(alum.anadirResolucion(res));
 	}
 	
 	@Test
 	public void testEliminarResolucion1() {
-		alum.anadirResolucion(res);
 		assertTrue(alum.eliminarResolucion(res));
 	}
 	
 	@Test
 	public void testEliminarResolucion2() {
+		alum.eliminarResolucion(res);
 		assertFalse(alum.eliminarResolucion(res));
 	}
 	
 	@Test
 	public void testEncontrarResolucion1() {
-		alum.anadirResolucion(res);
 		assertNotNull(alum.encontrarResolucion(test));
 	}
 	
 	@Test
 	public void testEncontrarResolucion2() {
+		alum.eliminarResolucion(res);
 		assertNull(alum.encontrarResolucion(test));
 	}
 }

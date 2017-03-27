@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
+import aplicacion.Alumno;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.asignatura.elemento.resolucion.Respuesta;
@@ -24,14 +25,16 @@ public class ResolucionTest {
 	private Opcion opc;
 	private Resolucion res;
 	private Respuesta resp;
+	private Alumno alum;
 	
 	@Before
 	public void setUp() {
+		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		asig = new Asignatura("Asignatura 1");
 		LocalDate fi = LocalDate.now();
 		LocalDate ff = LocalDate.now().plusDays(5);
 		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
-		res = new Resolucion(test);
+		res = new Resolucion(test, alum);
 		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);

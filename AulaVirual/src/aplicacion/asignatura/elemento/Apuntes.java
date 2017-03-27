@@ -1,8 +1,5 @@
 package aplicacion.asignatura.elemento;
 
-
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
 /**
@@ -36,9 +33,7 @@ public class Apuntes extends Elemento implements java.io.Serializable {
 	}
 
 	public void setTexto(String texto) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.texto = texto;
-		}
+		this.texto = texto;
 	}
 
 	@Override

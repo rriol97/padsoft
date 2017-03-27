@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
+import aplicacion.Alumno;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.asignatura.elemento.test.*;
@@ -54,28 +55,17 @@ public class TestTest {
 	}
 	
 	@Test
-	public void testAnadirResolucion1() {
-		Resolucion res = new Resolucion(test);
-		assertTrue(test.anadirResolucion(res));
-	}
-	
-	@Test
-	public void testAnadirResolucion2() {
-		Resolucion res = new Resolucion(test);
+	public void testAnadirResolucion() {
+		Alumno alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		Resolucion res = new Resolucion(test, alum);
 		test.anadirResolucion(res);
 		assertFalse(test.anadirResolucion(res));
 	}
 	
 	@Test
-	public void testEliminarResolucion1() {
-		Resolucion res = new Resolucion(test);
-		test.anadirResolucion(res);
+	public void testEliminarResolucion() {
+		Alumno alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		Resolucion res = new Resolucion(test, alum);
 		assertTrue(test.eliminarResolucion(res));
-	}
-	
-	@Test
-	public void testEliminarResolucion2() {
-		Resolucion res = new Resolucion(test);
-		assertFalse(test.eliminarResolucion(res));
 	}
 }

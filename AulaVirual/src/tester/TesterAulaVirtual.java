@@ -36,6 +36,9 @@ public class TesterAulaVirtual {
 		Aplicacion.getInstance().anadirAsignatura(cirel);
 		Asignatura edyl = new Asignatura("EDyL");
 		Aplicacion.getInstance().anadirAsignatura(edyl);
+		
+		Aplicacion.getInstance().save();
+		
 		Asignatura adsoft = new Asignatura("ADSOFT");
 		Aplicacion.getInstance().anadirAsignatura(adsoft);
 		System.out.println(Aplicacion.getInstance().getAsignaturas());
@@ -46,9 +49,9 @@ public class TesterAulaVirtual {
 		Tema tema1_edyl = new Tema("Combinatoria", true, edyl);
 		Apuntes apuntes_tema1edyl = new Apuntes ("Introducci�n a la combinatoria", true, "(apuntes de combinatoria)", edyl);
 		tema1_edyl.anadirElemento(apuntes_tema1edyl);
-		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendr� 10 preguntas de diferentes tipos. Las preguntas tipo test bajar�n nota en el caso de que se falle y no puntur� si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
+		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendra 10 preguntas de diferentes tipos. Las preguntas tipo test bajaran nota en el caso de que se falle y no puntuan si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
 		tema1_edyl.anadirElemento(test1_edyl);
-		PreguntaOpcion p1 = new OpcionUnica("�Cu�ntas posibles contrase�as se pueden hacer, si la contrase�a es 4 d�gitos y solo se utilizan los n�meros del 1 al 10", 1, 0.5);
+		PreguntaOpcion p1 = new OpcionUnica("Cuantas posibles contrasenas se pueden hacer, si la contrasena es 4 digitos y solo se utilizan los numeros del 1 al 10", 1, 0.5);
 		Opcion opcion_p11 = new Opcion (1, "10^3", false);
 		p1.anadirOpcion(opcion_p11);
 		Opcion opcion_p12 = new Opcion (2, "10^4", true);
@@ -77,8 +80,7 @@ public class TesterAulaVirtual {
 		System.out.println(Aplicacion.getInstance().logIn("1264", "s.ll"));
 		Alumno alum2 = Aplicacion.getInstance().getAlumnoActual();
 		
-		Resolucion res = new Resolucion (test1_edyl);
-		alum2.anadirResolucion(res);
+		Resolucion res = new Resolucion (test1_edyl, alum2);
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
@@ -107,7 +109,8 @@ public class TesterAulaVirtual {
 		}
 		Aplicacion.getInstance().logOut();
 		
-		
+		Aplicacion.getInstance().load();
+		System.out.println(Aplicacion.getInstance().getAsignaturas());
 	}
 
 }

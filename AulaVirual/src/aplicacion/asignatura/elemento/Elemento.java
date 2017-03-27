@@ -1,7 +1,5 @@
 package aplicacion.asignatura.elemento;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
 /**
@@ -44,9 +42,7 @@ public abstract class Elemento implements java.io.Serializable {
 		return this.visible;
 	}
 	public void setVisible(boolean visible) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.visible = visible;
-		}
+		this.visible = visible;
 	}
 	
 	public Asignatura getAsignatura(){

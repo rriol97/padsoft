@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
-
 /**
  * PreguntaOpcion. Clase abstracta de hereda de Pregunta. Contiene una lista de opciones.
  * 
@@ -36,16 +33,12 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	
 	/**
 	 * Metodo que permite anadir una opcion a la lista de opciones de la pregunta.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param opcion opcion a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirOpcion(Opcion opcion){
 		if (opcion == null || this.opciones.contains(opcion)){
-			return false;
-		}
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
 		if (this.opciones.size() > 0){
@@ -75,15 +68,11 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	
 	/**
 	 * Metodo que permite eliminar una opcion de la lista de opciones de la pregunta.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param opcion opcion a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarOpcion(Opcion opcion){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return opciones.remove(opcion);
 	}
 

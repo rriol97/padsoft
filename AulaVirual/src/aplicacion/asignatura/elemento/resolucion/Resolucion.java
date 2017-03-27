@@ -29,17 +29,21 @@ public class Resolucion implements java.io.Serializable {
 	private final LocalDate fecha;
 	private List <Respuesta> respuestas = new ArrayList <Respuesta>();
 	private Test test;
+	private Alumno alumno;
 	
 	/**
 	 * Constructor de Resolucion.
 	 * 
 	 * @param test test de la resolucion
+	 * @param alumno alumno que realiza la resolucion
 	 */
-	public Resolucion(Test test) {
+	public Resolucion(Test test, Alumno alumno) {
 		this.test = test;
+		this.alumno = alumno;
 		this.fecha = LocalDate.now();
-		this.nota = -1.0;
-		test.anadirResolucion(this);
+		this.nota = 0.0;
+		this.test.anadirResolucion(this);
+		this.alumno.anadirResolucion(this);
 	}
 
 	public double getNota() {
@@ -58,31 +62,30 @@ public class Resolucion implements java.io.Serializable {
 		return test;
 	}
 	
+	public Alumno getAlumno() {
+		return alumno;
+	}
+	
 	/**
 	 * Metodo que permite anadir una respuesta a la lista de respuestas de la resolucion.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param respuesta respuesta a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirRespuesta(Respuesta respuesta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
+		if (respuesta == null || this.respuestas.contains(respuesta)){
 			return false;
 		}
-		 return this.respuestas.add(respuesta);
+		return this.respuestas.add(respuesta);
 	}
 	
 	/**
 	 * Metodo que permite eliminar una respuesta de la lista de respuestas de la resolucion.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param respuesta a eliminar
 	 * @return boolean true si se eliminar correctamente, false en caso contrario
 	 */
 	public boolean eliminarRespuesta(Respuesta respuesta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
-			return false;
-		}
 		return this.respuestas.remove(respuesta);
 	}
 
@@ -129,16 +132,17 @@ public class Resolucion implements java.io.Serializable {
 	
 	/**
 	 * Metodo para calcular la note de una resolucion.
+	 * 
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public void calcularNota() throws InvalidEmailAddressException, FailedInternetConnectionException{
 		double nota = 0.0;
-			if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == true){
-			if (this.getFecha().isBefore(this.getTest().getFechaFin())){
-				return;
-			}
+
+		if (this.getFecha().isAfter(this.getTest().getFechaFin())){
+			return;
 		}
+		
 		estadoRespuestas();
 		for (Respuesta res:this.respuestas){
 			if (res.getEstado().equals(EstadoRespuesta.ACIERTO)){
@@ -148,10 +152,8 @@ public class Resolucion implements java.io.Serializable {
 			}
 		}
 		
-		for (Alumno alum:this.getTest().getAsignatura().getMatriculados()){
-			if (EmailSystem.isValidEmailAddr(alum.getCorreo())){
-				EmailSystem.send(alum.getCorreo(),"Notas", "Ya estan disponisbles en Aula Virtual las calificaciones y soluciones del test"+this.getTest().getNombre());
-			}
+		if (EmailSystem.isValidEmailAddr(this.alumno.getCorreo())){
+			EmailSystem.send(this.alumno.getCorreo(),"Notas", "Ya estan disponisbles en Aula Virtual las calificaciones y soluciones del test"+this.getTest().getNombre());
 		}
 		
 		this.setNota(nota);

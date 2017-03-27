@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.test.Opcion;
 import aplicacion.asignatura.elemento.test.OpcionMultiple;
 import aplicacion.asignatura.elemento.test.Pregunta;
@@ -43,7 +41,6 @@ public class Respuesta implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir una opcion a la lista de opciones de la respuesta.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param opcion opcion a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
@@ -57,7 +54,6 @@ public class Respuesta implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite eliminar una opcion de la lista de opciones de la respuesta.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param opcion opcion a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
@@ -71,9 +67,7 @@ public class Respuesta implements java.io.Serializable {
 	}
 
 	public void setRespuesta(String respuesta) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO)) {
-			this.respuesta = respuesta;
-		}
+		this.respuesta = respuesta;
 	}
 
 	public void setEstado(EstadoRespuesta estado) {

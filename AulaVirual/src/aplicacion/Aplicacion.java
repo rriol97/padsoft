@@ -84,7 +84,6 @@ public class Aplicacion {
 	
 	/**
 	 * Metodo que permite anadir una asignatura a la lista de asignaturas de la aplicacion.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param asig asignatura a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
@@ -93,30 +92,22 @@ public class Aplicacion {
 		if (asig == null || this.asignaturas.contains(asig)){
 			return false;
 		}
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.asignaturas.add(asig);
 	}
 	
 	/**
 	 * Metodo que permite eliminar una asignatura de la lista de asignaturas de la aplicacion.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param asig asignatura a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarAsignatura(Asignatura asig){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.asignaturas.remove(asig);
 	}
 	
 	/**
 	 * Metodo que permite anadir un alumno a la lista de alumnos de la aplicacion.
-	 * Solo es accesible por profesores.
-	 * 
+	 *  
 	 * @param alum a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
@@ -124,23 +115,16 @@ public class Aplicacion {
 		if (alum == null || this.alumnos.contains(alum)){
 			return false;
 		}
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.alumnos.add(alum);
 	}
 	
 	/**
 	 * Metodo que permite eliminar un alumno de la lista de alumnos de la aplicacion.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param alum alumno a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarAlumno(Alumno alum){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.alumnos.remove(alum);
 	}
 	
@@ -195,10 +179,6 @@ public class Aplicacion {
 	 * @throws IOException excepcion
 	 */
 	public boolean leerAlumnosDeFichero(String archivo) throws IOException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.NO_INI) == false) {
-			return false;
-		}
-		
 		String cadena;
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);

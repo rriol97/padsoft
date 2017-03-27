@@ -1,8 +1,5 @@
 package aplicacion.asignatura.elemento.test;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
-
 /**
  * Opcion. Clase utilizada para implementar preguntas con opciones. Contiene un numero de opcion, un texto y un indicador sobre si correcta.
  * 
@@ -40,13 +37,12 @@ public class Opcion implements java.io.Serializable {
 	}
 
 	public void setTexto(String texto) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.texto = texto;
-		}
+		this.texto = texto;
 	}
 	
 	/**
 	 * Metodo que sirve para saber si la opcion es correcta
+	 * 
 	 * @return booelan true si es correcta, false en caso contrario
 	 */
 	public boolean isCorrecta() {
@@ -54,10 +50,7 @@ public class Opcion implements java.io.Serializable {
 	}
 
 	public void setCorrecta(boolean correcta) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.correcta = correcta;
-		}
-		
+		this.correcta = correcta;	
 	}
 
 	@Override

@@ -47,16 +47,12 @@ public class Asignatura implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir una solicitud a la lista de solicitudes de una asignatura.
-	 * Solo es accesible por alumnos.
 	 * 
 	 * @param solicitud solicitud en anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirSolicitud(Solicitud solicitud){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == false) {
-			return false;
-		}
-		if (this.solicitudes.contains(solicitud)){
+		if (solicitud == null || this.solicitudes.contains(solicitud)){
 			return false;
 		}
 		return this.solicitudes.add(solicitud);
@@ -64,7 +60,6 @@ public class Asignatura implements java.io.Serializable {
 	
 	/**
 	 * Metodo para admitir a un alumno que haya solicitado ingrsar en una asignatura.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param solicitud solicitud a aceptar
 	 * @return boolean true si se acepta correctamente, false en caso contrario
@@ -72,29 +67,24 @@ public class Asignatura implements java.io.Serializable {
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public boolean aceptarSolicitud(Solicitud solicitud) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if(EmailSystem.isValidEmailAddr(solicitud.getAlumno().getCorreo())){
 			EmailSystem.send(solicitud.getAlumno().getCorreo(),"Adimision", "Se ha inscrito correctamente en la asignatura "+this.getNombre());
 		}
-			
-		this.solicitudes.remove(solicitud);
-		
-		return this.matriculados.add(solicitud.getAlumno());
+		if (solicitud == null || this.solicitudes.contains(solicitud)){
+			this.solicitudes.remove(solicitud);
+			return this.matriculados.add(solicitud.getAlumno());
+		}
+		return false;
 	}
 	
 	/**
 	 * Metodo para denegar la solicitud de ingreso de un alumno a una asignatura.
-	 * Solo es accesible por profesores.
+	 * 
 	 * @param solicitud solicitud a denegar
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public void denegarSolicitud(Solicitud solicitud) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return;
-		}
 		if(EmailSystem.isValidEmailAddr(solicitud.getAlumno().getCorreo())){
 			EmailSystem.send(solicitud.getAlumno().getCorreo(),this.getNombre(), "Por ciertos motivos no puedes inscribirte a la asignatura de "+this.getNombre());
 		}	
@@ -106,17 +96,14 @@ public class Asignatura implements java.io.Serializable {
 	}
 	
 	/**
-	  * Metodo para expulsar a un alumno matriculado en una asignatura.
-	 * Solo es accesible por profesores.
+	 * Metodo para expulsar a un alumno matriculado en una asignatura.
+	 * 
 	 * @param alumno alumno a expulsar
 	 * @return boolean true si se expulsa correctamente, false en caso contrario
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public boolean expulsarAlumno(Alumno alumno) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		if (this.matriculados.contains(alumno) == false) {
 			return false;
 		}
@@ -131,19 +118,14 @@ public class Asignatura implements java.io.Serializable {
 	}
 	
 	/**
+	 * Metodo para readmitir a un alumno expulsado en una asignatura.
 	 * 
-	  * Metodo para readmitir a un alumno expulsado en una asignatura.
-	 * Solo es accesible por profesores.
 	 * @param alumno alumno a readmitir
 	 * @return true si se readmite correctamente, false en caso contrario
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
-	public boolean readmitirAlumno(Alumno alumno) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
-		
+	public boolean readmitirAlumno(Alumno alumno) throws InvalidEmailAddressException, FailedInternetConnectionException{	
 		if (this.expulsados.contains(alumno) == false) {
 			return false;
 		}
@@ -167,13 +149,14 @@ public class Asignatura implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir un elemento a la lista de elementos de una asignatura.
+	 * 
 	 * @param elemento elemento a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public boolean anadirElemento(Elemento elemento) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
+		if (elemento == null || this.elementos.contains(elemento)){
 			return false;
 		}
 		for (Alumno alum:this.getMatriculados()){
@@ -185,16 +168,14 @@ public class Asignatura implements java.io.Serializable {
 	}
 	
 	/**
-	  * Metodo que permite eliminar un elemento de la lista de elementos de una asignatura.
+	 * Metodo que permite eliminar un elemento de la lista de elementos de una asignatura.
+	 * 
 	 * @param elemento elemento a eliminar
 	 * @return boolean true si se eliminar correctamente, false en caso contrario
 	 * @throws InvalidEmailAddressException exception
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public boolean eliminarElemento(Elemento elemento) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		for (Alumno alum:this.getMatriculados()){
 			if (EmailSystem.isValidEmailAddr(alum.getCorreo())){
 				EmailSystem.send(alum.getCorreo(),this.getNombre(), "Se ha actualizado la pagina de la asignatura "+this.getNombre());
@@ -205,6 +186,7 @@ public class Asignatura implements java.io.Serializable {
 	
 	/**
 	 * Metodo para calcular la nota total de un alumno en una asignatura.
+	 * 
 	 * @param alumno alumno del cual se quiere calcular su nota
 	 * @return double la nota del la asignatura
 	 * @throws InvalidEmailAddressException exception
@@ -216,17 +198,10 @@ public class Asignatura implements java.io.Serializable {
 			for (Resolucion res:alumno.getResoluciones()){
 				if (res.getTest().getAsignatura().equals(this)){
 					res.calcularNota();
-					nota = nota + res.getNota() * res.getTest().getPeso();
+					nota = nota + (res.getNota() * res.getTest().getPeso() / 100.0);
 				}
 			}
 		}
-		
-		for (Alumno alum:this.getMatriculados()){
-			if (EmailSystem.isValidEmailAddr(alum.getCorreo())){
-				EmailSystem.send(alum.getCorreo(),this.getNombre(), "Se han subido la nota final de "+this.getNombre());
-			}
-		}	
-		
 		return nota;
 	}
 

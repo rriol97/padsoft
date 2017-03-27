@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.Asignatura;
 
 /**
@@ -38,7 +36,6 @@ public class Tema extends Elemento implements java.io.Serializable {
 	
 	/**
 	 * Metodo que permite anadir un elemento a la lista de elementos de un tema.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param elemento elemento a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
@@ -47,24 +44,17 @@ public class Tema extends Elemento implements java.io.Serializable {
 		if (elemento == null){
 			return false;
 		}
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		
 		return this.elementos.add(elemento);
 	}
 	
 	/**
 	 * Metodo que permite eliminar un elemento de la lista de elementos de un tema.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param elemento elemento a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarElemento(Elemento elemento){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.elementos.remove(elemento);
 	}
 

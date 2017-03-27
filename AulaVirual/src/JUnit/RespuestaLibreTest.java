@@ -13,7 +13,7 @@ public class RespuestaLibreTest {
 
 	@Test
 	public void TestRespuestaLibre() {
-		Pregunta p = new RespuestaLibre("¿Hemos estudiado la paradoja de Rusell?",1.0,0.5,"si");
+		Pregunta p = new RespuestaLibre("Hemos estudiado la paradoja de Rusell?",1.0,0.5,"si");
 		assertNotNull(p);
 	}
 

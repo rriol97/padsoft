@@ -31,7 +31,6 @@ public class Solicitud implements java.io.Serializable {
 		this.fecha = LocalDate.now();
 		this.alumno = alumno;
 		this.asigantura = asignatura;
-		this.asigantura.anadirSolicitud(this);
 	}
 
 	public String getTexto() {

@@ -1,8 +1,5 @@
 package aplicacion.asignatura.elemento.test;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
-
 /**
  * RespuestaLibre. Clase que hereda de Pregunta. Contiene la solucion a la pregunta en forma de String.
  * 
@@ -33,9 +30,7 @@ public class RespuestaLibre extends Pregunta implements java.io.Serializable {
 	}
 
 	public void setSolucion(String solucion) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.solucion = solucion;
-		}
+		this.solucion = solucion;
 	}
 
 	@Override

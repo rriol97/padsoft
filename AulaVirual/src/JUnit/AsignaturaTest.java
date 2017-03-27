@@ -30,10 +30,11 @@ public class AsignaturaTest {
 	private Solicitud sol;
 	
 	@Before
-	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException {
+	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
 		Aplicacion.getInstance().logIn("profesor", "profesor");
 		asig = new Asignatura("Asignatura 1");
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		sol = new Solicitud("Solicito cursar esta asignatura.", alum, asig);
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ public class AsignaturaTest {
 	}
 	
 	@Test
-	public void testAnadirSolicitud2() {
+	public void testAnadirSolicitud2() throws InvalidEmailAddressException, FailedInternetConnectionException {
 		sol = new Solicitud("Hola", alum, asig);
 		asig.anadirSolicitud(sol);
 		assertFalse(asig.anadirSolicitud(sol));
@@ -52,7 +53,7 @@ public class AsignaturaTest {
 	@Test
 	public void testAceptarSolicitud1() throws InvalidEmailAddressException, FailedInternetConnectionException {
 		sol = new Solicitud("Hola", alum, asig);
-		asig.anadirSolicitud(sol);
+		alum.enviarSolicitud(sol);
 		assertTrue(asig.aceptarSolicitud(sol));
 	}
 	
@@ -117,15 +118,17 @@ public class AsignaturaTest {
 	
 	@Test
 	public void testCalcularNotaAsig1() throws InvalidEmailAddressException, FailedInternetConnectionException {
+		alum.enviarSolicitud(sol);
+		asig.aceptarSolicitud(sol);
 		LocalDate fi = LocalDate.now();
 		LocalDate ff = LocalDate.now().plusDays(5);
 		aplicacion.asignatura.elemento.test.Test test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
 		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		Opcion opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
-		Resolucion res = new Resolucion(test);
-		Respuesta resp = new Respuesta(preg);
 		test.anadirPregunta(preg);
+		Resolucion res = new Resolucion(test, alum);
+		Respuesta resp = new Respuesta(preg);
 		resp.anadirOpcion(opc);
 		res.anadirRespuesta(resp);
 		test.anadirResolucion(res);

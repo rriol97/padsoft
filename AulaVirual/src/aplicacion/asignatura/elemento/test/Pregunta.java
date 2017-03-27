@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import aplicacion.Aplicacion;
-import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.resolucion.*;
 
 /**
@@ -47,10 +45,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public void setEnunciado(String enunciado) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.enunciado = enunciado;
-		}
-		
+		this.enunciado = enunciado;
 	}
 
 	public double getValor() {
@@ -58,10 +53,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public void setValor(double valor) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.valor = valor;
-		}
-		
+		this.valor = valor;
 	}
 
 	public int getNumRespuestas() {
@@ -69,10 +61,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public void setNumRespuestas(int numRespuesta) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			this.numRespuestas = numRespuesta;
-		}
-		
+		this.numRespuestas = numRespuesta;
 	}
 	
 	/**
@@ -81,9 +70,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double pocentaje de aciertos
 	 */
 	public double getPorcentajeciertos() {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return 0.0;
-		}
 		this.calcularRespuestas();
 		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
@@ -94,9 +80,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double el porcentaje de fallos
 	 */
 	public double getPorcentajeFallos() {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return 0.0;
-		}
 		this.calcularRespuestas();
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
@@ -107,9 +90,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double porcentaje de nsnc
 	 */
 	public double getPorcentajeNsnc(){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return 0.0;
-		}
 		this.calcularRespuestas();
 		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
@@ -118,37 +98,27 @@ public abstract class Pregunta implements java.io.Serializable {
 	}
 
 	public void setPenalizacion(double penalizacion) {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			this.penalizacion = penalizacion;
-		}
+		this.penalizacion = penalizacion;
 	}
 	
 	/**
 	 * Metodo que permite anadir una respuesta a la lista de respuestas de la pregunta.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param respuesta respuesta a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
 	 */
 	public boolean anadirRespuesta(Respuesta respuesta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		this.numRespuestas++;
 		return this.respuestas.add(respuesta);
 	}
 	
 	/**
 	 * Metodo que permite eliminar una respuesta de la lista de respuestas de la pregunta.
-	 * Solo es accesible por profesores.
 	 * 
 	 * @param respuesta respuesta a eliminar
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarRespuesta(Respuesta respuesta){
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return false;
-		}
 		return this.respuestas.remove(respuesta);
 	}
 	
@@ -160,9 +130,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * Metodo para obtener los numero de respuestas, aciertos y fallos, que se guardan en los atributos numRespuestas, numAciertos y numFallos respectivamente.
 	 */
 	public void calcularRespuestas() {
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
-			return;
-		}
 		EstadoRespuesta aux;
 		for (Respuesta r: respuestas) {
 			aux = r.getEstado();
