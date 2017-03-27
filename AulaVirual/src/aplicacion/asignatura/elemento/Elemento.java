@@ -40,6 +40,9 @@ public abstract class Elemento implements java.io.Serializable {
 		return visible;
 	}
 
+	public boolean getVisible(){
+		return this.visible;
+	}
 	public void setVisible(boolean visible) {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
 			this.visible = visible;

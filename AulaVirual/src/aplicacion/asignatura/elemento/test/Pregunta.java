@@ -1,4 +1,4 @@
- package aplicacion.asignatura.elemento.test;
+package aplicacion.asignatura.elemento.test;
 
 import java.util.ArrayList;
 import java.util.Collections;

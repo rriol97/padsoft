@@ -49,11 +49,11 @@ public class TesterAulaVirtual {
 		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendr� 10 preguntas de diferentes tipos. Las preguntas tipo test bajar�n nota en el caso de que se falle y no puntur� si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
 		tema1_edyl.anadirElemento(test1_edyl);
 		PreguntaOpcion p1 = new OpcionUnica("�Cu�ntas posibles contrase�as se pueden hacer, si la contrase�a es 4 d�gitos y solo se utilizan los n�meros del 1 al 10", 1, 0.5);
-		Opcion opcion_p11 = new Opcion (1, "10^3", false,false);
+		Opcion opcion_p11 = new Opcion (1, "10^3", false);
 		p1.anadirOpcion(opcion_p11);
-		Opcion opcion_p12 = new Opcion (2, "10^4", true, false);
+		Opcion opcion_p12 = new Opcion (2, "10^4", true);
 		p1.anadirOpcion(opcion_p12);
-		Opcion opcion_p13 = new Opcion (3, "10^2", false,false);
+		Opcion opcion_p13 = new Opcion (3, "10^2", false);
 		p1.anadirOpcion(opcion_p13);
 		test1_edyl.anadirPregunta(p1);
 		System.out.println(tema1_edyl);
@@ -82,7 +82,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(2,"10^4",true,true);
+				Opcion seleccionada = new Opcion(2,"10^4",true);
 				p.responderPregunta(res, seleccionada,"");
 			} else {
 				p.responderPregunta(res,null, "(respuesta)");

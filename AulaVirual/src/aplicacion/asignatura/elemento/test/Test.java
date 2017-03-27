@@ -111,9 +111,10 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * Solo es accesible por alumnos.
 	 * 
 	 * @param resolucion resolucion a eliminar
+	 * @return boolean true si elimina correctamente, false en caso contrario
 	 */
-	public void eliminaResolucion(Resolucion resolucion){
-		this.resoluciones.remove(resolucion);
+	public boolean eliminarResolucion(Resolucion resolucion){
+		return this.resoluciones.remove(resolucion);
 	}
 
 	public boolean setTexto(String texto) {
@@ -228,6 +229,9 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * @throws FailedInternetConnectionException exception
 	 */
 	public void corregir() throws InvalidEmailAddressException, FailedInternetConnectionException{
+		if (this.isFechaValida()==false){
+			return;
+		}
 		for (Resolucion res:this.resoluciones){
 			res.calcularNota();
 		}

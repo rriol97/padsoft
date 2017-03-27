@@ -23,9 +23,8 @@ public class Opcion implements java.io.Serializable {
 	 * @param num numero de opcion
 	 * @param texto texto de la opcion
 	 * @param correcta opcion correcta o no
-	 * @param seleccionada si es sellecionada o no
 	 */
-	public Opcion(int num, String texto,boolean correcta,boolean seleccionada){
+	public Opcion(int num, String texto,boolean correcta){
 		this.num = num;
 		this.texto = texto;
 		this.correcta = correcta;

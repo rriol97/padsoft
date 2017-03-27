@@ -117,13 +117,14 @@ public class Asignatura implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
+		if (this.matriculados.contains(alumno) == false) {
+			return false;
+		}
 		
 		if(EmailSystem.isValidEmailAddr(alumno.getCorreo())){
 			EmailSystem.send(alumno.getCorreo(),this.getNombre(), "Ha sido expulsado de la asignatura de "+this.getNombre());
 		}
-		if (this.matriculados.contains(alumno) == false) {
-			return false;
-		}
+		
 		alumno.eliminarAsignatura(this);
 		this.matriculados.remove(alumno);
 		return this.expulsados.add(alumno);
@@ -142,12 +143,15 @@ public class Asignatura implements java.io.Serializable {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
 		}
-		if(EmailSystem.isValidEmailAddr(alumno.getCorreo())){
-			EmailSystem.send(alumno.getCorreo(),this.getNombre(), "Ha sido readmitido en la asignatura de " +this.getNombre());
-		}
+		
 		if (this.expulsados.contains(alumno) == false) {
 			return false;
 		}
+		
+		if(EmailSystem.isValidEmailAddr(alumno.getCorreo())){
+			EmailSystem.send(alumno.getCorreo(),this.getNombre(), "Ha sido readmitido en la asignatura de " +this.getNombre());
+		}
+		
 		alumno.anadirAsignatura(this);
 		this.expulsados.remove(alumno);
 		return this.matriculados.add(alumno);
