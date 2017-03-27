@@ -2,6 +2,7 @@
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import aplicacion.Aplicacion;
@@ -29,6 +30,10 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 		super(enunciado, valor, penalizacion);
 	}
 	
+	public List<Opcion> getOpciones() {
+		return Collections.unmodifiableList(opciones);
+	}
+	
 	/**
 	 * Metodo que permite anadir una opcion a la lista de opciones de la pregunta.
 	 * Solo es accesible por profesores.
@@ -42,6 +47,28 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 		}
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR) == false) {
 			return false;
+		}
+		if (this.opciones.size() > 0){
+			if (this instanceof OpcionUnica) {
+				if (opcion.isCorrecta()){
+					for (Opcion o: this.opciones) {
+						if (o.isCorrecta()) {
+							return false;
+						}
+					}
+				}
+				return opciones.add(opcion);
+			} else if (this instanceof SiNo) {
+				if (this.opciones.size() > 1) {
+					return false;
+				} else {
+					for(Opcion o: this.opciones) {
+						if ((o.isCorrecta() == true && opcion.isCorrecta() == true) || (o.isCorrecta() == false && opcion.isCorrecta() == false)) {
+							return false;
+						}
+					}
+				}
+			}
 		}
 		return opciones.add(opcion);
 	}
@@ -69,6 +96,5 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 		}
 		return res;
 	}
-	
 	
 }
