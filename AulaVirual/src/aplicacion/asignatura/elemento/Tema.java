@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import aplicacion.Alumno;
 import aplicacion.asignatura.Asignatura;
+import es.uam.eps.padsof.emailconnection.EmailSystem;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Tema. Clase que hereda de Elemento. Contiene una lista de sub-elementos.
@@ -39,12 +43,18 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * 
 	 * @param elemento elemento a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
 	 */
-	public boolean anadirElemento(Elemento elemento){
+	public boolean anadirElemento(Elemento elemento) throws InvalidEmailAddressException, FailedInternetConnectionException{
 		if (elemento == null){
 			return false;
 		}
-		
+		if (elemento.isVisible()){
+			for (Alumno alum :this.getAsignatura().getMatriculados()){
+				EmailSystem.send(alum.getCorreo(), "Se ha actualizado la asignatura"+this.getAsignatura().getNombre(), "");
+			}
+		}
 		return this.elementos.add(elemento);
 	}
 	

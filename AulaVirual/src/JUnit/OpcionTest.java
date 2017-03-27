@@ -8,7 +8,6 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Aplicacion;
 import aplicacion.asignatura.elemento.test.Opcion;
 
 public class OpcionTest {
@@ -19,7 +18,6 @@ public class OpcionTest {
 	@Before 
 	
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 		opcion1 = new Opcion(1,"El canto del loco", false);
 		opcion2 = new Opcion(2, "Pereza",true);
 	}

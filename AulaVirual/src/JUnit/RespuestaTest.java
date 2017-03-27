@@ -8,7 +8,6 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Aplicacion;
 import aplicacion.asignatura.elemento.resolucion.Respuesta;
 import aplicacion.asignatura.elemento.test.Opcion;
 import aplicacion.asignatura.elemento.test.OpcionUnica;
@@ -26,7 +25,6 @@ public class RespuestaTest {
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
 		resp = new Respuesta(preg);
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 	}
 	
 	@Test

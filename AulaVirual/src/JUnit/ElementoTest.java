@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import aplicacion.Aplicacion;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.Tema;
@@ -20,7 +18,6 @@ public class ElementoTest {
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 		elemento = new Tema ("El clima", true, asig);
 		asig = new Asignatura("CCSS");
 	}

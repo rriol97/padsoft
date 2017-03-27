@@ -164,14 +164,14 @@ public class Resolucion implements java.io.Serializable {
 		String res="";
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == true){
 			if (this.getFecha().isBefore(this.getTest().getFechaFin())){
-				return " Todavia no puede visaulizar el examen, espere a la fecha de fin para hacerlo.\n";
+				return " Todavia no puede visualizar el examen, espere a la fecha de fin para hacerlo.\n";
 			}
 		}
 		int contador = 1;
 		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
-		res = res +"\n\t"+this.getTest()+"\n"+"\t\tOpciones seleccionadas: \n";
+		res = res +"\n\t"+this.getTest()+"\n"+"   Opciones seleccionadas: \n";
 		for (Respuesta p :this.getRespuestas()){
-			res = res +"\n\n\t\t"+contador+"-"+ p;
+			res = res +"\n  "+contador+"-"+ p+"  "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
 		}
 		
 		return res;

@@ -38,7 +38,7 @@ public class Apuntes extends Elemento implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return super.toString()+"\n\t\t"+texto;
+		return super.toString()+"\n\t"+texto;
 	}
 	
 	

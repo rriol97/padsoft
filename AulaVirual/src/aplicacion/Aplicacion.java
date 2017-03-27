@@ -146,12 +146,14 @@ public class Aplicacion {
 		}
 		if (this.niaProfesor.equals(nia) && this.contrasenaProfesor.equals(contrasena)){
 			this.tipoUsu = TipoUsuario.PROFESOR;
+			System.out.println("Bienvenido de nuevo");
 			return true;
 		} else{
 			for (Alumno alu: this.alumnos){
 				if (alu.getNia().equals(nia) && alu.getContrasena().equals(contrasena)){
 					this.alumnoActual = alu;
 					this.tipoUsu = TipoUsuario.ALUMNO;
+					System.out.println("Bienvenido "+alu.getNombre());
 					return true;
 				}
 			}
@@ -168,6 +170,7 @@ public class Aplicacion {
 	 * @throws IOException excepcion
 	 */
 	public void logOut() throws FileNotFoundException, IOException{
+		System.out.println("La sesion se ha cerrado correctamenete");
 		this.tipoUsu = TipoUsuario.NO_INI;
 	}
 	

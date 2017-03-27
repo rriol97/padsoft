@@ -217,7 +217,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	@Override
 	public String toString() {
 		String res = "";
-		res = res +super.getNombre()+" "+this.peso+"%"+"\n\t\t"+"Fecha inicio:"+this.fechaIni.toString()+"  Fecha fin:"+this.fechaFin.toString()+"\n\t\t"+this.texto+"\n";
+		res = res +super.getNombre()+" "+this.peso+"%"+" "+"Fecha inicio:"+this.fechaIni.toString()+"  Fecha fin:"+this.fechaFin.toString()+"\n\t"+this.texto+"\n";
 		for (Pregunta p:this.preguntas){
 			res = res +p+"\n";
 		}

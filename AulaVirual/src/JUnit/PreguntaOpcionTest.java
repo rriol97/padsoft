@@ -8,7 +8,6 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Aplicacion;
 import aplicacion.asignatura.elemento.test.*;
 
 public class PreguntaOpcionTest {
@@ -19,7 +18,6 @@ public class PreguntaOpcionTest {
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 		popc1 = new OpcionUnica("Cuantos anyos tienes?",1.0,0.5);
 		popc2 = new OpcionMultiple("Cuantos hermanos tienes?", 1.0,0.5);
 		popc3 = new SiNo ("�Cu�ntos ordenadores tienes?", 1.0,0.5);

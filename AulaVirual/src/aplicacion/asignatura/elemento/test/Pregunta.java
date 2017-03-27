@@ -162,7 +162,7 @@ public abstract class Pregunta implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "\n\t\tEnunciado:" + enunciado + "   (" + valor + " p)\n";
+		return "\n\tEnunciado:" + enunciado + "   (" + valor + " p)\n";
 	}	
 	
 	
