@@ -80,7 +80,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double el porcentaje de fallos
 	 */
 	public double getPorcentajeFallos() {
-		this.calcularRespuestas();
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -90,7 +89,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double porcentaje de nsnc
 	 */
 	public double getPorcentajeNsnc(){
-		this.calcularRespuestas();
 		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
 	public double getPenalizacion() {

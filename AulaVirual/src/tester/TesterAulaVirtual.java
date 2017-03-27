@@ -128,6 +128,7 @@ public class TesterAulaVirtual {
 		
 		Aplicacion.getInstance().load();
 		System.out.println(Aplicacion.getInstance().getAsignaturas());
+		
 	}
 
 }
