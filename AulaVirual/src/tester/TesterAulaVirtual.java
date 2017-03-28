@@ -85,24 +85,52 @@ public class TesterAulaVirtual {
 		
 		Aplicacion.getInstance().logOut();
 		
+		
 		Aplicacion.getInstance().logIn("1264", "s.ll");
 		
-		Alumno alum = Aplicacion.getInstance().getAlumnoActual();
-		Solicitud sol = new Solicitud("Hola soy "+alum.getNombre()+" "+alum.getApellidos()+"y quiero inscribirme en su asignatura", alum, edyl);
-		alum.enviarSolicitud(sol);
+		Alumno alumno1 = Aplicacion.getInstance().getAlumnoActual();
+		Solicitud sol1 = new Solicitud("Hola soy "+alumno1.getNombre()+" "+alumno1.getApellidos()+"y quiero inscribirme en su asignatura", alumno1, edyl);
+		alumno1.enviarSolicitud(sol1);
 		
 		Aplicacion.getInstance().logOut();
+		
+		
+		Aplicacion.getInstance().logIn("1289", "JoA");
+		
+		Alumno alumno2 = Aplicacion.getInstance().getAlumnoActual();
+		Solicitud sol2 = new Solicitud("Hola soy "+alumno2.getNombre()+" "+alumno2.getApellidos()+"y quiero inscribirme en su asignatura", alumno2, edyl);
+		alumno2.enviarSolicitud(sol2);
+		
+		Aplicacion.getInstance().logOut();
+		
+		
+		Aplicacion.getInstance().logIn("1258", "anuel.B1");
+		
+		Alumno alumno3 = Aplicacion.getInstance().getAlumnoActual();
+		Solicitud sol3 = new Solicitud("Hola soy "+alumno3.getNombre()+" "+alumno3.getApellidos()+"y quiero inscribirme en su asignatura", alumno3, edyl);
+		alumno3.enviarSolicitud(sol3);
+		
+		Aplicacion.getInstance().logOut();
+		
+		
+		
+		
 		
 		Aplicacion.getInstance().logIn("profesor", "profesor");
-		System.out.println(sol);
-		edyl.aceptarSolicitud(sol);
+		System.out.println(sol1);
+		edyl.aceptarSolicitud(sol1);
+		
+		System.out.println(sol2);
+		edyl.aceptarSolicitud(sol2);
+		
+		System.out.println(sol3);
+		edyl.aceptarSolicitud(sol3);
 		
 		Aplicacion.getInstance().logOut();
 		
 		Aplicacion.getInstance().logIn("1264", "s.ll");
-		Alumno alum2 = Aplicacion.getInstance().getAlumnoActual();
 		
-		Resolucion res = new Resolucion (test1_edyl, alum2);
+		Resolucion res = new Resolucion (test1_edyl, alumno1);
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
@@ -114,6 +142,39 @@ public class TesterAulaVirtual {
 			
 		}
 		System.out.println(res);
+		
+		
+		Aplicacion.getInstance().logIn("1289", "JoA");
+		
+		Resolucion res2 = new Resolucion (test1_edyl, alumno2);
+		
+		for (Pregunta p : test1_edyl.getPreguntas()){
+			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
+				Opcion seleccionada = new Opcion(2,"10^3",false);
+				p.responderPregunta(res2, seleccionada,"");
+			} else {
+				p.responderPregunta(res2,null, "(respuesta)");
+			}
+			
+		}
+		System.out.println(res2);
+		
+		
+		Aplicacion.getInstance().logIn("1258", "anuel.B1");
+		
+		Resolucion res3 = new Resolucion (test1_edyl, alumno3);
+		
+		for (Pregunta p : test1_edyl.getPreguntas()){
+			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
+				p.responderPregunta(res3, null,"");
+			} else {
+				p.responderPregunta(res3,null, "(respuesta)");
+			}
+			
+		}
+		System.out.println(res3);
+		
+		
 		
 		Aplicacion.getInstance().logOut();
 		Aplicacion.getInstance().logIn("profesor","profesor");

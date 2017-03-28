@@ -6,6 +6,7 @@ import java.util.List;
 
 import aplicacion.Alumno;
 import aplicacion.asignatura.Asignatura;
+import aplicacion.asignatura.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -65,7 +66,33 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarElemento(Elemento elemento){
+		if (elemento instanceof Tema){
+			if(((Tema)elemento).isEliminable()==false) {
+				return false;
+			}
+		}
 		return this.elementos.remove(elemento);
+	}
+	
+	/**
+	 * Metodo que comprueba si un elemento es eliminable
+	 * @return boolean true si comprueba correcatmente, false en caso contrario
+	 */
+	public boolean isEliminable() {
+		for (Elemento ele:this.elementos){
+			if (ele instanceof Apuntes){
+				return true;
+			} else if (ele instanceof Test){
+				if (((Test)ele).getResoluciones().size() > 0){
+					return false;
+				} else{
+					return true;
+				}
+			} else {
+				return ((Tema)ele).isEliminable();
+			}
+		}
+		return true;
 	}
 
 	@Override

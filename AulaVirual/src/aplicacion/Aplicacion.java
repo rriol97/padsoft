@@ -221,6 +221,7 @@ public class Aplicacion {
 	 * @throws IOException excepcion
 	 * @throws ClassNotFoundException excepcion
 	 */
+	@SuppressWarnings("unchecked")
 	public void load() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream entrada = new ObjectInputStream (new FileInputStream("apk.data"));
       	this.niaProfesor = (String)entrada.readObject();

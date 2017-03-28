@@ -48,11 +48,13 @@ public abstract class Elemento implements java.io.Serializable {
 	public Asignatura getAsignatura(){
 		return this.asignatura;
 	}
-
+	
 	@Override
 	public String toString() {
 		return  nombre;
 	}
+
+	
 	
 	
 	

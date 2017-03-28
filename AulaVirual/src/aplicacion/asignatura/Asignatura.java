@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import aplicacion.asignatura.elemento.Elemento;
+import aplicacion.asignatura.elemento.Tema;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
+import aplicacion.asignatura.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -180,7 +182,16 @@ public class Asignatura implements java.io.Serializable {
 			if (EmailSystem.isValidEmailAddr(alum.getCorreo())){
 				EmailSystem.send(alum.getCorreo(),this.getNombre(), "Se ha actualizado la pagina de la asignatura "+this.getNombre());
 			}
-		}	
+		}
+		if (elemento instanceof Test){
+			if(((Test) elemento).getResoluciones().size() > 0){
+				return false;
+			}
+		} else if (elemento instanceof Tema){
+			if (((Tema)elemento).isEliminable()==false){
+				return false;
+			}
+		}
 		return this.elementos.remove(elemento);
 	}
 	
