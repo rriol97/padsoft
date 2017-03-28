@@ -101,7 +101,6 @@ public class Resolucion implements java.io.Serializable {
 			int flag = 0;
 			Pregunta p = res.getPregunta();
 			p.anadirRespuesta(res);
-			p.calcularRespuestas();
 			if (p instanceof RespuestaLibre){
 				if (((RespuestaLibre) p).getSolucion().equals(res.getRespuesta())){
 					res.setEstado(EstadoRespuesta.ACIERTO);
@@ -109,14 +108,16 @@ public class Resolucion implements java.io.Serializable {
 					res.setEstado(EstadoRespuesta.ERROR);
 				}
 			} else {
-				if (res.getOpcionesSeleccionadas().size()== 0){
+				if (res.getOpcionesSeleccionadas().size() == 0){
 					res.setEstado(EstadoRespuesta.NSNC);
 				} else{
 					for (Opcion opc:res.getOpcionesSeleccionadas()){
-						if (opc.isCorrecta() == false){
-							flag = 1;
-							break;
-						}	
+						if (opc != null) {
+							if (opc.isCorrecta() == false){
+								flag = 1;
+								break;
+							}
+						}
 					}
 					
 					if (flag == 1){
@@ -171,7 +172,7 @@ public class Resolucion implements java.io.Serializable {
 		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
 		res = res +"\n\t"+this.getTest()+"\n"+"   Opciones seleccionadas: \n";
 		for (Respuesta p :this.getRespuestas()){
-			res = res +"\n  "+contador+"-"+ p+"  "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
+			res = res +"\n  "+contador+"-"+ p+"  \n"+"  Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
 		}
 		
 		return res;

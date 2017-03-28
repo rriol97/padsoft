@@ -38,7 +38,6 @@ public class PreguntaTest {
 		resolucion = new Resolucion(test, alum);
 		respuesta = new Respuesta (pregunta);
 		resolucion.anadirRespuesta(respuesta);
-		test.anadirResolucion(resolucion);
 		respuesta.setRespuesta("ocho");
 		
 		for (Resolucion resolution :test.getResoluciones()){

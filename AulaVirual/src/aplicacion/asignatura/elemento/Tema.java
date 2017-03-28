@@ -44,8 +44,8 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * 
 	 * @param elemento elemento a anadir
 	 * @return boolean true si se anade correctamente, false en caso contrario
-	 * @throws FailedInternetConnectionException 
-	 * @throws InvalidEmailAddressException 
+	 * @throws FailedInternetConnectionException excepcion
+	 * @throws InvalidEmailAddressException excepcion
 	 */
 	public boolean anadirElemento(Elemento elemento) throws InvalidEmailAddressException, FailedInternetConnectionException{
 		if (elemento == null || this.elementos.contains(elemento)){

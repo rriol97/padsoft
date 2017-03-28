@@ -20,7 +20,7 @@ import aplicacion.asignatura.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 /**
- * Esta clase implementa un pequeño programa para probar por encima la funionalidad de la aplicacion
+ * Esta clase implementa un pequeï¿½o programa para probar por encima la funionalidad de la aplicacion
  * @author Ricardo Riol 
  * 		   Adrian Fernandez Amador
  *
@@ -66,7 +66,7 @@ public class TesterAulaVirtual {
 		Apuntes apuntes_tema1edyl = new Apuntes ("Introduccion a la combinatoria", true, "(apuntes de combinatoria)", edyl);
 		tema1_edyl.anadirElemento(apuntes_tema1edyl);
 		
-		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendra 10 preguntas de diferentes tipos. Las preguntas tipo test bajaran nota en el caso de que se falle y no puntuan si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
+		Test test1_edyl = new Test("Prueba1", true, edyl, "Este examen tendra 1 pregunta de diferentes tipos. Las preguntas tipo test bajaran nota en el caso de que se falle y no puntuan si se dejan en blanco.", LocalDate.now().plusDays(3), LocalDate.now().plusDays(5), true , 30, 1);
 		tema1_edyl.anadirElemento(test1_edyl);
 		
 		PreguntaOpcion p1 = new OpcionUnica("Cuantas posibles contrasenas se pueden hacer, si la contrasena es 4 digitos y solo se utilizan los numeros del 1 al 10", 1, 0.5);
@@ -84,8 +84,6 @@ public class TesterAulaVirtual {
 		System.out.println(tema1_edyl);
 		
 		Aplicacion.getInstance().logOut();
-		
-		
 		Aplicacion.getInstance().logIn("1264", "s.ll");
 		
 		Alumno alumno1 = Aplicacion.getInstance().getAlumnoActual();
@@ -93,8 +91,6 @@ public class TesterAulaVirtual {
 		alumno1.enviarSolicitud(sol1);
 		
 		Aplicacion.getInstance().logOut();
-		
-		
 		Aplicacion.getInstance().logIn("1289", "JoA");
 		
 		Alumno alumno2 = Aplicacion.getInstance().getAlumnoActual();
@@ -104,17 +100,13 @@ public class TesterAulaVirtual {
 		Aplicacion.getInstance().logOut();
 		
 		
-		Aplicacion.getInstance().logIn("1258", "anuel.B1");
+		Aplicacion.getInstance().logIn("1258", "anuel.Bl");
 		
 		Alumno alumno3 = Aplicacion.getInstance().getAlumnoActual();
 		Solicitud sol3 = new Solicitud("Hola soy "+alumno3.getNombre()+" "+alumno3.getApellidos()+"y quiero inscribirme en su asignatura", alumno3, edyl);
 		alumno3.enviarSolicitud(sol3);
 		
-		Aplicacion.getInstance().logOut();
-		
-		
-		
-		
+		Aplicacion.getInstance().logOut();	
 		
 		Aplicacion.getInstance().logIn("profesor", "profesor");
 		System.out.println(sol1);
@@ -127,7 +119,6 @@ public class TesterAulaVirtual {
 		edyl.aceptarSolicitud(sol3);
 		
 		Aplicacion.getInstance().logOut();
-		
 		Aplicacion.getInstance().logIn("1264", "s.ll");
 		
 		Resolucion res = new Resolucion (test1_edyl, alumno1);
@@ -150,7 +141,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(2,"10^3",false);
+				Opcion seleccionada = new Opcion(1,"10^3",false);
 				p.responderPregunta(res2, seleccionada,"");
 			} else {
 				p.responderPregunta(res2,null, "(respuesta)");
@@ -166,29 +157,33 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				p.responderPregunta(res3, null,"");
+				p.responderPregunta(res3, null, "");
 			} else {
-				p.responderPregunta(res3,null, "(respuesta)");
+				p.responderPregunta(res3, null, "(respuesta)");
 			}
 			
 		}
 		System.out.println(res3);
 		
-		
-		
 		Aplicacion.getInstance().logOut();
 		Aplicacion.getInstance().logIn("profesor","profesor");
-		
 		
 		for (Resolucion resolution :test1_edyl.getResoluciones()){
 			resolution.calcularNota();
 			System.out.println(resolution);
 		}
 		
+		System.out.println("\n" + edyl.calcularNotaAsig(alumno1));
+		System.out.println(edyl.calcularNotaAsig(alumno2));
+		System.out.println(edyl.calcularNotaAsig(alumno3));
+		
 		Aplicacion.getInstance().logOut();
 		
 		Aplicacion.getInstance().load();
-		System.out.println(Aplicacion.getInstance().getAsignaturas());
+		System.out.println("Asignaturas");
+		for (Asignatura asig:Aplicacion.getInstance().getAsignaturas()){
+			System.out.println("  "+asig);
+		}
 		
 	}
 

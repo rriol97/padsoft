@@ -208,7 +208,6 @@ public class Asignatura implements java.io.Serializable {
 		if (this.matriculados.contains(alumno)){
 			for (Resolucion res:alumno.getResoluciones()){
 				if (res.getTest().getAsignatura().equals(this)){
-					res.calcularNota();
 					nota = nota + (res.getNota() * res.getTest().getPeso() / 100.0);
 				}
 			}

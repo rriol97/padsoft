@@ -80,6 +80,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double el porcentaje de fallos
 	 */
 	public double getPorcentajeFallos() {
+		this.calcularRespuestas();
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -89,8 +90,10 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @return double porcentaje de nsnc
 	 */
 	public double getPorcentajeNsnc(){
+		this.calcularRespuestas();
 		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
+	
 	public double getPenalizacion() {
 		return penalizacion;
 	}
@@ -129,6 +132,8 @@ public abstract class Pregunta implements java.io.Serializable {
 	 */
 	public void calcularRespuestas() {
 		EstadoRespuesta aux;
+		this.numAciertos = 0;
+		this.numFallos = 0;
 		for (Respuesta r: respuestas) {
 			aux = r.getEstado();
 			if (aux.equals(EstadoRespuesta.ACIERTO)) {
@@ -149,6 +154,9 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @param tes solucion
 	 */
 	public void responderPregunta(Resolucion res, Opcion opc, String tes){
+		if (opc == null) {
+			return;
+		}
 		Respuesta respuesta = new Respuesta(this);
 		if (this instanceof OpcionUnica || this instanceof OpcionMultiple || this instanceof SiNo){
 			respuesta.anadirOpcion(opc);
