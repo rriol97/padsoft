@@ -18,8 +18,6 @@ public class AlumnoTest {
 
 	private Alumno alum;
 	private Asignatura asig;
-	private LocalDate fi;
-	private LocalDate ff;
 	private aplicacion.asignatura.elemento.test.Test test;
 	private Resolucion res;	
 	
@@ -29,9 +27,7 @@ public class AlumnoTest {
 		Aplicacion.getInstance().anadirAlumno(alum);
 		Aplicacion.getInstance().logIn("nia", "contrasena");
 		asig = new Asignatura("Asignatura 1");
-		fi = LocalDate.now();
-		ff = LocalDate.now().plusDays(5);
-		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
+		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		res = new Resolucion(test, alum);
 	}
 	

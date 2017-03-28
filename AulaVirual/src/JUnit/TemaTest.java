@@ -4,14 +4,18 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import aplicacion.Alumno;
+import aplicacion.Solicitud;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Apuntes;
 import aplicacion.asignatura.elemento.Elemento;
 import aplicacion.asignatura.elemento.Tema;
+import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -19,29 +23,42 @@ public class TemaTest {
 	
 	private Tema tema;
 	private Asignatura asig;
+	private Elemento apuntes;
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
 		asig = new Asignatura("Conocimiento del Medio");
 		tema = new Tema("La naturaleza", true, asig);
+		apuntes = new Apuntes("La naturaleza en su estado puro", false, "(texto)",asig);
 	}
 	
 	@Test
 	public void testAnadirElemento1() throws InvalidEmailAddressException, FailedInternetConnectionException{
-		Elemento apuntes = new Apuntes("La naturaleza en su estado puro", false, "(texto)",asig);
 		assertTrue(tema.anadirElemento(apuntes));
 		
 	}
 	
 	@Test
 	public void testAnadirElemento2() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
-		assertFalse(tema.anadirElemento(null));
-		
+		tema.anadirElemento(apuntes);
+		assertFalse(tema.anadirElemento(apuntes));
+	}
+	
+	@Test
+	public void testAnadirElemento3() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
+		Alumno alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
+		Solicitud sol = new Solicitud("Solicito cursar esta asignatura.", alum, asig);
+		alum.enviarSolicitud(sol);
+		asig.aceptarSolicitud(sol);
+		Elemento tema = new Tema("Tema 1", true, asig);
+		Elemento test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		((Tema)tema).anadirElemento(test);
+		new Resolucion((aplicacion.asignatura.elemento.test.Test) test, alum);
+		assertFalse(asig.eliminarElemento(tema));
 	}
 
 	@Test
 	public void testEliminarElemento1() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
-		Elemento apuntes = new Apuntes("La naturaleza en su estado puro", false, "(texto)",asig);
 		tema.anadirElemento(apuntes);
 		assertTrue(tema.eliminarElemento(apuntes));
 		
@@ -49,7 +66,7 @@ public class TemaTest {
 	
 	@Test
 	public void testEliminarElemento2() throws FileNotFoundException, ClassNotFoundException, IOException {
-		assertFalse(tema.eliminarElemento(null));
+		assertFalse(tema.eliminarElemento(apuntes));
 		
 	}
 }

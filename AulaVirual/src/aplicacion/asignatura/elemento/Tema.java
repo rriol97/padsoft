@@ -48,7 +48,7 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean anadirElemento(Elemento elemento) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		if (elemento == null){
+		if (elemento == null || this.elementos.contains(elemento)){
 			return false;
 		}
 		if (elemento.isVisible()){

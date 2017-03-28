@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import aplicacion.asignatura.elemento.test.OpcionMultiple;
 
-
 public class OpcionMultipleTest {
 
 	@Test
@@ -16,5 +15,4 @@ public class OpcionMultipleTest {
 		OpcionMultiple opc = new OpcionMultiple("Cuantas caras tiene un dado?", 1.0, 0.5);
 		assertNotNull(opc);
 	}
-
 }

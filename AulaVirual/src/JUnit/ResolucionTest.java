@@ -31,16 +31,15 @@ public class ResolucionTest {
 	public void setUp() {
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		asig = new Asignatura("Asignatura 1");
-		LocalDate fi = LocalDate.now();
-		LocalDate ff = LocalDate.now().plusDays(5);
-		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
-		res = new Resolucion(test, alum);
+		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
+		test.anadirPregunta(preg);
+		res = new Resolucion(test, alum);
 		resp = new Respuesta(preg);
 		resp.anadirOpcion(opc);
-		test.anadirPregunta(preg);
+		
 
 	}
 	
@@ -69,7 +68,6 @@ public class ResolucionTest {
 	@Test
 	public void testCalcularNota1() throws InvalidEmailAddressException, FailedInternetConnectionException {
 		res.anadirRespuesta(resp);
-		test.anadirResolucion(res);
 		res.calcularNota();
 		assertTrue(res.getNota() == 10.0);
 	}

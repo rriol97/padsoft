@@ -10,11 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import aplicacion.Alumno;
-import aplicacion.Aplicacion;
 import aplicacion.Solicitud;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.Apuntes;
 import aplicacion.asignatura.elemento.Elemento;
+import aplicacion.asignatura.elemento.Tema;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.asignatura.elemento.resolucion.Respuesta;
 import aplicacion.asignatura.elemento.test.Opcion;
@@ -31,7 +31,6 @@ public class AsignaturaTest {
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 		asig = new Asignatura("Asignatura 1");
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		sol = new Solicitud("Solicito cursar esta asignatura.", alum, asig);
@@ -117,12 +116,21 @@ public class AsignaturaTest {
 	}
 	
 	@Test
+	public void testEliminarElemento3() throws InvalidEmailAddressException, FailedInternetConnectionException {
+		alum.enviarSolicitud(sol);
+		asig.aceptarSolicitud(sol);
+		Elemento tema = new Tema("Tema 1", true, asig);
+		Elemento test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		((Tema)tema).anadirElemento(test);
+		new Resolucion((aplicacion.asignatura.elemento.test.Test) test, alum);
+		assertFalse(asig.eliminarElemento(tema));
+	}
+	
+	@Test
 	public void testCalcularNotaAsig1() throws InvalidEmailAddressException, FailedInternetConnectionException {
 		alum.enviarSolicitud(sol);
 		asig.aceptarSolicitud(sol);
-		LocalDate fi = LocalDate.now();
-		LocalDate ff = LocalDate.now().plusDays(5);
-		aplicacion.asignatura.elemento.test.Test test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
+		aplicacion.asignatura.elemento.test.Test test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		Opcion opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
@@ -131,7 +139,6 @@ public class AsignaturaTest {
 		Respuesta resp = new Respuesta(preg);
 		resp.anadirOpcion(opc);
 		res.anadirRespuesta(resp);
-		test.anadirResolucion(res);
 		assertTrue(asig.calcularNotaAsig(alum) == 10.0);
 	}
 	

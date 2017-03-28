@@ -11,12 +11,11 @@ import org.junit.Test;
 import aplicacion.asignatura.elemento.test.Opcion;
 
 public class OpcionTest {
+	
 	private Opcion opcion1;
 	private Opcion opcion2;
 	
-	
 	@Before 
-	
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
 		opcion1 = new Opcion(1,"El canto del loco", false);
 		opcion2 = new Opcion(2, "Pereza",true);
@@ -35,6 +34,4 @@ public class OpcionTest {
 		assertFalse(opcion1.isCorrecta());
 		assertTrue(opcion2.isCorrecta());
 	}
-	
-	
 }

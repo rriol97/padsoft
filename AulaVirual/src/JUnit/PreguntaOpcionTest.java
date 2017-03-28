@@ -65,8 +65,4 @@ public class PreguntaOpcionTest {
 	public void testEliminarOpcion3(){
 		assertFalse(popc1.eliminarOpcion(null));
 	}
-	
-	
-
-
 }

@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import aplicacion.Alumno;
-import aplicacion.Aplicacion;
 import aplicacion.asignatura.Asignatura;
 import aplicacion.asignatura.elemento.resolucion.Resolucion;
 import aplicacion.asignatura.elemento.resolucion.Respuesta;
@@ -41,17 +40,11 @@ public class PreguntaTest {
 		resolucion.anadirRespuesta(respuesta);
 		test.anadirResolucion(resolucion);
 		respuesta.setRespuesta("ocho");
-		Aplicacion.getInstance().logOut();
-		Aplicacion.getInstance().logIn("profesor", "profesor");
 		
 		for (Resolucion resolution :test.getResoluciones()){
 			resolution.calcularNota();
 		}
-		
-		
-		
 	}
-	
 	
 	@Test
 	public void testGetPorcentajeAciertos() {

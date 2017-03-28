@@ -32,5 +32,4 @@ public class ElementoTest {
 		elemento.setVisible(false);
 		assertFalse(elemento.getVisible());
 	}
-
 }
