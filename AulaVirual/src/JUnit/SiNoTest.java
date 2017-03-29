@@ -13,7 +13,7 @@ public class SiNoTest {
 
 	@Test
 	public void TestOpcionSiNo() {
-		SiNo opc = new SiNo("Cuantas caras tiene un dado?", 1.0, 0.5);
+		SiNo opc = new SiNo("Cuantas caras tiene un dado?", 1.0, 0.5,1);
 		assertNotNull(opc);
 	}
 

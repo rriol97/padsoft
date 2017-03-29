@@ -24,12 +24,12 @@ public class ElementoTest {
 	
 	@Test
 	public void testIsVisible() {
-		assertTrue(elemento.getVisible());
+		assertTrue(elemento.isVisible());
 	}
 	
 	@Test
 	public void testSetVisible(){
 		elemento.setVisible(false);
-		assertFalse(elemento.getVisible());
+		assertFalse(elemento.isVisible());
 	}
 }

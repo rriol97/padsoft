@@ -37,10 +37,6 @@ public abstract class Elemento implements java.io.Serializable {
 	public boolean isVisible() {
 		return visible;
 	}
-
-	public boolean getVisible(){
-		return this.visible;
-	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}

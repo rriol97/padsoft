@@ -16,7 +16,7 @@ public class OpcionUnica extends PreguntaOpcion implements java.io.Serializable 
 	 * @param valor valor de la pregunta
 	 * @param penalizacion oenalzacion de la pregunta si es fallada
 	 */
-	public OpcionUnica(String enunciado, double valor, double penalizacion){
-		super(enunciado,valor,penalizacion);
+	public OpcionUnica(String enunciado, double valor, double penalizacion,int numCorrectas){
+		super(enunciado,valor,penalizacion,numCorrectas);
 	}
 }

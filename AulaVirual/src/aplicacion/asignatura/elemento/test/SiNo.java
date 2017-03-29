@@ -17,7 +17,7 @@ public class SiNo extends PreguntaOpcion implements java.io.Serializable {
 	 * @param valor valor de la pregunta
 	 * @param penalizacion oenalzacion de la pregunta si es fallada
 	 */
-	public SiNo(String enunciado, double valor, double penalizacion){
-		super(enunciado,valor,penalizacion);
+	public SiNo(String enunciado, double valor, double penalizacion, int numCorrectas){
+		super(enunciado,valor,penalizacion,numCorrectas);
 	}
 }

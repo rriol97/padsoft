@@ -154,9 +154,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * @param tes solucion
 	 */
 	public void responderPregunta(Resolucion res, Opcion opc, String tes){
-		if (opc == null) {
-			return;
-		}
 		Respuesta respuesta = new Respuesta(this);
 		if (this instanceof OpcionUnica || this instanceof OpcionMultiple || this instanceof SiNo){
 			respuesta.anadirOpcion(opc);

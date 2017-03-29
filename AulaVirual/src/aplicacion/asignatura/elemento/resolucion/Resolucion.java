@@ -10,6 +10,7 @@ import aplicacion.Aplicacion;
 import aplicacion.TipoUsuario;
 import aplicacion.asignatura.elemento.test.Opcion;
 import aplicacion.asignatura.elemento.test.Pregunta;
+import aplicacion.asignatura.elemento.test.PreguntaOpcion;
 import aplicacion.asignatura.elemento.test.RespuestaLibre;
 import aplicacion.asignatura.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
@@ -120,7 +121,7 @@ public class Resolucion implements java.io.Serializable {
 						}
 					}
 					
-					if (flag == 1){
+					if (flag == 1 || res.getOpcionesSeleccionadas().size()!= ((PreguntaOpcion)p).getNumOpcionesCorrectas()){
 						res.setEstado(EstadoRespuesta.ERROR);
 					} else {
 						res.setEstado(EstadoRespuesta.ACIERTO);
@@ -172,7 +173,7 @@ public class Resolucion implements java.io.Serializable {
 		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
 		res = res +"\n\t"+this.getTest()+"\n"+"   Opciones seleccionadas: \n";
 		for (Respuesta p :this.getRespuestas()){
-			res = res +"\n  "+contador+"-"+ p+"  \n"+"  Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
+			res = res +"\n  "+contador+"-"+ p+"       "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
 		}
 		
 		return res;

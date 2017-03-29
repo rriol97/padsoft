@@ -12,7 +12,7 @@ public class OpcionUnicaTest {
 
 	@Test
 	public void TestOpcionUnica() {
-		OpcionUnica opc = new OpcionUnica("Cuantas caras tiene un dado?", 1.0, 0.5);
+		OpcionUnica opc = new OpcionUnica("Cuantas caras tiene un dado?", 1.0, 0.5,1);
 		assertNotNull(opc);
 	}
 }

@@ -17,7 +17,7 @@ public class OpcionMultiple extends PreguntaOpcion implements java.io.Serializab
 	 * @param valor valor de la pregunta
 	 * @param penalizacion oenalzacion de la pregunta si es fallada
 	 */
-	public OpcionMultiple (String enunciado, double valor, double penalizacion){
-		super(enunciado,valor,penalizacion);
+	public OpcionMultiple (String enunciado, double valor, double penalizacion, int numCorrectas){
+		super(enunciado,valor,penalizacion,numCorrectas);
 	}
 }

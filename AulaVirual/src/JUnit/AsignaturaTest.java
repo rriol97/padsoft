@@ -131,7 +131,7 @@ public class AsignaturaTest {
 		alum.enviarSolicitud(sol);
 		asig.aceptarSolicitud(sol);
 		aplicacion.asignatura.elemento.test.Test test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
-		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
+		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
 		Opcion opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
 		test.anadirPregunta(preg);
@@ -139,6 +139,7 @@ public class AsignaturaTest {
 		Respuesta resp = new Respuesta(preg);
 		resp.anadirOpcion(opc);
 		res.anadirRespuesta(resp);
+		res.calcularNota();
 		assertTrue(asig.calcularNotaAsig(alum) == 10.0);
 	}
 	

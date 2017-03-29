@@ -15,6 +15,7 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	private static final long serialVersionUID = 1L;
 	
 	private List<Opcion> opciones = new ArrayList<Opcion>();
+	private final int numOpcionesCorrectas;
 	
 	/**
 	 * Constructor de PreguntaOpcion.
@@ -23,12 +24,17 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	 * @param valor valor de la pregunta
 	 * @param penalizacion penalizacion de la pregunta en caso de fallo
 	 */
-	public PreguntaOpcion(String enunciado, double valor, double penalizacion){
+	public PreguntaOpcion(String enunciado, double valor, double penalizacion,int numOpcionesCorrectas){
 		super(enunciado, valor, penalizacion);
+		this.numOpcionesCorrectas = numOpcionesCorrectas;
 	}
 	
 	public List<Opcion> getOpciones() {
 		return Collections.unmodifiableList(opciones);
+	}
+	
+	public int getNumOpcionesCorrectas() {
+		return numOpcionesCorrectas;
 	}
 	
 	/**
@@ -50,7 +56,6 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 						}
 					}
 				}
-				return opciones.add(opcion);
 			} else if (this instanceof SiNo) {
 				if (this.opciones.size() > 1) {
 					return false;

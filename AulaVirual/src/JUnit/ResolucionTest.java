@@ -32,7 +32,7 @@ public class ResolucionTest {
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		asig = new Asignatura("Asignatura 1");
 		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
-		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
+		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);
 		test.anadirPregunta(preg);
