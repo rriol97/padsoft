@@ -69,7 +69,7 @@ public abstract class Pregunta implements java.io.Serializable {
 	 * 
 	 * @return double pocentaje de aciertos
 	 */
-	public double getPorcentajeciertos() {
+	public double getPorcentajeAciertos() {
 		this.calcularRespuestas();
 		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
