@@ -173,7 +173,7 @@ public class Resolucion implements java.io.Serializable {
 		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
 		res = res +"\n\t"+this.getTest()+"\n"+"   Opciones seleccionadas: \n";
 		for (Respuesta p :this.getRespuestas()){
-			res = res +"\n  "+contador+"-"+ p+"       "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
+			res = res +"\n  "+contador+"-"+ p+"       "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeAciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
 		}
 		
 		return res;

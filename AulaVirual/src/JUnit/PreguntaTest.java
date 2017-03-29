@@ -49,7 +49,7 @@ public class PreguntaTest {
 	public void testGetPorcentajeAciertos() {
 		boolean a = false;
 		for (Pregunta pregunta: test.getPreguntas()) {
-			if (pregunta.getPorcentajeciertos()==100.0){
+			if (pregunta.getPorcentajeAciertos()==100.0){
 				a = true;
 			}
 		}		
@@ -100,7 +100,7 @@ public class PreguntaTest {
 	
 	public void TestcalcularRespuestas(){
 		boolean a = false;
-		if (pregunta.getPorcentajeciertos() == 1){
+		if (pregunta.getPorcentajeAciertos() == 1){
 			a = true;
 		}
 		assertTrue(a);
