@@ -19,10 +19,11 @@ import aplicacion.asignatura.elemento.test.SiNo;
 import aplicacion.asignatura.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
+
 /**
- * Esta clase implementa un peque�o programa para probar por encima la funionalidad de la aplicacion
+ * Esta clase implementa un pequeno programa para probar por encima la funionalidad de la aplicacion.
  * @author Ricardo Riol 
- * 		   Adrian Fernandez Amador
+ * @author Adrian Fernandez Amador
  *
  */
 public class TesterAulaVirtual {
