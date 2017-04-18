@@ -3,20 +3,20 @@ package tester;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import aplicacion.Alumno;
-import aplicacion.Aplicacion;
-import aplicacion.Solicitud;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.Apuntes;
-import aplicacion.asignatura.elemento.Tema;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
-import aplicacion.asignatura.elemento.test.Opcion;
-import aplicacion.asignatura.elemento.test.OpcionMultiple;
-import aplicacion.asignatura.elemento.test.OpcionUnica;
-import aplicacion.asignatura.elemento.test.Pregunta;
-import aplicacion.asignatura.elemento.test.PreguntaOpcion;
-import aplicacion.asignatura.elemento.test.SiNo;
-import aplicacion.asignatura.elemento.test.Test;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Aplicacion;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.Solicitud;
+import aplicacion.clases.elemento.Apuntes;
+import aplicacion.clases.elemento.Tema;
+import aplicacion.clases.elemento.test.Opcion;
+import aplicacion.clases.elemento.test.OpcionMultiple;
+import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.Pregunta;
+import aplicacion.clases.elemento.test.PreguntaOpcion;
+import aplicacion.clases.elemento.test.SiNo;
+import aplicacion.clases.elemento.test.Test;
+import aplicacion.clases.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -31,6 +31,7 @@ public class TesterAulaVirtual {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException {
 		
 		Aplicacion.getInstance().leerAlumnosDeFichero("alumnos.txt");
+		Aplicacion.getInstance().leerProfesorDeFichero("profesor.txt");
 		
 		for (Alumno alum : Aplicacion.getInstance().getAlumnos()){
 			System.out.println(alum);

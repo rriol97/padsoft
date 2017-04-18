@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.asignatura.elemento.test.*;
+import aplicacion.clases.elemento.test.*;
 
 public class PreguntaOpcionTest {
 	

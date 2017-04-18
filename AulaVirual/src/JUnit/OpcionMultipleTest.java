@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
-import aplicacion.asignatura.elemento.test.OpcionMultiple;
+import aplicacion.clases.elemento.test.OpcionMultiple;
 
 public class OpcionMultipleTest {
 

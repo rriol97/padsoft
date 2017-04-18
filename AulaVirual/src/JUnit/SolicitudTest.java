@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.Solicitud;
-import aplicacion.asignatura.Asignatura;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.Solicitud;
 
 
 

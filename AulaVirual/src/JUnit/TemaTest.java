@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.Solicitud;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.Apuntes;
-import aplicacion.asignatura.elemento.Elemento;
-import aplicacion.asignatura.elemento.Tema;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.Solicitud;
+import aplicacion.clases.elemento.Apuntes;
+import aplicacion.clases.elemento.Elemento;
+import aplicacion.clases.elemento.Tema;
+import aplicacion.clases.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -51,9 +51,9 @@ public class TemaTest {
 		alum.enviarSolicitud(sol);
 		asig.aceptarSolicitud(sol);
 		Elemento tema = new Tema("Tema 1", true, asig);
-		Elemento test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		Elemento test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		((Tema)tema).anadirElemento(test);
-		new Resolucion((aplicacion.asignatura.elemento.test.Test) test, alum);
+		new Resolucion((aplicacion.clases.elemento.test.Test) test, alum);
 		assertFalse(asig.eliminarElemento(tema));
 	}
 

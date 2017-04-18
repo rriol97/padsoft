@@ -9,17 +9,17 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.Solicitud;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.Apuntes;
-import aplicacion.asignatura.elemento.Elemento;
-import aplicacion.asignatura.elemento.Tema;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
-import aplicacion.asignatura.elemento.resolucion.Respuesta;
-import aplicacion.asignatura.elemento.test.Opcion;
-import aplicacion.asignatura.elemento.test.OpcionUnica;
-import aplicacion.asignatura.elemento.test.PreguntaOpcion;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.Solicitud;
+import aplicacion.clases.elemento.Apuntes;
+import aplicacion.clases.elemento.Elemento;
+import aplicacion.clases.elemento.Tema;
+import aplicacion.clases.elemento.test.Opcion;
+import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.PreguntaOpcion;
+import aplicacion.clases.resolucion.Resolucion;
+import aplicacion.clases.resolucion.Respuesta;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -120,9 +120,9 @@ public class AsignaturaTest {
 		alum.enviarSolicitud(sol);
 		asig.aceptarSolicitud(sol);
 		Elemento tema = new Tema("Tema 1", true, asig);
-		Elemento test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		Elemento test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		((Tema)tema).anadirElemento(test);
-		new Resolucion((aplicacion.asignatura.elemento.test.Test) test, alum);
+		new Resolucion((aplicacion.clases.elemento.test.Test) test, alum);
 		assertFalse(asig.eliminarElemento(tema));
 	}
 	
@@ -130,7 +130,7 @@ public class AsignaturaTest {
 	public void testCalcularNotaAsig1() throws InvalidEmailAddressException, FailedInternetConnectionException {
 		alum.enviarSolicitud(sol);
 		asig.aceptarSolicitud(sol);
-		aplicacion.asignatura.elemento.test.Test test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		aplicacion.clases.elemento.test.Test test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
 		Opcion opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);

@@ -8,10 +8,10 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.asignatura.elemento.resolucion.Respuesta;
-import aplicacion.asignatura.elemento.test.Opcion;
-import aplicacion.asignatura.elemento.test.OpcionUnica;
-import aplicacion.asignatura.elemento.test.PreguntaOpcion;
+import aplicacion.clases.elemento.test.Opcion;
+import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.PreguntaOpcion;
+import aplicacion.clases.resolucion.Respuesta;
 
 public class RespuestaTest {
 

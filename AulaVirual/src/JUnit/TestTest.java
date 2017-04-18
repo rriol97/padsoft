@@ -7,17 +7,17 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
-import aplicacion.asignatura.elemento.test.*;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.test.*;
+import aplicacion.clases.resolucion.Resolucion;
 
 public class TestTest {
 
 	private Asignatura asig;
 	private LocalDate fi;
 	private LocalDate ff;
-	private aplicacion.asignatura.elemento.test.Test test;
+	private aplicacion.clases.elemento.test.Test test;
 	private PreguntaOpcion preg;
 	private Opcion opc;
 	
@@ -26,7 +26,7 @@ public class TestTest {
 		asig = new Asignatura("Asignatura 1");
 		fi = LocalDate.now();
 		ff = LocalDate.now().plusDays(5);
-		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
+		test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
 		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);

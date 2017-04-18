@@ -9,16 +9,16 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.Aplicacion;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Aplicacion;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.resolucion.Resolucion;
 
 public class AlumnoTest {
 
 	private Alumno alum;
 	private Asignatura asig;
-	private aplicacion.asignatura.elemento.test.Test test;
+	private aplicacion.clases.elemento.test.Test test;
 	private Resolucion res;	
 	
 	@Before
@@ -27,7 +27,7 @@ public class AlumnoTest {
 		Aplicacion.getInstance().anadirAlumno(alum);
 		Aplicacion.getInstance().logIn("nia", "contrasena");
 		asig = new Asignatura("Asignatura 1");
-		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		res = new Resolucion(test, alum);
 	}
 	

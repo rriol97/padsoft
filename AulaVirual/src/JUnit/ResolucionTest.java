@@ -7,20 +7,20 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
-import aplicacion.asignatura.elemento.resolucion.Respuesta;
-import aplicacion.asignatura.elemento.test.Opcion;
-import aplicacion.asignatura.elemento.test.OpcionUnica;
-import aplicacion.asignatura.elemento.test.PreguntaOpcion;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.test.Opcion;
+import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.PreguntaOpcion;
+import aplicacion.clases.resolucion.Resolucion;
+import aplicacion.clases.resolucion.Respuesta;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ResolucionTest {
 
 	private Asignatura asig;
-	private aplicacion.asignatura.elemento.test.Test test;
+	private aplicacion.clases.elemento.test.Test test;
 	private PreguntaOpcion preg;
 	private Opcion opc;
 	private Resolucion res;
@@ -31,7 +31,7 @@ public class ResolucionTest {
 	public void setUp() {
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		asig = new Asignatura("Asignatura 1");
-		test = new aplicacion.asignatura.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
+		test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
 		opc = new Opcion(1, "Opcion 1", true);
 		preg.anadirOpcion(opc);

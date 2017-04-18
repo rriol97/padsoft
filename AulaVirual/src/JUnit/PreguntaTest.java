@@ -9,19 +9,19 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.resolucion.Resolucion;
-import aplicacion.asignatura.elemento.resolucion.Respuesta;
-import aplicacion.asignatura.elemento.test.Pregunta;
-import aplicacion.asignatura.elemento.test.RespuestaLibre;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.test.Pregunta;
+import aplicacion.clases.elemento.test.RespuestaLibre;
+import aplicacion.clases.resolucion.Resolucion;
+import aplicacion.clases.resolucion.Respuesta;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class PreguntaTest {
 
 	private Pregunta pregunta;
-	private aplicacion.asignatura.elemento.test.Test test;
+	private aplicacion.clases.elemento.test.Test test;
 	private Asignatura asignatura;
 	private Respuesta respuesta;
 	private Resolucion resolucion;
@@ -32,7 +32,7 @@ public class PreguntaTest {
 		alum = new Alumno("nia", "contrasena", "correo.electronico@email.com", "Alumno", "Alumnez");
 		pregunta = new RespuestaLibre("�Cuantas pel�culas hay de Harry Potter?", 1.0,0.5,"ocho");
 		asignatura = new Asignatura("CMC");
-		test = new aplicacion.asignatura.elemento.test.Test("test", true, asignatura, "",LocalDate.now(), LocalDate.now().plusDays(3), false, 20.0, 1.0 );
+		test = new aplicacion.clases.elemento.test.Test("test", true, asignatura, "",LocalDate.now(), LocalDate.now().plusDays(3), false, 20.0, 1.0 );
 		asignatura.anadirElemento(test);
 		test.anadirPregunta(pregunta);		
 		resolucion = new Resolucion(test, alum);

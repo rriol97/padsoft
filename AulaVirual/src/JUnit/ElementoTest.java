@@ -7,9 +7,12 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
-import aplicacion.asignatura.Asignatura;
-import aplicacion.asignatura.elemento.Elemento;
-import aplicacion.asignatura.elemento.Tema;
+
+import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Elemento;
+import aplicacion.clases.elemento.Tema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ElementoTest {
 
@@ -28,7 +31,7 @@ public class ElementoTest {
 	}
 	
 	@Test
-	public void testSetVisible(){
+	public void testSetVisible() throws InvalidEmailAddressException, FailedInternetConnectionException{
 		elemento.setVisible(false);
 		assertFalse(elemento.isVisible());
 	}

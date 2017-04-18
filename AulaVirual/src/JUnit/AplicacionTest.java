@@ -8,9 +8,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import aplicacion.Alumno;
-import aplicacion.Aplicacion;
-import aplicacion.asignatura.Asignatura;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Aplicacion;
+import aplicacion.clases.Asignatura;
 
 public class AplicacionTest {
 

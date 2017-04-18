@@ -16,7 +16,7 @@ public class PanelLogin extends JPanel {
 		JPanel texto = new JPanel();
 		texto.setLayout(new SpringLayout());
 		
-		JLabel etiqueta_user = new JLabel("Ususario: ", JLabel.TRAILING);
+		JLabel etiqueta_user = new JLabel("Usuario: ", JLabel.TRAILING);
 		texto.add(etiqueta_user);
 		JTextField campo_user = new JTextField(10);
 		etiqueta_user.setLabelFor(campo_user);

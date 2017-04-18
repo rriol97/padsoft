@@ -4,8 +4,9 @@ import static org.junit.Assert.*;
 
 
 import org.junit.Test;
-import aplicacion.asignatura.elemento.test.Pregunta;
-import aplicacion.asignatura.elemento.test.RespuestaLibre;
+
+import aplicacion.clases.elemento.test.Pregunta;
+import aplicacion.clases.elemento.test.RespuestaLibre;
 
 
 

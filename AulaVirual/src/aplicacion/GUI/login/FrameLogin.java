@@ -9,7 +9,7 @@ public class FrameLogin extends JFrame {
 		super("AulaVirtual");
 		JPanel panel = new PanelLogin();
 		this.getContentPane().add(panel);
-		this.setSize (260, 130);
+		this.setSize (280, 135);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

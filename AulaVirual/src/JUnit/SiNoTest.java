@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
-import aplicacion.asignatura.elemento.test.SiNo;
+import aplicacion.clases.elemento.test.SiNo;
 
 
 public class SiNoTest {
