@@ -1,4 +1,4 @@
-package aplicacion.GUI.AInicio;
+package aplicacion.GUI.general;
 
 import java.awt.BorderLayout;
 
@@ -9,6 +9,6 @@ public class PanelAInicio extends JPanel {
 
 	public PanelAInicio () {
 		this.setLayout(new BorderLayout());
-		// TODO continuar
+		
 	}
 }

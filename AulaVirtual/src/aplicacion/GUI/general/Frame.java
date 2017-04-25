@@ -1,17 +1,19 @@
-package aplicacion.GUI.PInicio;
+package aplicacion.GUI.general;
 
 import javax.swing.*;
 
-public class FramePInicio extends JFrame {
+public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	public FramePInicio(){
-		super("Inicio profesor");
-		JPanel panel = new PanelPInicio();
-		this.getContentPane().add(panel);
+	public Frame(){
+		super("Aula Virtual");
 		this.setSize (500, 500);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void cambiarPanel (JPanel panel) {
+		this.getContentPane().add(panel);
 	}
 }

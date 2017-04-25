@@ -6,7 +6,7 @@ public class FrameLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public FrameLogin(){
-		super("AulaVirtual");
+		super("Login");
 		JPanel panel = new PanelLogin();
 		this.getContentPane().add(panel);
 		this.setSize (280, 135);

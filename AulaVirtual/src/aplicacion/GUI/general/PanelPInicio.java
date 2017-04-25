@@ -1,4 +1,4 @@
-package aplicacion.GUI.PInicio;
+package aplicacion.GUI.general;
 
 import java.awt.BorderLayout;
 
