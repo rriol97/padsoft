@@ -8,7 +8,6 @@ public class Frame extends JFrame {
 	public Frame(){
 		super("Aula Virtual");
 		this.setSize (500, 500);
-		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
