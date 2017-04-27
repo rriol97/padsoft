@@ -1,13 +1,13 @@
 package aplicacion.GUI.general;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import aplicacion.GUI.componentes.PanelSolAsig;
+
+import aplicacion.GUI.componentes.PanelAsig2;
+
 
 public class FrameTester {
 	public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class FrameTester {
                  "Pais Vasco", "La Rioja", "Pais Valenciano", 
                  "Ceuta", "Melilla"};
 		//f.cambiarPanel(new PanelSolAsig());
-		PanelSolAsig a = new PanelSolAsig(dataList);
+		PanelAsig2 a = new PanelAsig2(dataList);
 		f.add(a, BorderLayout.WEST);
 		//f.setSize(200, 200);
 		f.setVisible(true);

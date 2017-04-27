@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingUtilities;
 
+import aplicacion.GUI.general.Frame;
+
 public class PanelSolAsig extends JFrame {
     private JComboBox listaAsig;
     private JScrollPane scrollingAsig;
@@ -30,11 +32,11 @@ public class PanelSolAsig extends JFrame {
         scrollingAsig.setPreferredSize(new Dimension(200,30));
         JTextField texto = new JTextField(30);
         JLabel coment = new JLabel ("Comentario");
-        texto.setPreferredSize(new Dimension(5,50));
+        texto.setPreferredSize(new Dimension((int)(Frame.WIDTH/23),(int)(Frame.HEIGHT/23)));
         Button botonAcp = new Button ("Aceptar");
-        botonAcp.setPreferredSize(new Dimension(65,30));
+        botonAcp.setPreferredSize(new Dimension((int)Frame.WIDTH/20,(int)Frame.HEIGHT/35));
         Button botonCnr = new Button ("Cancelar");
-        botonCnr.setPreferredSize(new Dimension(65,30));
+        botonCnr.setPreferredSize(new Dimension((int)Frame.WIDTH/18,(int)Frame.HEIGHT/35));
         
         this.add(etiq);
         this.add(scrollingAsig);
@@ -53,7 +55,7 @@ public class PanelSolAsig extends JFrame {
         layout.putConstraint(SpringLayout.NORTH,texto,15, SpringLayout.SOUTH,scrollingAsig);
         layout.putConstraint(SpringLayout.NORTH,botonCnr,60, SpringLayout.SOUTH,texto);
         layout.putConstraint(SpringLayout.WEST,botonCnr,350, SpringLayout.WEST,this);
-        layout.putConstraint(SpringLayout.WEST,botonAcp,5, SpringLayout.EAST,botonCnr);
+        layout.putConstraint(SpringLayout.WEST,botonAcp,3, SpringLayout.EAST,botonCnr);
         layout.putConstraint(SpringLayout.NORTH,botonAcp,60, SpringLayout.SOUTH,texto);
         
        

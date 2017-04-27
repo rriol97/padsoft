@@ -16,6 +16,8 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import aplicacion.GUI.general.Frame;
+
 
 
 public class PanelAsig2 extends JPanel implements ListSelectionListener {
@@ -30,12 +32,12 @@ public class PanelAsig2 extends JPanel implements ListSelectionListener {
 		
         listOne = new JList(dataList);
         scrollingListOne = new JScrollPane(listOne);
-        scrollingListOne.setPreferredSize(new Dimension(200,600));
+        scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.15)));
         Button botonAceptar = new Button("Solicitar Asignatura");
-        botonAceptar.setPreferredSize(new Dimension(150,50));
+        botonAceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
         botonAceptar.setFont(new Font("Arial",20,15));
         JLabel tit = new JLabel ("Listado de Asignaturas");
-        tit.setFont(new Font("Arial",20,20));
+        tit.setFont(new Font("Arial",20,19));
         
         this.add(tit);
         this.dataList = dataList;
@@ -50,7 +52,7 @@ public class PanelAsig2 extends JPanel implements ListSelectionListener {
 
         this.setPreferredSize(new Dimension(250,50));
         this.setVisible(true);
-        // listener para la lista
+        
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         

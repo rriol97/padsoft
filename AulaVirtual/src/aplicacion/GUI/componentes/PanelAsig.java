@@ -11,6 +11,8 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import aplicacion.GUI.general.Frame;
+
 public class PanelAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +28,7 @@ public class PanelAsig extends JPanel {
 		});
 		
 		JScrollPane tree = new JScrollPane(arbol);
-		tree.setPreferredSize(new Dimension(1100,680));
+		tree.setPreferredSize(new Dimension((int)(Frame.WIDTH/1.3),(int)(Frame.HEIGHT/1.1)));
 		this.add(tree);
 	}
 }

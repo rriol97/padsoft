@@ -16,7 +16,7 @@ public class FrameTester {
                  "Castilla y Leon", "Catalunya", "Extremadura", 
                  "Galicia", "Madrid", "Murcia", "Navarra", 
                  "Pais Vasco", "La Rioja", "Pais Valenciano", 
-                 "Ceuta", "Melilla"};
+                 "Ceuta", "Melilla","aaaaa","bbb","ccc","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd","dddd"};
 		//f.cambiarPanel(new PanelSolAsig());
 	
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Apuntes de PADS");
