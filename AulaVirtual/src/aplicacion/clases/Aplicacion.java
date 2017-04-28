@@ -140,16 +140,18 @@ public class Aplicacion {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.NO_INI) == false) {
 			return false;
 		}
+		
+		leerAlumnosDeFichero("alumnos.txt");
+		leerProfesorDeFichero ("profesor.txt");
+		
 		if (this.niaProfesor.equals(nia) && this.contrasenaProfesor.equals(contrasena)){
 			this.tipoUsu = TipoUsuario.PROFESOR;
-			System.out.println("Bienvenido de nuevo");
 			return true;
 		} else{
 			for (Alumno alu: this.alumnos){
 				if (alu.getNia().equals(nia) && alu.getContrasena().equals(contrasena)){
 					this.alumnoActual = alu;
 					this.tipoUsu = TipoUsuario.ALUMNO;
-					System.out.println("Bienvenido "+alu.getNombre());
 					return true;
 				}
 			}

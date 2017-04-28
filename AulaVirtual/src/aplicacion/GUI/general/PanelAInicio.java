@@ -16,6 +16,6 @@ public class PanelAInicio extends JPanel {
 		this.add(new PanelAsig2(data),BorderLayout.WEST);
 		this.add(new PanelAsig(tree), BorderLayout.CENTER);
 		//this.add(new PanelSolAsig(data),BorderLayout.CENTER);
-		this.setVisible(true);
+		this.setVisible(false);
 	}
 }

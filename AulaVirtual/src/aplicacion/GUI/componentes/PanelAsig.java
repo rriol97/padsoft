@@ -17,6 +17,7 @@ public class PanelAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public PanelAsig (JTree arbol) {
+		
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		arbol.setFont(new Font("Arial",20, 25));
 		arbol.addTreeSelectionListener(new TreeSelectionListener() {
