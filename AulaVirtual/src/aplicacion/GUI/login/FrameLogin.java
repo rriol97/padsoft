@@ -23,6 +23,6 @@ public class FrameLogin extends JFrame {
 	}
 	
 	public void borrarLogin(){
-		this.dispose();
+		this.setVisible(false);
 	}
 }

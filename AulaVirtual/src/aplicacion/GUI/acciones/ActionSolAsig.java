@@ -14,6 +14,7 @@ public class ActionSolAsig implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		PanelSolAsig ventana = new PanelSolAsig(Aplicacion.getInstance());
 		Frame.getIntance().cambiarPanel(ventana, 1);
+		Frame.getIntance().repaint();
 		ventana.setVisible(true);
 	}
 

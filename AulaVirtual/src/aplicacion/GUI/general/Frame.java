@@ -5,6 +5,9 @@ import java.awt.Toolkit;
 
 import javax.swing.*;
 
+import aplicacion.GUI.acciones.ActionSalir;
+import aplicacion.clases.Aplicacion;
+
 public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -17,7 +20,12 @@ public class Frame extends JFrame {
 		super("Aula Virtual");
 		this.setLayout(new BorderLayout());
 		this.der = null;
-		this.izq = null;
+		this.izq = new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual());
+		JButton salir = new JButton("Cerrar Sesión");
+		this.izq.setVisible(true);
+		this.getContentPane().add(this.izq, BorderLayout.WEST);
+		this.getContentPane().add(salir,BorderLayout.NORTH);
+		salir.addActionListener(new ActionSalir());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
@@ -37,15 +45,18 @@ public class Frame extends JFrame {
 			nuevo.setVisible(true);
 			this.add(nuevo,BorderLayout.WEST);
 			this.izq = nuevo;
-			this.repaint();
 		} else if (panel == 1) {
 			if (this.der != null) {
 				this.der.setVisible(false);
 			}
-			nuevo.setVisible(true);
 			this.add(nuevo,BorderLayout.CENTER);
+			nuevo.setVisible(true);
 			this.der = nuevo;
-			this.repaint();
 		}
+	}
+	
+	public void cambiarPanel(){
+		this.der.setVisible(false);
+		this.repaint();
 	}
 }

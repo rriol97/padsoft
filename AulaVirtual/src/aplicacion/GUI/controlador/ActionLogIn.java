@@ -40,7 +40,6 @@ public class ActionLogIn implements ActionListener {
 			else{
 				FrameLogin.getInstance().borrarLogin();
 				Frame.getIntance().setVisible(true);
-				this.vista.setVisible(false);
 			}
 		} catch (HeadlessException | ClassNotFoundException | IOException e1) {
 			e1.printStackTrace();
