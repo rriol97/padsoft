@@ -64,7 +64,6 @@ public class PanelSolAsig extends JPanel {
         
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
         this.setVisible(true);
-        
     }
     
 }
