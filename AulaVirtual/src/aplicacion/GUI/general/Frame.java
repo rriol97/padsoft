@@ -8,6 +8,12 @@ import javax.swing.*;
 import aplicacion.GUI.acciones.ActionSalir;
 import aplicacion.clases.Aplicacion;
 
+/**
+ * Clase que implementa la venta principal de la aplicacion.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -16,12 +22,13 @@ public class Frame extends JFrame {
 	private JPanel der;
 	private JPanel izq;
 	
+	// TODO cambiar el diseÃ±o de la ventana, que es muy cutre
 	private Frame (){
 		super("Aula Virtual");
 		this.setLayout(new BorderLayout());
 		this.der = null;
 		this.izq = new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual());
-		JButton salir = new JButton("Cerrar Sesión");
+		JButton salir = new JButton("Cerrar Sesion");
 		this.izq.setVisible(true);
 		this.getContentPane().add(this.izq, BorderLayout.WEST);
 		this.getContentPane().add(salir,BorderLayout.NORTH);
@@ -29,10 +36,16 @@ public class Frame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
+	
 	public static Frame getIntance(){
 		return instance;
 	}
 	
+	/**
+	 * Metodo para cambiar uno de los paneles de la ventana por otro nuevo.
+	 * @param nuevo Panel que se quiere mostrar en la ventana.
+	 * @param panel Indicador del panel que va a ser sustituido por nuevo.
+	 */
 	public void cambiarPanel (JPanel nuevo, int panel) {
 		if (nuevo == null) {
 			return;

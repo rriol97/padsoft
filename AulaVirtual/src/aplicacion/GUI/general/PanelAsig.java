@@ -13,6 +13,12 @@ import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
 
+/**
+ * Clase que implementa el panel mostrado cuando un alumno consulta una de sus asignaturas.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -39,6 +45,11 @@ public class PanelAsig extends JPanel {
 		this.add(tree);
 	}
 	
+	/**
+	 * Metodo que obtiene el arbol asociado a un elemento.
+	 * @param e Elemento que se quiere obtener el arbol.
+	 * @return Nodo raiz del arbol.
+	 */
 	private DefaultMutableTreeNode getNode (Elemento e) {
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e.getNombre());
 		if (e instanceof Tema) {

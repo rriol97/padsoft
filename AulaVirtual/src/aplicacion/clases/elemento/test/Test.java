@@ -135,7 +135,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * 
 	 * @return boolean true si es correcta correctamente, false en caso contrario
 	 */
-	private boolean isFechaValida(){
+	public boolean isFechaValida(){
 		if (LocalDate.now().isBefore(this.fechaIni)){
 			return true;
 		}

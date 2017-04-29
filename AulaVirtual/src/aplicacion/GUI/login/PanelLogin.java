@@ -8,6 +8,12 @@ import javax.swing.*;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.controlador.ActionLogIn;
 
+/**
+ * Clase que implementa el panel mostrado al iniciar al iniciar la aplicacion. Pide un usuario y contrasena.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelLogin extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel etiqueta_user;

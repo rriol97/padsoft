@@ -18,8 +18,12 @@ import aplicacion.GUI.acciones.ActionSolAsig;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 
-
-
+/**
+ * Clase que implementa el panel que muestra las asignaturas matriculadas de un alumno. Siempre se muestra en un lateral de la ventana.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
     private JList<String> listOne;
@@ -66,6 +70,10 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         
 	}
 
+	// TODO comentar esta funcion
+	/**
+	 *
+	 */
     public void valueChanged(ListSelectionEvent e) {               
         int selection = this.listOne.getSelectedIndex(); 
         JOptionPane.showMessageDialog(null, dataList[selection]);

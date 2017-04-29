@@ -17,18 +17,32 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
+/**
+ * Clase que implementa el panel que se muestra cuando un alumno quiere solicitar una asignatura.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelSolAsig extends JPanel {
-    private JComboBox listaAsig;
+	private static final long serialVersionUID = 1L;
+	
+	private JComboBox<String> listaAsig;
     private JScrollPane scrollingAsig;
     private JTextField texto;
  
     
-    public PanelSolAsig (Aplicacion aplicacion){
+    public PanelSolAsig (Aplicacion ap){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-		Asignatura a = new Asignatura ("Cn");
-		Asignatura []s = {a};
-        listaAsig = new JComboBox(s);
+		
+		String[] lista_asig = new String[ap.getAsignaturas().size()];
+ 		int i = 0;
+ 		for (Asignatura asig: ap.getAsignaturas()) {
+ 			lista_asig[i] = asig.getNombre();
+ 			i++;
+ 		}
+ 		this.listaAsig = new JComboBox<String>(lista_asig);
+        
         JLabel etiq = new JLabel("Asignaturas");
         etiq.setFont(new Font("Arial",12,18));
         scrollingAsig = new JScrollPane(listaAsig);
