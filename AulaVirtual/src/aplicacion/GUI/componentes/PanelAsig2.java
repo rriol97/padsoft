@@ -16,6 +16,7 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import aplicacion.GUI.acciones.ActionSolAsig;
 import aplicacion.GUI.general.Frame;
 
 
@@ -32,7 +33,7 @@ public class PanelAsig2 extends JPanel implements ListSelectionListener {
 		
         listOne = new JList(dataList);
         scrollingListOne = new JScrollPane(listOne);
-        scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.15)));
+        scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         Button botonAceptar = new Button("Solicitar Asignatura");
         botonAceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
         botonAceptar.setFont(new Font("Arial",20,15));
@@ -42,6 +43,7 @@ public class PanelAsig2 extends JPanel implements ListSelectionListener {
         this.add(tit);
         this.dataList = dataList;
         this.add(botonAceptar);
+        botonAceptar.addActionListener(new ActionSolAsig());
         this.add(scrollingListOne);
         
         layout.putConstraint(SpringLayout.WEST,botonAceptar,5, SpringLayout.WEST,this);

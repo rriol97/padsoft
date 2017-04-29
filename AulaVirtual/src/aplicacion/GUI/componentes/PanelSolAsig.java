@@ -2,32 +2,26 @@ package aplicacion.GUI.componentes;
 
 import java.awt.Button;
 import java.awt.Dimension;
-import java.awt.Font;
-
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.SwingUtilities;
 
 import aplicacion.GUI.general.Frame;
 
-public class PanelSolAsig extends JFrame {
+public class PanelSolAsig extends JPanel {
     private JComboBox listaAsig;
     private JScrollPane scrollingAsig;
-    private String[]asignaturas;
+ 
     
-    public PanelSolAsig (String [] asig, String text){
-    	super (text);
+    public PanelSolAsig (String [] asig){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-    	this.asignaturas = asig;
-    	
-        listaAsig = new JComboBox(this.asignaturas);
+  
+        listaAsig = new JComboBox(asig);
         JLabel etiq = new JLabel("Asignaturas");
-        //etiq.setFont(new Font ("Arial",12,15));
         scrollingAsig = new JScrollPane(listaAsig);
         scrollingAsig.setPreferredSize(new Dimension(200,30));
         JTextField texto = new JTextField(30);
@@ -58,28 +52,10 @@ public class PanelSolAsig extends JFrame {
         layout.putConstraint(SpringLayout.WEST,botonAcp,3, SpringLayout.EAST,botonCnr);
         layout.putConstraint(SpringLayout.NORTH,botonAcp,60, SpringLayout.SOUTH,texto);
         
-       
+        this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
         this.setVisible(true);
+        
     }
     
-    public static void main(String[] args) {
-    		String[]data = {"Ricardo", "Adrian", "Alejo", "aaa", "bbb", "ccc", "ddddddddddddddd"};
-            Runnable runner = new Runnable() {
-                    public void run() {
-                            int APP_WIDTH  = 500;
-                            int APP_HEIGHT = 250;
-
-                            // Ventana principal 
-                            final PanelSolAsig frame = 
-                                    new PanelSolAsig(data,"Solicitud de Asignaturas");
-                                                                                            
-                            frame.setSize(APP_WIDTH, APP_HEIGHT);
-                            frame.setResizable(false);
-                            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                                
-                            frame.setVisible(true);                                                        
-                    }
-            };
-            SwingUtilities.invokeLater(runner);                
-    }
 }
 

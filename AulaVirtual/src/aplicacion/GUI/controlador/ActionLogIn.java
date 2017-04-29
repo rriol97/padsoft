@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.general.PanelAInicio;
+import aplicacion.GUI.login.FrameLogin;
 import aplicacion.GUI.login.PanelLogin;
 import aplicacion.clases.Aplicacion;
 
@@ -39,8 +39,8 @@ public class ActionLogIn implements ActionListener {
 				JOptionPane.showMessageDialog(vista, "Error, usuario y contraseñas incorrectos");
 			}
 			else{
-				Frame f = new Frame();
-				f.setVisible(true);
+				FrameLogin.getInstance().borrarLogin();
+				Frame.getIntance().setVisible(true);
 				this.vista.setVisible(false);
 			}
 		} catch (HeadlessException | ClassNotFoundException | IOException e1) {

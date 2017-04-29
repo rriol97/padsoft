@@ -6,14 +6,12 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.general.PanelAInicio;
 import aplicacion.GUI.login.FrameLogin;
 
 public class FrameTester {
 	public static void main(String[] args) {
-		FrameLogin f = new FrameLogin();
-		Frame f2 = new Frame();
-		f2.setVisible(false);
+		FrameLogin.getInstance();
+		Frame.getIntance().setVisible(false);
 		String[] dataList = {"Andalucia", "Aragon", "Asturias", "Baleares", 
                  "Canarias", "Cantabria", "Castilla la Mancha", 
                  "Castilla y Leon", "Catalunya", "Extremadura", 
@@ -35,8 +33,8 @@ public class FrameTester {
 		//f.add(c);
 
 		
-		f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FrameLogin.getInstance().setVisible(true);
+		FrameLogin.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
         
