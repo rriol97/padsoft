@@ -1,4 +1,4 @@
-package aplicacion.GUI.componentes;
+package aplicacion.GUI.general;
 
 import java.awt.Button;
 import java.awt.Dimension;
@@ -9,21 +9,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.clases.Aplicacion;
+import aplicacion.clases.Asignatura;
 
 public class PanelSolAsig extends JPanel {
-    private JComboBox listaAsig;
+	private static final long serialVersionUID = 1L;
+	
+	private JComboBox<String> listaAsig;
     private JScrollPane scrollingAsig;
  
     
-    public PanelSolAsig (String [] asig){
+    public PanelSolAsig (Aplicacion ap){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-  
-        listaAsig = new JComboBox(asig);
+		
+		String[] lista_asig = new String[ap.getAsignaturas().size()];
+		int i = 0;
+		for (Asignatura asig: Aplicacion.getInstance().getAsignaturas()) {
+			lista_asig[i] = asig.getNombre();
+			i++;
+		}
+		
+		this.listaAsig = new JComboBox<String>(lista_asig);
         JLabel etiq = new JLabel("Asignaturas");
-        scrollingAsig = new JScrollPane(listaAsig);
-        scrollingAsig.setPreferredSize(new Dimension(200,30));
+        this.scrollingAsig = new JScrollPane(listaAsig);
+        this.scrollingAsig.setPreferredSize(new Dimension(200,30));
         JTextField texto = new JTextField(30);
         JLabel coment = new JLabel ("Comentario");
         texto.setPreferredSize(new Dimension((int)(Frame.WIDTH/23),(int)(Frame.HEIGHT/23)));

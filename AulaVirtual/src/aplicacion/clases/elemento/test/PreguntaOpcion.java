@@ -73,4 +73,21 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	public void setAleatoria(boolean aleatoria) {
 		this.aleatoria = aleatoria;
 	}
+	
+	/**
+	 * Metodo para mostrar la lista de opciones de una pregunta desordenada.
+	 * 
+	 * @return List<Opcion> Lista de preguntas desordenadas.
+	 */
+	public List<Opcion> desordenar() {
+		int i;
+		List <Opcion> op = new ArrayList<Opcion>(this.opciones.size());
+		for (i = 0; i < this.opciones.size(); i++) {
+			int random = (int)(Math.random() * this.opciones.size());
+			if (op.add(this.opciones.get(random)) == false) {
+				return null;
+			}
+		}
+		return op;
+	}
 }

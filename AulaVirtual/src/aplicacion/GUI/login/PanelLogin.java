@@ -2,7 +2,6 @@ package aplicacion.GUI.login;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -29,7 +28,7 @@ public class PanelLogin extends JPanel{
 		etiqueta_user.setLabelFor(campo_user);
 		texto.add(campo_user);
 		
-		etiquetaPsw = new JLabel("Contraseña: ", JLabel.TRAILING);
+		etiquetaPsw = new JLabel("Contrasena: ", JLabel.TRAILING);
 		texto.add(etiquetaPsw);
 		campoPsw = new JPasswordField(10);
 		etiquetaPsw.setLabelFor(campoPsw);
@@ -54,6 +53,6 @@ public class PanelLogin extends JPanel{
 	}
 	
 	public String getPassword(){
-		return this.campoPsw.getText();
+		return String.valueOf(this.campoPsw.getPassword());
 	}
 }

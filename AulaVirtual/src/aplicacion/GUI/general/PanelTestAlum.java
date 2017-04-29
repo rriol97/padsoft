@@ -56,7 +56,7 @@ public class PanelTestAlum extends JPanel {
 				PreguntaOpcion po = (PreguntaOpcion)p;
 				List <Opcion> opciones = po.getOpciones();
 				if(po.isAleatoria()) {
-					/*opciones = po.desordenar();*/
+					opciones = po.desordenar();
 				}
 				if (po instanceof OpcionMultiple) {
 					for (Opcion o: opciones) {

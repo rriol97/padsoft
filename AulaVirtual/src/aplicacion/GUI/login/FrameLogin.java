@@ -2,8 +2,6 @@ package aplicacion.GUI.login;
 
 import javax.swing.*;
 
-import aplicacion.GUI.general.Frame;
-
 public class FrameLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 

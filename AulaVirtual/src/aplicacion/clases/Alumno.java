@@ -68,7 +68,7 @@ public class Alumno implements java.io.Serializable {
 		return Collections.unmodifiableList(this.resoluciones);
 	}
 	
-	public List<Asignatura> getAsignatura() {
+	public List<Asignatura> getAsignaturas() {
 		return Collections.unmodifiableList(this.asignaturas);
 	}
 	

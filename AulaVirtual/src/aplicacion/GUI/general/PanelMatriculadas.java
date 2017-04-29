@@ -1,11 +1,9 @@
-package aplicacion.GUI.componentes;
+package aplicacion.GUI.general;
 
 import java.awt.Button;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -17,21 +15,29 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import aplicacion.GUI.acciones.ActionSolAsig;
-import aplicacion.GUI.general.Frame;
+import aplicacion.clases.Alumno;
+import aplicacion.clases.Asignatura;
 
 
 
-public class PanelAsig2 extends JPanel implements ListSelectionListener {
+public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
-    private JList listOne;
+    private JList<String> listOne;
     private JScrollPane scrollingListOne;
     private String[]dataList;
 	
-	public PanelAsig2(String[]dataList) {  
+	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
-        listOne = new JList(dataList);
+		String[] dataList = new String[alum.getAsignaturas().size()];
+		int i = 0;
+		for (Asignatura asig: alum.getAsignaturas()) {
+			dataList[i] = asig.getNombre();
+			i++;
+		}
+		
+        listOne = new JList<String>(dataList);
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         Button botonAceptar = new Button("Solicitar Asignatura");

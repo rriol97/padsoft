@@ -73,6 +73,7 @@ public class Asignatura implements java.io.Serializable {
 		}
 		if (solicitud == null || this.solicitudes.contains(solicitud)){
 			this.solicitudes.remove(solicitud);
+			solicitud.getAlumno().anadirAsignatura(this);
 			return this.matriculados.add(solicitud.getAlumno());
 		}
 		return false;

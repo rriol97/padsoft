@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.general.Frame;
@@ -27,16 +26,16 @@ public class ActionLogIn implements ActionListener {
 		String psw = vista.getPassword();
 		
 		if (usu.equals("")){
-			JOptionPane.showMessageDialog(vista, "Debe introducir su nobre de usuario y contraseña para iniciar sesión");
+			JOptionPane.showMessageDialog(vista, "Debe introducir su nobre de usuario y contrasena para iniciar sesion");
 		}
 		
 		if (psw.equals("")){
-			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contraseña para iniciar sesión");
+			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contrasena para iniciar sesion");
 		}
 		
 		try {
 			if (Aplicacion.getInstance().logIn(usu, psw) == false){
-				JOptionPane.showMessageDialog(vista, "Error, usuario y contraseñas incorrectos");
+				JOptionPane.showMessageDialog(vista, "Error, usuario y contrasenas incorrectos");
 			}
 			else{
 				FrameLogin.getInstance().borrarLogin();
