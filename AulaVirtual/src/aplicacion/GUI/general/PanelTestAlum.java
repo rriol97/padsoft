@@ -23,30 +23,31 @@ public class PanelTestAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public PanelTestAlum (Test t) {
-		SpringLayout l = new SpringLayout();
-		this.setLayout(l);
+		this.setLayout(new BoxLayout(this, 1));
 		
+		JPanel panel_nombre = new JPanel();
+		SpringLayout l1 = new SpringLayout();
+		panel_nombre.setLayout(l1);
 		JLabel etiqueta_nombre = new JLabel (t.getNombre());
-		this.add(etiqueta_nombre);
-		l.putConstraint(SpringLayout.NORTH, etiqueta_nombre, 10, SpringLayout.NORTH, this);
-		l.putConstraint(SpringLayout.WEST, etiqueta_nombre, 10, SpringLayout.WEST, this);
+		panel_nombre.add(etiqueta_nombre);
+		l1.putConstraint(SpringLayout.NORTH, etiqueta_nombre, 5, SpringLayout.NORTH, panel_nombre);
+		l1.putConstraint(SpringLayout.WEST, etiqueta_nombre, 5, SpringLayout.WEST, panel_nombre);
+		this.add(panel_nombre);
 		
 		List <Pregunta> preguntas = t.getPreguntas();
 		if (t.isAleatorio()) {
 			preguntas = t.desordenar();
 		}
 		
-		JPanel panel_preguntas = new JPanel();
-		panel_preguntas.setLayout(new BoxLayout(panel_preguntas, 1));
-		
 		for (Pregunta p: preguntas) {
 			JPanel panel_pregunta = new JPanel();
-			SpringLayout layout = new SpringLayout();
-			panel_pregunta.setLayout(layout);
+			SpringLayout l2 = new SpringLayout();
+			panel_pregunta.setLayout(l2);
 			
 			JLabel etiqueta_enunciado = new JLabel (p.getEnunciado());
 			panel_pregunta.add(etiqueta_enunciado);
-			layout.putConstraint(SpringLayout.NORTH, etiqueta_enunciado, 10, SpringLayout.NORTH, panel_pregunta);
+			l2.putConstraint(SpringLayout.NORTH, etiqueta_enunciado, 10, SpringLayout.NORTH, panel_pregunta);
+			l2.putConstraint(SpringLayout.WEST, etiqueta_enunciado, 5, SpringLayout.WEST, panel_pregunta);
 			
 			JPanel panel_opcion = new JPanel();
 			panel_opcion.setLayout(new BoxLayout(panel_opcion, 1));
@@ -77,24 +78,22 @@ public class PanelTestAlum extends JPanel {
 			}
 			
 			panel_pregunta.add(panel_opcion);
-			layout.putConstraint(SpringLayout.NORTH, panel_opcion,5, SpringLayout.SOUTH, etiqueta_enunciado);
-			layout.putConstraint(SpringLayout.WEST, panel_opcion, 40, SpringLayout.WEST, panel_pregunta);
-			panel_preguntas.add(panel_pregunta);
+			l2.putConstraint(SpringLayout.NORTH, panel_opcion,5, SpringLayout.SOUTH, etiqueta_enunciado);
+			l2.putConstraint(SpringLayout.WEST, panel_opcion, 45, SpringLayout.WEST, panel_pregunta);
+			this.add(panel_pregunta);
 		}
 		
-		this.add(panel_preguntas);
-		l.putConstraint(SpringLayout.NORTH, panel_preguntas, 10, SpringLayout.SOUTH, etiqueta_nombre);
-		l.putConstraint(SpringLayout.WEST, panel_preguntas, 10, SpringLayout.WEST, this);
-		
-		
 		JPanel panel_botones = new JPanel();
-		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
+		SpringLayout l3 = new SpringLayout();
+		panel_botones.setLayout(l3);
 		JButton boton_volver = new JButton("Volver");
 		panel_botones.add(boton_volver);
+		l3.putConstraint(SpringLayout.NORTH, boton_volver, 5, SpringLayout.NORTH, panel_botones);
+		l3.putConstraint(SpringLayout.WEST, boton_volver, 5, SpringLayout.WEST, panel_botones);
 		JButton boton_finalizar = new JButton("Finalizar");
 		panel_botones.add(boton_finalizar);
+		l3.putConstraint(SpringLayout.NORTH, boton_finalizar, 5, SpringLayout.NORTH, panel_botones);
+		l3.putConstraint(SpringLayout.WEST, boton_finalizar, 5, SpringLayout.EAST, boton_volver);
 		this.add(panel_botones);
-		l.putConstraint(SpringLayout.NORTH, panel_botones, -10, SpringLayout.SOUTH, panel_preguntas);
-		l.putConstraint(SpringLayout.WEST, panel_botones, 10, SpringLayout.WEST, this);
 	}
 }
