@@ -15,18 +15,23 @@ import aplicacion.GUI.acciones.ActionAceptarCreacion;
 import aplicacion.GUI.acciones.ActionCancelar;
 import aplicacion.GUI.general.Frame;
 
+/**
+ * Clase que implementa el panel de creacion de asignaturas de un profesor.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	JLabel texto;
-	JTextField campo_asig;
+	private JTextField campo_asig;
 	
 	public PanelCrearAsig(){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
-		this.texto = new JLabel ("Nombre de la asignatura");
-		this.texto.setFont(new Font ("Arial",12,18));
+		JLabel texto = new JLabel ("Nombre de la asignatura");
+		texto.setFont(new Font ("Arial",12,18));
 		
 		this.campo_asig = new JTextField();
 		campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/23,(int)Frame.HEIGHT/23));

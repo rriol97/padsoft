@@ -2,11 +2,9 @@ package aplicacion.GUI.Profesor;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -28,9 +26,9 @@ import aplicacion.clases.Solicitud;
  */
 public class PanelSolPendientes extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
-	private JList<Solicitud> listOne;
-    private JScrollPane scrollingListOne;
-    private Solicitud[] alumSol;
+	
+	private JList<String> listOne;
+    private Solicitud[] solicitudes;
     
     public PanelSolPendientes(Aplicacion ap) {
 		this.setLayout(new SpringLayout());
@@ -39,11 +37,12 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         tit.setFont(new Font ("Arial",12,18));
         this.add(tit);
         
-		this.alumSol = getSol(ap.getAsignaturas());
-        listOne = new JList<Solicitud>(this.alumSol);
-        scrollingListOne = new JScrollPane(listOne);
+        this.solicitudes = new Solicitud [ap.getAlumnos().size()*ap.getAsignaturas().size()];
+		String[] arraySol = getSol(ap);
+        listOne = new JList<String>(arraySol);
+        JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.5)));
-        this.add(this.scrollingListOne);
+        this.add(scrollingListOne);
         
         SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
         
@@ -51,24 +50,24 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    } 
-	private Solicitud[] getSol(List<Asignatura>b){
+    }
+    
+	private String[] getSol(Aplicacion ap){
     	int index = 0;
-    	Solicitud[] data = {};
-    	for (Asignatura a:b){
-    		if (a.getSolicitudes().isEmpty()==false){
-    			continue;
-    		}
-    		for (Solicitud s:a.getSolicitudes()){
-    			data[index] = s;
+    	String[] data = new String[ap.getAlumnos().size()*ap.getAsignaturas().size()];
+    	for (Asignatura a: ap.getAsignaturas()){
+    		for (Solicitud s: a.getSolicitudes()){
+    			this.solicitudes[index] = s;
+    			data[index] = s.toString();
     			index++;
     		}
     	}
     	return data;
     }
+	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		Solicitud sel = this.listOne.getSelectedValue();
-		//Frame.getIntance().cambiarPanel(new PanelSolicitud(sel),1);
+		int sel = this.listOne.getSelectedIndex();
+		Frame.getIntance().cambiarPanel(new PanelSolProf(this.solicitudes[sel]), 1);
 	}
 }

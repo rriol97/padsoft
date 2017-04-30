@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.Alumno.PanelSolicitud;
+import aplicacion.GUI.Alumno.PanelSolAlum;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
@@ -13,9 +13,9 @@ import aplicacion.clases.Asignatura;
 
 public class ActionEnviarSol implements ActionListener{
 	
-	private PanelSolicitud panel;
+	private PanelSolAlum panel;
 	
-	public ActionEnviarSol(PanelSolicitud p){
+	public ActionEnviarSol(PanelSolAlum p){
 		this.panel = p;
 	}
 
@@ -25,6 +25,8 @@ public class ActionEnviarSol implements ActionListener{
 		Asignatura sel = this.panel.getSeleccionada(Aplicacion.getInstance());
 		if (sel== null){
 			JOptionPane.showMessageDialog(this.panel, "Debe seleccionar una asignatura");
+		} else if (coment.equals("")){
+			JOptionPane.showMessageDialog(this.panel, "Debe añadir un mensaje");
 		} else {
 			Controlador.getInstance().solicitarAsig(sel,coment);
 			JOptionPane.showMessageDialog(this.panel, "Se ha enviado la solicitud correctamente");

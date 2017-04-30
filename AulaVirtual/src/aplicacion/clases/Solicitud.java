@@ -15,7 +15,7 @@ public class Solicitud implements java.io.Serializable {
 	private final String texto;
 	private final LocalDate fecha;
 	private Alumno alumno;
-	private Asignatura asigantura;
+	private Asignatura asignatura;
 	
 	/**
 	 * Constructor de Solicitud.
@@ -24,11 +24,11 @@ public class Solicitud implements java.io.Serializable {
 	 * @param alumno alumno que solicita
 	 * @param asignatura asignatura a solicitar
 	 */
-	public Solicitud(String texto,Alumno alumno,Asignatura asignatura) {
+	public Solicitud(String texto, Alumno alumno, Asignatura asignatura) {
 		this.texto = texto;
 		this.fecha = LocalDate.now();
 		this.alumno = alumno;
-		this.asigantura = asignatura;
+		this.asignatura = asignatura;
 	}
 
 	public String getTexto() {
@@ -45,12 +45,12 @@ public class Solicitud implements java.io.Serializable {
 	}
 	
 	public Asignatura getAsignatura(){
-		return this.asigantura;
+		return this.asignatura;
 	}
 
 	@Override
 	public String toString() {
-		return  this.alumno+" solicita inscribirse en la asignatura "+this.asigantura.getNombre();
+		return  this.alumno+" solicita inscribirse en la asignatura "+this.asignatura.getNombre();
 	}
 	
 }

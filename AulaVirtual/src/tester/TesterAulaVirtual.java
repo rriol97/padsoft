@@ -187,6 +187,7 @@ public class TesterAulaVirtual {
 			System.out.println("  "+asig);
 		}
 		
+		System.out.println(edyl.getSolicitudes());
 	}
 
 }

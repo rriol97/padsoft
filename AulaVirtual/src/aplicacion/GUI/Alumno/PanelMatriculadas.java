@@ -29,8 +29,8 @@ import aplicacion.clases.Asignatura;
  */
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
+	
     private JList<String> listOne;
-    private JScrollPane scrollingListOne;
 	
 	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
@@ -48,7 +48,7 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 		
         listOne = new JList<String>(dataList);
         
-        scrollingListOne = new JScrollPane(listOne);
+        JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
         

@@ -3,12 +3,10 @@ package aplicacion.GUI.Profesor;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -33,7 +31,6 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	private static final long serialVersionUID = 1L;
 	
     private JList<String> listOne;
-    private JScrollPane scrollingListOne;
 
 	public PanelAsignaturas(Aplicacion ap){
 		BorderLayout layout = new BorderLayout();
@@ -47,7 +44,7 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 		}
 	
         listOne = new JList<String>(dataList);
-        scrollingListOne = new JScrollPane(listOne);
+        JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         scrollingListOne.setFont(new Font ("Arial",12,18));
         this.add(scrollingListOne, BorderLayout.CENTER);

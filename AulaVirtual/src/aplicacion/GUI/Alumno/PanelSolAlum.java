@@ -1,4 +1,4 @@
-package aplicacion.GUI.Alumno;
+										package aplicacion.GUI.Alumno;
 
 import java.awt.Button;
 import java.awt.Dimension;
@@ -23,15 +23,14 @@ import aplicacion.clases.Asignatura;
  * @author Ricardo Riol
  *
  */
-public class PanelSolicitud extends JPanel {
+public class PanelSolAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JComboBox<String> listaAsig;
-    private JScrollPane scrollingAsig;
     private JTextField texto;
  
     
-    public PanelSolicitud (Aplicacion ap){
+    public PanelSolAlum (Aplicacion ap){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
@@ -45,7 +44,7 @@ public class PanelSolicitud extends JPanel {
         
         JLabel etiq = new JLabel("Asignaturas");
         etiq.setFont(new Font("Arial",12,18));
-        scrollingAsig = new JScrollPane(listaAsig);
+        JScrollPane scrollingAsig = new JScrollPane(listaAsig);
         scrollingAsig.setPreferredSize(new Dimension(200,30));
         etiq.setLabelFor(scrollingAsig);
         
@@ -96,7 +95,6 @@ public class PanelSolicitud extends JPanel {
     			return a;
     		}
     	}
-    	
     	return null;
     }
     

@@ -128,7 +128,6 @@ public class Alumno implements java.io.Serializable {
 		if (this.asignaturas.contains(sol.getAsignatura())){
 			return false;
 		}
-		System.out.println("Su solicitud se ha enviado correctamenete");
 		return sol.getAsignatura().anadirSolicitud(sol);
 	}
 	
@@ -148,7 +147,6 @@ public class Alumno implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Alumno [nia=" + nia + ", correo=" + correo + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos +"]";
+		return nombre + " " + apellidos + " (" + nia + ")";
 	}
 }

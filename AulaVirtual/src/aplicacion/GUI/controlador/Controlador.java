@@ -34,9 +34,9 @@ public class Controlador {
 		FrameLogin.getInstance().setVisible(true);
 	}
 
-	public void solicitarAsig(Asignatura a, String c) {
-		Solicitud d = new Solicitud(c,Aplicacion.getInstance().getAlumnoActual(),a);
-		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(d);
+	public void solicitarAsig(Asignatura a, String texto) {
+		Solicitud s = new Solicitud(texto, Aplicacion.getInstance().getAlumnoActual(), a);
+		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(s);
 	}
 
 	public boolean crearAsig(String texto) {

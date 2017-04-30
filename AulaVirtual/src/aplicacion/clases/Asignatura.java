@@ -71,12 +71,12 @@ public class Asignatura implements java.io.Serializable {
 		if(EmailSystem.isValidEmailAddr(solicitud.getAlumno().getCorreo())){
 			EmailSystem.send(solicitud.getAlumno().getCorreo(),"Adimision", "Se ha inscrito correctamente en la asignatura "+this.getNombre());
 		}
-		if (solicitud == null || this.solicitudes.contains(solicitud)){
-			this.solicitudes.remove(solicitud);
-			solicitud.getAlumno().anadirAsignatura(this);
-			return this.matriculados.add(solicitud.getAlumno());
+		if (solicitud == null || this.solicitudes.contains(solicitud) == false){
+			return false;
 		}
-		return false;
+		this.solicitudes.remove(solicitud);
+		solicitud.getAlumno().anadirAsignatura(this);
+		return this.matriculados.add(solicitud.getAlumno());
 	}
 	
 	/**
