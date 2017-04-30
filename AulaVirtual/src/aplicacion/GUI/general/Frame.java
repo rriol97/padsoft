@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import aplicacion.GUI.Alumno.PanelMatriculadas;
-import aplicacion.GUI.Profesor.PanelAsigProf;
+import aplicacion.GUI.Profesor.PanelAsignaturas;
 import aplicacion.GUI.acciones.ActionSalir;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.TipoUsuario;
@@ -94,7 +94,7 @@ public class Frame extends JFrame {
 			cambiarPanel(new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual()), 0);
 			cambiarPanel(new JPanel(), 1);
 		} else if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
-			cambiarPanel(new PanelAsigProf(), 0);
+			cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
 			cambiarPanel(new JPanel(), 1);
 		}
 	}

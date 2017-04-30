@@ -28,7 +28,7 @@ import aplicacion.clases.Asignatura;
  */
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
-    private JList<String> listOne;
+    private JList<Asignatura> listOne;
     private JScrollPane scrollingListOne;
     private String[]dataList;
 	
@@ -47,7 +47,7 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         etiqueta_asignaturas.setFont(new Font("Arial",20,19));
 		this.add(etiqueta_asignaturas);
 		
-        listOne = new JList<String>(dataList);
+        listOne = new JList<Asignatura>(dataList);
         this.dataList = dataList;
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
