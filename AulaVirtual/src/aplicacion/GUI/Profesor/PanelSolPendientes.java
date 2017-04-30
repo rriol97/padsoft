@@ -2,6 +2,7 @@ package aplicacion.GUI.Profesor;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -27,9 +28,9 @@ import aplicacion.clases.Solicitud;
  */
 public class PanelSolPendientes extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
-	private JList<String> listOne;
+	private JList<Solicitud> listOne;
     private JScrollPane scrollingListOne;
-    private String[] alumSol;
+    private Solicitud[] alumSol;
     
     public PanelSolPendientes(Aplicacion ap) {
 		this.setLayout(new SpringLayout());
@@ -38,8 +39,8 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         tit.setFont(new Font ("Arial",12,18));
         this.add(tit);
         
-		this.alumSol = getSol(ap);
-        listOne = new JList<String>(this.alumSol);
+		this.alumSol = getSol(ap.getAsignaturas());
+        listOne = new JList<Solicitud>(this.alumSol);
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.5)));
         this.add(this.scrollingListOne);
@@ -50,22 +51,24 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    }
-    
-	private String[] getSol(Aplicacion ap){
+    } 
+	private Solicitud[] getSol(List<Asignatura>b){
     	int index = 0;
-    	String[] data = {};
-    	for (Asignatura a: ap.getAsignaturas()){
+    	Solicitud[] data = {};
+    	for (Asignatura a:b){
+    		if (a.getSolicitudes().isEmpty()==false){
+    			continue;
+    		}
     		for (Solicitud s:a.getSolicitudes()){
-    			data[index] = s.getAlumno().getNia()+s.getAlumno().getApellidos();
+    			data[index] = s;
+    			index++;
     		}
     	}
     	return data;
     }
-
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-        int selection = this.listOne.getSelectedIndex(); 
-        JOptionPane.showMessageDialog(null, alumSol[selection]);
+		Solicitud sel = this.listOne.getSelectedValue();
+		//Frame.getIntance().cambiarPanel(new PanelSolicitud(sel),1);
 	}
 }

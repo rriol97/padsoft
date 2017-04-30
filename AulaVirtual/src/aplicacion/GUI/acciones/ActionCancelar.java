@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
 
-public class ActionCancelarSol implements ActionListener{
+public class ActionCancelar implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

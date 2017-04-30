@@ -62,7 +62,7 @@ public class Frame extends JFrame {
 			nuevo.setVisible(true);
 			this.add(nuevo,BorderLayout.WEST);
 			this.izq = nuevo;
-			this.izq.repaint();
+			this.repaint();
 		} else if (panel == 1) {
 			if (this.der != null) {
 				this.der.setVisible(false);
@@ -70,7 +70,7 @@ public class Frame extends JFrame {
 			this.add(nuevo,BorderLayout.CENTER);
 			nuevo.setVisible(true);
 			this.der = nuevo;
-			this.der.repaint();
+			this.repaint();
 		}
 	}
 	
@@ -83,6 +83,7 @@ public class Frame extends JFrame {
 		}
 		this.der.setVisible(false);
 		this.der = this.vacio;
+		this.repaint();
 		return;
 	}
 	

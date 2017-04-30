@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.ActionAceptarCreacion;
+import aplicacion.GUI.acciones.ActionCancelar;
 import aplicacion.GUI.general.Frame;
 
 public class PanelCrearAsig extends JPanel {
@@ -30,7 +32,9 @@ public class PanelCrearAsig extends JPanel {
 		campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/23,(int)Frame.HEIGHT/23));
 		
 		JButton acp = new JButton("Aceptar");
+		acp.addActionListener(new ActionAceptarCreacion(this));
 		JButton c = new JButton ("Cancelar");
+		c.addActionListener(new ActionCancelar());
 		
 		
 		this.add(texto);

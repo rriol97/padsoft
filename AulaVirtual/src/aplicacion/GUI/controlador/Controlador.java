@@ -39,8 +39,8 @@ public class Controlador {
 		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(d);
 	}
 
-	public void crearAsig(String texto) {
+	public boolean crearAsig(String texto) {
 		Asignatura a = new Asignatura(texto);
-		Aplicacion.getInstance().anadirAsignatura(a);
+		return Aplicacion.getInstance().anadirAsignatura(a);
 	}
 }

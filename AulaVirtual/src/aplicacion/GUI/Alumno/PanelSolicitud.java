@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.acciones.ActionCancelarSol;
+import aplicacion.GUI.acciones.ActionCancelar;
 import aplicacion.GUI.acciones.ActionEnviarSol;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
@@ -59,7 +59,7 @@ public class PanelSolicitud extends JPanel {
         botonAcp.addActionListener(new ActionEnviarSol(this));
         botonAcp.setPreferredSize(new Dimension((int)Frame.WIDTH/20,(int)Frame.HEIGHT/35));
         Button botonCnr = new Button ("Cancelar");
-        botonCnr.addActionListener(new ActionCancelarSol());
+        botonCnr.addActionListener(new ActionCancelar());
         botonCnr.setPreferredSize(new Dimension((int)Frame.WIDTH/18,(int)Frame.HEIGHT/35));
         
         this.add(etiq);

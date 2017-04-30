@@ -3,6 +3,7 @@ package aplicacion.GUI.Profesor;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import aplicacion.GUI.Alumno.PanelAsigAlum;
 import aplicacion.GUI.acciones.ActionCrearAsig;
 import aplicacion.GUI.acciones.ActionMostrarSol;
 import aplicacion.GUI.general.Frame;
@@ -32,19 +34,18 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	
     private JList<String> listOne;
     private JScrollPane scrollingListOne;
-    private String[]dataList;
 
 	public PanelAsignaturas(Aplicacion ap){
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
-		
+
 		String[] dataList = new String[ap.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: ap.getAsignaturas()) {
 			dataList[i] = asig.getNombre();
 			i++;
 		}
-		
+	
         listOne = new JList<String>(dataList);
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
@@ -76,9 +77,15 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		 int selection = this.listOne.getSelectedIndex(); 
-	     JOptionPane.showMessageDialog(null, dataList[selection]);
+	/**
+	 * Metodo que enlaza una asignatura con su panel
+	 */
+    public void valueChanged(ListSelectionEvent e) {               
+        String selection = this.listOne.getSelectedValue();
+        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
+        	if (asig.getNombre().equals(selection)){
+        		Frame.getIntance().cambiarPanel(new PanelAsigAlum(asig), 1);
+        	}
+        }
 	}
 }

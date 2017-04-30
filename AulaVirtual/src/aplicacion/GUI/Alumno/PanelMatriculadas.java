@@ -4,9 +4,9 @@ import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
 
+
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -18,6 +18,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionSolAsig;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 /**
@@ -28,27 +29,25 @@ import aplicacion.clases.Asignatura;
  */
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
-    private JList<Asignatura> listOne;
+    private JList<String> listOne;
     private JScrollPane scrollingListOne;
-    private String[]dataList;
 	
 	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-		
+	
 		String[] dataList = new String[alum.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: alum.getAsignaturas()) {
 			dataList[i] = asig.getNombre();
 			i++;
 		}
-		
 		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
         etiqueta_asignaturas.setFont(new Font("Arial",20,19));
 		this.add(etiqueta_asignaturas);
 		
-        listOne = new JList<Asignatura>(dataList);
-        this.dataList = dataList;
+        listOne = new JList<String>(dataList);
+        
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
@@ -68,13 +67,19 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
-	// TODO comentar esta funcion
+	
 	/**
-	 *
+	 * Metodo que enlaza una asignatura de la lista de matriculadas con su panel
 	 */
     public void valueChanged(ListSelectionEvent e) {               
-        int selection = this.listOne.getSelectedIndex(); 
-        JOptionPane.showMessageDialog(null, dataList[selection]);
+        String selection = this.listOne.getSelectedValue();
+        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
+        	if (asig.getNombre().equals(selection)){
+        		Frame.getIntance().cambiarPanel(new PanelAsigAlum(asig), 1);
+        	}
+        }
     } 
+    
+
 	
 }
