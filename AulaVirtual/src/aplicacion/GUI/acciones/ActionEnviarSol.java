@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import aplicacion.GUI.Alumno.PanelSolicitud;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 public class ActionEnviarSol implements ActionListener{
@@ -21,7 +22,7 @@ public class ActionEnviarSol implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String coment = this.panel.getComentario();
-		Asignatura sel = this.panel.getSeleccionada();
+		Asignatura sel = this.panel.getSeleccionada(Aplicacion.getInstance());
 		if (sel== null){
 			JOptionPane.showMessageDialog(this.panel, "Debe seleccionar una asignatura");
 		} else {

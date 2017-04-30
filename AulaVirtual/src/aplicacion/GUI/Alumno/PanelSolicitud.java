@@ -90,8 +90,14 @@ public class PanelSolicitud extends JPanel {
     	return this.texto.getText(); 
     }
     
-    public Asignatura getSeleccionada(){
-    	return (Asignatura) this.listaAsig.getSelectedItem();
+    public Asignatura getSeleccionada(Aplicacion ap){
+    	for (Asignatura a: ap.getAsignaturas()){
+    		if (a.getNombre().equals(this.listaAsig.getSelectedItem())){
+    			return a;
+    		}
+    	}
+    	
+    	return null;
     }
     
 }
