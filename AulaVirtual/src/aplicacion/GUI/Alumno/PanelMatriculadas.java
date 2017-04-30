@@ -1,4 +1,4 @@
-package aplicacion.GUI.general;
+package aplicacion.GUI.Alumno;
 
 import java.awt.Button;
 import java.awt.Dimension;

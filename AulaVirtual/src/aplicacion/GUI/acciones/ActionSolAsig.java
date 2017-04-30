@@ -4,8 +4,8 @@ package aplicacion.GUI.acciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.general.PanelSolAsig;
+import aplicacion.GUI.Alumno.Frame;
+import aplicacion.GUI.Alumno.PanelSolAsig;
 import aplicacion.clases.Aplicacion;
 
 public class ActionSolAsig implements ActionListener{

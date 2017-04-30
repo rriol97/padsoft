@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import aplicacion.GUI.Alumno.Frame;
+import aplicacion.GUI.Alumno.PanelSolAsig;
 import aplicacion.GUI.controlador.Controlador;
-import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.general.PanelSolAsig;
 import aplicacion.clases.Asignatura;
 
 public class ActionEnviarSol implements ActionListener{

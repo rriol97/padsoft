@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.swing.JFrame;
 
-import aplicacion.GUI.general.PanelTestAlum;
+import aplicacion.GUI.Alumno.PanelTestAlum;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionUnica;

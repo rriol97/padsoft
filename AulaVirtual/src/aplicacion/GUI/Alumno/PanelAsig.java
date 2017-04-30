@@ -1,4 +1,4 @@
-package aplicacion.GUI.general;
+package aplicacion.GUI.Alumno;
 
 import java.awt.Dimension;
 import java.awt.Font;

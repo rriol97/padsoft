@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.Alumno.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.GUI.login.PanelLogin;
 import aplicacion.clases.Aplicacion;
@@ -26,10 +26,10 @@ public class ActionLogIn implements ActionListener {
 		String psw = vista.getPassword();
 		
 		if (usu.equals("")){
-			JOptionPane.showMessageDialog(vista, "Debe introducir su nobre de usuario y contrasena para iniciar sesion");
+			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contrasena para iniciar sesion");
 		}
 		
-		if (psw.equals("")){
+		else if (psw.equals("")){
 			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contrasena para iniciar sesion");
 		}
 		

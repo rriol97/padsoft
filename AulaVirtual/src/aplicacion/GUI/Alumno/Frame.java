@@ -1,11 +1,14 @@
-package aplicacion.GUI.general;
+package aplicacion.GUI.Alumno;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 
 import javax.swing.*;
 
+import aplicacion.GUI.Profesor.PanelAsigImp;
+import aplicacion.GUI.Profesor.PanelSolPendientes;
 import aplicacion.GUI.acciones.ActionSalir;
+import aplicacion.clases.Alumno;
 import aplicacion.clases.Aplicacion;
 
 /**
@@ -26,11 +29,23 @@ public class Frame extends JFrame {
 	private Frame (){
 		super("Aula Virtual");
 		this.setLayout(new BorderLayout());
-		this.der = null;
-		this.izq = new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual());
+		
+		if (Aplicacion.getInstance().getUsuarioActual() instanceof Alumno){
+			this.der = null;
+			this.izq = new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual());
+			this.izq.setVisible(true);
+			this.getContentPane().add(this.izq, BorderLayout.WEST);
+		}
+		
+		else{
+			this.der = new PanelAsigImp();
+			this.izq = new PanelSolPendientes();
+			this.getContentPane().add(this.der, BorderLayout.EAST);
+			this.getContentPane().add(this.izq, BorderLayout.WEST);
+			
+		}
+		
 		JButton salir = new JButton("Cerrar Sesion");
-		this.izq.setVisible(true);
-		this.getContentPane().add(this.izq, BorderLayout.WEST);
 		this.getContentPane().add(salir,BorderLayout.NORTH);
 		salir.addActionListener(new ActionSalir());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

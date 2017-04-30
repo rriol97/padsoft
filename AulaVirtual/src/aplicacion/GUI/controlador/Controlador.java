@@ -3,7 +3,7 @@ package aplicacion.GUI.controlador;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.Alumno.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -37,5 +37,10 @@ public class Controlador {
 	public void solicitarAsig(Asignatura a, String c) {
 		Solicitud d = new Solicitud(c,Aplicacion.getInstance().getAlumnoActual(),a);
 		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(d);
+	}
+
+	public void crearAsig(String texto) {
+		Asignatura a = new Asignatura(texto);
+		Aplicacion.getInstance().anadirAsignatura(a);
 	}
 }

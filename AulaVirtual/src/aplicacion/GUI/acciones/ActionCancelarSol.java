@@ -3,7 +3,7 @@ package aplicacion.GUI.acciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.Alumno.Frame;
 
 public class ActionCancelarSol implements ActionListener{
 
