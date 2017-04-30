@@ -6,7 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.*;
 
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.controlador.ActionLogIn;
+import aplicacion.GUI.controlador.ControladorLogIn;
 
 /**
  * Clase que implementa el panel mostrado al iniciar al iniciar la aplicacion. Pide un usuario y contrasena.
@@ -50,7 +50,7 @@ public class PanelLogin extends JPanel{
 		
 		this.add(botones, BorderLayout.SOUTH);
 		
-		boton.addActionListener(new ActionLogIn(this));
+		boton.addActionListener(new ControladorLogIn(this));
 		
 	}
 	

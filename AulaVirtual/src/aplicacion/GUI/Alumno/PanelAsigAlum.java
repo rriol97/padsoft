@@ -9,6 +9,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
@@ -19,10 +20,10 @@ import aplicacion.clases.elemento.Tema;
  * @author Ricardo Riol
  *
  */
-public class PanelAsig extends JPanel {
+public class PanelAsigAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	public PanelAsig (Asignatura asig) {
+	public PanelAsigAlum (Asignatura asig) {
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig.getNombre());
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -41,7 +42,7 @@ public class PanelAsig extends JPanel {
 		});*/
 		
 		JScrollPane tree = new JScrollPane(arbol);
-		tree.setPreferredSize(new Dimension((int)(Frame.WIDTH/1.3),(int)(Frame.HEIGHT/1.1)));
+		tree.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		this.add(tree);
 	}
 	

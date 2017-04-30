@@ -3,14 +3,18 @@ package aplicacion.GUI.Profesor;
 import java.awt.Dimension;
 import java.awt.Font;
 
-
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.general.Frame;
+
 public class PanelCrearAsig extends JPanel {
+	private static final long serialVersionUID = 1L;
 	
 	JLabel texto;
 	JTextField campo_asig;
@@ -23,23 +27,23 @@ public class PanelCrearAsig extends JPanel {
 		this.texto.setFont(new Font ("Arial",12,18));
 		
 		this.campo_asig = new JTextField();
-		//campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/23,(int)Frame.HEIGHT/23));
+		campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/23,(int)Frame.HEIGHT/23));
 		
 		JButton acp = new JButton("Aceptar");
 		JButton c = new JButton ("Cancelar");
 		
 		
 		this.add(texto);
+		texto.setLabelFor(campo_asig);
 		this.add(campo_asig);
-		//this.add(acp);
-		this.add(c);
 		
-		layout.putConstraint(SpringLayout.NORTH,this.texto,200, SpringLayout.NORTH,this);
-		layout.putConstraint(SpringLayout.WEST,this.texto,300, SpringLayout.WEST,this);
-		layout.putConstraint(SpringLayout.WEST,this.campo_asig,300, SpringLayout.WEST,this);
-		layout.putConstraint(SpringLayout.NORTH,this.campo_asig,8, SpringLayout.SOUTH,this.texto);
-		layout.putConstraint(SpringLayout.WEST,c,450, SpringLayout.WEST,this);
-		layout.putConstraint(SpringLayout.NORTH,this.campo_asig,50, SpringLayout.SOUTH,this.campo_asig);
+		JPanel panel_botones = new JPanel();
+		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
+		panel_botones.add(c);
+		panel_botones.add(acp);
+		this.add(panel_botones);
+		
+		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 0, 5, 5);
 		
 		this.setVisible(true);
 		

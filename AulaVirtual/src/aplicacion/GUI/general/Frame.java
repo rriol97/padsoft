@@ -1,15 +1,15 @@
-package aplicacion.GUI.Alumno;
+package aplicacion.GUI.general;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 
 import javax.swing.*;
 
-import aplicacion.GUI.Profesor.PanelAsigImp;
-import aplicacion.GUI.Profesor.PanelSolPendientes;
+import aplicacion.GUI.Alumno.PanelMatriculadas;
+import aplicacion.GUI.Profesor.PanelAsigProf;
 import aplicacion.GUI.acciones.ActionSalir;
-import aplicacion.clases.Alumno;
 import aplicacion.clases.Aplicacion;
+import aplicacion.clases.TipoUsuario;
 
 /**
  * Clase que implementa la venta principal de la aplicacion.
@@ -24,30 +24,19 @@ public class Frame extends JFrame {
 	private static Frame instance = new Frame();
 	private JPanel der;
 	private JPanel izq;
+	private JPanel vacio;
 	
 	// TODO cambiar el diseño de la ventana, que es muy cutre
 	private Frame (){
 		super("Aula Virtual");
 		this.setLayout(new BorderLayout());
-		
-		if (Aplicacion.getInstance().getUsuarioActual() instanceof Alumno){
-			this.der = null;
-			this.izq = new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual());
-			this.izq.setVisible(true);
-			this.getContentPane().add(this.izq, BorderLayout.WEST);
-		}
-		
-		else{
-			this.der = new PanelAsigImp();
-			this.izq = new PanelSolPendientes();
-			this.getContentPane().add(this.der, BorderLayout.EAST);
-			this.getContentPane().add(this.izq, BorderLayout.WEST);
-			
-		}
+		this.iniPaneles();
+		this.vacio = new JPanel();
 		
 		JButton salir = new JButton("Cerrar Sesion");
 		this.getContentPane().add(salir,BorderLayout.NORTH);
 		salir.addActionListener(new ActionSalir());
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
@@ -73,6 +62,7 @@ public class Frame extends JFrame {
 			nuevo.setVisible(true);
 			this.add(nuevo,BorderLayout.WEST);
 			this.izq = nuevo;
+			this.izq.repaint();
 		} else if (panel == 1) {
 			if (this.der != null) {
 				this.der.setVisible(false);
@@ -80,11 +70,32 @@ public class Frame extends JFrame {
 			this.add(nuevo,BorderLayout.CENTER);
 			nuevo.setVisible(true);
 			this.der = nuevo;
+			this.der.repaint();
 		}
 	}
 	
-	public void cambiarPanel(){
+	/**
+	 * Metodo para borrar el panel derecho.
+	 */
+	public void borrarDer () {
+		if (this.der == null) {
+			return;
+		}
 		this.der.setVisible(false);
-		this.repaint();
+		this.der = this.vacio;
+		return;
+	}
+	
+	/**
+	 * Metodo que inicializa los paneles dependiendo del tipo de usuario.
+	 */
+	public void iniPaneles() {
+		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO)) {
+			cambiarPanel(new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual()), 0);
+			cambiarPanel(new JPanel(), 1);
+		} else if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
+			cambiarPanel(new PanelAsigProf(), 0);
+			cambiarPanel(new JPanel(), 1);
+		}
 	}
 }

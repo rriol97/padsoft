@@ -14,7 +14,9 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionSolAsig;
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 
@@ -41,33 +43,29 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 			i++;
 		}
 		
+		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
+        etiqueta_asignaturas.setFont(new Font("Arial",20,19));
+		this.add(etiqueta_asignaturas);
+		
         listOne = new JList<String>(dataList);
+        this.dataList = dataList;
         scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
-        Button botonAceptar = new Button("Solicitar Asignatura");
-        botonAceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
-        botonAceptar.setFont(new Font("Arial",20,15));
-        JLabel tit = new JLabel ("Listado de Asignaturas");
-        tit.setFont(new Font("Arial",20,19));
-        
-        this.add(tit);
-        this.dataList = dataList;
-        this.add(botonAceptar);
-        botonAceptar.addActionListener(new ActionSolAsig());
         this.add(scrollingListOne);
         
-        layout.putConstraint(SpringLayout.WEST,botonAceptar,5, SpringLayout.WEST,this);
-        layout.putConstraint(SpringLayout.WEST,tit,5, SpringLayout.WEST,this);
-        layout.putConstraint(SpringLayout.NORTH,scrollingListOne,25, SpringLayout.NORTH,tit);
-        layout.putConstraint(SpringLayout.WEST,scrollingListOne, 5, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.NORTH,botonAceptar, 5, SpringLayout.SOUTH, scrollingListOne);
+        Button boton_solicitud = new Button("Solicitar Asignatura");
+        boton_solicitud.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
+        boton_solicitud.setFont(new Font("Arial",20,15));
+        this.add(boton_solicitud);
 
-        this.setPreferredSize(new Dimension(250,50));
+        boton_solicitud.addActionListener(new ActionSolAsig());
+
+        SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
+
         this.setVisible(true);
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
 	}
 
 	// TODO comentar esta funcion

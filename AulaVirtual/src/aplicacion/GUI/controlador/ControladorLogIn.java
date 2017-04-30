@@ -7,16 +7,16 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.Alumno.Frame;
+import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.GUI.login.PanelLogin;
 import aplicacion.clases.Aplicacion;
 
-public class ActionLogIn implements ActionListener {
+public class ControladorLogIn implements ActionListener {
 	
 	private PanelLogin vista;
 	
-	public ActionLogIn (PanelLogin vista){
+	public ControladorLogIn (PanelLogin vista){
 		this.vista = vista;
 	}
 	
@@ -25,28 +25,25 @@ public class ActionLogIn implements ActionListener {
 		String usu = vista.getUsuario();
 		String psw = vista.getPassword();
 		
-		if (usu.equals("")){
-			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contrasena para iniciar sesion");
-		}
-		
-		else if (psw.equals("")){
+		if (usu.equals("") || psw.equals("")){
 			JOptionPane.showMessageDialog(vista, "Debe introducir su nombre de usuario y contrasena para iniciar sesion");
 		}
 		
 		try {
 			if (Aplicacion.getInstance().logIn(usu, psw) == false){
-				JOptionPane.showMessageDialog(vista, "Error, usuario y contrasenas incorrectos");
+				JOptionPane.showMessageDialog(vista, "Error, usuario y/o contrasena incorrectos");
 			}
 			else{
 				FrameLogin.getInstance().borrarLogin();
+				Frame.getIntance().iniPaneles();
 				Frame.getIntance().setVisible(true);
 			}
 		} catch (HeadlessException | ClassNotFoundException | IOException e1) {
 			e1.printStackTrace();
 		}
 
-		}
-				
 	}
+			
+}
 	
 

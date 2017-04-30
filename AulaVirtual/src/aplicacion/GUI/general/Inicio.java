@@ -1,4 +1,4 @@
-package aplicacion.GUI.testers;
+package aplicacion.GUI.general;
 
 
 
@@ -8,10 +8,9 @@ import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 
-public class InicioTester {
+public class Inicio {
 	public static void main(String[] args) throws InvalidEmailAddressException, FailedInternetConnectionException {
 		FrameLogin.getInstance();
 		Controlador.getInstance();
-		
 	}
 }

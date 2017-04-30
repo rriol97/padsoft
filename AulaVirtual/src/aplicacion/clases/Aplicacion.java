@@ -141,8 +141,12 @@ public class Aplicacion {
 			return false;
 		}
 		
-		leerAlumnosDeFichero("alumnos.txt");
-		leerProfesorDeFichero ("profesor.txt");
+		try {
+			load();
+		} catch  (Exception e) {
+			leerAlumnosDeFichero("alumnos.txt");
+			leerProfesorDeFichero ("profesor.txt");
+		}
 		
 		if (this.niaProfesor.equals(nia) && this.contrasenaProfesor.equals(contrasena)){
 			this.tipoUsu = TipoUsuario.PROFESOR;
@@ -168,8 +172,8 @@ public class Aplicacion {
 	 * @throws IOException excepcion
 	 */
 	public void logOut() throws FileNotFoundException, IOException{
-		System.out.println("La sesion se ha cerrado correctamenete");
 		this.tipoUsu = TipoUsuario.NO_INI;
+		this.save();
 	}
 	
 	/**
@@ -187,7 +191,7 @@ public class Aplicacion {
         while((cadena = b.readLine())!=null) {
             String[] buf = cadena.split(";");
             Alumno alumno = new Alumno (buf[3],buf[4],buf[2],buf[0],buf[1]);
-            if(this.alumnos.add(alumno)==false) {
+            if(this.anadirAlumno(alumno)==false) {
             	b.close();
             	return false;
             }

@@ -1,10 +1,8 @@
 package aplicacion.GUI.Profesor;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -15,8 +13,8 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import aplicacion.GUI.Alumno.Frame;
-import aplicacion.GUI.acciones.ActionPanelCrear;
+import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
@@ -33,41 +31,31 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
     private JScrollPane scrollingListOne;
     private String[] alumSol;
     
-    public PanelSolPendientes() {
-    	
-		BorderLayout layout = new BorderLayout();
-		this.setLayout(layout);
+    public PanelSolPendientes(Aplicacion ap) {
+		this.setLayout(new SpringLayout());
 		
-		this.alumSol = getSol();
-		
+		JLabel tit = new JLabel("Solicitudes Pendientes");
+        tit.setFont(new Font ("Arial",12,18));
+        this.add(tit);
+        
+		this.alumSol = getSol(ap);
         listOne = new JList<String>(this.alumSol);
         scrollingListOne = new JScrollPane(listOne);
-        scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
+        scrollingListOne.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.5)));
+        this.add(this.scrollingListOne);
         
-        JButton crearAsig = new JButton ("Crear Asignatura");
-        crearAsig.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
-        crearAsig.setFont(new Font("Arial",20,15));
-        crearAsig.addActionListener(new ActionPanelCrear());
+        SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
         
-        JLabel tit = new JLabel("Solicitudes Pendientes");
-        tit.setFont(new Font ("Arial",12,16));
-        
-        this.add(this.scrollingListOne,BorderLayout.CENTER);
-        this.add(crearAsig,BorderLayout.AFTER_LAST_LINE);
-        this.add(tit,BorderLayout.NORTH);
         this.setVisible(true);
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-
-    	
     }
     
-	private String[] getSol(){
+	private String[] getSol(Aplicacion ap){
     	int index = 0;
     	String[] data = {};
-    	for (Asignatura a:Aplicacion.getInstance().getAsignaturas()){
+    	for (Asignatura a: ap.getAsignaturas()){
     		for (Solicitud s:a.getSolicitudes()){
     			data[index] = s.getAlumno().getNia()+s.getAlumno().getApellidos();
     		}
