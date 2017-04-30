@@ -1,4 +1,4 @@
-package aplicacion.GUI.Profesor;
+package aplicacion.GUI.profesor;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,8 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.acciones.ActionAceptarCreacion;
 import aplicacion.GUI.acciones.ActionCancelar;
+import aplicacion.GUI.acciones.profesor.ActionAceptarCreacion;
 import aplicacion.GUI.general.Frame;
 
 /**

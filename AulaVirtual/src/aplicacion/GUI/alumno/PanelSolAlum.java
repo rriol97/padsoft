@@ -1,4 +1,4 @@
-										package aplicacion.GUI.Alumno;
+										package aplicacion.GUI.alumno;
 
 import java.awt.Button;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.ActionCancelar;
-import aplicacion.GUI.acciones.ActionEnviarSol;
+import aplicacion.GUI.acciones.alumno.ActionEnviarSol;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;

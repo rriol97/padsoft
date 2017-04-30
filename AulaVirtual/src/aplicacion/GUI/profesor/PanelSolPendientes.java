@@ -1,4 +1,4 @@
-package aplicacion.GUI.Profesor;
+package aplicacion.GUI.profesor;
 
 import java.awt.Dimension;
 import java.awt.Font;

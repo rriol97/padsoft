@@ -1,14 +1,14 @@
-package aplicacion.GUI.acciones;
+package aplicacion.GUI.acciones.profesor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.Profesor.PanelAsignaturas;
-import aplicacion.GUI.Profesor.PanelCrearAsig;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.profesor.PanelAsignaturas;
+import aplicacion.GUI.profesor.PanelCrearAsig;
 import aplicacion.clases.Aplicacion;
 
 public class ActionAceptarCreacion implements ActionListener {

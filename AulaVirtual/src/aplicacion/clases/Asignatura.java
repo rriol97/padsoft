@@ -242,6 +242,6 @@ public class Asignatura implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return nombre ;
+		return nombre;
 	}
 }

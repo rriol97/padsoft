@@ -1,4 +1,4 @@
-package aplicacion.GUI.Alumno;
+package aplicacion.GUI.alumno;
 
 import java.awt.Button;
 import java.awt.Dimension;
@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.acciones.ActionSolAsig;
+import aplicacion.GUI.acciones.alumno.ActionSolAsig;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Aplicacion;

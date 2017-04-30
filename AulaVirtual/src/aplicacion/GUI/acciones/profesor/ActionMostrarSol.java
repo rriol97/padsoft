@@ -1,10 +1,10 @@
-package aplicacion.GUI.acciones;
+package aplicacion.GUI.acciones.profesor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.Profesor.PanelSolPendientes;
 import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.profesor.PanelSolPendientes;
 import aplicacion.clases.Aplicacion;
 
 public class ActionMostrarSol implements ActionListener{

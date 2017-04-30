@@ -1,4 +1,4 @@
-package aplicacion.GUI.Profesor;
+package aplicacion.GUI.profesor;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,9 +13,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import aplicacion.GUI.Alumno.PanelAsigAlum;
-import aplicacion.GUI.acciones.ActionCrearAsig;
-import aplicacion.GUI.acciones.ActionMostrarSol;
+import aplicacion.GUI.acciones.profesor.ActionCrearAsig;
+import aplicacion.GUI.acciones.profesor.ActionMostrarSol;
+import aplicacion.GUI.alumno.PanelAsigAlum;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;

@@ -1,10 +1,10 @@
-package aplicacion.GUI.acciones;
+package aplicacion.GUI.acciones.alumno;
 
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.Alumno.PanelSolAlum;
+import aplicacion.GUI.alumno.PanelSolAlum;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 

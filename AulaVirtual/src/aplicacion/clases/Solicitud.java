@@ -50,7 +50,7 @@ public class Solicitud implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return  this.alumno+" solicita inscribirse en la asignatura "+this.asignatura.getNombre();
+		return  this.alumno + " solicita inscribirse en la asignatura " + this.asignatura;
 	}
 	
 }

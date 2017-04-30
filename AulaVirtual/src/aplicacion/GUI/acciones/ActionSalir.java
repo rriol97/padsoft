@@ -12,15 +12,11 @@ public class ActionSalir implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		try {
 			Controlador.getInstance().salirAplicacion();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
 		Frame.getIntance().setVisible(false);
-		
 	}
-
 }

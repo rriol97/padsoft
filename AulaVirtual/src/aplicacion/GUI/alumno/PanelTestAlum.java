@@ -1,4 +1,4 @@
-package aplicacion.GUI.Alumno;
+package aplicacion.GUI.alumno;
 
 import java.util.List;
 

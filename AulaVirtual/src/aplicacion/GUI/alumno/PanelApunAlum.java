@@ -1,4 +1,4 @@
-package aplicacion.GUI.Alumno;
+package aplicacion.GUI.alumno;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
