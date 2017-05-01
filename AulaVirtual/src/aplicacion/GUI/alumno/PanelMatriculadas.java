@@ -60,8 +60,6 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         boton_solicitud.addActionListener(new ActionSolAsig());
 
         SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
-
-        this.setVisible(true);
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -53,9 +53,6 @@ public class PanelCrearAsig extends JPanel {
 		this.add(panel_botones);
 		
 		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 0, 5, 5);
-		
-		this.setVisible(true);
-		
 	}
 	
 	public String getNombreAsig(){

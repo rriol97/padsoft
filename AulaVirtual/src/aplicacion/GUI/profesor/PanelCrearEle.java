@@ -18,8 +18,6 @@ public class PanelCrearEle extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JComboBox<String> listaElem;
-	private JButton aceptar;
-	private JButton cancelar;
 	
 	public PanelCrearEle(Asignatura asig){
 		SpringLayout layout = new SpringLayout();
@@ -34,9 +32,9 @@ public class PanelCrearEle extends JPanel {
 		JLabel etiq = new JLabel("Tipo de elemento");
 		etiq.setFont(new Font("Arial",12,20));
 		
-		 aceptar = new JButton ("Aceptar");
+		 JButton aceptar = new JButton ("Aceptar");
 		 aceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
-		 cancelar= new JButton ("Cancelar");
+		 JButton cancelar = new JButton ("Cancelar");
 		 cancelar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
 		 
 		 this.add(etiq);
@@ -52,8 +50,6 @@ public class PanelCrearEle extends JPanel {
 		 layout.putConstraint(SpringLayout.WEST,cancelar,290, SpringLayout.WEST,this);
 		 layout.putConstraint(SpringLayout.WEST,aceptar,3, SpringLayout.EAST,cancelar);
 		 layout.putConstraint(SpringLayout.NORTH,aceptar,60, SpringLayout.SOUTH,scrollingElem);
-		 
-		 this.setVisible(true);
 	}
 	
     public String getOpcSel(Aplicacion ap){

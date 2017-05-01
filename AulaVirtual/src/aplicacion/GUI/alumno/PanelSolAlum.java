@@ -82,7 +82,6 @@ public class PanelSolAlum extends JPanel {
         layout.putConstraint(SpringLayout.NORTH,botonAcp,60, SpringLayout.SOUTH,texto);
         
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
-        this.setVisible(true);
     }
     
     public String getComentario(){

@@ -49,8 +49,6 @@ public class PanelSolProf extends JPanel {
 		this.add(panel_botones);
 		
 		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
-		
-		this.setVisible(true);
 	}
 	
 	public Solicitud getSolicitud() {

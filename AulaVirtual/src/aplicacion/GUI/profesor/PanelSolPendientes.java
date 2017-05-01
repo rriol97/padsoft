@@ -46,8 +46,6 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         
         SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
         
-        this.setVisible(true);
-        
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
