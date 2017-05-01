@@ -11,9 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.acciones.profesor.ActionApuntes;
+import aplicacion.GUI.acciones.profesor.ActionEle;
 import aplicacion.GUI.general.Frame;
-import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 public class PanelCrearEle extends JPanel {
@@ -35,7 +34,7 @@ public class PanelCrearEle extends JPanel {
 		etiq.setFont(new Font("Arial",12,20));
 		
 		 JButton aceptar = new JButton ("Aceptar");
-		 aceptar.addActionListener(new ActionApuntes(asig));
+		 aceptar.addActionListener(new ActionEle(asig,this));
 		 aceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
 		 JButton cancelar = new JButton ("Cancelar");
 		 cancelar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
@@ -56,7 +55,7 @@ public class PanelCrearEle extends JPanel {
 		 layout.putConstraint(SpringLayout.NORTH,aceptar,60, SpringLayout.SOUTH,scrollingElem);
 	}
 	
-    public String getOpcSel(Aplicacion ap){
+    public String getOpcSel(){
     	return (String) this.listaElem.getSelectedItem();
     	
     }

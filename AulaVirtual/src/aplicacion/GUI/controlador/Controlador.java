@@ -8,6 +8,8 @@ import aplicacion.GUI.login.FrameLogin;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
+import aplicacion.clases.elemento.Apuntes;
+import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -52,5 +54,13 @@ public class Controlador {
 
 	public void aceptarSol(Asignatura asignatura, Solicitud sol) throws InvalidEmailAddressException, FailedInternetConnectionException {
 		asignatura.aceptarSolicitud(sol);
+	}
+
+	public void crearApuntes(String titulo, boolean selec, String contenido, Asignatura asig) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		asig.anadirElemento(new Apuntes(titulo,selec,contenido,asig));
+	}
+
+	public void crearTema(String nombre, boolean b, Asignatura asig) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		asig.anadirElemento(new Tema(nombre,b,asig));
 	}
 }
