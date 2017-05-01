@@ -6,6 +6,7 @@ import java.util.List;
 
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -55,6 +56,9 @@ public class Tema extends Elemento implements java.io.Serializable {
 				EmailSystem.send(alum.getCorreo(), "Se ha actualizado la asignatura"+this.getAsignatura().getNombre(), "");
 			}
 		}
+		if (elemento instanceof Tema) {
+			this.getAsignatura().getTemas().add((Tema)elemento);
+		}
 		return this.elementos.add(elemento);
 	}
 	
@@ -65,10 +69,15 @@ public class Tema extends Elemento implements java.io.Serializable {
 	 * @return boolean true si se elimina correctamente, false en caso contrario
 	 */
 	public boolean eliminarElemento(Elemento elemento){
-		if (elemento instanceof Tema){
+		if (elemento instanceof Test){
+			if(((Test) elemento).getResoluciones().size() > 0){
+				return false;
+			}
+		} else if (elemento instanceof Tema){
 			if(((Tema)elemento).isEliminable()==false) {
 				return false;
 			}
+			this.getAsignatura().getTemas().remove((Tema)elemento);
 		}
 		return this.elementos.remove(elemento);
 	}

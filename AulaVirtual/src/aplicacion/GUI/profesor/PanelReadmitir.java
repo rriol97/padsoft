@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.acciones.ActionCancelar;
+import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionReadmitir;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
@@ -63,7 +63,7 @@ public class PanelReadmitir extends JPanel {
         panel_botones.setLayout(new BoxLayout(panel_botones, 0));
         
         Button boton_cancelar = new Button ("Cancelar");
-        boton_cancelar.addActionListener(new ActionCancelar());
+        boton_cancelar.addActionListener(new ActionVolverAsig(asig));
         panel_botones.add(boton_cancelar);
         
         Button boton_readmitir = new Button ("Readmitir");

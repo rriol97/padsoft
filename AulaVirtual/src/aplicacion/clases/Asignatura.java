@@ -6,7 +6,6 @@ import java.util.List;
 
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
-import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
@@ -28,6 +27,7 @@ public class Asignatura implements java.io.Serializable {
 	private List<Alumno> matriculados = new ArrayList<Alumno>();
 	private List<Alumno> expulsados = new ArrayList<Alumno>();
 	private List<Elemento> elementos = new ArrayList<Elemento>();
+	private List<Tema> temas = new ArrayList<Tema>();
 	
 	/**
 	 * Constructor de Asignatura.
@@ -149,6 +149,10 @@ public class Asignatura implements java.io.Serializable {
 		return Collections.unmodifiableList(elementos);
 	}
 	
+	public List<Tema> getTemas() {
+		return this.temas;
+	}
+	
 	/**
 	 * Metodo que permite anadir un elemento a la lista de elementos de una asignatura.
 	 * 
@@ -166,7 +170,11 @@ public class Asignatura implements java.io.Serializable {
 				EmailSystem.send(alum.getCorreo(),this.getNombre(), "Se ha actualizado la pagina de la asignatura "+this.getNombre());
 			}
 		}
-		return this.elementos.add(elemento);
+		if (elemento instanceof Tema) {
+			this.temas.add((Tema)elemento);
+			return this.elementos.add(elemento);
+		}
+		return false;
 	}
 	
 	/**
@@ -183,14 +191,11 @@ public class Asignatura implements java.io.Serializable {
 				EmailSystem.send(alum.getCorreo(),this.getNombre(), "Se ha actualizado la pagina de la asignatura "+this.getNombre());
 			}
 		}
-		if (elemento instanceof Test){
-			if(((Test) elemento).getResoluciones().size() > 0){
-				return false;
-			}
-		} else if (elemento instanceof Tema){
+		if (elemento instanceof Tema){
 			if (((Tema)elemento).isEliminable()==false){
 				return false;
 			}
+			this.temas.remove((Tema)elemento);
 		}
 		return this.elementos.remove(elemento);
 	}
