@@ -1,6 +1,5 @@
 package aplicacion.GUI.profesor;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -10,12 +9,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.ActionCrearAsig;
 import aplicacion.GUI.acciones.profesor.ActionMostrarSol;
-import aplicacion.GUI.alumno.PanelAsigAlum;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -33,8 +33,7 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
     private JList<String> listOne;
 
 	public PanelAsignaturas(Aplicacion ap){
-		BorderLayout layout = new BorderLayout();
-		this.setLayout(layout);
+		this.setLayout(new SpringLayout());
 
 		String[] dataList = new String[ap.getAsignaturas().size()];
 		int i = 0;
@@ -47,28 +46,26 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
         JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         scrollingListOne.setFont(new Font ("Arial",12,18));
-        this.add(scrollingListOne, BorderLayout.CENTER);
+        this.add(scrollingListOne);
         this.setVisible(true);
         
         JPanel aux = new JPanel();
         aux.setLayout(new BoxLayout(aux, 0));
         
         JButton crearAsig = new JButton ("Crear Asignatura");
-        crearAsig.setPreferredSize(new Dimension((int)Frame.WIDTH/12,(int)Frame.HEIGHT/22));
-        crearAsig.setFont(new Font("Arial",20,15));
         crearAsig.addActionListener(new ActionCrearAsig());
         aux.add(crearAsig);
         
         JButton solicitudes = new JButton ("Solicitudes");
-        solicitudes.setPreferredSize(new Dimension((int)Frame.WIDTH/12,(int)Frame.HEIGHT/22));
-        solicitudes.setFont(new Font("Arial",20,15));
         solicitudes.addActionListener(new ActionMostrarSol());
         aux.add(solicitudes);
         
         crearAsig.addActionListener(new ActionCrearAsig());
         solicitudes.addActionListener(new ActionMostrarSol());
         
-        this.add(aux, BorderLayout.AFTER_LAST_LINE);
+        this.add(aux);
+        
+        SpringUtilities.makeCompactGrid(this, 2, 1, 10, 10, 5, 5);
 
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

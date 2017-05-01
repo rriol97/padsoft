@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.acciones.ActionAceptarSol;
 import aplicacion.GUI.acciones.ActionCancelar;
-import aplicacion.GUI.acciones.ActionDenegarSol;
+import aplicacion.GUI.acciones.profesor.ActionAceptarSol;
+import aplicacion.GUI.acciones.profesor.ActionDenegarSol;
 import aplicacion.clases.Solicitud;
 
 /**
@@ -40,10 +40,10 @@ public class PanelSolProf extends JPanel {
 		boton_cancelar.addActionListener(new ActionCancelar());
 		panel_botones.add(boton_cancelar);
 		JButton boton_denegar = new JButton("Rechazar");
-		boton_denegar.addActionListener(new ActionDenegarSol(this,sol));
+		boton_denegar.addActionListener(new ActionDenegarSol(this));
 		panel_botones.add(boton_denegar);
 		JButton boton_aceptar = new JButton("Aceptar");
-		boton_aceptar.addActionListener(new ActionAceptarSol(this,sol));
+		boton_aceptar.addActionListener(new ActionAceptarSol(this));
 		panel_botones.add(boton_aceptar);
 		
 		this.add(panel_botones);

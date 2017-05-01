@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAsigProf;
-import aplicacion.GUI.profesor.PanelEliminarEle;
+import aplicacion.GUI.profesor.PanelExpulsar;
 
-public class ActionEliminarEle implements ActionListener {
+public class ActionExpulsar implements ActionListener {
 	private PanelAsigProf vista;
 	
-	public ActionEliminarEle (PanelAsigProf vista) {
+	public ActionExpulsar (PanelAsigProf vista) {
 		this.vista = vista;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelEliminarEle(vista.getAsignatura()), 1);
+		Frame.getIntance().cambiarPanel(new PanelExpulsar(vista.getAsignatura()), 1);
 	}
 }

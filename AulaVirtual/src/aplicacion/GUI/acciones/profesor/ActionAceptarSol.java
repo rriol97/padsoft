@@ -1,4 +1,4 @@
-package aplicacion.GUI.acciones;
+package aplicacion.GUI.acciones.profesor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,28 +8,25 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelSolPendientes;
 import aplicacion.GUI.profesor.PanelSolProf;
 import aplicacion.clases.Aplicacion;
-import aplicacion.clases.Asignatura;
-import aplicacion.clases.Solicitud;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
-public class ActionDenegarSol implements ActionListener {
+public class ActionAceptarSol implements ActionListener {
 	private PanelSolProf vista;
-	private Solicitud sol;
 	
-	public ActionDenegarSol (PanelSolProf vista, Solicitud sol) {
+	public ActionAceptarSol (PanelSolProf vista) {
 		this.vista = vista;
-		this.sol = sol;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			Controlador.getInstance().denergarSol(sol.getAsignatura(),sol);
+			Controlador.getInstance().aceptarSol(vista.getSolicitud().getAsignatura(), vista.getSolicitud());
 			Frame.getIntance().borrarDer();
 			Frame.getIntance().cambiarPanel(new PanelSolPendientes(Aplicacion.getInstance()), 1);
 		} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 			e1.printStackTrace();
 		}
+
 	}
 }

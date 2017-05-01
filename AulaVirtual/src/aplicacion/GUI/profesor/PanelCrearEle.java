@@ -1,10 +1,8 @@
 package aplicacion.GUI.profesor;
 
-import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -12,22 +10,23 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 public class PanelCrearEle extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	private JComboBox<String> listaElem;
 	private JButton aceptar;
 	private JButton cancelar;
 	
-	public PanelCrearEle(){
+	public PanelCrearEle(Asignatura asig){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
 		String[] tipoElem = {"Test","Apuntes","Tema"};
-		this.listaElem = new JComboBox(tipoElem);
+		this.listaElem = new JComboBox<String>(tipoElem);
 		JScrollPane scrollingElem = new JScrollPane(this.listaElem);
 		
 		this.setPreferredSize(new Dimension((int)Frame.WIDTH/5,(int)Frame.HEIGHT/5));
