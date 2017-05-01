@@ -16,8 +16,8 @@ import javax.swing.tree.TreeSelectionModel;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.ActionCrearEle;
 import aplicacion.GUI.acciones.profesor.ActionEliminarEle;
-import aplicacion.GUI.acciones.profesor.ActionExpulsar;
-import aplicacion.GUI.acciones.profesor.ActionReadmitir;
+import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
+import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
@@ -92,10 +92,10 @@ public class PanelAsigProf extends JPanel {
 		JPanel panel_botones2 = new JPanel();
 		panel_botones2.setLayout(new BoxLayout(panel_botones2,0));
 		JButton boton_expulsar = new JButton("Expulsar alumno");
-		boton_expulsar.addActionListener(new ActionExpulsar(this));
+		boton_expulsar.addActionListener(new ActionSeleccionExpulsar(this));
 		panel_botones2.add(boton_expulsar);
 		JButton boton_readmitir = new JButton("Readmitir alumno");
-		boton_readmitir.addActionListener(new ActionReadmitir(this));
+		boton_readmitir.addActionListener(new ActionSeleccionReadmitir(this));
 		panel_botones2.add(boton_readmitir);
 		der.add(panel_botones2);
 		

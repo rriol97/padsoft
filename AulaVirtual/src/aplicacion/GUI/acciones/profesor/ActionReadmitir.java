@@ -6,16 +6,24 @@ import java.awt.event.ActionListener;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAsigProf;
 import aplicacion.GUI.profesor.PanelReadmitir;
+import aplicacion.clases.Alumno;
 
 public class ActionReadmitir implements ActionListener {
-	private PanelAsigProf vista;
+	private PanelReadmitir vista;
 	
-	public ActionReadmitir (PanelAsigProf vista) {
+	public ActionReadmitir (PanelReadmitir vista) {
 		this.vista = vista;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelReadmitir(vista.getAsignatura()), 1);
+		for (Alumno alum: this.vista.getSeleccionados()) {
+			try {
+				this.vista.getAsignatura().readmitirAlumno(alum);
+				Frame.getIntance().cambiarPanel(new PanelAsigProf(this.vista.getAsignatura()), 1);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }

@@ -7,7 +7,7 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelSolPendientes;
 import aplicacion.clases.Aplicacion;
 
-public class ActionMostrarSol implements ActionListener{
+public class ActionMostrarSol implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -1,4 +1,4 @@
-										package aplicacion.GUI.alumno;
+package aplicacion.GUI.alumno;
 
 import java.awt.Button;
 import java.awt.Dimension;
@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
@@ -28,7 +27,6 @@ public class PanelSolAlum extends JPanel {
 	
 	private JComboBox<String> listaAsig;
     private JTextField texto;
- 
     
     public PanelSolAlum (Aplicacion ap){
 		SpringLayout layout = new SpringLayout();
@@ -41,12 +39,11 @@ public class PanelSolAlum extends JPanel {
  			i++;
  		}
  		this.listaAsig = new JComboBox<String>(lista_asig);
-        
+ 		this.listaAsig.setPreferredSize(new Dimension(200,30));
+
         JLabel etiq = new JLabel("Asignaturas");
         etiq.setFont(new Font("Arial",12,18));
-        JScrollPane scrollingAsig = new JScrollPane(listaAsig);
-        scrollingAsig.setPreferredSize(new Dimension(200,30));
-        etiq.setLabelFor(scrollingAsig);
+        etiq.setLabelFor(this.listaAsig);
         
         texto = new JTextField(30);
         JLabel comment = new JLabel ("Comentario");
@@ -62,7 +59,7 @@ public class PanelSolAlum extends JPanel {
         botonCnr.setPreferredSize(new Dimension((int)Frame.WIDTH/18,(int)Frame.HEIGHT/35));
         
         this.add(etiq);
-        this.add(scrollingAsig);
+        this.add(this.listaAsig);
         this.add(comment);
         this.add(texto);
         this.add(botonAcp);
@@ -70,12 +67,12 @@ public class PanelSolAlum extends JPanel {
         
         layout.putConstraint(SpringLayout.NORTH,etiq,200 ,SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST,etiq ,200,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.WEST,scrollingAsig,20, SpringLayout.EAST,etiq);
-        layout.putConstraint(SpringLayout.NORTH,scrollingAsig,200, SpringLayout.NORTH,this);
+        layout.putConstraint(SpringLayout.WEST,this.listaAsig,20, SpringLayout.EAST,etiq);
+        layout.putConstraint(SpringLayout.NORTH,this.listaAsig,200, SpringLayout.NORTH,this);
         layout.putConstraint(SpringLayout.NORTH,comment,25, SpringLayout.SOUTH,etiq);
         layout.putConstraint(SpringLayout.WEST,comment,200,SpringLayout.WEST, this);
         layout.putConstraint(SpringLayout.WEST,texto,10, SpringLayout.EAST,comment);
-        layout.putConstraint(SpringLayout.NORTH,texto,15, SpringLayout.SOUTH,scrollingAsig);
+        layout.putConstraint(SpringLayout.NORTH,texto,15, SpringLayout.SOUTH,this.listaAsig);
         layout.putConstraint(SpringLayout.NORTH,botonCnr,60, SpringLayout.SOUTH,texto);
         layout.putConstraint(SpringLayout.WEST,botonCnr,500, SpringLayout.WEST,this);
         layout.putConstraint(SpringLayout.WEST,botonAcp,3, SpringLayout.EAST,botonCnr);

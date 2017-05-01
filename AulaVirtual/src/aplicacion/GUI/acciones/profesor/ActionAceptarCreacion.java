@@ -12,7 +12,6 @@ import aplicacion.GUI.profesor.PanelCrearAsig;
 import aplicacion.clases.Aplicacion;
 
 public class ActionAceptarCreacion implements ActionListener {
-	
 	private PanelCrearAsig vista;
 	
 	public ActionAceptarCreacion(PanelCrearAsig p){
