@@ -52,9 +52,9 @@ public class PanelReadmitir extends JPanel {
  		}
  		this.listaExpulsados = new JList<String>(lista_expulsados);
  		listaExpulsados.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.listaExpulsados.setPreferredSize(new Dimension(200,30));
+       // this.listaExpulsados.setPreferredSize(new Dimension(200,30));
  		JScrollPane scrolling_expulsados = new JScrollPane(this.listaExpulsados);
- 		scrolling_expulsados.setPreferredSize(new Dimension(200,500));
+ 		scrolling_expulsados.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT/1.5)));
         this.add(scrolling_expulsados);
         
         etiqueta_titulo.setLabelFor(this.listaExpulsados);
@@ -72,13 +72,13 @@ public class PanelReadmitir extends JPanel {
         
         this.add(panel_botones);
         
-        layout.putConstraint(SpringLayout.WEST,etiqueta_titulo ,500,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.NORTH,etiqueta_titulo,200 ,SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST,etiqueta_titulo ,200,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.NORTH,etiqueta_titulo,(int)(Frame.WIDTH/20) ,SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.WEST,scrolling_expulsados ,500,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.WEST,scrolling_expulsados ,200,SpringLayout.WEST ,this);
         layout.putConstraint(SpringLayout.NORTH,scrolling_expulsados,5, SpringLayout.SOUTH,etiqueta_titulo);
         
-        layout.putConstraint(SpringLayout.WEST,panel_botones ,500,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.WEST,panel_botones ,200,SpringLayout.WEST ,this);
         layout.putConstraint(SpringLayout.NORTH,panel_botones,5, SpringLayout.SOUTH,scrolling_expulsados);
         
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));

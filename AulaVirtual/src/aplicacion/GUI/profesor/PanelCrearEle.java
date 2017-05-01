@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
+import aplicacion.GUI.acciones.ActionVolverAsig;
+import aplicacion.GUI.acciones.profesor.ActionApuntes;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -33,14 +35,16 @@ public class PanelCrearEle extends JPanel {
 		etiq.setFont(new Font("Arial",12,20));
 		
 		 JButton aceptar = new JButton ("Aceptar");
+		 aceptar.addActionListener(new ActionApuntes(asig));
 		 aceptar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
 		 JButton cancelar = new JButton ("Cancelar");
 		 cancelar.setPreferredSize(new Dimension((int)Frame.WIDTH/10,(int)Frame.HEIGHT/25));
+		 cancelar.addActionListener(new ActionVolverAsig(asig));
 		 
 		 this.add(etiq);
 		 this.add(scrollingElem);
-		 this.add(aceptar);
 		 this.add(cancelar);
+		 this.add(aceptar);
 		
 		 layout.putConstraint(SpringLayout.NORTH,etiq,200 ,SpringLayout.NORTH, this);
 		 layout.putConstraint(SpringLayout.WEST,etiq ,290,SpringLayout.WEST ,this);

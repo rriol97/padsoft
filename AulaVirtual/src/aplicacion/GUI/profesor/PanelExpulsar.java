@@ -52,9 +52,9 @@ public class PanelExpulsar extends JPanel {
  		}
  		this.listaMatriculados = new JList<String>(lista_matriculados);
  		listaMatriculados.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.listaMatriculados.setPreferredSize(new Dimension(200,30));
+        //this.listaMatriculados.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT));
  		JScrollPane scrolling_matriculados = new JScrollPane(this.listaMatriculados);
- 		scrolling_matriculados.setPreferredSize(new Dimension(200,500));
+ 		scrolling_matriculados.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT/1.5)));
         this.add(scrolling_matriculados);
         
         etiqueta_titulo.setLabelFor(this.listaMatriculados);
@@ -72,13 +72,13 @@ public class PanelExpulsar extends JPanel {
         
         this.add(panel_botones);
         
-        layout.putConstraint(SpringLayout.WEST,etiqueta_titulo ,500,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.NORTH,etiqueta_titulo,200 ,SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST,etiqueta_titulo ,200,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.NORTH,etiqueta_titulo,(int)(Frame.WIDTH/20) ,SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.WEST,scrolling_matriculados ,500,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.WEST,scrolling_matriculados ,200,SpringLayout.WEST ,this);
         layout.putConstraint(SpringLayout.NORTH,scrolling_matriculados,5, SpringLayout.SOUTH,etiqueta_titulo);
         
-        layout.putConstraint(SpringLayout.WEST,panel_botones ,500,SpringLayout.WEST ,this);
+        layout.putConstraint(SpringLayout.WEST,panel_botones ,200,SpringLayout.WEST ,this);
         layout.putConstraint(SpringLayout.NORTH,panel_botones,5, SpringLayout.SOUTH,scrolling_matriculados);
 
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
