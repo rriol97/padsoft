@@ -42,7 +42,7 @@ public class PanelAsigAlum extends JPanel {
 		});*/
 		
 		JScrollPane tree = new JScrollPane(arbol);
-		tree.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
+		tree.setPreferredSize(new Dimension((int)(4.5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.15)));
 		this.add(tree);
 	}
 	

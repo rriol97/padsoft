@@ -81,7 +81,7 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
         String selection = this.listOne.getSelectedValue();
         for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
         	if (asig.getNombre().equals(selection)){
-        		Frame.getIntance().cambiarPanel(new PanelAsigAlum(asig), 1);
+        		Frame.getIntance().cambiarPanel(new PanelAsigProf(asig), 1);
         	}
         }
 	}

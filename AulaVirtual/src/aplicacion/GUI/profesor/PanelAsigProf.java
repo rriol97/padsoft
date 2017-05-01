@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -52,12 +53,17 @@ public class PanelAsigProf extends JPanel {
 			}
 		});*/
 		
+		JList alumnoMatr = new JList();
+		JScrollPane scrollingListOne = new JScrollPane(alumnoMatr);
+		
 		JScrollPane tree = new JScrollPane(arbol);
-		tree.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
+		tree.setPreferredSize(new Dimension((int)(4*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		this.add(tree);
 		
+		JPanel panelBotonesAsig = new JPanel();
+		panelBotonesAsig.setLayout(new SpringLayout());
 		JPanel panel_botones = new JPanel();
-		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
+		panel_botones.setLayout(new BoxLayout(panel_botones,0));
 		
 		JButton boton_eliminar = new JButton("Eliminar elemento");
 		boton_eliminar.addActionListener(new ActionEliminarEle(this));
@@ -66,9 +72,12 @@ public class PanelAsigProf extends JPanel {
 		boton_crear.addActionListener(new ActionCrearEle(this));
 		panel_botones.add(boton_crear);
 		
-		this.add(panel_botones);
+		panelBotonesAsig.add(panel_botones);
+		panelBotonesAsig.add(scrollingListOne);
+		SpringUtilities.makeCompactGrid(panelBotonesAsig, 2, 1, 5, 5, 5, 5);
 		
-		SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
+		this.add(panelBotonesAsig);
+		SpringUtilities.makeCompactGrid(this, 1, 2, 5, 5, 5, 5);
 	}
 	
 	/**

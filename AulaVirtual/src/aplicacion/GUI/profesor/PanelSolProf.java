@@ -36,14 +36,14 @@ public class PanelSolProf extends JPanel {
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
 		
-		JButton boton_cancelar = new JButton("Eliminar elemento");
+		JButton boton_cancelar = new JButton("Cancelar");
 		boton_cancelar.addActionListener(new ActionCancelar());
 		panel_botones.add(boton_cancelar);
-		JButton boton_denegar = new JButton("Eliminar elemento");
-		boton_denegar.addActionListener(new ActionDenegarSol(this));
+		JButton boton_denegar = new JButton("Rechazar");
+		boton_denegar.addActionListener(new ActionDenegarSol(this,sol));
 		panel_botones.add(boton_denegar);
-		JButton boton_aceptar = new JButton("Crear elemento");
-		boton_aceptar.addActionListener(new ActionAceptarSol(this));
+		JButton boton_aceptar = new JButton("Aceptar");
+		boton_aceptar.addActionListener(new ActionAceptarSol(this,sol));
 		panel_botones.add(boton_aceptar);
 		
 		this.add(panel_botones);
