@@ -31,7 +31,7 @@ public class ActionCrearApuntes implements ActionListener{
 			JOptionPane.showMessageDialog(this.panel,"Introduzca el texto de los apuntes");
 		}
 		else{
-			if (this.panel.getSelec().equals("Seleccionada") == true){
+			if (this.panel.getSelec().equals("Visible") == true){
 				try {
 					Controlador.getInstance().crearApuntes(this.panel.getTitulo(),true,this.panel.getContenido(),this.asig);
 				} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {

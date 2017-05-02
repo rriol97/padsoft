@@ -1,4 +1,4 @@
-package aplicacion.GUI.controlador;
+ package aplicacion.GUI.controlador;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

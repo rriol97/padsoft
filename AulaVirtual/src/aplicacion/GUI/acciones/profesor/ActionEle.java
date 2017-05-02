@@ -9,6 +9,7 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelCrearApuntes;
 import aplicacion.GUI.profesor.PanelCrearEle;
 import aplicacion.GUI.profesor.PanelCrearTema;
+import aplicacion.GUI.profesor.PanelCrearTest;
 import aplicacion.clases.Asignatura;
 
 public class ActionEle implements ActionListener {
@@ -28,7 +29,7 @@ public class ActionEle implements ActionListener {
 		} else if (panel.getOpcSel().equals("Tema")){
 			Frame.getIntance().cambiarPanel(new PanelCrearTema(asig), 1);
 		} else{
-			JOptionPane.showMessageDialog(this.panel, "Falta por implementar");
+			Frame.getIntance().cambiarPanel(new PanelCrearTest(asig), 1);
 		}
 	}
 }
