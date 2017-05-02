@@ -4,5 +4,6 @@
 	<classpathentry kind="lib" path="EmailSystem/EmailSystem.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/Ricardo/git/padsoft/AulaVirtual/CalendarSystem/jdatepicker-1.3.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
