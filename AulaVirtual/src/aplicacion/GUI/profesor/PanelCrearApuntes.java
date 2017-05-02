@@ -20,7 +20,7 @@ import aplicacion.clases.Asignatura;
 
 /**
  * 
- * @author Ricardo Riol y Adrián Fernández
+ * @author Ricardo Riol y Adriï¿½n Fernï¿½ndez
  * Clase que implementa el panel de la creacion de apuntes desde el punto de vista del profesor
  */
 
