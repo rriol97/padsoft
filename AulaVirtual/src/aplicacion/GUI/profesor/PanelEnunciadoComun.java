@@ -12,7 +12,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.test.Test;
 
-public abstract class PanelEnunciadoComun extends JPanel {
+public class PanelEnunciadoComun extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	protected JLabel enun;
