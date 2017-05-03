@@ -131,12 +131,24 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	/**
-	 * Metodo que devuelve true si todavia no ha llegado la fecha de comienzo del test y false en caso contrario.
+	 * Metodo que devuelve true si se puede realizar el test y false en caso contrario.
 	 * 
 	 * @return boolean true si es correcta correctamente, false en caso contrario
 	 */
 	public boolean isFechaValida(){
-		if (LocalDate.now().isBefore(this.fechaIni)){
+		if (LocalDate.now().isAfter(this.fechaIni) && LocalDate.now().isBefore(this.fechaFin)){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Metodo que devuelve true si ha pasado la fecha de finalizacion del test y false en caso contrario.
+	 * 
+	 * @return boolean true si es correcta correctamente, false en caso contrario
+	 */
+	public boolean isTerminado(){
+		if (LocalDate.now().isAfter(this.fechaFin)){
 			return true;
 		}
 		return false;

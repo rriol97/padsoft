@@ -67,7 +67,7 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 
 	
 	/**
-	 * Metodo que enlaza una asignatura de la lista de matriculadas con su panel
+	 * Metodo que enlaza una asignatura de la lista de matriculadas con su panel.
 	 */
     public void valueChanged(ListSelectionEvent e) {               
         String selection = this.listOne.getSelectedValue();

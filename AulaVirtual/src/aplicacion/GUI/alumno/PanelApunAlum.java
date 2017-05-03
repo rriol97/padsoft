@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.clases.elemento.Apuntes;
 
 /**
@@ -27,6 +28,7 @@ public class PanelApunAlum extends JPanel {
 		this.add(etiqueta_texto);
 		
 		JButton boton_volver = new JButton("Volver");
+		boton_volver.addActionListener(new ActionVolverAsig(apun.getAsignatura()));
 		this.add(boton_volver);
 		
 		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);

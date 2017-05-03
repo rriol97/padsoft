@@ -3,8 +3,6 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelCrearApuntes;
 import aplicacion.GUI.profesor.PanelCrearEle;

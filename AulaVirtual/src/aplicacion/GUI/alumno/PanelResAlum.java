@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.componentes.PanelPreg;
 import aplicacion.GUI.componentes.PanelSol;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -43,6 +44,7 @@ public class PanelResAlum extends JPanel {
 		}
 		
 		JButton boton_volver = new JButton("Volver");
+		boton_volver.addActionListener(new ActionVolverAsig(res.getTest().getAsignatura()));
 		this.add(boton_volver);
 		
 		SpringUtilities.makeCompactGrid(this, t.getPreguntas().size() + 2, 1, 5, 5, 5, 5);
