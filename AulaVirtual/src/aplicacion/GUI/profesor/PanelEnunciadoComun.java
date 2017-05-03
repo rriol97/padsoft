@@ -2,6 +2,8 @@ package aplicacion.GUI.profesor;
 
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,13 +17,24 @@ import aplicacion.clases.elemento.test.Test;
 public class PanelEnunciadoComun extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	protected JLabel enun;
-	protected JTextArea enunciado;
-	protected JComboBox<String> tipo;
+	private JLabel enun;
+	private JTextArea enunciado;
+	private JComboBox<String> tipo;
+	private JButton anadir;
+	private JButton cancelar;
+	private JButton aceptar;
 	
 	public PanelEnunciadoComun(Test t){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
+		
+		JPanel preg = new JPanel();
+		SpringLayout layoutAna = new SpringLayout();
+		preg.setLayout(layoutAna);
+		this.anadir = new JButton ("Añadir Pregunta");
+		//this.anadir.addActionListener(new ActionAnadirPregunta(test));
+		preg.add(this.anadir);
+		preg.setVisible(true);
 		
 		JPanel panelEnun = new JPanel();
 		SpringLayout layoutEn = new SpringLayout();
@@ -42,10 +55,18 @@ public class PanelEnunciadoComun extends JPanel {
 		String[]tiposPreg = {"Respuesta única","Respuesta múltiple","Si/No","Respuesta Corta"};
 		this.tipo = new JComboBox<String>(tiposPreg);
 		
+		JPanel panel_botones = new JPanel();
+		this.cancelar = new JButton ("Cancelar");
+		this.aceptar = new JButton ("Aceptar");
+		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
+		panel_botones.add(cancelar);
+		panel_botones.add(aceptar);	
+		
+		this.add(preg);
 		this.add(panelEnun);
 		this.add(tipo);
-		
-		SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
+		this.add(panel_botones);
+		SpringUtilities.makeCompactGrid(this, 4, 1, 5, 5, 5, 5);
 		this.setVisible(true);
 	}
 	

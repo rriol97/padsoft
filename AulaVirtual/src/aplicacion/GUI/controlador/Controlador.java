@@ -2,7 +2,10 @@
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 
+import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.clases.Aplicacion;
@@ -62,5 +65,12 @@ public class Controlador {
 
 	public void crearTema(String nombre, boolean b, Asignatura asig) throws InvalidEmailAddressException, FailedInternetConnectionException {
 		asig.anadirElemento(new Tema(nombre,b,asig));
+	}
+
+	public Test nuevoTest(String nombre, boolean selec, Asignatura asig, LocalDate fechaIni, LocalDate fechaFin, boolean orden,
+		Double peso, Double vpd) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		Test t = new Test (nombre,selec,asig,"",fechaIni,fechaFin,orden,peso,vpd);
+		asig.anadirElemento(t);
+		return t;
 	}
 }

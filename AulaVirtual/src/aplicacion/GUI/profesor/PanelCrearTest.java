@@ -1,12 +1,16 @@
 package aplicacion.GUI.profesor;
 
+import java.awt.Dimension;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import org.jdatepicker.impl.DateComponentFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -15,6 +19,8 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
+import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
+import aplicacion.GUI.acciones.profesor.ActionCrearTest;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Asignatura;
 
@@ -25,14 +31,17 @@ public class PanelCrearTest extends PanelComun {
 	private JLabel ff;
 	private JDatePickerImpl fechaIni;
 	private JDatePickerImpl fechaFin;
-	private JButton anadir;
+	private JLabel peso;
+	private JTextField campoPeso;
+	private JLabel vpd;
+	private JTextField campoVpd;
 	
 	public PanelCrearTest(Asignatura asig){
 		super();
 		this.setLayout(new SpringLayout());
 		
 		this.cancelar.addActionListener(new ActionVolverAsig(asig));
-		//this.aceptar.addActionListener(new ActionCrearApuntes(asig,this));
+		this.aceptar.addActionListener(new ActionCrearTest(asig,this));
 		
 		JPanel panel_elecciones = new JPanel();
 		SpringLayout layout = new SpringLayout();
@@ -45,15 +54,7 @@ public class PanelCrearTest extends PanelComun {
 		ff = new JLabel ("Fecha Fin");
 		panel_elecciones.add(fi);
 		panel_elecciones.add(ff);
-		
-		JPanel preg = new JPanel();
-		SpringLayout layoutAna = new SpringLayout();
-		preg.setLayout(layoutAna);
-		this.anadir = new JButton ("Añadir Pregunta");
-		preg.add(this.anadir);
-		//layoutAna.putConstraint(SpringLayout.NORTH,this.anadir, 10, SpringLayout.NORTH, preg);
-		preg.setVisible(true);
-		
+				
 		UtilDateModel model = new UtilDateModel();
 		model.setDate(2017, 5, 2);
 		model.setSelected(true);
@@ -68,9 +69,28 @@ public class PanelCrearTest extends PanelComun {
 		layout.putConstraint(SpringLayout.NORTH,this.fechaFin,(int) Frame.HEIGHT/10 ,SpringLayout.NORTH, this.fechaIni);
 		layout.putConstraint(SpringLayout.WEST,this.fechaIni,(int) Frame.HEIGHT/8 ,SpringLayout.WEST, this.fi);
 		layout.putConstraint(SpringLayout.WEST,this.fechaFin,(int) Frame.HEIGHT/8,SpringLayout.WEST, this.ff);
+		
+		JPanel panelPeso = new JPanel();
+		SpringLayout layoutPeso = new SpringLayout();
+		panelPeso.setLayout(layoutPeso);
+		this.peso = new JLabel ("Peso");
+		this.campoPeso = new JTextField();
+		this.campoPeso.setPreferredSize(new Dimension((int)Frame.WIDTH/5,30));
+		this.vpd = new JLabel ("Valor por defecto");
+		this.campoVpd = new JTextField();
+		this.campoVpd.setPreferredSize(new Dimension((int)Frame.WIDTH/6,30));
+		panelPeso.add(this.peso);
+		panelPeso.add(this.campoPeso);
+		panelPeso.add(this.vpd);
+		panelPeso.add(this.campoVpd);
+		layoutPeso.putConstraint(SpringLayout.WEST,this.campoPeso,(int) Frame.HEIGHT/10 ,SpringLayout.WEST, this.peso);
+		layoutPeso.putConstraint(SpringLayout.NORTH,this.vpd,(int) Frame.HEIGHT/8 ,SpringLayout.NORTH, this.peso);
+		layoutPeso.putConstraint(SpringLayout.WEST,this.campoVpd,(int) Frame.HEIGHT/6 ,SpringLayout.WEST, this.vpd);
+		layoutPeso.putConstraint(SpringLayout.NORTH,this.campoVpd,(int) Frame.HEIGHT/8 ,SpringLayout.NORTH, this.campoPeso);
+		
 		this.add(aux);
-		this.add(preg);
 		this.add(panel_elecciones);
+		this.add(panelPeso);
 		this.add(panel_botones);
 		
 		
@@ -78,19 +98,42 @@ public class PanelCrearTest extends PanelComun {
 		
 	}
 	
-	public String getSelec(){
-		return (String) this.visibilidad.getSelectedItem();
+	public String getNombre(){
+		return this.text.getText();
 	}
 	
-	public String getOrden(){
-		return (String) this.ordenPreguntas.getSelectedItem();
+	public boolean getSelec(){
+		if (this.visibilidad.getSelectedItem().equals("Visible")){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean getOrden(){
+		if (this.ordenPreguntas.getSelectedItem().equals("Ordenadas")){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public LocalDate getFechaIni(){
-		return (LocalDate) this.fechaIni.getModel().getValue();
+		Date input = (Date)this.fechaIni.getModel().getValue();
+		LocalDate date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return date;
 	}
 	
 	public LocalDate getFechaFin(){
-		return (LocalDate) this.fechaFin.getModel().getValue();
+		Date input = (Date)this.fechaFin.getModel().getValue();
+		LocalDate date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return date;	
+	}
+	
+	public Double getVpd(){
+		return Double.parseDouble(this.campoVpd.getText());
+	}
+	
+	public Double getPeso(){
+		return Double.parseDouble(this.campoPeso.getText());
 	}
 }
