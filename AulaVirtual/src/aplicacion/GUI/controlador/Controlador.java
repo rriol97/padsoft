@@ -3,7 +3,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 
 import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
@@ -59,18 +58,23 @@ public class Controlador {
 		asignatura.aceptarSolicitud(sol);
 	}
 
-	public void crearApuntes(String titulo, boolean selec, String contenido, Asignatura asig) throws InvalidEmailAddressException, FailedInternetConnectionException {
-		asig.anadirElemento(new Apuntes(titulo,selec,contenido,asig));
+	public void crearApuntes(String titulo, boolean selec, String contenido, Asignatura asig, Tema tema) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		tema.anadirElemento(new Apuntes(titulo,selec,contenido,asig));
 	}
 
-	public void crearTema(String nombre, boolean b, Asignatura asig) throws InvalidEmailAddressException, FailedInternetConnectionException {
-		asig.anadirElemento(new Tema(nombre,b,asig));
+	public void crearTema(String nombre, boolean b, Asignatura asig, Tema tema) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		if (tema == null) {
+			asig.anadirElemento(new Tema(nombre,b,asig));
+		} else {
+			tema.anadirElemento(new Tema(nombre,b,asig));
+		}
 	}
 
 	public Test nuevoTest(String nombre, boolean selec, Asignatura asig, LocalDate fechaIni, LocalDate fechaFin, boolean orden,
-		Double peso, Double vpd) throws InvalidEmailAddressException, FailedInternetConnectionException {
+						Double peso, Double vpd, Tema tema) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		
 		Test t = new Test (nombre,selec,asig,"",fechaIni,fechaFin,orden,peso,vpd);
-		asig.anadirElemento(t);
+		tema.anadirElemento(t);
 		return t;
 	}
 }

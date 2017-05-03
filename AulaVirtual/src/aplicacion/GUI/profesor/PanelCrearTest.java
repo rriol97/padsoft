@@ -6,7 +6,6 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,10 +18,10 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
 import aplicacion.GUI.acciones.profesor.ActionCrearTest;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 
 public class PanelCrearTest extends PanelComun {
 	private static final long serialVersionUID = 1L;
@@ -36,12 +35,12 @@ public class PanelCrearTest extends PanelComun {
 	private JLabel vpd;
 	private JTextField campoVpd;
 	
-	public PanelCrearTest(Asignatura asig){
+	public PanelCrearTest(Asignatura asig, Tema tema){
 		super();
 		this.setLayout(new SpringLayout());
 		
 		this.cancelar.addActionListener(new ActionVolverAsig(asig));
-		this.aceptar.addActionListener(new ActionCrearTest(asig,this));
+		this.aceptar.addActionListener(new ActionCrearTest(this, asig, tema));
 		
 		JPanel panel_elecciones = new JPanel();
 		SpringLayout layout = new SpringLayout();

@@ -9,25 +9,33 @@ import aplicacion.GUI.profesor.PanelCrearEle;
 import aplicacion.GUI.profesor.PanelCrearTema;
 import aplicacion.GUI.profesor.PanelCrearTest;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 
 public class ActionEle implements ActionListener {
 	
-	private Asignatura asig;
 	private PanelCrearEle panel;
+	private Asignatura asig;
 
-	public ActionEle(Asignatura asig, PanelCrearEle p){
-		this.asig = asig;
+	public ActionEle(PanelCrearEle p, Asignatura asig){
 		this.panel = p;
+		this.asig = asig;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (panel.getOpcSel().equals("Apuntes")){
-			Frame.getIntance().cambiarPanel(new PanelCrearApuntes(asig),1);
+			Tema tema = panel.getTemaSel();
+			if (tema != null) {
+				Frame.getIntance().cambiarPanel(new PanelCrearApuntes(asig, tema),1);
+			}
 		} else if (panel.getOpcSel().equals("Tema")){
-			Frame.getIntance().cambiarPanel(new PanelCrearTema(asig), 1);
-		} else{
-			Frame.getIntance().cambiarPanel(new PanelCrearTest(asig), 1);
+			Tema tema = panel.getTemaSel();
+			Frame.getIntance().cambiarPanel(new PanelCrearTema(asig, tema), 1);
+		} else {
+			Tema tema = panel.getTemaSel();
+			if (tema != null) {
+				Frame.getIntance().cambiarPanel(new PanelCrearTest(asig, tema), 1);
+			}
 		}
 	}
 }

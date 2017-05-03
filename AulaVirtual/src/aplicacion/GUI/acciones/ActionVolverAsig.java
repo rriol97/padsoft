@@ -3,9 +3,12 @@ package aplicacion.GUI.acciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import aplicacion.GUI.alumno.PanelAsigAlum;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAsigProf;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.TipoUsuario;
 
 public class ActionVolverAsig implements ActionListener{
 	
@@ -17,6 +20,10 @@ public class ActionVolverAsig implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelAsigProf(this.asig),1);
+		if (Aplicacion.getInstance().getTipoUsu() == TipoUsuario.ALUMNO) {
+			Frame.getIntance().cambiarPanel(new PanelAsigAlum(this.asig),1);
+		} else if (Aplicacion.getInstance().getTipoUsu() == TipoUsuario.PROFESOR) {
+			Frame.getIntance().cambiarPanel(new PanelAsigProf(this.asig),1);
+		}
 	}
 }

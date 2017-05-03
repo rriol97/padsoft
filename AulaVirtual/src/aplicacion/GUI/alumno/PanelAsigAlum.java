@@ -11,9 +11,8 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
-import aplicacion.GUI.acciones.alumno.ActionApuntes;
-import aplicacion.GUI.acciones.alumno.ActionManejarTest;
 import aplicacion.GUI.general.Frame;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Apuntes;
 import aplicacion.clases.elemento.Elemento;
@@ -38,25 +37,34 @@ public class PanelAsigAlum extends JPanel {
 		for (Elemento e: asig.getElementos()) {
 			raiz.add(getNode(e));
 		}
-		
+		expandAllNodes(arbol, 0, arbol.getRowCount());
+
 		arbol.addTreeSelectionListener(new TreeSelectionListener(){
 			public void valueChanged(TreeSelectionEvent e) {
 				DefaultMutableTreeNode nodo = ((DefaultMutableTreeNode) arbol.getLastSelectedPathComponent());
 				Object o = nodo.getUserObject();
 				if (o instanceof Test) {
 					Test t = (Test) o;
-					new ActionManejarTest(t);
+					if (t.isFechaValida()) {
+						Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
+					} else {
+						if (t.isTerminado()) {
+							try {
+								Frame.getIntance().cambiarPanel(new PanelResAlum(Aplicacion.getInstance().getAlumnoActual().encontrarResolucion(t)), 1);
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+						}
+					}
 				} else if (o instanceof Apuntes) {
 					Apuntes ap = (Apuntes) o;
-					new ActionApuntes(ap);
+					Frame.getIntance().cambiarPanel(new PanelApunAlum(ap), 1);
 				}
 			}
 		});
-		
-		expandAllNodes(arbol, 0, arbol.getRowCount());
 				
 		JScrollPane tree = new JScrollPane(arbol);
-		tree.setPreferredSize(new Dimension((int)(4.5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.15)));
+		tree.setPreferredSize(new Dimension((int)(4.5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		this.add(tree);
 	}
 	

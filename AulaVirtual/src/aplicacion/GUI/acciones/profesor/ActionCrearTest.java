@@ -10,17 +10,20 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelCrearTest;
 import aplicacion.GUI.profesor.PanelEnunciadoComun;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ActionCrearTest implements ActionListener {
-	private Asignatura asig;
 	private PanelCrearTest p;
+	private Asignatura asig;
+	private Tema tema;
 	
-	public ActionCrearTest(Asignatura a, PanelCrearTest p){
-		this.asig = a;
+	public ActionCrearTest(PanelCrearTest p, Asignatura asig, Tema tema){
 		this.p = p;
+		this.asig = asig;
+		this.tema = tema;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -47,7 +50,7 @@ public class ActionCrearTest implements ActionListener {
 		else{
 			Test t;
 			try {
-				t = Controlador.getInstance().nuevoTest(this.p.getNombre(),this.p.getSelec(),this.asig,this.p.getFechaIni(),this.p.getFechaFin(),this.p.getOrden(),this.p.getPeso(),this.p.getVpd());
+				t = Controlador.getInstance().nuevoTest(this.p.getNombre(),this.p.getSelec(),this.asig,this.p.getFechaIni(),this.p.getFechaFin(),this.p.getOrden(),this.p.getPeso(),this.p.getVpd(), this.tema);
 				Frame.getIntance().cambiarPanel(new PanelEnunciadoComun(t), 1);
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 				e1.printStackTrace();

@@ -99,9 +99,6 @@ public class Tema extends Elemento implements java.io.Serializable {
 	public String toString() {
 		String res = "";
 		res = res + super.toString();
-		for (Elemento ele:this.elementos){
-			res = res + "\n \t"+ele.toString(); 
-		}
 		
 		return res;
 	}

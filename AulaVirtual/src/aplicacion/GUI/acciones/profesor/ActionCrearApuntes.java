@@ -10,17 +10,20 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAsigProf;
 import aplicacion.GUI.profesor.PanelCrearApuntes;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ActionCrearApuntes implements ActionListener{
 
 	private Asignatura asig;
+	private Tema tema;
 	private PanelCrearApuntes panel;
 	
-	public ActionCrearApuntes(Asignatura asig, PanelCrearApuntes p){
-		this.asig = asig;
+	public ActionCrearApuntes(PanelCrearApuntes p, Asignatura asig, Tema tema){
 		this.panel = p;
+		this.asig = asig;
+		this.tema = tema;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -33,13 +36,13 @@ public class ActionCrearApuntes implements ActionListener{
 		else{
 			if (this.panel.getSelec().equals("Visible") == true){
 				try {
-					Controlador.getInstance().crearApuntes(this.panel.getTitulo(),true,this.panel.getContenido(),this.asig);
+					Controlador.getInstance().crearApuntes(this.panel.getTitulo(),true,this.panel.getContenido(),this.asig, this.tema);
 				} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 					e1.printStackTrace();
 				}
 			} else{
 				try {
-					Controlador.getInstance().crearApuntes(this.panel.getTitulo(),false,this.panel.getContenido(),this.asig);
+					Controlador.getInstance().crearApuntes(this.panel.getTitulo(),false,this.panel.getContenido(),this.asig, this.tema);
 				} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 					e1.printStackTrace();
 				}

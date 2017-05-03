@@ -7,6 +7,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionCrearApuntes;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 
 /**
  * 
@@ -18,13 +19,12 @@ public class PanelCrearApuntes extends PanelComun {
 	private static final long serialVersionUID = 1L;
 	private JTextArea apuntes;
 
-	
-	public PanelCrearApuntes(Asignatura asig){
+	public PanelCrearApuntes(Asignatura asig, Tema tema){
 		
 		this.setLayout(new SpringLayout());
 
 		this.cancelar.addActionListener(new ActionVolverAsig(asig));
-		this.aceptar.addActionListener(new ActionCrearApuntes(asig,this));
+		this.aceptar.addActionListener(new ActionCrearApuntes(this, asig, tema));
 		
 		
 		this.apuntes = new JTextArea();

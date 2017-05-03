@@ -10,17 +10,20 @@ import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAsigProf;
 import aplicacion.GUI.profesor.PanelCrearTema;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ActionCrearTema implements ActionListener {
 
-	private Asignatura asig;
 	private PanelCrearTema panel;
+	private Asignatura asig;
+	private Tema tema;
 	
-	public ActionCrearTema(Asignatura asig, PanelCrearTema p){
+	public ActionCrearTema(PanelCrearTema p, Asignatura asig, Tema tema){
 		this.asig = asig;
 		this.panel = p;
+		this.tema = tema;
 	}
 	
 	@Override
@@ -32,13 +35,13 @@ public class ActionCrearTema implements ActionListener {
 		
 		if (this.panel.getSelec().equals("Visible")){
 			try {
-				Controlador.getInstance().crearTema(this.panel.getNombre(),true,asig);
+				Controlador.getInstance().crearTema(this.panel.getNombre(),true,asig, this.tema);
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 				e1.printStackTrace();
 			}
 		} else {
 			try {
-				Controlador.getInstance().crearTema(this.panel.getNombre(),false,asig);
+				Controlador.getInstance().crearTema(this.panel.getNombre(),false,asig, this.tema);
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 				e1.printStackTrace();
 			}
