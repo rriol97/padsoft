@@ -149,7 +149,7 @@ public class PanelAsigProf extends JPanel {
 	        expandAllNodes(tree, rowCount, tree.getRowCount());
 	    }
 	}
-	
+
 	public Asignatura getAsignatura() {
 		return this.asig;
 	}
