@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.SpringLayout;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -21,8 +23,10 @@ import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
+import aplicacion.clases.elemento.Apuntes;
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
+import aplicacion.clases.elemento.test.Test;
 
 /**
  * Clase que implementa el panel que muestra una asignatura a un profesor.
@@ -50,14 +54,28 @@ public class PanelAsigProf extends JPanel {
 		for (Elemento e: asig.getElementos()) {
 			raiz.add(getNode(e));
 		}
+		expandAllNodes(arbol, 0, arbol.getRowCount());
 		
-		/*arbol.addTreeSelectionListener(new TreeSelectionListener() {
+		arbol.addTreeSelectionListener(new TreeSelectionListener(){
 			public void valueChanged(TreeSelectionEvent e) {
-				Object nodo = arbol.getLastSelectedPathComponent();
-				int[] indiceNodosSeleccionados = arbol.getSelectionRows();
-				TreePath[] pathNodosSeleccionados = arbol.getSelectionPaths();
+				DefaultMutableTreeNode nodo = ((DefaultMutableTreeNode) arbol.getLastSelectedPathComponent());
+				Object o = nodo.getUserObject();
+				if (o instanceof Tema) {
+					Tema tema = (Tema) o;
+					Frame.getIntance().cambiarPanel(new PanelEditarTema(tema), 1);
+				} else if (o instanceof Apuntes) {
+					Apuntes apuntes = (Apuntes) o;
+					Frame.getIntance().cambiarPanel(new PanelEditarApuntes(apuntes), 1);
+				} else if (o instanceof Test) {
+					Test test = (Test) o;
+					if (test.isFechaValida() == false && test.isTerminado() == false) {
+						Frame.getIntance().cambiarPanel(new PanelEditarTest(test), 1);
+					} else {
+						Frame.getIntance().cambiarPanel(new PanelVisializarTest(test), 1);
+					}
+				}
 			}
-		});*/
+		});
 		
 		JScrollPane tree = new JScrollPane(arbol);
 		tree.setPreferredSize(new Dimension((int)(4*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
@@ -120,6 +138,22 @@ public class PanelAsigProf extends JPanel {
 			}
 		}
 		return node;
+	}
+	
+	/**
+	 * Matodo pata expandir el arbol de la asignatura.
+	 * @param tree Arbol a expandir.
+	 * @param startingIndex Indice de inicio.
+	 * @param rowCount Contador de filas.
+	 */
+	private void expandAllNodes(JTree tree, int startingIndex, int rowCount){
+	    for(int i=startingIndex;i<rowCount;++i){
+	        tree.expandRow(i);
+	    }
+
+	    if(tree.getRowCount()!=rowCount){
+	        expandAllNodes(tree, rowCount, tree.getRowCount());
+	    }
 	}
 	
 	public Asignatura getAsignatura() {

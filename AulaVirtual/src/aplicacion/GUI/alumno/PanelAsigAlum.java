@@ -18,6 +18,7 @@ import aplicacion.clases.elemento.Apuntes;
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
+import aplicacion.clases.resolucion.Resolucion;
 
 /**
  * Clase que implementa el panel mostrado cuando un alumno consulta una de sus asignaturas.
@@ -45,15 +46,25 @@ public class PanelAsigAlum extends JPanel {
 				Object o = nodo.getUserObject();
 				if (o instanceof Test) {
 					Test t = (Test) o;
-					if (t.isFechaValida()) {
-						Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
+					Resolucion res = Aplicacion.getInstance().getAlumnoActual().encontrarResolucion(t);
+					if (res == null) {
+						if (t.isFechaValida()) {
+							Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
+						}
 					} else {
-						if (t.isTerminado()) {
+						if (t.isTerminado() == false) {
 							try {
-								Frame.getIntance().cambiarPanel(new PanelResAlum(Aplicacion.getInstance().getAlumnoActual().encontrarResolucion(t)), 1);
+								Frame.getIntance().cambiarPanel(new PanelResAlum(res), 1);
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
+						} else {
+							try {
+								res.calcularNota();
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+							Frame.getIntance().cambiarPanel(new PanelCorrAlum(res), 1);
 						}
 					}
 				} else if (o instanceof Apuntes) {

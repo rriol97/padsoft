@@ -1,5 +1,6 @@
 package aplicacion.GUI.alumno;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -12,7 +13,6 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.alumno.ActionRealizarTest;
 import aplicacion.GUI.componentes.PanelPreg;
-import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 
@@ -24,11 +24,11 @@ import aplicacion.clases.elemento.test.Test;
  */
 public class PanelTestAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
-
-	private Asignatura asig;
+	
+	List <PanelPreg> paneles;
 	
 	public PanelTestAlum (Test t) {
-		this.asig = t.getAsignatura();
+		this.paneles = new ArrayList <PanelPreg> ();
 		this.setLayout(new SpringLayout());
 		
 		JLabel etiqueta_nombre = new JLabel (t.getNombre());
@@ -40,19 +40,25 @@ public class PanelTestAlum extends JPanel {
 		}
 		
 		for (Pregunta p: preguntas) {
-			this.add(new PanelPreg(p));
+			PanelPreg pp = new PanelPreg(p);
+			this.paneles.add(pp);
+			this.add(pp);
 		}
 		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
 		JButton boton_volver = new JButton("Volver");
-		boton_volver.addActionListener(new ActionVolverAsig(this.asig));
+		boton_volver.addActionListener(new ActionVolverAsig(t.getAsignatura()));
 		panel_botones.add(boton_volver);
 		JButton boton_finalizar = new JButton("Finalizar");
-		boton_finalizar.addActionListener(new ActionRealizarTest(this));
+		boton_finalizar.addActionListener(new ActionRealizarTest(this, t));
 		panel_botones.add(boton_finalizar);
 		this.add(panel_botones);
 		
 		SpringUtilities.makeCompactGrid(this, t.getPreguntas().size() + 2, 1, 5, 5, 5, 5);
+	}
+
+	public List<PanelPreg> getPaneles() {
+		return paneles;
 	}
 }

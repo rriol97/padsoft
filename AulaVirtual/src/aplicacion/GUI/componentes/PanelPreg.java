@@ -1,5 +1,6 @@
 package aplicacion.GUI.componentes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -12,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.alumno.ActionSeleccionOpc;
+import aplicacion.GUI.acciones.alumno.ActionSeleccionOpcM;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -27,11 +29,13 @@ import aplicacion.clases.elemento.test.RespuestaLibre;
 public class PanelPreg extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private List <JCheckBox> opcionMultiple;
-	private String respuestaLibre;
-	private List <JRadioButton> opcionUnica;
+	private Pregunta pregunta;
+	private List <Opcion> seleccionadas;
+	JTextField respuesta;
 
 	public PanelPreg (Pregunta p) {
+		this.pregunta = p;
+		this.seleccionadas = new ArrayList<Opcion>();
 		SpringLayout l = new SpringLayout();
 		this.setLayout(l);
 		
@@ -50,14 +54,14 @@ public class PanelPreg extends JPanel {
 			if (po instanceof OpcionMultiple) {
 				for (Opcion o: opciones) {
 					JCheckBox casilla_opcion = new JCheckBox(o.getTexto());
-					casilla_opcion.addActionListener(new ActionSeleccionOpc(this));
+					casilla_opcion.addActionListener(new ActionSeleccionOpcM(this, casilla_opcion, o));
 					panel_opcion.add(casilla_opcion);
 				}
 			} else {
 				ButtonGroup grupo_opcion = new ButtonGroup();
 				for (Opcion o: opciones) {
 					JRadioButton casilla_opcion = new JRadioButton(o.getTexto());
-					casilla_opcion.addActionListener(new ActionSeleccionOpc(this));
+					casilla_opcion.addActionListener(new ActionSeleccionOpc(this, casilla_opcion, o));
 					grupo_opcion.add(casilla_opcion);
 					panel_opcion.add(casilla_opcion);
 				}	
@@ -66,6 +70,7 @@ public class PanelPreg extends JPanel {
 		} else if (p instanceof RespuestaLibre) {
 			JTextField campo_respuesta = new JTextField();
 			panel_opcion.add(campo_respuesta);
+			this.respuesta = campo_respuesta;
 		}
 		
 		this.add(panel_opcion);
@@ -73,15 +78,15 @@ public class PanelPreg extends JPanel {
 		l.putConstraint(SpringLayout.WEST, panel_opcion, 40, SpringLayout.WEST, this);
 	}
 
-	public List<JCheckBox> getOpcionMultiple() {
-		return opcionMultiple;
+	public Pregunta getPregunta() {
+		return pregunta;
 	}
-
-	public String getRespuestaLibre() {
-		return respuestaLibre;
+	
+	public List<Opcion> getSeleccionadas() {
+		return seleccionadas;
 	}
-
-	public List<JRadioButton> getOpcionUnica() {
-		return opcionUnica;
+	
+	public JTextField getRespuesta() {
+		return respuesta;
 	}
 }

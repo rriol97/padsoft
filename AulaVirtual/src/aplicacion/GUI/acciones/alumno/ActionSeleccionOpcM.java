@@ -3,17 +3,17 @@ package aplicacion.GUI.acciones.alumno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 
 import aplicacion.GUI.componentes.PanelPreg;
 import aplicacion.clases.elemento.test.Opcion;
 
-public class ActionSeleccionOpc implements ActionListener {
+public class ActionSeleccionOpcM implements ActionListener {
 	private PanelPreg vista;
-	private JRadioButton boton;
+	private JCheckBox boton;
 	private Opcion opcion;
 	
-	public ActionSeleccionOpc (PanelPreg vista, JRadioButton boton, Opcion opcion) {
+	public ActionSeleccionOpcM (PanelPreg vista, JCheckBox boton, Opcion opcion) {
 		this.vista = vista;
 		this.boton = boton;
 		this.opcion = opcion;

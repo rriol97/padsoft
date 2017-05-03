@@ -7,11 +7,10 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.componentes.PanelPreg;
-import aplicacion.GUI.componentes.PanelSol;
-import aplicacion.clases.elemento.test.Pregunta;
+import aplicacion.GUI.componentes.PanelResp;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
+import aplicacion.clases.resolucion.Respuesta;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -31,20 +30,12 @@ public class PanelResAlum extends JPanel {
 		JLabel etiqueta_nombre = new JLabel (t.getNombre());
 		this.add(etiqueta_nombre);
 		
-		if (t.isFechaValida()) {
-			// TODO intentar implementarlo en otro sitio
-			res.calcularNota();
-			for (Pregunta p: t.getPreguntas()) {
-				this.add(new PanelSol(p, res));
-			}
-		} else {
-			for (Pregunta p: t.getPreguntas()) {
-				this.add(new PanelPreg(p));
-			}
+		for (Respuesta resp: res.getRespuestas()) {
+			this.add(new PanelResp(resp));
 		}
 		
 		JButton boton_volver = new JButton("Volver");
-		boton_volver.addActionListener(new ActionVolverAsig(res.getTest().getAsignatura()));
+		boton_volver.addActionListener(new ActionVolverAsig(t.getAsignatura()));
 		this.add(boton_volver);
 		
 		SpringUtilities.makeCompactGrid(this, t.getPreguntas().size() + 2, 1, 5, 5, 5, 5);
