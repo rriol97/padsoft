@@ -3,6 +3,8 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelCrearApuntes;
 import aplicacion.GUI.profesor.PanelCrearEle;
@@ -27,6 +29,8 @@ public class ActionEle implements ActionListener {
 			Tema tema = panel.getTemaSel();
 			if (tema != null) {
 				Frame.getIntance().cambiarPanel(new PanelCrearApuntes(asig, tema),1);
+			} else{
+				JOptionPane.showMessageDialog(this.panel,"Elija el tema de los apuntes");
 			}
 		} else if (panel.getOpcSel().equals("Tema")){
 			Tema tema = panel.getTemaSel();
@@ -35,6 +39,8 @@ public class ActionEle implements ActionListener {
 			Tema tema = panel.getTemaSel();
 			if (tema != null) {
 				Frame.getIntance().cambiarPanel(new PanelCrearTest(asig, tema), 1);
+			} else{
+				JOptionPane.showMessageDialog(this.panel,"Elija el tema del test");
 			}
 		}
 	}

@@ -3,19 +3,23 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelEnunciadoComun;
+import aplicacion.GUI.profesor.PanelAnadirPregunta;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionAnadirPregunta implements ActionListener {
 	private Test test;
+	private JPanel p;
 	
-	public ActionAnadirPregunta(Test t){
+	public ActionAnadirPregunta(Test t, JPanel p){
 		this.test = t;
+		this.p = p;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelEnunciadoComun(test), 1);
+		this.p.setVisible(true);
 	}
 	
 }

@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelCrearTest;
-import aplicacion.GUI.profesor.PanelEnunciadoComun;
+import aplicacion.GUI.profesor.PanelAnadirPregunta;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
@@ -51,7 +51,7 @@ public class ActionCrearTest implements ActionListener {
 			Test t;
 			try {
 				t = Controlador.getInstance().nuevoTest(this.p.getNombre(),this.p.getSelec(),this.asig,this.p.getFechaIni(),this.p.getFechaFin(),this.p.getOrden(),this.p.getPeso(),this.p.getVpd(), this.tema);
-				Frame.getIntance().cambiarPanel(new PanelEnunciadoComun(t), 1);
+				Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 				e1.printStackTrace();
 			}

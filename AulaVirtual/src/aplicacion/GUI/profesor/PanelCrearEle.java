@@ -45,7 +45,7 @@ public class PanelCrearEle extends JPanel {
 		this.listaTemas = new JList<Tema>(temas);
 		this.listaTemas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  		JScrollPane scrolling_temas = new JScrollPane(this.listaTemas);
- 		scrolling_temas.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT/1.5)));
+ 		scrolling_temas.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT)));
         this.add(scrolling_temas);
 		
 		JButton aceptar = new JButton ("Aceptar");
