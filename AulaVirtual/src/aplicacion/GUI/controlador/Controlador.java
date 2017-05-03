@@ -77,4 +77,8 @@ public class Controlador {
 		tema.anadirElemento(t);
 		return t;
 	}
+
+	public void eliminarTest(Test t,Tema w) throws InvalidEmailAddressException, FailedInternetConnectionException {
+		w.eliminarElemento(t);
+	}
 }

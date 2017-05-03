@@ -15,6 +15,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.ActionVolverAsig;
+import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Tema;
@@ -32,7 +34,7 @@ public class PanelAnadirPregunta extends JPanel {
 	private JButton aceptar;
 	private JList<Pregunta> listaPreg;
 	
-	public PanelAnadirPregunta(Test t){
+	public PanelAnadirPregunta(Test t,Tema w){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
@@ -96,7 +98,8 @@ public class PanelAnadirPregunta extends JPanel {
 		this.cancelar = new JButton ("Cancelar");
 		this.aceptar = new JButton ("Aceptar");
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
-		panel_botones.add(cancelar);
+		panel_botones.add(cancelar); 
+		this.cancelar.addActionListener(new ActionVolverAsigDeTest(t,w));
 		panel_botones.add(aceptar);	
 		
 		this.add(preg);
