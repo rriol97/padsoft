@@ -17,7 +17,6 @@ import javax.swing.tree.TreeSelectionModel;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.ActionCrearEle;
-import aplicacion.GUI.acciones.profesor.ActionEliminarEle;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
 import aplicacion.GUI.general.Frame;
@@ -59,19 +58,20 @@ public class PanelAsigProf extends JPanel {
 		arbol.addTreeSelectionListener(new TreeSelectionListener(){
 			public void valueChanged(TreeSelectionEvent e) {
 				DefaultMutableTreeNode nodo = ((DefaultMutableTreeNode) arbol.getLastSelectedPathComponent());
+				Object padre = ((DefaultMutableTreeNode) nodo.getParent()).getUserObject();
 				Object o = nodo.getUserObject();
 				if (o instanceof Tema) {
 					Tema tema = (Tema) o;
-					Frame.getIntance().cambiarPanel(new PanelEditarTema(tema), 1);
+					Frame.getIntance().cambiarPanel(new PanelEditarTema(tema, padre), 1);
 				} else if (o instanceof Apuntes) {
 					Apuntes apuntes = (Apuntes) o;
-					Frame.getIntance().cambiarPanel(new PanelEditarApuntes(apuntes), 1);
+					Frame.getIntance().cambiarPanel(new PanelEditarApuntes(apuntes, padre), 1);
 				} else if (o instanceof Test) {
 					Test test = (Test) o;
 					if (test.isFechaValida() == false && test.isTerminado() == false) {
-						Frame.getIntance().cambiarPanel(new PanelEditarTest(test), 1);
+						Frame.getIntance().cambiarPanel(new PanelEditarTest(test, padre), 1);
 					} else {
-						Frame.getIntance().cambiarPanel(new PanelVisializarTest(test), 1);
+						Frame.getIntance().cambiarPanel(new PanelVisualizarTest(test), 1);
 					}
 				}
 			}
@@ -81,15 +81,9 @@ public class PanelAsigProf extends JPanel {
 		tree.setPreferredSize(new Dimension((int)(4*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		izq.add(tree);
 		
-		JPanel panel_botones1 = new JPanel();
-		panel_botones1.setLayout(new BoxLayout(panel_botones1,0));
-		JButton boton_eliminar = new JButton("Eliminar elemento");
-		boton_eliminar.addActionListener(new ActionEliminarEle(this));
-		panel_botones1.add(boton_eliminar);
 		JButton boton_crear = new JButton("Crear elemento");
 		boton_crear.addActionListener(new ActionCrearEle(this));
-		panel_botones1.add(boton_crear);
-		izq.add(panel_botones1);
+		izq.add(boton_crear);
 		
 		SpringUtilities.makeCompactGrid(izq, 2, 1, 5, 5, 5, 5);
 
@@ -107,15 +101,15 @@ public class PanelAsigProf extends JPanel {
 		JScrollPane scrollingListOne = new JScrollPane(alumnoMatr);
 		der.add(scrollingListOne);
 		
-		JPanel panel_botones2 = new JPanel();
-		panel_botones2.setLayout(new BoxLayout(panel_botones2,0));
+		JPanel panel_botones = new JPanel();
+		panel_botones.setLayout(new BoxLayout(panel_botones,0));
 		JButton boton_expulsar = new JButton("Expulsar alumno");
 		boton_expulsar.addActionListener(new ActionSeleccionExpulsar(this));
-		panel_botones2.add(boton_expulsar);
+		panel_botones.add(boton_expulsar);
 		JButton boton_readmitir = new JButton("Readmitir alumno");
 		boton_readmitir.addActionListener(new ActionSeleccionReadmitir(this));
-		panel_botones2.add(boton_readmitir);
-		der.add(panel_botones2);
+		panel_botones.add(boton_readmitir);
+		der.add(panel_botones);
 		
 		SpringUtilities.makeCompactGrid(der, 2, 1, 5, 5, 5, 5);
 		
