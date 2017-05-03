@@ -15,6 +15,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Tema;
@@ -32,14 +33,14 @@ public class PanelAnadirPregunta extends JPanel {
 	private JButton aceptar;
 	private JList<Pregunta> listaPreg;
 	
-	public PanelAnadirPregunta(Test t){
+	public PanelAnadirPregunta(Test t,Tema w){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
 		JPanel preg = new JPanel();
 		SpringLayout layoutAna = new SpringLayout();
 		preg.setLayout(layoutAna);
-		this.anadir = new JButton ("Añadir Pregunta");
+		this.anadir = new JButton ("Aï¿½adir Pregunta");
 		this.finTest = new JButton ("Finalizar Test");
 		this.setPreferredSize(new Dimension ((int)Frame.WIDTH/10, (int)Frame.HEIGHT/8));
 		this.setPreferredSize(new Dimension ((int)Frame.WIDTH/6, (int)Frame.HEIGHT/4));
@@ -66,7 +67,7 @@ public class PanelAnadirPregunta extends JPanel {
 		JPanel tipoPreg = new JPanel();
 		SpringLayout layoutPreg = new SpringLayout();
 		tipoPreg.setLayout(layoutPreg);
-		String[]tiposPreg = {"Respuesta única","Respuesta múltiple","Si/No","Respuesta Corta"};
+		String[]tiposPreg = {"Respuesta ï¿½nica","Respuesta mï¿½ltiple","Si/No","Respuesta Corta"};
 		this.tipo = new JComboBox<String>(tiposPreg);
 		this.tipo.setPreferredSize(new Dimension ((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/20)));
 		tipoPreg.add(this.tipo);
@@ -96,7 +97,8 @@ public class PanelAnadirPregunta extends JPanel {
 		this.cancelar = new JButton ("Cancelar");
 		this.aceptar = new JButton ("Aceptar");
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
-		panel_botones.add(cancelar);
+		panel_botones.add(cancelar); 
+		this.cancelar.addActionListener(new ActionVolverAsigDeTest(t,w));
 		panel_botones.add(aceptar);	
 		
 		this.add(preg);
