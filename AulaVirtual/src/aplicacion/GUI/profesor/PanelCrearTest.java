@@ -55,11 +55,15 @@ public class PanelCrearTest extends PanelComun {
 		panel_elecciones.add(ff);
 				
 		UtilDateModel model = new UtilDateModel();
+		UtilDateModel model2 = new UtilDateModel();
 		model.setDate(2017, 5, 2);
 		model.setSelected(true);
+		model2.setDate(2017, 6, 2);
+		model2.setSelected(true);
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, new Properties());
+		JDatePanelImpl dataPanel2 = new JDatePanelImpl(model2, new Properties());
 		this.fechaIni = new JDatePickerImpl(datePanel, new DateComponentFormatter());
-		this.fechaFin = new JDatePickerImpl(datePanel,  new DateComponentFormatter());
+		this.fechaFin = new JDatePickerImpl(dataPanel2,  new DateComponentFormatter());
 		panel_elecciones.add(this.fechaIni);
 		panel_elecciones.add(fechaFin);
 		layout.putConstraint(SpringLayout.NORTH,this.fi,(int) Frame.HEIGHT/10 ,SpringLayout.NORTH, this.ordenPreguntas);
