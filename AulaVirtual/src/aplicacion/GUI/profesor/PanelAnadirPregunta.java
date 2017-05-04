@@ -17,6 +17,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
+import aplicacion.GUI.acciones.profesor.ActionNuevaPreg;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -100,6 +101,7 @@ public class PanelAnadirPregunta extends JPanel {
 		panel_botones.add(cancelar); 
 		this.cancelar.addActionListener(new ActionVolverAsigDeTest(t,w));
 		panel_botones.add(aceptar);	
+		this.aceptar.addActionListener(new ActionNuevaPreg(t,this,w));
 		
 		this.add(preg);
 		//this.add(panelEnun);

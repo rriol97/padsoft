@@ -81,4 +81,27 @@ public class Controlador {
 	public void eliminarTest(Test t,Tema w) throws InvalidEmailAddressException, FailedInternetConnectionException {
 		w.eliminarElemento(t);
 	}
+
+	public void crearPregSiNo(Test t, String enunciado, Double valor, Double penalizacion, String respuesta, String opc1, String opc2) {
+		SiNo p = new SiNo(enunciado,valor,penalizacion,1);
+		if (respuesta.equals(opc1)){
+			Opcion opcion1 = new Opcion(0,opc1,true);
+			Opcion opcion2 = new Opcion(0,opc2,false);
+			p.anadirOpcion(opcion1);
+			p.anadirOpcion(opcion2);
+		} else{
+			Opcion opcion2 = new Opcion(0,opc2,true);
+			Opcion opcion1 = new Opcion(0,opc1,false);
+			p.anadirOpcion(opcion1);
+			p.anadirOpcion(opcion2);
+		}
+		
+		t.anadirPregunta(p);
+	}
+
+	public void crearPregCorta(Test t,String enunciado, Double valor, Double penalizacion, String sol) {
+		RespuestaLibre p = new RespuestaLibre(enunciado,valor,penalizacion,sol);
+		t.anadirPregunta(p);
+		
+	}
 }

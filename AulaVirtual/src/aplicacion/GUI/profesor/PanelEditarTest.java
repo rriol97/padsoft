@@ -4,13 +4,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.acciones.profesor.ActionEditarApuntes;
-import aplicacion.GUI.acciones.profesor.ActionEliminarApuntes;
 import aplicacion.clases.elemento.test.Test;
 
 public class PanelEditarTest extends JPanel {

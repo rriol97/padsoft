@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelAnadirPregunta;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionAnadirPregunta implements ActionListener {
