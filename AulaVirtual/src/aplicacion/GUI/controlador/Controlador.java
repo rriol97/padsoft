@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
+import aplicacion.GUI.profesor.PanelOpcUnic;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
@@ -103,5 +104,11 @@ public class Controlador {
 		RespuestaLibre p = new RespuestaLibre(enunciado,valor,penalizacion,sol);
 		t.anadirPregunta(p);
 		
+	}
+
+	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
+		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion,1);
+		t.anadirPregunta(p);
+		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p), 1);
 	}
 }

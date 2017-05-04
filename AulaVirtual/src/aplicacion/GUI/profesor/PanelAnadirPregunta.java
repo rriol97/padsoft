@@ -61,7 +61,7 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 		JPanel tipoPreg = new JPanel();
 		SpringLayout layoutPreg = new SpringLayout();
 		tipoPreg.setLayout(layoutPreg);
-		String[]tiposPreg = {"Respuesta �nica","Respuesta m�ltiple","Si/No","Respuesta Corta"};
+		String[]tiposPreg = {"Respuesta unica","Respuesta multiple","Si/No","Respuesta Corta"};
 		this.tipo = new JComboBox<String>(tiposPreg);
 		this.tipo.setPreferredSize(new Dimension ((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/20)));
 		tipoPreg.add(this.tipo);

@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.profesor.PanelAnadirPregunta;
+import aplicacion.GUI.profesor.PanelCrearPregOpcUnic;
 import aplicacion.GUI.profesor.PanelPregCorta;
 import aplicacion.GUI.profesor.PanelPregSiNo;
 import aplicacion.clases.elemento.Tema;
@@ -26,9 +27,9 @@ public class ActionNuevaPreg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (this.p.getTipoPreg().equals("Respuesta unica")){
-			JOptionPane.showMessageDialog(this.p, "Por implemetar");
+			Frame.getIntance().cambiarPanel(new PanelCrearPregOpcUnic(t,w), 1);
 		} else if (this.p.getTipoPreg().equals("Respuesta multiple")){
-			JOptionPane.showMessageDialog(this.p, "Por implemetar");
+			Frame.getIntance().cambiarPanel(new PanelCrearPregOpcUnic(t,w), 1);
 		} else if ((this.p.getTipoPreg().equals("Si/No"))){
 			Frame.getIntance().cambiarPanel(new PanelPregSiNo(t,w), 1);
 		} else {
