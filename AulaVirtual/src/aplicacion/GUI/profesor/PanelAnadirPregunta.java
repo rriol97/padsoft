@@ -15,10 +15,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
-<<<<<<< HEAD
-=======
-import aplicacion.GUI.acciones.ActionVolverAsig;
->>>>>>> refs/remotes/origin/master
 import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
 import aplicacion.GUI.general.Frame;
