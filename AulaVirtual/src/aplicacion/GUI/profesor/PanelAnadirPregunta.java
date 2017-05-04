@@ -13,19 +13,25 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.ActionAnadirPregunta;
 import aplicacion.GUI.acciones.profesor.ActionNuevaPreg;
 import aplicacion.GUI.general.Frame;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Pregunta;
+import aplicacion.clases.elemento.test.SiNo;
 import aplicacion.clases.elemento.test.Test;
 
-public class PanelAnadirPregunta extends JPanel {
+public class PanelAnadirPregunta extends JPanel implements ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
+	private Test t;
+	private Tema w;
 	private JButton finTest;
 	private JTextArea enunciado;
 	private JComboBox<String> tipo;
@@ -37,6 +43,8 @@ public class PanelAnadirPregunta extends JPanel {
 	public PanelAnadirPregunta(Test t,Tema w){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
+		this.t = t;
+		this.w = w;
 		
 		JPanel preg = new JPanel();
 		SpringLayout layoutAna = new SpringLayout();
@@ -49,22 +57,7 @@ public class PanelAnadirPregunta extends JPanel {
 		preg.add(this.finTest);
 		layoutAna.putConstraint(SpringLayout.WEST, this.finTest, 10, SpringLayout.EAST, this.anadir);
 		preg.setVisible(true);
-		/**
-		JPanel panelEnun = new JPanel();
-		SpringLayout layoutEn = new SpringLayout();
-		this.setLayout(layoutEn);
-		this.enun = new JLabel("Enunciado");
-		this.enun.setFont(new Font("Arial",12,18));
-		panelEnun.add(this.enun);
-		this.enunciado = new JTextArea();
-		this.enunciado.setLineWrap(true);
-		panelEnun.add(this.enunciado);
-		
-		layoutEn.putConstraint(SpringLayout.WEST, enun,(int) Frame.WIDTH/10,SpringLayout.WEST,this);
-		layoutEn.putConstraint(SpringLayout.NORTH, enun,(int) Frame.WIDTH/10,SpringLayout.NORTH,this);
-		layoutEn.putConstraint(SpringLayout.NORTH, enunciado,5,SpringLayout.NORTH,enun);
-		layoutEn.putConstraint(SpringLayout.WEST, enunciado,(int) Frame.WIDTH/10,SpringLayout.WEST,this);
-		*/
+
 		JPanel tipoPreg = new JPanel();
 		SpringLayout layoutPreg = new SpringLayout();
 		tipoPreg.setLayout(layoutPreg);
@@ -89,10 +82,18 @@ public class PanelAnadirPregunta extends JPanel {
  			i++;
  		}
 		
+ 		JPanel aux = new JPanel();
+ 		SpringLayout lay = new SpringLayout();
+ 		aux.setLayout(lay);
 		this.listaPreg = new JList<Pregunta> (preguntas);
 		this.listaPreg.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  		JScrollPane scrolling_Preg = new JScrollPane(this.listaPreg);
- 		//scrolling_Preg.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT)));
+ 		JLabel listPreg = new JLabel("Listado de Preguntas");
+ 		aux.add(listPreg);
+ 		aux.add(scrolling_Preg);
+ 		scrolling_Preg.setPreferredSize(new Dimension((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/5)));
+ 		lay.putConstraint(SpringLayout.NORTH, scrolling_Preg, 10, SpringLayout.SOUTH, listPreg);
+ 		listaPreg.addListSelectionListener(this);
 		
 		JPanel panel_botones = new JPanel();
 		this.cancelar = new JButton ("Cancelar");
@@ -105,7 +106,7 @@ public class PanelAnadirPregunta extends JPanel {
 		
 		this.add(preg);
 		//this.add(panelEnun);
-		this.add(scrolling_Preg);
+		this.add(aux);
 		this.add(tipoPreg);
 		this.add(panel_botones);
 		SpringUtilities.makeCompactGrid(this,4, 1, 5, 5, 5, 5);
@@ -118,5 +119,14 @@ public class PanelAnadirPregunta extends JPanel {
 	
 	public String getTipoPreg(){
 		return (String) this.tipo.getSelectedItem();
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		Pregunta p = this.listaPreg.getSelectedValue();
+		if (p instanceof SiNo){
+			Frame.getIntance().cambiarPanel(new PanelPregSiNo(this.t,this.w), 1);
+			this.t.eliminarPregunta(p);
+		}
 	}
 }

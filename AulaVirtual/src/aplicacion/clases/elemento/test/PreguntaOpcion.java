@@ -60,9 +60,6 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	public String toString() {
 		String res = "";
 		res = res+ super.toString();
-		for (Opcion opc:opciones){
-			res = res +"  "+ opc.toString() + "\n";
-		}
 		return res;
 	}
 

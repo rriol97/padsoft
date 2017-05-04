@@ -37,7 +37,6 @@ public class RespuestaLibre extends Pregunta implements java.io.Serializable {
 	public String toString() { 
 		String res = "";
 		res = res+ super.toString();
-		res = res+"\n"+"Respuesta Libre:";
 		return res;
 	}
 	
