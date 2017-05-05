@@ -18,10 +18,9 @@ import javax.swing.event.ListSelectionListener;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
-import aplicacion.GUI.acciones.profesor.test.ActionAnadirPregunta;
+import aplicacion.GUI.acciones.profesor.test.ActionFinTest;
 import aplicacion.GUI.acciones.profesor.test.ActionNuevaPreg;
 import aplicacion.GUI.general.Frame;
-import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.SiNo;
 import aplicacion.clases.elemento.test.Test;
@@ -30,20 +29,17 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 
 	private static final long serialVersionUID = 1L;
 	private Test t;
-	private Tema w;
 	private JButton finTest;
 	private JTextArea enunciado;
 	private JComboBox<String> tipo;
 	private JButton anadir;
 	private JButton cancelar;
-	private JButton aceptar;
 	private JList<Pregunta> listaPreg;
 	
 	public PanelAnadirPregunta(Test t){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		this.t = t;
-		this.w = w;
 		
 		JPanel preg = new JPanel();
 		SpringLayout layoutAna = new SpringLayout();
@@ -67,11 +63,11 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 		JLabel r = new JLabel ("Tipo de Pregunta");
 		this.setFont(new Font ("Arial",12,18));
 		tipoPreg.add(r);
-		tipoPreg.setVisible(false);
 		layoutPreg.putConstraint(SpringLayout.WEST, this.tipo, (int)Frame.WIDTH/8, SpringLayout.WEST, r);
 		
 		
-		this.anadir.addActionListener(new ActionAnadirPregunta(tipoPreg));
+		this.anadir.addActionListener(new ActionNuevaPreg(t, this));
+		this.finTest.addActionListener(new ActionFinTest(t));
 		
 		
 		Pregunta[] preguntas = new Pregunta[t.getPreguntas().size()];
@@ -96,12 +92,9 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 		
 		JPanel panel_botones = new JPanel();
 		this.cancelar = new JButton ("Cancelar");
-		this.aceptar = new JButton ("Aceptar");
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
 		panel_botones.add(cancelar); 
-		this.cancelar.addActionListener(new ActionVolverAsigDeTest(t,w));
-		panel_botones.add(aceptar);	
-		this.aceptar.addActionListener(new ActionNuevaPreg(t,this,w));
+		this.cancelar.addActionListener(new ActionVolverAsigDeTest(t));
 		
 		this.add(preg);
 		//this.add(panelEnun);
@@ -124,7 +117,7 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 	public void valueChanged(ListSelectionEvent e) {
 		Pregunta p = this.listaPreg.getSelectedValue();
 		if (p instanceof SiNo){
-			Frame.getIntance().cambiarPanel(new PanelPregSiNo(this.t,this.w), 1);
+			Frame.getIntance().cambiarPanel(new PanelPregSiNo(this.t), 1);
 			this.t.eliminarPregunta(p);
 		}
 	}

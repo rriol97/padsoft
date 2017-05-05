@@ -7,15 +7,14 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearPregCorta;
-import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 
 public class PanelPregCorta extends PanelEnunciado {
 	private static final long serialVersionUID = 1L;
 	private JTextArea respuesta;
 	
-	public PanelPregCorta(Test t, Tema w) {
-		super(t, w);
+	public PanelPregCorta(Test t) {
+		super(t);
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		

@@ -7,7 +7,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.acciones.alumno.componentes.PanelResp;
+import aplicacion.GUI.paneles.alumno.componentes.PanelResp;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 import aplicacion.clases.resolucion.Respuesta;

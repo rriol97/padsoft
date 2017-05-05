@@ -58,6 +58,8 @@ public class Tema extends Elemento implements java.io.Serializable {
 		}
 		if (elemento instanceof Tema) {
 			this.getAsignatura().getTemas().add((Tema)elemento);
+		} else if (elemento instanceof Test) {
+			((Test)elemento).setTema(this);
 		}
 		return this.elementos.add(elemento);
 	}

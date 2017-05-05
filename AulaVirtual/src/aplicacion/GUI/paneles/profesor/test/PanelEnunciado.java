@@ -12,7 +12,6 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.profesor.test.ActionCancelarPreg;
 import aplicacion.GUI.general.Frame;
-import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 
 public abstract class PanelEnunciado extends JPanel {
@@ -26,7 +25,7 @@ public abstract class PanelEnunciado extends JPanel {
 	private JTextField c_penal; 
 	protected JButton aceptar;
 	
-	public PanelEnunciado(Test t, Tema w){
+	public PanelEnunciado(Test t){
 
 		this.setLayout(new SpringLayout());
 		

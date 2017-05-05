@@ -4,18 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.clases.elemento.test.Test;
 
-public class ActionVolverCrearPreg implements ActionListener {
-	private Test t;
+public class ActionFinTest implements ActionListener {
+	private Test test;
 	
-	public ActionVolverCrearPreg (Test t) {
-		this.t = t;
+	public ActionFinTest (Test test) {
+		this.test = test;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+		Frame.getIntance().cambiarPanel(new PanelAsigProf(test.getAsignatura()), 1);
 	}
 }

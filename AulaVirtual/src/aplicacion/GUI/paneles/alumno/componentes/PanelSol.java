@@ -1,4 +1,4 @@
-package aplicacion.GUI.acciones.alumno.componentes;
+package aplicacion.GUI.paneles.alumno.componentes;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

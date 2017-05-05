@@ -2,6 +2,7 @@ package aplicacion.clases.elemento.test;
 
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Elemento;
+import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -30,6 +31,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	private boolean aleatorio;
 	private double peso;
 	private double valorDefecto;
+	private Tema tema;
 	
 	/**
 	 * Constructor de Test.
@@ -148,10 +150,11 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * @return boolean true si es correcta correctamente, false en caso contrario
 	 */
 	public boolean isTerminado(){
-		if (LocalDate.now().isAfter(this.fechaFin)){
+		return true;
+		/*if (LocalDate.now().isAfter(this.fechaFin)){
 			return true;
 		}
-		return false;
+		return false;*/
 	}
 	
 	public boolean setFechaIni(LocalDate fechaIni) {
@@ -214,6 +217,14 @@ public class Test extends Elemento implements java.io.Serializable {
 		return false;
 	}
 	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
 	/**
 	 * Metodo que calcula la nota de todas las resoluciones individuales de un test.
 	 * 
@@ -255,11 +266,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		String res = "";
-		res = res +super.getNombre()+" "+this.peso+"%"+" "+"Fecha inicio:"+this.fechaIni.toString()+"  Fecha fin:"+this.fechaFin.toString()+"\n\t"+this.texto+"\n";
-		for (Pregunta p:this.preguntas){
-			res = res +p+"\n";
-		}
+		String res = super.getNombre();
 		return res;
 	}
 	

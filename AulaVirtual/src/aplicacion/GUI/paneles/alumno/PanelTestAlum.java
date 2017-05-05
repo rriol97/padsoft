@@ -12,7 +12,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.alumno.ActionRealizarTest;
-import aplicacion.GUI.acciones.alumno.componentes.PanelPreg;
+import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 

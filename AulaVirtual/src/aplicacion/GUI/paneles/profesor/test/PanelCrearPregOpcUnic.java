@@ -3,14 +3,13 @@ package aplicacion.GUI.paneles.profesor.test;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearOpcUnic;
-import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 
 public class PanelCrearPregOpcUnic extends PanelEnunciado{
 	private static final long serialVersionUID = 1L;
 	
-	public PanelCrearPregOpcUnic(Test t, Tema w) {
-		super(t, w);
+	public PanelCrearPregOpcUnic(Test t) {
+		super(t);
 		this.aceptar.addActionListener(new ActionCrearOpcUnic(this,t));
 
 		this.add(this.panelEnun);

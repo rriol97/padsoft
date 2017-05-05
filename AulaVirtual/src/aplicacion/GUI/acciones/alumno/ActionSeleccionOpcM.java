@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 
-import aplicacion.GUI.acciones.alumno.componentes.PanelPreg;
+import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
 import aplicacion.clases.elemento.test.Opcion;
 
 public class ActionSeleccionOpcM implements ActionListener {

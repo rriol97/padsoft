@@ -8,7 +8,6 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearPreguntaSiNo;
-import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 
 public class PanelPregSiNo extends PanelEnunciado {
@@ -17,8 +16,8 @@ public class PanelPregSiNo extends PanelEnunciado {
 	private JRadioButton no;
 	private ButtonGroup grupo;
 	
-	public PanelPregSiNo(Test t,Tema w){
-		super(t,w);
+	public PanelPregSiNo(Test t){
+		super(t);
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		

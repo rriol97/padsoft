@@ -139,8 +139,9 @@ public class Alumno implements java.io.Serializable {
 	 */
 	public Resolucion encontrarResolucion (Test test){
 		for (Resolucion res:this.resoluciones){
-			res.getTest().equals(test);
-			return res;
+			if (res.getTest().equals(test)) {
+				return res;
+			}
 		}
 		return null;
 	}

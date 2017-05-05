@@ -3,10 +3,10 @@ package aplicacion.GUI.acciones.alumno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.acciones.alumno.componentes.PanelPreg;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.alumno.PanelAsigAlum;
 import aplicacion.GUI.paneles.alumno.PanelTestAlum;
+import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.Pregunta;
