@@ -13,6 +13,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
+import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.alumno.ActionConsultarNotas;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
@@ -57,7 +58,7 @@ public class PanelAsigAlum extends JPanel {
 							Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
 						}
 					} else {
-						if (t.isTerminado()) {
+						if (t.isTerminado() == false) {
 							try {
 								Frame.getIntance().cambiarPanel(new PanelResAlum(res), 1);
 							} catch (Exception e1) {
@@ -85,6 +86,9 @@ public class PanelAsigAlum extends JPanel {
 		
 		JButton boton_nota = new JButton("Nota");
 		boton_nota.addActionListener(new ActionConsultarNotas(asig));
+		this.add(boton_nota);
+		
+		SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
 	}
 	
 	/**

@@ -1,5 +1,7 @@
 package aplicacion.GUI.paneles.alumno;
 
+import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +20,12 @@ public class PanelNotasAsig extends JPanel {
 	public PanelNotasAsig(Alumno alum, Asignatura asig) {
 		this.setLayout(new SpringLayout());
 		
+		JLabel etiqueta_titulo = new JLabel("Nota final:");
+		etiqueta_titulo.setFont(new Font("Arial",12,18));
+		this.add(etiqueta_titulo);
+		
 		for(Test t: asig.getTests()) {
-			String nota = "Nota en el test: " + t.getNombre();
+			String nota = t.getNombre() + ": ";
 			Resolucion res = alum.encontrarResolucion(t);
 			if (res == null) {
 				nota = nota + " - 0.0";
@@ -39,8 +45,9 @@ public class PanelNotasAsig extends JPanel {
 		
 		JButton boton_volver =  new JButton("Volver");
 		boton_volver.addActionListener(new ActionVolverAsig(asig));
+		this.add(boton_volver);
 		
-		SpringUtilities.makeGrid(this, asig.getTests().size() + 2, 1, 5, 5, 5, 5);
+		SpringUtilities.makeGrid(this, asig.getTests().size() + 3, 1, 5, 5, 5, 5);
 	}
 
 }

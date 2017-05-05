@@ -1,19 +1,14 @@
 package aplicacion.GUI.paneles.profesor;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionEditarTema;
 import aplicacion.GUI.acciones.profesor.ActionEliminarTema;
-import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Tema;
 
 public class PanelEditarTema extends JPanel {

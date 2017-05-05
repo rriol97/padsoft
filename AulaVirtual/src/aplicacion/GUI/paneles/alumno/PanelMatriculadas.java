@@ -43,7 +43,7 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 			i++;
 		}
 		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
-        etiqueta_asignaturas.setFont(new Font("Arial",20,19));
+        etiqueta_asignaturas.setFont(new Font("Arial",12,18));
 		this.add(etiqueta_asignaturas);
 		
         listOne = new JList<String>(dataList);
