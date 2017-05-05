@@ -3,14 +3,17 @@ package aplicacion.GUI.paneles.alumno;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.SpringLayout;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
+import aplicacion.GUI.acciones.alumno.ActionConsultarNotas;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -30,6 +33,8 @@ public class PanelAsigAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public PanelAsigAlum (Asignatura asig) {
+		this.setLayout(new SpringLayout());
+		
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig);
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -52,7 +57,7 @@ public class PanelAsigAlum extends JPanel {
 							Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
 						}
 					} else {
-						if (t.isTerminado() == false) {
+						if (t.isTerminado()) {
 							try {
 								Frame.getIntance().cambiarPanel(new PanelResAlum(res), 1);
 							} catch (Exception e1) {
@@ -77,6 +82,9 @@ public class PanelAsigAlum extends JPanel {
 		JScrollPane tree = new JScrollPane(arbol);
 		tree.setPreferredSize(new Dimension((int)(4.5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		this.add(tree);
+		
+		JButton boton_nota = new JButton("Nota");
+		boton_nota.addActionListener(new ActionConsultarNotas(asig));
 	}
 	
 	/**

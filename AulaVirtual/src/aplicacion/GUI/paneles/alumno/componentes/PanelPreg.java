@@ -54,14 +54,14 @@ public class PanelPreg extends JPanel {
 			if (po instanceof OpcionMultiple) {
 				for (Opcion o: opciones) {
 					JCheckBox casilla_opcion = new JCheckBox(o.getTexto());
-					casilla_opcion.addActionListener(new ActionSeleccionOpcM(this, casilla_opcion, o));
+					casilla_opcion.addItemListener(new ActionSeleccionOpcM(this, casilla_opcion, o));
 					panel_opcion.add(casilla_opcion);
 				}
 			} else {
 				ButtonGroup grupo_opcion = new ButtonGroup();
 				for (Opcion o: opciones) {
 					JRadioButton casilla_opcion = new JRadioButton(o.getTexto());
-					casilla_opcion.addActionListener(new ActionSeleccionOpc(this, casilla_opcion, o));
+					casilla_opcion.addItemListener(new ActionSeleccionOpc(this, casilla_opcion, o));
 					grupo_opcion.add(casilla_opcion);
 					panel_opcion.add(casilla_opcion);
 				}	

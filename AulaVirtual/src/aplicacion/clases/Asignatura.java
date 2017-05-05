@@ -6,6 +6,7 @@ import java.util.List;
 
 import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
+import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 import es.uam.eps.padsof.emailconnection.EmailSystem;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
@@ -27,7 +28,6 @@ public class Asignatura implements java.io.Serializable {
 	private List<Alumno> matriculados = new ArrayList<Alumno>();
 	private List<Alumno> expulsados = new ArrayList<Alumno>();
 	private List<Elemento> elementos = new ArrayList<Elemento>();
-	private List<Tema> temas = new ArrayList<Tema>();
 	
 	/**
 	 * Constructor de Asignatura.
@@ -150,7 +150,32 @@ public class Asignatura implements java.io.Serializable {
 	}
 	
 	public List<Tema> getTemas() {
-		return this.temas;
+		return Collections.unmodifiableList(getTemasRec(this.elementos, new ArrayList<Tema>()));
+	}
+	
+	private List<Tema> getTemasRec(List<Elemento> elementos, List<Tema> temas) {
+		for (Elemento e: elementos) {
+			if (e instanceof Tema) {
+				temas.add((Tema)e);
+				getTemasRec(((Tema)e).getElementos(), temas);
+			}
+		}
+		return temas;
+	}
+	
+	public List<Test> getTests() {
+		return Collections.unmodifiableList(getTestsRec(this.elementos, new ArrayList<Test>()));
+	}
+	
+	private List<Test> getTestsRec(List<Elemento> elementos, List<Test> tests) {
+		for (Elemento e: elementos) {
+			if (e instanceof Test) {
+				tests.add((Test)e);
+			} else if (e instanceof Tema) {
+				getTestsRec(((Tema)e).getElementos(), tests);
+			}
+		}
+		return tests;
 	}
 	
 	/**
@@ -171,7 +196,6 @@ public class Asignatura implements java.io.Serializable {
 			}
 		}
 		if (elemento instanceof Tema) {
-			this.temas.add((Tema)elemento);
 			return this.elementos.add(elemento);
 		}
 		return false;
@@ -195,7 +219,6 @@ public class Asignatura implements java.io.Serializable {
 			if (((Tema)elemento).isEliminable()==false){
 				return false;
 			}
-			this.temas.remove((Tema)elemento);
 		}
 		return this.elementos.remove(elemento);
 	}
@@ -205,10 +228,8 @@ public class Asignatura implements java.io.Serializable {
 	 * 
 	 * @param alumno alumno del cual se quiere calcular su nota
 	 * @return double la nota del la asignatura
-	 * @throws InvalidEmailAddressException exception
-	 * @throws FailedInternetConnectionException exception
 	 */
-	public double calcularNotaAsig(Alumno alumno) throws InvalidEmailAddressException, FailedInternetConnectionException{
+	public double calcularNotaAsig(Alumno alumno) {
 		double nota = 0.0;
 		if (this.matriculados.contains(alumno)){
 			for (Resolucion res:alumno.getResoluciones()){
