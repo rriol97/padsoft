@@ -21,7 +21,7 @@ public class RespuestaTest {
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException {
-		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
+		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		opc = new Opcion("Opcion 1", true);
 		preg.anadirOpcion(opc);
 		resp = new Respuesta(preg);

@@ -121,7 +121,13 @@ public class Resolucion implements java.io.Serializable {
 						}
 					}
 					
-					if (flag == 1 || res.getOpcionesSeleccionadas().size()!= ((PreguntaOpcion)p).getNumOpcionesCorrectas()){
+					int numOpcCorrectas = 0;
+					for (Opcion opc:((PreguntaOpcion)p).getOpciones()){
+						if (opc.isCorrecta()){
+							numOpcCorrectas++;
+						}
+					}
+					if (flag == 1 || res.getOpcionesSeleccionadas().size()!= numOpcCorrectas){
 						res.setEstado(EstadoRespuesta.ERROR);
 					} else {
 						res.setEstado(EstadoRespuesta.ACIERTO);

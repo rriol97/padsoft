@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
+import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -86,7 +87,7 @@ public class Controlador {
 	}
 
 	public void crearPregSiNo(Test t, String enunciado, Double valor, Double penalizacion, String respuesta, String opc1, String opc2) {
-		SiNo p = new SiNo(enunciado,valor,penalizacion,1);
+		SiNo p = new SiNo(enunciado,valor,penalizacion);
 		if (respuesta.equals(opc1)){
 			Opcion opcion1 = new Opcion(opc1,true);
 			Opcion opcion2 = new Opcion(opc2,false);
@@ -109,15 +110,26 @@ public class Controlador {
 	}
 
 	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
-		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion,1);
+		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion);
 		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
 	}
 	
-	public void anadirOpcionUnica(Test t, OpcionUnica p, String enunciado, boolean correcta) {
-		if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
-			Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
-		} else {
-			JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
+	public void anadirOpcionUnica(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
+		if (p instanceof OpcionUnica){
+			if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
+				Frame.getIntance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
+			} else {
+				JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
+			}
+		}else{
+			p.anadirOpcion(new Opcion(enunciado,correcta));
+			Frame.getIntance().cambiarPanel(new PanelOpcMult((OpcionMultiple)p,t), 1);
 		}
+	}
+
+	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion) {
+		OpcionMultiple p = new OpcionMultiple(enunciado,valor,penalizacion);
+		Frame.getIntance().cambiarPanel(new PanelOpcMult(p,t), 1);
+		
 	}
 }

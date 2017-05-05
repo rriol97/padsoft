@@ -18,9 +18,9 @@ public class PreguntaOpcionTest {
 	
 	@Before
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
-		popc1 = new OpcionUnica("Cuantos anyos tienes?",1.0,0.5,1);
-		popc2 = new OpcionMultiple("Cuantos hermanos tienes?", 1.0,0.5,2);
-		popc3 = new SiNo ("�Cu�ntos ordenadores tienes?", 1.0,0.5,1);
+		popc1 = new OpcionUnica("Cuantos anyos tienes?",1.0,0.5);
+		popc2 = new OpcionMultiple("Cuantos hermanos tienes?", 1.0,0.5);
+		popc3 = new SiNo ("�Cu�ntos ordenadores tienes?", 1.0,0.5);
 	}
 	
 	@Test

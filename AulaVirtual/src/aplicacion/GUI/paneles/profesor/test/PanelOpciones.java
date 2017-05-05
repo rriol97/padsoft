@@ -15,7 +15,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionAceptarOpcUnica;
 import aplicacion.GUI.acciones.profesor.test.ActionCancelarOpcUnica;
 import aplicacion.GUI.general.Frame;
-import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.Test;
 
 public class PanelOpciones extends JPanel {
@@ -24,7 +24,7 @@ public class PanelOpciones extends JPanel {
 	private JTextField texto;
 	private JCheckBox correcta;
 	
-	public PanelOpciones (OpcionUnica opc, Test t){
+	public PanelOpciones (PreguntaOpcion opc, Test t){
 		this.setLayout(new SpringLayout());
 		
 		JPanel text = new JPanel();

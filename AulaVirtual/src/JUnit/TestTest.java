@@ -27,7 +27,7 @@ public class TestTest {
 		fi = LocalDate.now();
 		ff = LocalDate.now().plusDays(5);
 		test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", fi, ff, false, 100.0, 2.0);
-		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
+		preg = new OpcionUnica("Pregunta 1", 10.0, 0.0);
 		opc = new Opcion("Opcion 1", true);
 		preg.anadirOpcion(opc);
 	}
