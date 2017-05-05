@@ -6,8 +6,8 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import aplicacion.GUI.acciones.ActionSalir;
-import aplicacion.GUI.alumno.PanelMatriculadas;
-import aplicacion.GUI.profesor.PanelAsignaturas;
+import aplicacion.GUI.paneles.alumno.PanelMatriculadas;
+import aplicacion.GUI.paneles.profesor.PanelAsignaturas;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.TipoUsuario;
 

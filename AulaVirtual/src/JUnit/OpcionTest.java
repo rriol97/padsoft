@@ -17,8 +17,8 @@ public class OpcionTest {
 	
 	@Before 
 	public void setUp() throws FileNotFoundException, ClassNotFoundException, IOException{
-		opcion1 = new Opcion(1,"El canto del loco", false);
-		opcion2 = new Opcion(2, "Pereza",true);
+		opcion1 = new Opcion("El canto del loco", false);
+		opcion2 = new Opcion("Pereza",true);
 	}
 		
 	@Test

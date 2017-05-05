@@ -132,7 +132,7 @@ public class AsignaturaTest {
 		asig.aceptarSolicitud(sol);
 		aplicacion.clases.elemento.test.Test test = new aplicacion.clases.elemento.test.Test("Test 1", true, asig, "Descripcion del test.", LocalDate.now(), LocalDate.now().plusDays(5), false, 100.0, 2.0);
 		PreguntaOpcion preg = new OpcionUnica("Pregunta 1", 10.0, 0.0,1);
-		Opcion opc = new Opcion(1, "Opcion 1", true);
+		Opcion opc = new Opcion("Opcion 1", true);
 		preg.anadirOpcion(opc);
 		test.anadirPregunta(preg);
 		Resolucion res = new Resolucion(test, alum);

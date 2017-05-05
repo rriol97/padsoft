@@ -74,13 +74,13 @@ public class TesterAulaVirtual {
 		PreguntaOpcion p1 = new OpcionUnica("Cuantas posibles contrasenas se pueden hacer, si la contrasena es 4 digitos y solo se utilizan los numeros del 1 al 10", 1, 0.5,1);
 		test1_edyl.anadirPregunta(p1);
 		
-		Opcion opcion_p11 = new Opcion (1, "10^3", false);
+		Opcion opcion_p11 = new Opcion ("10^3", false);
 		p1.anadirOpcion(opcion_p11);
 		
-		Opcion opcion_p12 = new Opcion (2, "10^4", true);
+		Opcion opcion_p12 = new Opcion ("10^4", true);
 		p1.anadirOpcion(opcion_p12);
 		
-		Opcion opcion_p13 = new Opcion (3, "10^2", false);
+		Opcion opcion_p13 = new Opcion ("10^2", false);
 		p1.anadirOpcion(opcion_p13);
 		
 		System.out.println(tema1_edyl);
@@ -127,7 +127,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(2,"10^4",true);
+				Opcion seleccionada = new Opcion("10^4",true);
 				p.responderPregunta(res, seleccionada,"");
 			} else {
 				p.responderPregunta(res,null, "(respuesta)");
@@ -143,7 +143,7 @@ public class TesterAulaVirtual {
 		
 		for (Pregunta p : test1_edyl.getPreguntas()){
 			if (p instanceof OpcionUnica || p instanceof OpcionMultiple || p instanceof SiNo){
-				Opcion seleccionada = new Opcion(1,"10^3",false);
+				Opcion seleccionada = new Opcion("10^3",false);
 				p.responderPregunta(res2, seleccionada,"");
 			} else {
 				p.responderPregunta(res2,null, "(respuesta)");

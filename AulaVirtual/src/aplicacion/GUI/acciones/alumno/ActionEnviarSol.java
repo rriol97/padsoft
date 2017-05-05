@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.alumno.PanelSolAlum;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.paneles.alumno.PanelSolAlum;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelCrearTest;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearTest;
 import aplicacion.clases.elemento.Tema;
 import aplicacion.clases.elemento.test.Test;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;

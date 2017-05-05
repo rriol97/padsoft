@@ -26,7 +26,7 @@ public class PreguntaOpcionTest {
 	@Test
 	public void testAnadirOpcion1() {
 		
-		Opcion opc1 = new Opcion(1,"Los piratas del Caribe",false);
+		Opcion opc1 = new Opcion("Los piratas del Caribe",false);
 		assertTrue(popc1.anadirOpcion(opc1));
 		assertTrue(popc2.anadirOpcion(opc1));
 		assertTrue(popc3.anadirOpcion(opc1));
@@ -41,21 +41,21 @@ public class PreguntaOpcionTest {
 	
 	@Test
 	public void testAnadirOpcion3() {
-		Opcion opc1 = new Opcion(1,"Los piratas del Caribe",false);
+		Opcion opc1 = new Opcion("Los piratas del Caribe",false);
 		assertTrue(popc1.anadirOpcion(opc1));
 		assertFalse(popc1.anadirOpcion(opc1));
 	}
 	
 	@Test 
 	public void testEliminarOpcion1(){
-		Opcion opc1 = new Opcion(1,"Los piratas del Caribe",false);
+		Opcion opc1 = new Opcion("Los piratas del Caribe",false);
 		popc1.anadirOpcion(opc1);
 		assertTrue(popc1.eliminarOpcion(opc1));
 	}
 	
 	@Test 
 	public void testEliminarOpcion2(){
-		Opcion opc1 = new Opcion(1,"Los piratas del Caribe",false);
+		Opcion opc1 = new Opcion("Los piratas del Caribe",false);
 		popc1.anadirOpcion(opc1);
 		assertTrue(popc1.eliminarOpcion(opc1));
 		assertFalse(popc1.eliminarOpcion(opc1));

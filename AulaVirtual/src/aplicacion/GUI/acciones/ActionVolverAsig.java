@@ -3,9 +3,9 @@ package aplicacion.GUI.acciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.alumno.PanelAsigAlum;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelAsigProf;
+import aplicacion.GUI.paneles.alumno.PanelAsigAlum;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.TipoUsuario;

@@ -9,7 +9,6 @@ package aplicacion.clases.elemento.test;
 public class Opcion implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private final int num;
 	private String texto;
 	private boolean correcta;
 	
@@ -17,19 +16,13 @@ public class Opcion implements java.io.Serializable {
 	/**
 	 * Constructor Opcion
 	 * 
-	 * @param num numero de opcion
 	 * @param texto texto de la opcion
 	 * @param correcta opcion correcta o no
 	 */
-	public Opcion(int num, String texto,boolean correcta){
-		this.num = num;
+	public Opcion(String texto,boolean correcta){
 		this.texto = texto;
 		this.correcta = correcta;
 		
-	}
-
-	public int getNum() {
-		return num;
 	}
 
 	public String getTexto() {
@@ -55,7 +48,7 @@ public class Opcion implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "\n      "+num +") " + texto;
+		return texto;
 	}
 	
 	

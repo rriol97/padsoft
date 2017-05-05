@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JRadioButton;
 
-import aplicacion.GUI.componentes.PanelPreg;
+import aplicacion.GUI.acciones.alumno.componentes.PanelPreg;
 import aplicacion.clases.elemento.test.Opcion;
 
 public class ActionSeleccionOpc implements ActionListener {

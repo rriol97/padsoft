@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelCrearAsig;
+import aplicacion.GUI.paneles.profesor.PanelCrearAsig;
 
 public class ActionCrearAsig implements ActionListener {
 

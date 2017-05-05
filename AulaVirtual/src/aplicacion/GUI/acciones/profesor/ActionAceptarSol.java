@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelSolPendientes;
-import aplicacion.GUI.profesor.PanelSolProf;
+import aplicacion.GUI.paneles.profesor.PanelSolPendientes;
+import aplicacion.GUI.paneles.profesor.PanelSolProf;
 import aplicacion.clases.Aplicacion;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;

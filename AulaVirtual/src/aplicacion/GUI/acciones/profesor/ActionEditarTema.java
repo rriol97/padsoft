@@ -3,7 +3,7 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.profesor.PanelEditarTema;
+import aplicacion.GUI.paneles.profesor.PanelEditarTema;
 import aplicacion.clases.elemento.Tema;
 
 public class ActionEditarTema implements ActionListener {

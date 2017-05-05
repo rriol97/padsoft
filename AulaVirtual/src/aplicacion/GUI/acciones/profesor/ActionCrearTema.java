@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelAsigProf;
-import aplicacion.GUI.profesor.PanelCrearTema;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
+import aplicacion.GUI.paneles.profesor.PanelCrearTema;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;

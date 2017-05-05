@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelAsigProf;
-import aplicacion.GUI.profesor.PanelExpulsar;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
+import aplicacion.GUI.paneles.profesor.PanelExpulsar;
 
 public class ActionSeleccionExpulsar implements ActionListener {
 	private PanelAsigProf vista;

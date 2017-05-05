@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.profesor.PanelAsigProf;
-import aplicacion.GUI.profesor.PanelReadmitir;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
+import aplicacion.GUI.paneles.profesor.PanelReadmitir;
 import aplicacion.clases.Alumno;
 
 public class ActionReadmitir implements ActionListener {

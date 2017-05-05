@@ -4,10 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javax.swing.JOptionPane;
+
 import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
-import aplicacion.GUI.profesor.PanelOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
@@ -86,13 +88,13 @@ public class Controlador {
 	public void crearPregSiNo(Test t, String enunciado, Double valor, Double penalizacion, String respuesta, String opc1, String opc2) {
 		SiNo p = new SiNo(enunciado,valor,penalizacion,1);
 		if (respuesta.equals(opc1)){
-			Opcion opcion1 = new Opcion(0,opc1,true);
-			Opcion opcion2 = new Opcion(0,opc2,false);
+			Opcion opcion1 = new Opcion(opc1,true);
+			Opcion opcion2 = new Opcion(opc2,false);
 			p.anadirOpcion(opcion1);
 			p.anadirOpcion(opcion2);
 		} else{
-			Opcion opcion2 = new Opcion(0,opc2,true);
-			Opcion opcion1 = new Opcion(0,opc1,false);
+			Opcion opcion2 = new Opcion(opc2,true);
+			Opcion opcion1 = new Opcion(opc1,false);
 			p.anadirOpcion(opcion1);
 			p.anadirOpcion(opcion2);
 		}
@@ -108,7 +110,14 @@ public class Controlador {
 
 	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
 		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion,1);
-		t.anadirPregunta(p);
-		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p), 1);
+		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
+	}
+	
+	public void anadirOpcionUnica(Test t, OpcionUnica p, String enunciado, boolean correcta) {
+		if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
+			Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
+		} else {
+			JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
+		}
 	}
 }
