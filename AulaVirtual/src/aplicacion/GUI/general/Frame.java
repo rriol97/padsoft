@@ -51,6 +51,7 @@ public class Frame extends JFrame {
 	 * @param panel Indicador del panel que va a ser sustituido por nuevo.
 	 */
 	public void cambiarPanel (JPanel nuevo, int panel) {
+		JPanel aux;
 		if (nuevo == null) {
 			return;
 		}
@@ -59,18 +60,26 @@ public class Frame extends JFrame {
 			if (this.izq != null) {
 				this.izq.setVisible(false);
 			}
+			aux = this.izq;
 			nuevo.setVisible(true);
 			this.add(nuevo,BorderLayout.WEST);
 			this.izq = nuevo;
 			this.repaint();
+			if (aux!=null){
+				this.remove(aux);
+			}	
 		} else if (panel == 1) {
 			if (this.der != null) {
 				this.der.setVisible(false);
 			}
+			aux = this.der;
 			this.add(nuevo,BorderLayout.CENTER);
 			nuevo.setVisible(true);
 			this.der = nuevo;
 			this.repaint();
+			if (aux!=null){
+				this.remove(aux);
+			}
 		}
 	}
 	
