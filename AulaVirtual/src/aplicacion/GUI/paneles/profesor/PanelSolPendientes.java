@@ -66,6 +66,6 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		int sel = this.listOne.getSelectedIndex();
-		Frame.getIntance().cambiarPanel(new PanelSolProf(this.solicitudes[sel]), 1);
+		Frame.getInstance().cambiarPanel(new PanelSolProf(this.solicitudes[sel]), 1);
 	}
 }

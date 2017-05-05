@@ -30,7 +30,7 @@ public class ActionEnviarSol implements ActionListener{
 		} else {
 			Controlador.getInstance().solicitarAsig(sel,coment);
 			JOptionPane.showMessageDialog(this.panel, "Se ha enviado la solicitud correctamente");
-			Frame.getIntance().borrarDer();
+			Frame.getInstance().borrarDer();
 			this.panel.setVisible(false);
 		}
 	}

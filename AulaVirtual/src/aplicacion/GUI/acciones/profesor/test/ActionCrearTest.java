@@ -52,7 +52,7 @@ public class ActionCrearTest implements ActionListener {
 			Test t;
 			try {
 				t = Controlador.getInstance().nuevoTest(this.p.getNombre(),this.p.getSelec(),this.asig,this.p.getFechaIni(),this.p.getFechaFin(),this.p.getOrden(),this.p.getPeso(),this.p.getVpd(), this.tema);
-				Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+				Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 				e1.printStackTrace();
 			}

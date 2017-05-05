@@ -112,32 +112,32 @@ public class Controlador {
 
 	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
 		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion);
-		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
+		Frame.getInstance().cambiarPanel(new PanelOpcUnic(p, t), 1);
 	}
 	
 	public void anadirOpcionUnica(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
 		if (p instanceof OpcionUnica){
 			if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
-				Frame.getIntance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
+				Frame.getInstance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
 			} else {
 				JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
 			}
 		}else{
 			p.anadirOpcion(new Opcion(enunciado,correcta));
-			Frame.getIntance().cambiarPanel(new PanelOpcMult((OpcionMultiple)p,t), 1);
+			Frame.getInstance().cambiarPanel(new PanelOpcMult((OpcionMultiple)p,t), 1);
 		}
 	}
 
 	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion) {
 		OpcionMultiple p = new OpcionMultiple(enunciado,valor,penalizacion);
-		Frame.getIntance().cambiarPanel(new PanelOpcMult(p,t), 1);
+		Frame.getInstance().cambiarPanel(new PanelOpcMult(p,t), 1);
 		
 	}
 
 	public void eliminarAsignatura(Asignatura asig) {
 		Aplicacion.getInstance().eliminarAsignatura(asig);
-		Frame.getIntance().borrarDer();
-		Frame.getIntance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
+		Frame.getInstance().borrarDer();
+		Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
 		
 	}
 }

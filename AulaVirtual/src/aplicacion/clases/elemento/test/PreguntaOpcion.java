@@ -49,12 +49,19 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	public boolean eliminarOpcion(Opcion opcion){
 		return opciones.remove(opcion);
 	}
-
-	@Override
-	public String toString() {
-		String res = "";
-		res = res+ super.toString();
-		return res;
+	
+	/**
+	 * Metodo que devuelve la lista de opciones correctas de una pregunta con opciones.
+	 * @return Lista de opciones correctas.
+	 */
+	public List<Opcion> getCorrectas() {
+		List<Opcion> correctas = new ArrayList<Opcion>();
+		for (Opcion o: getOpciones()) {
+			if (o.isCorrecta()) {
+				correctas.add(o);
+			}
+		}
+		return Collections.unmodifiableList(correctas);
 	}
 
 	public boolean isAleatoria() {
@@ -80,5 +87,12 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 			}
 		}
 		return op;
+	}
+	
+	@Override
+	public String toString() {
+		String res = "";
+		res = res+ super.toString();
+		return res;
 	}
 }

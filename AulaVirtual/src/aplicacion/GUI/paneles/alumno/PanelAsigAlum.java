@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -39,7 +40,7 @@ public class PanelAsigAlum extends JPanel {
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig);
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		arbol.setFont(new Font("Arial",20, 25));
+		arbol.setFont(new Font("Arial",12, 18));
 		
 		for (Elemento e: asig.getElementos()) {
 			raiz.add(getNode(e));
@@ -55,27 +56,27 @@ public class PanelAsigAlum extends JPanel {
 					Resolucion res = Aplicacion.getInstance().getAlumnoActual().encontrarResolucion(t);
 					if (res == null) {
 						if (t.isFechaValida()) {
-							Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
+							Frame.getInstance().cambiarPanel(new PanelTestAlum(t), 1);
+						} else if (t.isTerminado()) {
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion ha terminado");
+						} else {
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion no ha comenzado");
 						}
 					} else {
 						if (t.isTerminado() == false) {
-							try {
-								Frame.getIntance().cambiarPanel(new PanelResAlum(res), 1);
-							} catch (Exception e1) {
-								e1.printStackTrace();
-							}
+							Frame.getInstance().cambiarPanel(new PanelResAlum(res), 1);
 						} else {
 							try {
 								res.calcularNota();
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
-							Frame.getIntance().cambiarPanel(new PanelCorrAlum(res), 1);
+							Frame.getInstance().cambiarPanel(new PanelCorrAlum(res), 1);
 						}
 					}
 				} else if (o instanceof Apuntes) {
 					Apuntes ap = (Apuntes) o;
-					Frame.getIntance().cambiarPanel(new PanelApunAlum(ap), 1);
+					Frame.getInstance().cambiarPanel(new PanelApunAlum(ap), 1);
 				}
 			}
 		});
@@ -97,6 +98,9 @@ public class PanelAsigAlum extends JPanel {
 	 * @return Nodo raiz del arbol.
 	 */
 	private DefaultMutableTreeNode getNode (Elemento e) {
+		if (e.isVisible() == false) {
+			return new DefaultMutableTreeNode("Contenido no visible");
+		}
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e);
 		if (e instanceof Tema) {
 			Tema et = (Tema)e;

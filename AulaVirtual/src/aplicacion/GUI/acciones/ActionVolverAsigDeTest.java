@@ -21,7 +21,7 @@ public class ActionVolverAsigDeTest implements ActionListener{
 		Asignatura asig = t.getAsignatura();
 		Tema tema = t.getTema();
 		tema.eliminarElemento(t);
-		Frame.getIntance().cambiarPanel(new PanelAsigProf(asig), 1);
+		Frame.getInstance().cambiarPanel(new PanelAsigProf(asig), 1);
 	}
 
 }

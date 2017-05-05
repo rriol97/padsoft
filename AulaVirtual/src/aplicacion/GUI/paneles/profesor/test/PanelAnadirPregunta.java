@@ -117,7 +117,7 @@ public class PanelAnadirPregunta extends JPanel implements ListSelectionListener
 	public void valueChanged(ListSelectionEvent e) {
 		Pregunta p = this.listaPreg.getSelectedValue();
 		if (p instanceof SiNo){
-			Frame.getIntance().cambiarPanel(new PanelPregSiNo(this.t), 1);
+			Frame.getInstance().cambiarPanel(new PanelPregSiNo(this.t), 1);
 			this.t.eliminarPregunta(p);
 		}
 	}

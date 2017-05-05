@@ -34,6 +34,7 @@ public class PanelEditarApuntes extends JPanel {
 		panel_edicion.add(this.visible);
 		
 		SpringUtilities.makeCompactGrid(panel_edicion, 2, 1, 0, 0, 5, 5);
+		this.add(panel_edicion);
 		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));

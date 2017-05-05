@@ -22,8 +22,8 @@ public class ActionAceptarSol implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			Controlador.getInstance().aceptarSol(vista.getSolicitud().getAsignatura(), vista.getSolicitud());
-			Frame.getIntance().borrarDer();
-			Frame.getIntance().cambiarPanel(new PanelSolPendientes(Aplicacion.getInstance()), 1);
+			Frame.getInstance().borrarDer();
+			Frame.getInstance().cambiarPanel(new PanelSolPendientes(Aplicacion.getInstance()), 1);
 		} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
 			e1.printStackTrace();
 		}

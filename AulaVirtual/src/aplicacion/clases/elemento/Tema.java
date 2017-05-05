@@ -56,9 +56,7 @@ public class Tema extends Elemento implements java.io.Serializable {
 				EmailSystem.send(alum.getCorreo(), "Se ha actualizado la asignatura"+this.getAsignatura().getNombre(), "");
 			}
 		}
-		if (elemento instanceof Tema) {
-			this.getAsignatura().getTemas().add((Tema)elemento);
-		} else if (elemento instanceof Test) {
+		if (elemento instanceof Test) {
 			((Test)elemento).setTema(this);
 		}
 		return this.elementos.add(elemento);

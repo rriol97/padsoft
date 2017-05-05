@@ -28,9 +28,9 @@ public class ActionAceptarCrearAsig implements ActionListener {
 			JOptionPane.showMessageDialog(this.vista, "Error al crear la asignatura");
 		}
 		else{
-			Frame.getIntance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
+			Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
 			JOptionPane.showMessageDialog(this.vista, "Asignatura creada");
-			Frame.getIntance().borrarDer();
+			Frame.getInstance().borrarDer();
 			this.vista.setVisible(false);
 		}
 	}

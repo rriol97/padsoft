@@ -27,11 +27,11 @@ public class ActionEliminarApuntes implements ActionListener {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			Frame.getIntance().cambiarPanel(new PanelAsigProf(this.apuntes.getAsignatura()), 1);
+			Frame.getInstance().cambiarPanel(new PanelAsigProf(this.apuntes.getAsignatura()), 1);
 		} else if (this.padre instanceof Tema) {
 			Tema t = (Tema) this.padre;
 			t.eliminarElemento(this.apuntes);
-			Frame.getIntance().cambiarPanel(new PanelAsigProf(this.apuntes.getAsignatura()), 1);
+			Frame.getInstance().cambiarPanel(new PanelAsigProf(this.apuntes.getAsignatura()), 1);
 		}
 	}
 }

@@ -35,7 +35,7 @@ public class PanelSol extends JPanel {
 			PreguntaOpcion po = (PreguntaOpcion)p;
 			for (Opcion o: po.getOpciones()) {
 				if (o.isCorrecta()) {
-					msg = msg + " " + o.getTexto() + ",";
+					msg = msg + " " + o.getTexto() + "\n";
 				}
 			}
 			

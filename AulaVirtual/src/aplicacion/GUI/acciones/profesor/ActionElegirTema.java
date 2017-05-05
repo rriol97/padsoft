@@ -28,17 +28,17 @@ public class ActionElegirTema implements ActionListener {
 		if (panel.getOpcSel().equals("Apuntes")){
 			Tema tema = panel.getTemaSel();
 			if (tema != null) {
-				Frame.getIntance().cambiarPanel(new PanelCrearApuntes(asig, tema),1);
+				Frame.getInstance().cambiarPanel(new PanelCrearApuntes(asig, tema),1);
 			} else{
 				JOptionPane.showMessageDialog(this.panel,"Elija el tema de los apuntes");
 			}
 		} else if (panel.getOpcSel().equals("Tema")){
 			Tema tema = panel.getTemaSel();
-			Frame.getIntance().cambiarPanel(new PanelCrearTema(asig, tema), 1);
+			Frame.getInstance().cambiarPanel(new PanelCrearTema(asig, tema), 1);
 		} else {
 			Tema tema = panel.getTemaSel();
 			if (tema != null) {
-				Frame.getIntance().cambiarPanel(new PanelCrearTest(asig, tema), 1);
+				Frame.getInstance().cambiarPanel(new PanelCrearTest(asig, tema), 1);
 			} else{
 				JOptionPane.showMessageDialog(this.panel,"Elija el tema del test");
 			}

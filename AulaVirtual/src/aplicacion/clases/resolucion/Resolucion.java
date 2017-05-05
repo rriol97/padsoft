@@ -6,8 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 import aplicacion.clases.Alumno;
-import aplicacion.clases.Aplicacion;
-import aplicacion.clases.TipoUsuario;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
@@ -169,20 +167,7 @@ public class Resolucion implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		String res="";
-		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO) == true){
-			if (this.getFecha().isBefore(this.getTest().getFechaFin())){
-				return " Todavia no puede visualizar el examen, espere a la fecha de fin para hacerlo.\n";
-			}
-		}
-		int contador = 1;
-		res = res +"\tResolucion: "+this.getTest().getNombre()+" nota:"+nota+" "+fecha;
-		res = res +"\n\t"+this.getTest()+"\n"+"   Opciones seleccionadas: \n";
-		for (Respuesta p :this.getRespuestas()){
-			res = res +"\n  "+contador+"-"+ p+"       "+"Porcentaje de Aciertos:"+p.getPregunta().getPorcentajeAciertos()+"% Porcentaje de fallos:"+p.getPregunta().getPorcentajeFallos()+"% Pocentaje NSNC:"+p.getPregunta().getPorcentajeNsnc()+"%";
-		}
-		
-		return res;
+		return this.alumno.toString();
 	}
 	
 	

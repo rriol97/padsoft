@@ -16,6 +16,6 @@ public class ActionVolverCrearPreg implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+		Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 	}
 }

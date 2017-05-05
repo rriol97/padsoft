@@ -23,13 +23,13 @@ public class ActionNuevaPreg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (this.p.getTipoPreg().equals("Respuesta unica")){
-			Frame.getIntance().cambiarPanel(new PanelCrearPregOpcUnic(t), 1);
+			Frame.getInstance().cambiarPanel(new PanelCrearPregOpcUnic(t), 1);
 		} else if (this.p.getTipoPreg().equals("Respuesta multiple")){
-			Frame.getIntance().cambiarPanel(new PanelCrearPregOpcMult(t), 1);
+			Frame.getInstance().cambiarPanel(new PanelCrearPregOpcMult(t), 1);
 		} else if ((this.p.getTipoPreg().equals("Si/No"))){
-			Frame.getIntance().cambiarPanel(new PanelPregSiNo(t), 1);
+			Frame.getInstance().cambiarPanel(new PanelPregSiNo(t), 1);
 		} else {
-			Frame.getIntance().cambiarPanel(new PanelPregCorta(t), 1);
+			Frame.getInstance().cambiarPanel(new PanelPregCorta(t), 1);
 		}
 	}
 

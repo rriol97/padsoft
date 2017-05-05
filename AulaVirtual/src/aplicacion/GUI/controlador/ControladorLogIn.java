@@ -35,8 +35,8 @@ public class ControladorLogIn implements ActionListener {
 			}
 			else{
 				FrameLogin.getInstance().borrarLogin();
-				Frame.getIntance().iniPaneles();
-				Frame.getIntance().setVisible(true);
+				Frame.getInstance().iniPaneles();
+				Frame.getInstance().setVisible(true);
 			}
 		} catch (HeadlessException | ClassNotFoundException | IOException e1) {
 			e1.printStackTrace();

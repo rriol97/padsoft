@@ -12,8 +12,8 @@ public class ActionMostrarSol implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PanelSolPendientes ventana = new PanelSolPendientes(Aplicacion.getInstance());
-		Frame.getIntance().cambiarPanel(ventana, 1);
-		Frame.getIntance().repaint();
+		Frame.getInstance().cambiarPanel(ventana, 1);
+		Frame.getInstance().repaint();
 		ventana.setVisible(true);
 	}
 

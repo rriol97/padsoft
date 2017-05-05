@@ -20,7 +20,7 @@ public class ActionExpulsar implements ActionListener {
 		for (Alumno alum: this.vista.getSeleccionados()) {
 			try {
 				this.vista.getAsignatura().expulsarAlumno(alum);
-				Frame.getIntance().cambiarPanel(new PanelAsigProf(this.vista.getAsignatura()), 1);
+				Frame.getInstance().cambiarPanel(new PanelAsigProf(this.vista.getAsignatura()), 1);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}

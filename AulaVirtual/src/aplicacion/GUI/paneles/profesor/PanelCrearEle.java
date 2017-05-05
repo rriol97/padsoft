@@ -45,7 +45,7 @@ public class PanelCrearEle extends JPanel {
 		this.listaTemas = new JList<Tema>(temas);
 		this.listaTemas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  		JScrollPane scrolling_temas = new JScrollPane(this.listaTemas);
- 		scrolling_temas.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)(Frame.HEIGHT)));
+ 		scrolling_temas.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         this.add(scrolling_temas);
 		
 		JButton aceptar = new JButton ("Aceptar");
@@ -60,15 +60,20 @@ public class PanelCrearEle extends JPanel {
 		this.add(cancelar);
 		this.add(aceptar);
 		
-		layout.putConstraint(SpringLayout.NORTH,etiq,200 ,SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST,etiq ,290,SpringLayout.WEST ,this);
-		layout.putConstraint(SpringLayout.WEST,this.listaElem,20, SpringLayout.EAST,etiq);
-		layout.putConstraint(SpringLayout.NORTH,this.listaElem,200, SpringLayout.NORTH,this);
-		layout.putConstraint(SpringLayout.NORTH,cancelar,60, SpringLayout.SOUTH,this.listaElem);
-		layout.putConstraint(SpringLayout.WEST,cancelar,290, SpringLayout.WEST,this);
-		layout.putConstraint(SpringLayout.WEST,aceptar,3, SpringLayout.EAST,cancelar);
-		layout.putConstraint(SpringLayout.NORTH,aceptar,60, SpringLayout.SOUTH,this.listaElem);
-		layout.putConstraint(SpringLayout.WEST,scrolling_temas ,50,SpringLayout.EAST ,aceptar);
+		layout.putConstraint(SpringLayout.NORTH, etiq, (int)Frame.HEIGHT/3, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, etiq, (int)Frame.WIDTH/6, SpringLayout.WEST, this);
+		
+		layout.putConstraint(SpringLayout.WEST, this.listaElem, 20, SpringLayout.EAST, etiq);
+		layout.putConstraint(SpringLayout.NORTH, this.listaElem, (int)Frame.HEIGHT/3, SpringLayout.NORTH, this);
+		
+		layout.putConstraint(SpringLayout.NORTH, cancelar, 60, SpringLayout.SOUTH, this.listaElem);
+		layout.putConstraint(SpringLayout.WEST, cancelar, (int)Frame.WIDTH/6, SpringLayout.WEST, this);
+		
+		layout.putConstraint(SpringLayout.WEST, aceptar, 3, SpringLayout.EAST, cancelar);
+		layout.putConstraint(SpringLayout.NORTH, aceptar, 60, SpringLayout.SOUTH, this.listaElem);
+		
+		layout.putConstraint(SpringLayout.NORTH, scrolling_temas, (int)Frame.HEIGHT/25, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.EAST, scrolling_temas, -(int)Frame.WIDTH/6, SpringLayout.EAST, this);
 
 	}
 	

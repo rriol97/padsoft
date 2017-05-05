@@ -35,16 +35,17 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-	
+		
+		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
+        etiqueta_asignaturas.setFont(new Font("Arial",12,18));
+		this.add(etiqueta_asignaturas);
+		
 		String[] dataList = new String[alum.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: alum.getAsignaturas()) {
 			dataList[i] = asig.getNombre();
 			i++;
 		}
-		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
-        etiqueta_asignaturas.setFont(new Font("Arial",12,18));
-		this.add(etiqueta_asignaturas);
 		
         listOne = new JList<String>(dataList);
         
@@ -53,8 +54,6 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         this.add(scrollingListOne);
         
         Button boton_solicitud = new Button("Solicitar Asignatura");
-        boton_solicitud.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
-        boton_solicitud.setFont(new Font("Arial",20,15));
         this.add(boton_solicitud);
 
         boton_solicitud.addActionListener(new ActionSolAsig());
@@ -73,7 +72,7 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         String selection = this.listOne.getSelectedValue();
         for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
         	if (asig.getNombre().equals(selection)){
-        		Frame.getIntance().cambiarPanel(new PanelAsigAlum(asig), 1);
+        		Frame.getInstance().cambiarPanel(new PanelAsigAlum(asig), 1);
         	}
         }
     } 

@@ -41,7 +41,7 @@ public class Frame extends JFrame {
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
 	
-	public static Frame getIntance(){
+	public static Frame getInstance(){
 		return instance;
 	}
 	

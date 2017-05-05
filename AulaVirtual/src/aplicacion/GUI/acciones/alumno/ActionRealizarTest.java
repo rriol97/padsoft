@@ -44,6 +44,6 @@ public class ActionRealizarTest implements ActionListener {
 			}
 		}
 		Aplicacion.getInstance().getAlumnoActual().anadirResolucion(res);
-		Frame.getIntance().cambiarPanel(new PanelAsigAlum(this.test.getAsignatura()), 1);
+		Frame.getInstance().cambiarPanel(new PanelAsigAlum(this.test.getAsignatura()), 1);
 	}
 }

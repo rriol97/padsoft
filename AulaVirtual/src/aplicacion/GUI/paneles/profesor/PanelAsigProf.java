@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,7 +22,6 @@ import aplicacion.GUI.acciones.profesor.ActionEliminarAsig;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelEditarTest;
 import aplicacion.GUI.paneles.profesor.test.PanelVisualizarTest;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
@@ -51,7 +51,7 @@ public class PanelAsigProf extends JPanel {
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig);
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		arbol.setFont(new Font("Arial",20, 25));
+		arbol.setFont(new Font("Arial",12, 18));
 		
 		for (Elemento e: asig.getElementos()) {
 			raiz.add(getNode(e));
@@ -65,17 +65,13 @@ public class PanelAsigProf extends JPanel {
 				Object o = nodo.getUserObject();
 				if (o instanceof Tema) {
 					Tema tema = (Tema) o;
-					Frame.getIntance().cambiarPanel(new PanelEditarTema(tema, padre), 1);
+					Frame.getInstance().cambiarPanel(new PanelEditarTema(tema, padre), 1);
 				} else if (o instanceof Apuntes) {
 					Apuntes apuntes = (Apuntes) o;
-					Frame.getIntance().cambiarPanel(new PanelEditarApuntes(apuntes, padre), 1);
+					Frame.getInstance().cambiarPanel(new PanelEditarApuntes(apuntes, padre), 1);
 				} else if (o instanceof Test) {
 					Test test = (Test) o;
-					if (test.isFechaValida() == false && test.isTerminado() == false) {
-						Frame.getIntance().cambiarPanel(new PanelEditarTest(test, padre), 1);
-					} else {
-						Frame.getIntance().cambiarPanel(new PanelVisualizarTest(test), 1);
-					}
+					Frame.getInstance().cambiarPanel(new PanelVisualizarTest(test, padre), 1);
 				}
 			}
 		});
@@ -100,6 +96,10 @@ public class PanelAsigProf extends JPanel {
 		JPanel der = new JPanel();
 		der.setLayout(new SpringLayout());
 		
+		JLabel etiqueta_alumnos = new JLabel ("Alumnos");
+		etiqueta_alumnos.setFont(new Font("Arial",12,18));
+        der.add(etiqueta_alumnos);
+		
 		String[] alumnos = new String [asig.getMatriculados().size()];
 		int i = 0;
 		for (Alumno a: asig.getMatriculados()) {
@@ -121,7 +121,7 @@ public class PanelAsigProf extends JPanel {
 		panel_botones.add(boton_readmitir);
 		der.add(panel_botones);
 		
-		SpringUtilities.makeCompactGrid(der, 2, 1, 5, 5, 5, 5);
+		SpringUtilities.makeCompactGrid(der, 3, 1, 5, 5, 5, 5);
 		
 		this.add(izq);
 		this.add(der);

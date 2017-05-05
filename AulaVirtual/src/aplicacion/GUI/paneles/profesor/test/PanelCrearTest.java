@@ -57,9 +57,9 @@ public class PanelCrearTest extends PanelComun {
 				
 		UtilDateModel model = new UtilDateModel();
 		UtilDateModel model2 = new UtilDateModel();
-		model.setDate(2017, 5, 2);
+		model.setDate(2017, 1, 1);
 		model.setSelected(true);
-		model2.setDate(2017, 6, 2);
+		model2.setDate(2017, 12, 31);
 		model2.setSelected(true);
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, new Properties());
 		JDatePanelImpl dataPanel2 = new JDatePanelImpl(model2, new Properties());
@@ -96,7 +96,6 @@ public class PanelCrearTest extends PanelComun {
 		this.add(panel_elecciones);
 		this.add(panelPeso);
 		this.add(panel_botones);
-		
 		
 		SpringUtilities.makeCompactGrid(this, 4, 1, 5, 5, 5, 5);
 		

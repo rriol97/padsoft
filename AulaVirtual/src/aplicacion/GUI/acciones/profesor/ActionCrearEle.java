@@ -16,6 +16,6 @@ public class ActionCrearEle implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getIntance().cambiarPanel(new PanelCrearEle(vista.getAsignatura()), 1);
+		Frame.getInstance().cambiarPanel(new PanelCrearEle(vista.getAsignatura()), 1);
 	}
 }
