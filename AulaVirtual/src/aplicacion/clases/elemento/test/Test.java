@@ -150,11 +150,10 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * @return boolean true si es correcta correctamente, false en caso contrario
 	 */
 	public boolean isTerminado(){
-		return true;
-		/*if (LocalDate.now().isAfter(this.fechaFin)){
+		if (LocalDate.now().isAfter(this.fechaFin)){
 			return true;
 		}
-		return false;*/
+		return false;
 	}
 	
 	public boolean setFechaIni(LocalDate fechaIni) {

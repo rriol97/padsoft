@@ -1,14 +1,14 @@
 package aplicacion.GUI.acciones.alumno;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 
 import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
 import aplicacion.clases.elemento.test.Opcion;
 
-public class ActionSeleccionOpcM implements ActionListener {
+public class ActionSeleccionOpcM implements ItemListener {
 	private PanelPreg vista;
 	private JCheckBox boton;
 	private Opcion opcion;
@@ -18,9 +18,9 @@ public class ActionSeleccionOpcM implements ActionListener {
 		this.boton = boton;
 		this.opcion = opcion;
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void itemStateChanged(ItemEvent e) {
 		if (this.boton.isSelected()) {
 			this.vista.getSeleccionadas().add(this.opcion);
 		} else {
