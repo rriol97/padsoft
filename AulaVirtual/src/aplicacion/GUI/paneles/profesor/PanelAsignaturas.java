@@ -31,7 +31,7 @@ import aplicacion.clases.Asignatura;
 public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	private static final long serialVersionUID = 1L;
 	
-    private JList<String> listOne;
+    private JList<Asignatura> listOne;
 
 	public PanelAsignaturas(Aplicacion ap){
 		this.setLayout(new SpringLayout());
@@ -40,14 +40,14 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
         etiqueta_asignaturas.setFont(new Font("Arial",12,18));
 		this.add(etiqueta_asignaturas);
 		
-		String[] dataList = new String[ap.getAsignaturas().size()];
+		Asignatura[] dataList = new Asignatura[ap.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: ap.getAsignaturas()) {
-			dataList[i] = asig.getNombre();
+			dataList[i] = asig;
 			i++;
 		}
 	
-        listOne = new JList<String>(dataList);
+        listOne = new JList<Asignatura>(dataList);
         JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         scrollingListOne.setFont(new Font ("Arial",12,18));
@@ -80,11 +80,7 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	 * Metodo que enlaza una asignatura con su panel
 	 */
     public void valueChanged(ListSelectionEvent e) {               
-        String selection = this.listOne.getSelectedValue();
-        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
-        	if (asig.getNombre().equals(selection)){
-        		Frame.getInstance().cambiarPanel(new PanelAsigProf(asig), 1);
-        	}
-        }
+    	Asignatura sel = this.listOne.getSelectedValue();
+		Frame.getInstance().cambiarPanel(new PanelAsigProf(sel), 1);
 	}
 }

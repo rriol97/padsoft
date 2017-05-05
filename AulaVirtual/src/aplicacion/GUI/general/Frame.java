@@ -26,7 +26,6 @@ public class Frame extends JFrame {
 	private JPanel izq;
 	private JPanel vacio;
 	
-	// TODO cambiar el diseño de la ventana, que es muy cutre
 	private Frame (){
 		super("Aula Virtual");
 		this.setLayout(new BorderLayout());
@@ -102,10 +101,10 @@ public class Frame extends JFrame {
 	public void iniPaneles() {
 		if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.ALUMNO)) {
 			cambiarPanel(new PanelMatriculadas(Aplicacion.getInstance().getUsuarioActual()), 0);
-			cambiarPanel(new JPanel(), 1);
+			cambiarPanel(this.vacio, 1);
 		} else if (Aplicacion.getInstance().getTipoUsu().equals(TipoUsuario.PROFESOR)) {
 			cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
-			cambiarPanel(new JPanel(), 1);
+			cambiarPanel(this.vacio, 1);
 		}
 	}
 }

@@ -125,7 +125,7 @@ public class Alumno implements java.io.Serializable {
 	 * @return boolean true si se envia correctamente, false en caso contrario
 	 */
 	public boolean enviarSolicitud(Solicitud sol){
-		if (this.asignaturas.contains(sol.getAsignatura())){
+		if (sol.getAsignatura().getMatriculados().contains(this) || sol.getAsignatura().getExpulsados().contains(this)) {
 			return false;
 		}
 		return sol.getAsignatura().anadirSolicitud(sol);

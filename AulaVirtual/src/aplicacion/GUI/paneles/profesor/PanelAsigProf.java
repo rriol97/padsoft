@@ -83,12 +83,12 @@ public class PanelAsigProf extends JPanel {
 		JPanel botones = new JPanel();
 		botones.setLayout(new BoxLayout(botones,0));
 		
-		JButton boton_crear = new JButton("Crear elemento");
-		boton_crear.addActionListener(new ActionCrearEle(this));
-		botones.add(boton_crear);
 		JButton eliminarAsig = new JButton ("Eliminar asignatura");
 		eliminarAsig.addActionListener(new ActionEliminarAsig(asig));
 		botones.add(eliminarAsig);
+		JButton boton_crear = new JButton("Crear elemento");
+		boton_crear.addActionListener(new ActionCrearEle(this));
+		botones.add(boton_crear);
 		izq.add(botones);
 		
 		SpringUtilities.makeCompactGrid(izq, 2, 1, 5, 5, 5, 5);

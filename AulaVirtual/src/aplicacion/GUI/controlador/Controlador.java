@@ -7,8 +7,14 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 import aplicacion.clases.elemento.test.*;
+import aplicacion.clases.resolucion.Resolucion;
+import aplicacion.clases.resolucion.Respuesta;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
+import aplicacion.GUI.paneles.alumno.PanelAsigAlum;
+import aplicacion.GUI.paneles.alumno.PanelTestAlum;
+import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
+import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.GUI.paneles.profesor.PanelAsignaturas;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
@@ -16,6 +22,7 @@ import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
 import aplicacion.clases.elemento.Apuntes;
+import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -46,13 +53,30 @@ public class Controlador {
 	}
 
 	public void solicitarAsig(Asignatura a, String texto) {
-		Solicitud s = new Solicitud(texto, Aplicacion.getInstance().getAlumnoActual(), a);
-		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(s);
+		if (a == null){
+			JOptionPane.showMessageDialog(vista, "Debe seleccionar una asignatura");
+		} else if (texto.equals("")){
+			JOptionPane.showMessageDialog(vista, "Debe añadir un mensaje");
+		} else {
+			Solicitud s = new Solicitud(texto, Aplicacion.getInstance().getAlumnoActual(), a);
+			if (Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(s) == false) {
+				JOptionPane.showMessageDialog(vista, "Ya has solicitado esta asignatura");
+			} else {
+				JOptionPane.showMessageDialog(vista, "Se ha enviado la solicitud correctamente");
+				Frame.getInstance().borrarDer();
+			}
+		}
 	}
 
-	public boolean crearAsig(String texto) {
+	public void crearAsig(String texto) {
 		Asignatura a = new Asignatura(texto);
-		return Aplicacion.getInstance().anadirAsignatura(a);
+		if (Aplicacion.getInstance().anadirAsignatura(a) == false) {
+			JOptionPane.showMessageDialog(vista, "Error al crear la asignatura");
+		} else {
+			Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
+			JOptionPane.showMessageDialog(vista, "Asignatura creada");
+			Frame.getInstance().borrarDer();
+		}
 	}
 
 	public void denergarSol(Asignatura asignatura, Solicitud sol) throws InvalidEmailAddressException, FailedInternetConnectionException {
@@ -138,6 +162,49 @@ public class Controlador {
 		Aplicacion.getInstance().eliminarAsignatura(asig);
 		Frame.getInstance().borrarDer();
 		Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
-		
+	}
+	
+	public void eliminarElemento(Elemento ele, Object padre) {
+		if (padre instanceof Asignatura) {
+			Asignatura asig = (Asignatura) padre;
+			try {
+				if (asig.eliminarElemento(ele) == false) {
+					JOptionPane.showMessageDialog(vista, "Elemento no eliminable");
+				} else {
+					Frame.getInstance().cambiarPanel(new PanelAsigProf(ele.getAsignatura()), 1);
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		} else if (padre instanceof Tema) {
+			Tema t = (Tema) padre;
+			if (t.eliminarElemento(ele) == false) {
+				JOptionPane.showMessageDialog(vista, "Elemento no eliminable");
+			} else {
+				Frame.getInstance().cambiarPanel(new PanelAsigProf(ele.getAsignatura()), 1);
+			}
+		}
+	}
+	
+	public void realizarTest(PanelTestAlum vista, Test test) {
+		Resolucion res = new Resolucion(test, Aplicacion.getInstance().getAlumnoActual());
+		for (Pregunta p: test.getPreguntas()) {
+			for (PanelPreg panel: vista.getPaneles()) {
+				if (p.equals(panel.getPregunta())) {
+					Respuesta resp = new Respuesta(p);
+					if (p instanceof RespuestaLibre) {
+						resp.setRespuesta(panel.getRespuesta().getText());
+					} else {
+						for (Opcion opc: panel.getSeleccionadas()) {
+							resp.anadirOpcion(opc);
+						}
+					}
+					res.anadirRespuesta(resp);
+					break;
+				}
+			}
+		}
+		Aplicacion.getInstance().getAlumnoActual().anadirResolucion(res);
+		Frame.getInstance().cambiarPanel(new PanelAsigAlum(test.getAsignatura()), 1);
 	}
 }

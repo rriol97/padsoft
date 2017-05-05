@@ -27,8 +27,7 @@ import aplicacion.clases.Solicitud;
 public class PanelSolPendientes extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
 	
-	private JList<String> listOne;
-    private Solicitud[] solicitudes;
+	private JList<Solicitud> listOne;
     
     public PanelSolPendientes(Aplicacion ap) {
 		this.setLayout(new SpringLayout());
@@ -37,11 +36,11 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         tit.setFont(new Font ("Arial",12,18));
         this.add(tit);
         
-        this.solicitudes = new Solicitud [ap.getAlumnos().size()*ap.getAsignaturas().size()];
-		String[] arraySol = getSol(ap);
-        listOne = new JList<String>(arraySol);
+		Solicitud[] arraySol = getSol(ap);
+        listOne = new JList<Solicitud>(arraySol);
+        listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollingListOne = new JScrollPane(listOne);
-        scrollingListOne.setPreferredSize(new Dimension((int)(5*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.5)));
+        scrollingListOne.setPreferredSize(new Dimension((int)(Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
         
         SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
@@ -50,13 +49,17 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     
-	private String[] getSol(Aplicacion ap){
+	private Solicitud[] getSol(Aplicacion ap){
+		int numSol = 0;
+    	for (Asignatura asig: ap.getAsignaturas()) {
+    		numSol = numSol + asig.getSolicitudes().size();
+    	}
+    	
+    	Solicitud[] data = new Solicitud[numSol];
     	int index = 0;
-    	String[] data = new String[ap.getAlumnos().size()*ap.getAsignaturas().size()];
     	for (Asignatura a: ap.getAsignaturas()){
     		for (Solicitud s: a.getSolicitudes()){
-    			this.solicitudes[index] = s;
-    			data[index] = s.toString();
+    			data[index] = s;
     			index++;
     		}
     	}
@@ -65,7 +68,7 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
 	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		int sel = this.listOne.getSelectedIndex();
-		Frame.getInstance().cambiarPanel(new PanelSolProf(this.solicitudes[sel]), 1);
+		Solicitud sel = this.listOne.getSelectedValue();
+		Frame.getInstance().cambiarPanel(new PanelSolProf(sel), 1);
 	}
 }

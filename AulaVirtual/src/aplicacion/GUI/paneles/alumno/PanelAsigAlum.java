@@ -43,7 +43,10 @@ public class PanelAsigAlum extends JPanel {
 		arbol.setFont(new Font("Arial",12, 18));
 		
 		for (Elemento e: asig.getElementos()) {
-			raiz.add(getNode(e));
+			DefaultMutableTreeNode nodo = getNode(e);
+			if (nodo != null) {
+				raiz.add(nodo);
+			}
 		}
 		expandAllNodes(arbol, 0, arbol.getRowCount());
 
@@ -58,9 +61,9 @@ public class PanelAsigAlum extends JPanel {
 						if (t.isFechaValida()) {
 							Frame.getInstance().cambiarPanel(new PanelTestAlum(t), 1);
 						} else if (t.isTerminado()) {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion ha terminado");
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion finalizo:\n" + t.getFechaFin());
 						} else {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion no ha comenzado");
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion comienza:\n" + t.getFechaIni());
 						}
 					} else {
 						if (t.isTerminado() == false) {
@@ -99,13 +102,16 @@ public class PanelAsigAlum extends JPanel {
 	 */
 	private DefaultMutableTreeNode getNode (Elemento e) {
 		if (e.isVisible() == false) {
-			return new DefaultMutableTreeNode("Contenido no visible");
+			return null;
 		}
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e);
 		if (e instanceof Tema) {
 			Tema et = (Tema)e;
 			for (Elemento ele: et.getElementos()){
-				node.add(getNode(ele));
+				DefaultMutableTreeNode getNode = getNode(ele);
+				if (getNode != null) {
+					node.add(getNode);
+				}
 			}
 		}
 		return node;

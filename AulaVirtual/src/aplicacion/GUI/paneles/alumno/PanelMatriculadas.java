@@ -18,7 +18,6 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.alumno.ActionSolAsig;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
-import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 /**
@@ -30,7 +29,7 @@ import aplicacion.clases.Asignatura;
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
 	
-    private JList<String> listOne;
+    private JList<Asignatura> listOne;
 	
 	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
@@ -40,14 +39,14 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         etiqueta_asignaturas.setFont(new Font("Arial",12,18));
 		this.add(etiqueta_asignaturas);
 		
-		String[] dataList = new String[alum.getAsignaturas().size()];
+		Asignatura[] dataList = new Asignatura[alum.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: alum.getAsignaturas()) {
-			dataList[i] = asig.getNombre();
+			dataList[i] = asig;
 			i++;
 		}
 		
-        listOne = new JList<String>(dataList);
+        listOne = new JList<Asignatura>(dataList);
         
         JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
@@ -69,12 +68,8 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	 * Metodo que enlaza una asignatura de la lista de matriculadas con su panel.
 	 */
     public void valueChanged(ListSelectionEvent e) {               
-        String selection = this.listOne.getSelectedValue();
-        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
-        	if (asig.getNombre().equals(selection)){
-        		Frame.getInstance().cambiarPanel(new PanelAsigAlum(asig), 1);
-        	}
-        }
+    	Asignatura sel = this.listOne.getSelectedValue();
+		Frame.getInstance().cambiarPanel(new PanelAsigAlum(sel), 1);
     } 
     
 

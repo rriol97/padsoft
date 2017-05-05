@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import aplicacion.GUI.SpringUtilities;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -65,7 +66,26 @@ public class PanelPregSol extends JPanel {
 		}
 		
 		this.add(panel_opcion);
-		l.putConstraint(SpringLayout.NORTH, panel_opcion,5, SpringLayout.SOUTH, etiqueta_enunciado);
+		
+		JPanel panel_porcentajes = new JPanel();
+		panel_porcentajes.setLayout(new SpringLayout());
+		
+		double aciertos = p.getPorcentajeAciertos();
+		JLabel etiqueta_aciertos = new JLabel("Porcentaje de aciertos: " + aciertos + "%");
+		panel_porcentajes.add(etiqueta_aciertos);
+		double fallos = p.getPorcentajeFallos();
+		JLabel etiqueta_fallos = new JLabel("Porcentaje de fallos: " + fallos + "%");
+		panel_porcentajes.add(etiqueta_fallos);
+		double nsnc = p.getPorcentajeNsnc();
+		JLabel etiqueta_nsnc = new JLabel("Porcentaje de ns/nc: " + nsnc + "%");
+		panel_porcentajes.add(etiqueta_nsnc);
+		
+		SpringUtilities.makeGrid(panel_porcentajes, 3, 1, 0, 0, 5, 5);
+		this.add(panel_porcentajes);
+		
+		l.putConstraint(SpringLayout.NORTH, panel_opcion, 5, SpringLayout.SOUTH, etiqueta_enunciado);
 		l.putConstraint(SpringLayout.WEST, panel_opcion, 40, SpringLayout.WEST, this);
+		
+		l.putConstraint(SpringLayout.WEST, panel_porcentajes, 20, SpringLayout.EAST, panel_opcion);
 	}
 }

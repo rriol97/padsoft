@@ -77,7 +77,6 @@ public class Tema extends Elemento implements java.io.Serializable {
 			if(((Tema)elemento).isEliminable()==false) {
 				return false;
 			}
-			this.getAsignatura().getTemas().remove((Tema)elemento);
 		}
 		return this.elementos.remove(elemento);
 	}
