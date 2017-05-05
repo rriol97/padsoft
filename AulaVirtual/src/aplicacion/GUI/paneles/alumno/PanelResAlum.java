@@ -11,6 +11,8 @@ import aplicacion.GUI.paneles.alumno.componentes.PanelResp;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 import aplicacion.clases.resolucion.Respuesta;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que implementa el panel mostrado cuando un alumno consulta una de sus resoluciones.
@@ -21,7 +23,7 @@ import aplicacion.clases.resolucion.Respuesta;
 public class PanelResAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	public PanelResAlum (Resolucion res) {
+	public PanelResAlum (Resolucion res) throws InvalidEmailAddressException, FailedInternetConnectionException {
 		this.setLayout(new SpringLayout());
 		
 		Test t = res.getTest();

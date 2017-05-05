@@ -17,6 +17,6 @@ public class ActionConsultarNotas implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelNotasAsig(Aplicacion.getInstance().getAlumnoActual(), asig), 1);
+		Frame.getIntance().cambiarPanel(new PanelNotasAsig(Aplicacion.getInstance().getAlumnoActual(), asig), 1);
 	}
 }

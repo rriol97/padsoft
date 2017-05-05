@@ -71,9 +71,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 */
 	public double getPorcentajeAciertos() {
 		this.calcularRespuestas();
-		if (this.numRespuestas == 0) {
-			return 0.0;
-		}
 		return (double)(this.numAciertos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -84,9 +81,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 */
 	public double getPorcentajeFallos() {
 		this.calcularRespuestas();
-		if (this.numRespuestas == 0) {
-			return 0.0;
-		}
 		return (double)(this.numFallos)/(double)(this.numRespuestas) * 100.0;
 	}
 	
@@ -97,9 +91,6 @@ public abstract class Pregunta implements java.io.Serializable {
 	 */
 	public double getPorcentajeNsnc(){
 		this.calcularRespuestas();
-		if (this.numRespuestas == 0) {
-			return 0.0;
-		}
 		return (double)(this.numRespuestas - this.numAciertos - this.numFallos)/(double)this.numRespuestas * 100.0;
 	}
 	

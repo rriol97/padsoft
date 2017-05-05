@@ -17,7 +17,6 @@ import aplicacion.clases.elemento.Tema;
 
 public class PanelCrearApuntes extends PanelComun {
 	private static final long serialVersionUID = 1L;
-	
 	private JTextArea apuntes;
 
 	public PanelCrearApuntes(Asignatura asig, Tema tema){

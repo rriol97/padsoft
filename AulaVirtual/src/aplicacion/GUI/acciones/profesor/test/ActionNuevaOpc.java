@@ -18,7 +18,7 @@ public class ActionNuevaOpc implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelOpciones(p, t), 1);
+		Frame.getIntance().cambiarPanel(new PanelOpciones(p, t), 1);
 	}
 
 }

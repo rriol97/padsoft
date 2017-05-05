@@ -20,6 +20,6 @@ public class ActionAnadirOpcUnica implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		t.anadirPregunta(p);
-		Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+		Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 	}
 }

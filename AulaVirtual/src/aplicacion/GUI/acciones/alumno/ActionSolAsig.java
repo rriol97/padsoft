@@ -12,6 +12,6 @@ public class ActionSolAsig implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelSolAlum(Aplicacion.getInstance()), 1);
+		Frame.getIntance().cambiarPanel(new PanelSolAlum(Aplicacion.getInstance()), 1);
 	}
 }

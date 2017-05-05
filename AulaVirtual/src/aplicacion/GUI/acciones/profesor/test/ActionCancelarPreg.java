@@ -17,6 +17,6 @@ public class ActionCancelarPreg implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+		Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 	}
 }

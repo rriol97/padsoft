@@ -5,7 +5,6 @@ import java.awt.Font;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,23 +30,19 @@ import aplicacion.clases.Asignatura;
 public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	private static final long serialVersionUID = 1L;
 	
-    private JList<Asignatura> listOne;
+    private JList<String> listOne;
 
 	public PanelAsignaturas(Aplicacion ap){
 		this.setLayout(new SpringLayout());
 
-		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
-        etiqueta_asignaturas.setFont(new Font("Arial",12,18));
-		this.add(etiqueta_asignaturas);
-		
-		Asignatura[] dataList = new Asignatura[ap.getAsignaturas().size()];
+		String[] dataList = new String[ap.getAsignaturas().size()];
 		int i = 0;
 		for (Asignatura asig: ap.getAsignaturas()) {
-			dataList[i] = asig;
+			dataList[i] = asig.getNombre();
 			i++;
 		}
 	
-        listOne = new JList<Asignatura>(dataList);
+        listOne = new JList<String>(dataList);
         JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         scrollingListOne.setFont(new Font ("Arial",12,18));
@@ -70,7 +65,7 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
         
         this.add(aux);
         
-        SpringUtilities.makeCompactGrid(this, 3, 1, 10, 10, 5, 5);
+        SpringUtilities.makeCompactGrid(this, 2, 1, 10, 10, 5, 5);
 
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -80,7 +75,11 @@ public class PanelAsignaturas extends JPanel implements ListSelectionListener{
 	 * Metodo que enlaza una asignatura con su panel
 	 */
     public void valueChanged(ListSelectionEvent e) {               
-    	Asignatura sel = this.listOne.getSelectedValue();
-		Frame.getInstance().cambiarPanel(new PanelAsigProf(sel), 1);
+        String selection = this.listOne.getSelectedValue();
+        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
+        	if (asig.getNombre().equals(selection)){
+        		Frame.getIntance().cambiarPanel(new PanelAsigProf(asig), 1);
+        	}
+        }
 	}
 }

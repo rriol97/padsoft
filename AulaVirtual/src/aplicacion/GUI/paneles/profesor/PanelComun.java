@@ -14,8 +14,8 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.general.Frame;
 
 public abstract class PanelComun extends JPanel{
+
 	private static final long serialVersionUID = 1L;
-	
 	protected JLabel nombre;
 	protected JComboBox<String> visibilidad;
 	protected JTextField text;
@@ -53,5 +53,6 @@ public abstract class PanelComun extends JPanel{
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
 		panel_botones.add(cancelar);
 		panel_botones.add(aceptar);	
+		
 	}
 }

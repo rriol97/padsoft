@@ -16,6 +16,6 @@ public class ActionFinTest implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelAsigProf(test.getAsignatura()), 1);
+		Frame.getIntance().cambiarPanel(new PanelAsigProf(test.getAsignatura()), 1);
 	}
 }

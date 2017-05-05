@@ -3,8 +3,6 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.GUI.paneles.profesor.PanelEditarApuntes;
 import aplicacion.clases.elemento.Apuntes;
 
@@ -35,6 +33,5 @@ public class ActionEditarApuntes implements ActionListener {
 			}
 		}
 		apuntes.setTexto(this.vista.getTexto().getText());
-		Frame.getInstance().cambiarPanel(new PanelAsigProf(apuntes.getAsignatura()), 1);
 	}
 }

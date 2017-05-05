@@ -20,7 +20,7 @@ public class PanelNotasAsig extends JPanel {
 	public PanelNotasAsig(Alumno alum, Asignatura asig) {
 		this.setLayout(new SpringLayout());
 		
-		JLabel etiqueta_titulo = new JLabel("Notas:");
+		JLabel etiqueta_titulo = new JLabel("Nota final:");
 		etiqueta_titulo.setFont(new Font("Arial",12,18));
 		this.add(etiqueta_titulo);
 		

@@ -18,6 +18,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.alumno.ActionSolAsig;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
+import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 
 /**
@@ -29,30 +30,31 @@ import aplicacion.clases.Asignatura;
 public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	private static final long serialVersionUID = 1L;
 	
-    private JList<Asignatura> listOne;
+    private JList<String> listOne;
 	
 	public PanelMatriculadas(Alumno alum) {  
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
-		
+	
+		String[] dataList = new String[alum.getAsignaturas().size()];
+		int i = 0;
+		for (Asignatura asig: alum.getAsignaturas()) {
+			dataList[i] = asig.getNombre();
+			i++;
+		}
 		JLabel etiqueta_asignaturas = new JLabel ("Listado de Asignaturas");
         etiqueta_asignaturas.setFont(new Font("Arial",12,18));
 		this.add(etiqueta_asignaturas);
 		
-		Asignatura[] dataList = new Asignatura[alum.getAsignaturas().size()];
-		int i = 0;
-		for (Asignatura asig: alum.getAsignaturas()) {
-			dataList[i] = asig;
-			i++;
-		}
-		
-        listOne = new JList<Asignatura>(dataList);
+        listOne = new JList<String>(dataList);
         
         JScrollPane scrollingListOne = new JScrollPane(listOne);
         scrollingListOne.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
         
         Button boton_solicitud = new Button("Solicitar Asignatura");
+        boton_solicitud.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/22));
+        boton_solicitud.setFont(new Font("Arial",20,15));
         this.add(boton_solicitud);
 
         boton_solicitud.addActionListener(new ActionSolAsig());
@@ -68,8 +70,12 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
 	 * Metodo que enlaza una asignatura de la lista de matriculadas con su panel.
 	 */
     public void valueChanged(ListSelectionEvent e) {               
-    	Asignatura sel = this.listOne.getSelectedValue();
-		Frame.getInstance().cambiarPanel(new PanelAsigAlum(sel), 1);
+        String selection = this.listOne.getSelectedValue();
+        for (Asignatura asig : Aplicacion.getInstance().getAsignaturas()){
+        	if (asig.getNombre().equals(selection)){
+        		Frame.getIntance().cambiarPanel(new PanelAsigAlum(asig), 1);
+        	}
+        }
     } 
     
 

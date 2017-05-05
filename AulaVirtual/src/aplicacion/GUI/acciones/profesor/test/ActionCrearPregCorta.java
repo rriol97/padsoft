@@ -30,7 +30,7 @@ public class ActionCrearPregCorta implements ActionListener {
 			JOptionPane.showMessageDialog(this.p,"Introduzca el la penalizacion por fallo");
 		} else{
 			Controlador.getInstance().crearPregCorta(t,this.p.getEnunciado(),this.p.getValor(),this.p.getPenalizacion(),this.p.getRespuesta());
-			Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+			Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 		}	
 	}
 	

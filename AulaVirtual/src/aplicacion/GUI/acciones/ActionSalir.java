@@ -17,6 +17,6 @@ public class ActionSalir implements ActionListener{
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Frame.getInstance().setVisible(false);
+		Frame.getIntance().setVisible(false);
 	}
 }

@@ -21,9 +21,9 @@ public class ActionVolverAsig implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (Aplicacion.getInstance().getTipoUsu() == TipoUsuario.ALUMNO) {
-			Frame.getInstance().cambiarPanel(new PanelAsigAlum(this.asig),1);
+			Frame.getIntance().cambiarPanel(new PanelAsigAlum(this.asig),1);
 		} else if (Aplicacion.getInstance().getTipoUsu() == TipoUsuario.PROFESOR) {
-			Frame.getInstance().cambiarPanel(new PanelAsigProf(this.asig),1);
+			Frame.getIntance().cambiarPanel(new PanelAsigProf(this.asig),1);
 		}
 	}
 }

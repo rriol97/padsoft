@@ -9,6 +9,6 @@ public class ActionCancelar implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().borrarDer();
+		Frame.getIntance().borrarDer();
 	}
 }

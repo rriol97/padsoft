@@ -16,6 +16,6 @@ public class ActionSeleccionReadmitir implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelReadmitir(vista.getAsignatura()), 1);
+		Frame.getIntance().cambiarPanel(new PanelReadmitir(vista.getAsignatura()), 1);
 	}
 }

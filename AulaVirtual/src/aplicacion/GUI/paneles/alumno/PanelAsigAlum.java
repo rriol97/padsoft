@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -40,13 +39,10 @@ public class PanelAsigAlum extends JPanel {
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig);
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		arbol.setFont(new Font("Arial",12, 18));
+		arbol.setFont(new Font("Arial",20, 25));
 		
 		for (Elemento e: asig.getElementos()) {
-			DefaultMutableTreeNode nodo = getNode(e);
-			if (nodo != null) {
-				raiz.add(nodo);
-			}
+			raiz.add(getNode(e));
 		}
 		expandAllNodes(arbol, 0, arbol.getRowCount());
 
@@ -59,27 +55,27 @@ public class PanelAsigAlum extends JPanel {
 					Resolucion res = Aplicacion.getInstance().getAlumnoActual().encontrarResolucion(t);
 					if (res == null) {
 						if (t.isFechaValida()) {
-							Frame.getInstance().cambiarPanel(new PanelTestAlum(t), 1);
-						} else if (t.isTerminado()) {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion finalizo:\n" + t.getFechaFin());
-						} else {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion comienza:\n" + t.getFechaIni());
+							Frame.getIntance().cambiarPanel(new PanelTestAlum(t), 1);
 						}
 					} else {
 						if (t.isTerminado() == false) {
-							Frame.getInstance().cambiarPanel(new PanelResAlum(res), 1);
+							try {
+								Frame.getIntance().cambiarPanel(new PanelResAlum(res), 1);
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
 						} else {
 							try {
 								res.calcularNota();
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
-							Frame.getInstance().cambiarPanel(new PanelCorrAlum(res), 1);
+							Frame.getIntance().cambiarPanel(new PanelCorrAlum(res), 1);
 						}
 					}
 				} else if (o instanceof Apuntes) {
 					Apuntes ap = (Apuntes) o;
-					Frame.getInstance().cambiarPanel(new PanelApunAlum(ap), 1);
+					Frame.getIntance().cambiarPanel(new PanelApunAlum(ap), 1);
 				}
 			}
 		});
@@ -101,17 +97,11 @@ public class PanelAsigAlum extends JPanel {
 	 * @return Nodo raiz del arbol.
 	 */
 	private DefaultMutableTreeNode getNode (Elemento e) {
-		if (e.isVisible() == false) {
-			return null;
-		}
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e);
 		if (e instanceof Tema) {
 			Tema et = (Tema)e;
 			for (Elemento ele: et.getElementos()){
-				DefaultMutableTreeNode getNode = getNode(ele);
-				if (getNode != null) {
-					node.add(getNode);
-				}
+				node.add(getNode(ele));
 			}
 		}
 		return node;

@@ -3,6 +3,7 @@ package aplicacion.GUI.paneles.profesor;
 import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -29,7 +30,8 @@ public class PanelExpulsar extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Asignatura asig;
-    private JList <Alumno> listaMatriculados;
+    private Alumno[] matriculados;
+    private JList <String> listaMatriculados;
 	
 	public PanelExpulsar (Asignatura asig) {
 		this.asig = asig;
@@ -40,13 +42,15 @@ public class PanelExpulsar extends JPanel {
 		etiqueta_titulo.setFont(new Font("Arial",12,18));
         this.add(etiqueta_titulo);
 		
-        Alumno[] matriculados = new Alumno[asig.getMatriculados().size()];
+		String[] lista_matriculados = new String[asig.getMatriculados().size()];
+		this.matriculados = new Alumno[asig.getMatriculados().size()];
  		int i = 0;
  		for (Alumno alum: asig.getMatriculados()) {
- 			matriculados[i] = alum;
+ 			lista_matriculados[i] = alum.toString();
+ 			this.matriculados[i] = alum;
  			i++;
  		}
- 		this.listaMatriculados = new JList<Alumno>(matriculados);
+ 		this.listaMatriculados = new JList<String>(lista_matriculados);
  		listaMatriculados.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         //this.listaMatriculados.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT));
  		JScrollPane scrolling_matriculados = new JScrollPane(this.listaMatriculados);
@@ -89,6 +93,13 @@ public class PanelExpulsar extends JPanel {
 	 * @return Lista de alumnos seleccionados en el panel.
 	 */
 	public List <Alumno> getSeleccionados() {
-		return this.listaMatriculados.getSelectedValuesList();
+		int tam = this.listaMatriculados.getSelectedIndices().length;
+		int[] indices = this.listaMatriculados.getSelectedIndices();
+		
+		List <Alumno> sel = new ArrayList <Alumno> (tam);
+		for (int i = 0; i< tam; i++) {
+			sel.add(this.matriculados[indices[i]]);
+		}
+		return sel;
 	}
 }

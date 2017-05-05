@@ -56,7 +56,9 @@ public class Tema extends Elemento implements java.io.Serializable {
 				EmailSystem.send(alum.getCorreo(), "Se ha actualizado la asignatura"+this.getAsignatura().getNombre(), "");
 			}
 		}
-		if (elemento instanceof Test) {
+		if (elemento instanceof Tema) {
+			this.getAsignatura().getTemas().add((Tema)elemento);
+		} else if (elemento instanceof Test) {
 			((Test)elemento).setTema(this);
 		}
 		return this.elementos.add(elemento);
@@ -77,6 +79,7 @@ public class Tema extends Elemento implements java.io.Serializable {
 			if(((Tema)elemento).isEliminable()==false) {
 				return false;
 			}
+			this.getAsignatura().getTemas().remove((Tema)elemento);
 		}
 		return this.elementos.remove(elemento);
 	}

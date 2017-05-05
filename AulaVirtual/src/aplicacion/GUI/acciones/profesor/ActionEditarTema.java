@@ -3,8 +3,6 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.GUI.paneles.profesor.PanelEditarTema;
 import aplicacion.clases.elemento.Tema;
 
@@ -34,6 +32,5 @@ public class ActionEditarTema implements ActionListener {
 				}
 			}
 		}
-		Frame.getInstance().cambiarPanel(new PanelAsigProf(tema.getAsignatura()), 1);
 	}
 }

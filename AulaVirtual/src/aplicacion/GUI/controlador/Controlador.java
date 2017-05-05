@@ -7,14 +7,8 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 import aplicacion.clases.elemento.test.*;
-import aplicacion.clases.resolucion.Resolucion;
-import aplicacion.clases.resolucion.Respuesta;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
-import aplicacion.GUI.paneles.alumno.PanelAsigAlum;
-import aplicacion.GUI.paneles.alumno.PanelTestAlum;
-import aplicacion.GUI.paneles.alumno.componentes.PanelPreg;
-import aplicacion.GUI.paneles.profesor.PanelAsigProf;
 import aplicacion.GUI.paneles.profesor.PanelAsignaturas;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
@@ -22,7 +16,6 @@ import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
 import aplicacion.clases.elemento.Apuntes;
-import aplicacion.clases.elemento.Elemento;
 import aplicacion.clases.elemento.Tema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
@@ -53,30 +46,13 @@ public class Controlador {
 	}
 
 	public void solicitarAsig(Asignatura a, String texto) {
-		if (a == null){
-			JOptionPane.showMessageDialog(vista, "Debe seleccionar una asignatura");
-		} else if (texto.equals("")){
-			JOptionPane.showMessageDialog(vista, "Debe añadir un mensaje");
-		} else {
-			Solicitud s = new Solicitud(texto, Aplicacion.getInstance().getAlumnoActual(), a);
-			if (Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(s) == false) {
-				JOptionPane.showMessageDialog(vista, "Ya has solicitado esta asignatura");
-			} else {
-				JOptionPane.showMessageDialog(vista, "Se ha enviado la solicitud correctamente");
-				Frame.getInstance().borrarDer();
-			}
-		}
+		Solicitud s = new Solicitud(texto, Aplicacion.getInstance().getAlumnoActual(), a);
+		Aplicacion.getInstance().getAlumnoActual().enviarSolicitud(s);
 	}
 
-	public void crearAsig(String texto) {
+	public boolean crearAsig(String texto) {
 		Asignatura a = new Asignatura(texto);
-		if (Aplicacion.getInstance().anadirAsignatura(a) == false) {
-			JOptionPane.showMessageDialog(vista, "Error al crear la asignatura");
-		} else {
-			Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
-			JOptionPane.showMessageDialog(vista, "Asignatura creada");
-			Frame.getInstance().borrarDer();
-		}
+		return Aplicacion.getInstance().anadirAsignatura(a);
 	}
 
 	public void denergarSol(Asignatura asignatura, Solicitud sol) throws InvalidEmailAddressException, FailedInternetConnectionException {
@@ -136,75 +112,32 @@ public class Controlador {
 
 	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
 		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion);
-		Frame.getInstance().cambiarPanel(new PanelOpcUnic(p, t), 1);
+		Frame.getIntance().cambiarPanel(new PanelOpcUnic(p, t), 1);
 	}
 	
 	public void anadirOpcionUnica(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
 		if (p instanceof OpcionUnica){
 			if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
-				Frame.getInstance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
+				Frame.getIntance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
 			} else {
 				JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
 			}
 		}else{
 			p.anadirOpcion(new Opcion(enunciado,correcta));
-			Frame.getInstance().cambiarPanel(new PanelOpcMult((OpcionMultiple)p,t), 1);
+			Frame.getIntance().cambiarPanel(new PanelOpcMult((OpcionMultiple)p,t), 1);
 		}
 	}
 
 	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion) {
 		OpcionMultiple p = new OpcionMultiple(enunciado,valor,penalizacion);
-		Frame.getInstance().cambiarPanel(new PanelOpcMult(p,t), 1);
+		Frame.getIntance().cambiarPanel(new PanelOpcMult(p,t), 1);
 		
 	}
 
 	public void eliminarAsignatura(Asignatura asig) {
 		Aplicacion.getInstance().eliminarAsignatura(asig);
-		Frame.getInstance().borrarDer();
-		Frame.getInstance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
-	}
-	
-	public void eliminarElemento(Elemento ele, Object padre) {
-		if (padre instanceof Asignatura) {
-			Asignatura asig = (Asignatura) padre;
-			try {
-				if (asig.eliminarElemento(ele) == false) {
-					JOptionPane.showMessageDialog(vista, "Elemento no eliminable");
-				} else {
-					Frame.getInstance().cambiarPanel(new PanelAsigProf(ele.getAsignatura()), 1);
-				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		} else if (padre instanceof Tema) {
-			Tema t = (Tema) padre;
-			if (t.eliminarElemento(ele) == false) {
-				JOptionPane.showMessageDialog(vista, "Elemento no eliminable");
-			} else {
-				Frame.getInstance().cambiarPanel(new PanelAsigProf(ele.getAsignatura()), 1);
-			}
-		}
-	}
-	
-	public void realizarTest(PanelTestAlum vista, Test test) {
-		Resolucion res = new Resolucion(test, Aplicacion.getInstance().getAlumnoActual());
-		for (Pregunta p: test.getPreguntas()) {
-			for (PanelPreg panel: vista.getPaneles()) {
-				if (p.equals(panel.getPregunta())) {
-					Respuesta resp = new Respuesta(p);
-					if (p instanceof RespuestaLibre) {
-						resp.setRespuesta(panel.getRespuesta().getText());
-					} else {
-						for (Opcion opc: panel.getSeleccionadas()) {
-							resp.anadirOpcion(opc);
-						}
-					}
-					res.anadirRespuesta(resp);
-					break;
-				}
-			}
-		}
-		Aplicacion.getInstance().getAlumnoActual().anadirResolucion(res);
-		Frame.getInstance().cambiarPanel(new PanelAsigAlum(test.getAsignatura()), 1);
+		Frame.getIntance().borrarDer();
+		Frame.getIntance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
+		
 	}
 }

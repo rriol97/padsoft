@@ -31,7 +31,7 @@ public class ActionCrearPreguntaSiNo implements ActionListener {
 			JOptionPane.showMessageDialog(this.p,"Introduzca el la penalizacion por fallo");
 		} else{
 			Controlador.getInstance().crearPregSiNo(t,this.p.getEnunciado(),this.p.getValor(),this.p.getPenalizacion(),this.p.getRespuesta(),this.p.getTextOpc1(),this.p.getTextOpc2());
-			Frame.getInstance().cambiarPanel(new PanelAnadirPregunta(t), 1);
+			Frame.getIntance().cambiarPanel(new PanelAnadirPregunta(t), 1);
 		}
 	}
 

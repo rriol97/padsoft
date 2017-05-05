@@ -10,7 +10,10 @@ public class ActionCrearAsig implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelCrearAsig(), 1);
+		PanelCrearAsig nuevo = new PanelCrearAsig();
+		Frame.getIntance().cambiarPanel(nuevo, 1);
+		Frame.getIntance().repaint();
+		nuevo.setVisible(true);
 	}
 
 }

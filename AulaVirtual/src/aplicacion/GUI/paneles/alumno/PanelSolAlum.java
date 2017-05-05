@@ -25,20 +25,20 @@ import aplicacion.clases.Asignatura;
 public class PanelSolAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private JComboBox<Asignatura> listaAsig;
+	private JComboBox<String> listaAsig;
     private JTextField texto;
     
     public PanelSolAlum (Aplicacion ap){
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
-		Asignatura[] lista_asig = new Asignatura[ap.getAsignaturas().size()];
+		String[] lista_asig = new String[ap.getAsignaturas().size()];
  		int i = 0;
  		for (Asignatura asig: ap.getAsignaturas()) {
- 			lista_asig[i] = asig;
+ 			lista_asig[i] = asig.getNombre();
  			i++;
  		}
- 		this.listaAsig = new JComboBox<Asignatura>(lista_asig);
+ 		this.listaAsig = new JComboBox<String>(lista_asig);
  		this.listaAsig.setPreferredSize(new Dimension(200,30));
 
         JLabel etiq = new JLabel("Asignaturas");
@@ -85,8 +85,13 @@ public class PanelSolAlum extends JPanel {
     	return this.texto.getText(); 
     }
     
-    public Asignatura getSeleccionada(){
-    	return (Asignatura) this.listaAsig.getSelectedItem();
+    public Asignatura getSeleccionada(Aplicacion ap){
+    	for (Asignatura a: ap.getAsignaturas()){
+    		if (a.getNombre().equals(this.listaAsig.getSelectedItem())){
+    			return a;
+    		}
+    	}
+    	return null;
     }
     
 }

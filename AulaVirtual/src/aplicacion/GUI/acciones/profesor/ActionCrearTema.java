@@ -47,7 +47,7 @@ public class ActionCrearTema implements ActionListener {
 			}
 		}
 		
-		Frame.getInstance().cambiarPanel(new PanelAsigProf(asig), 1);
+		Frame.getIntance().cambiarPanel(new PanelAsigProf(asig), 1);
 	}
 
 }

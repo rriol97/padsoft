@@ -28,7 +28,7 @@ public class PanelEditarTest extends JPanel {
 		JButton boton_volver = new JButton("Volver");
 		boton_volver.addActionListener(new ActionVolverAsig(test.getAsignatura()));
 		panel_botones.add(boton_volver);
-		//TODO implementar ricardo
+		//TODO implementar cuando terminemos la creacion de tests
 		JButton boton_eliminar = new JButton("Eliminar");
 		/*boton_eliminar.addActionListener(new ActionEliminarTest(test, padre));*/
 		panel_botones.add(boton_eliminar);

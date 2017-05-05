@@ -16,6 +16,6 @@ public class ActionSeleccionExpulsar implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame.getInstance().cambiarPanel(new PanelExpulsar(vista.getAsignatura()), 1);
+		Frame.getIntance().cambiarPanel(new PanelExpulsar(vista.getAsignatura()), 1);
 	}
 }

@@ -3,6 +3,7 @@ package aplicacion.GUI.paneles.profesor;
 import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -29,7 +30,8 @@ public class PanelReadmitir extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Asignatura asig;
-    private JList <Alumno> listaExpulsados;
+    private Alumno[] expulsados;
+    private JList <String> listaExpulsados;
 	
 	public PanelReadmitir (Asignatura asig) {
 		this.asig = asig;
@@ -40,13 +42,15 @@ public class PanelReadmitir extends JPanel {
 		etiqueta_titulo.setFont(new Font("Arial",12,18));
         this.add(etiqueta_titulo);
 		
-		Alumno[] expulsados = new Alumno[asig.getExpulsados().size()];
+		String[] lista_expulsados = new String[asig.getExpulsados().size()];
+		this.expulsados = new Alumno[asig.getExpulsados().size()];
  		int i = 0;
  		for (Alumno alum: asig.getExpulsados()) {
- 			expulsados[i] = alum;
+ 			lista_expulsados[i] = alum.toString();
+ 			this.expulsados[i] = alum;
  			i++;
  		}
- 		this.listaExpulsados = new JList<Alumno>(expulsados);
+ 		this.listaExpulsados = new JList<String>(lista_expulsados);
  		listaExpulsados.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
        // this.listaExpulsados.setPreferredSize(new Dimension(200,30));
  		JScrollPane scrolling_expulsados = new JScrollPane(this.listaExpulsados);
@@ -89,6 +93,13 @@ public class PanelReadmitir extends JPanel {
 	 * @return Lista de alumnos seleccionados en el panel.
 	 */
 	public List <Alumno> getSeleccionados() {
-		return this.listaExpulsados.getSelectedValuesList();
+		int tam = this.listaExpulsados.getSelectedIndices().length;
+		int[] indices = this.listaExpulsados.getSelectedIndices();
+		
+		List <Alumno> sel = new ArrayList <Alumno> (tam);
+		for (int i = 0; i< tam; i++) {
+			sel.add(this.expulsados[indices[i]]);
+		}
+		return sel;
 	}
 }
