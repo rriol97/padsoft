@@ -30,11 +30,12 @@ public class PanelCrearAsig extends JPanel {
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
+		JPanel aux = new JPanel();
 		JLabel texto = new JLabel ("Nombre de la asignatura");
 		texto.setFont(new Font ("Arial",12,18));
 		
 		this.campo_asig = new JTextField();
-		campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/23,(int)Frame.HEIGHT/23));
+		campo_asig.setPreferredSize(new Dimension((int)Frame.WIDTH/6,(int)Frame.HEIGHT/23));
 		
 		JButton acp = new JButton("Aceptar");
 		acp.addActionListener(new ActionAceptarCrearAsig(this));
@@ -42,9 +43,11 @@ public class PanelCrearAsig extends JPanel {
 		c.addActionListener(new ActionCancelar());
 		
 		
-		this.add(texto);
+		aux.add(texto);
 		texto.setLabelFor(campo_asig);
-		this.add(campo_asig);
+		aux.add(campo_asig);
+		this.add(new JPanel());
+		this.add(aux);
 		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));

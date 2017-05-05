@@ -17,6 +17,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.ActionCrearEle;
+import aplicacion.GUI.acciones.profesor.ActionEliminarAsig;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
 import aplicacion.GUI.general.Frame;
@@ -47,7 +48,7 @@ public class PanelAsigProf extends JPanel {
 		JPanel izq = new JPanel();
 		izq.setLayout(new SpringLayout());
 
-		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig.getNombre());
+		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(asig);
 		final JTree arbol = new JTree (raiz);
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		arbol.setFont(new Font("Arial",20, 25));
@@ -83,9 +84,16 @@ public class PanelAsigProf extends JPanel {
 		tree.setPreferredSize(new Dimension((int)(4*Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
 		izq.add(tree);
 		
+		JPanel botones = new JPanel();
+		botones.setLayout(new BoxLayout(botones,0));
+		
 		JButton boton_crear = new JButton("Crear elemento");
 		boton_crear.addActionListener(new ActionCrearEle(this));
-		izq.add(boton_crear);
+		botones.add(boton_crear);
+		JButton eliminarAsig = new JButton ("Eliminar asignatura");
+		eliminarAsig.addActionListener(new ActionEliminarAsig(asig));
+		botones.add(eliminarAsig);
+		izq.add(botones);
 		
 		SpringUtilities.makeCompactGrid(izq, 2, 1, 5, 5, 5, 5);
 
@@ -126,7 +134,7 @@ public class PanelAsigProf extends JPanel {
 	 * @return Nodo raiz del arbol.
 	 */
 	private DefaultMutableTreeNode getNode (Elemento e) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e.getNombre());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(e);
 		if (e instanceof Tema) {
 			Tema et = (Tema)e;
 			for (Elemento ele: et.getElementos()){

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import aplicacion.clases.elemento.test.*;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.login.FrameLogin;
+import aplicacion.GUI.paneles.profesor.PanelAsignaturas;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
 import aplicacion.clases.Aplicacion;
@@ -130,6 +131,13 @@ public class Controlador {
 	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion) {
 		OpcionMultiple p = new OpcionMultiple(enunciado,valor,penalizacion);
 		Frame.getIntance().cambiarPanel(new PanelOpcMult(p,t), 1);
+		
+	}
+
+	public void eliminarAsignatura(Asignatura asig) {
+		Aplicacion.getInstance().eliminarAsignatura(asig);
+		Frame.getIntance().borrarDer();
+		Frame.getIntance().cambiarPanel(new PanelAsignaturas(Aplicacion.getInstance()), 0);
 		
 	}
 }
