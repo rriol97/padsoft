@@ -7,18 +7,18 @@ import javax.swing.JOptionPane;
 
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarOpciones;
-import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcUnic;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionEditarOpcUnic implements ActionListener {
 	
-	private PanelOpcUnic q;
+	private PanelCrearOpcUnic q;
 	private OpcionUnica p;
 	private Test t;
 	
-	public ActionEditarOpcUnic (PanelOpcUnic q, OpcionUnica p, Test t){
+	public ActionEditarOpcUnic (PanelCrearOpcUnic q, OpcionUnica p, Test t){
 		this.q = q;
 		this.p = p;
 		this.t = t;

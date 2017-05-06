@@ -28,7 +28,5 @@ public class ActionCrearOpcUnic implements ActionListener{
 			JOptionPane.showMessageDialog(this.vista,"Introduzca la penalizacion por fallo");
 		}
 		Controlador.getInstance().crearPregOpcUnic(t,this.vista.getEnunciado(),this.vista.getValor(),this.vista.getPenalizacion());
-
 	}
-
 }

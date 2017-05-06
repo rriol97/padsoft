@@ -6,18 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.controlador.Controlador;
-import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcUnic;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionEliminarOpcUnic implements ActionListener {
 
-	private PanelOpcUnic p;
+	private PanelCrearOpcUnic p;
 	private Test t;
 	private OpcionUnica u;
 	
-	public ActionEliminarOpcUnic(PanelOpcUnic p, Test t, OpcionUnica u){
+	public ActionEliminarOpcUnic(PanelCrearOpcUnic p, Test t, OpcionUnica u){
 		this.p = p;
 		this.t = t;
 		this.u = u;

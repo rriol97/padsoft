@@ -6,18 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.controlador.Controlador;
-import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcMult;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionEliminarOpcMult implements ActionListener {
 
-	private PanelOpcMult p;
+	private PanelCrearOpcMult p;
 	private Test t;
 	private OpcionMultiple u;
 	
-	public ActionEliminarOpcMult(PanelOpcMult p, Test t, OpcionMultiple u){
+	public ActionEliminarOpcMult(PanelCrearOpcMult p, Test t, OpcionMultiple u){
 		this.p = p;
 		this.t = t;
 		this.u = u;

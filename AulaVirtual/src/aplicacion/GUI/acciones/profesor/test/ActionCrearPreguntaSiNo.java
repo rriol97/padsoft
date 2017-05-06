@@ -8,15 +8,15 @@ import javax.swing.JOptionPane;
 import aplicacion.GUI.controlador.Controlador;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
-import aplicacion.GUI.paneles.profesor.test.PanelPregSiNo;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearPregSiNo;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionCrearPreguntaSiNo implements ActionListener {
 	
 	private Test t;
-	private PanelPregSiNo p;
+	private PanelCrearPregSiNo p;
 	
-	public ActionCrearPreguntaSiNo(Test t, PanelPregSiNo p){
+	public ActionCrearPreguntaSiNo(Test t, PanelCrearPregSiNo p){
 		this.t = t;
 		this.p = p;
 	}

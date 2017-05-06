@@ -9,11 +9,11 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearPregCorta;
 import aplicacion.clases.elemento.test.Test;
 
-public class PanelPregCorta extends PanelEnunciado {
+public class PanelCrearPregCorta extends PanelEnunciado {
 	private static final long serialVersionUID = 1L;
 	private JTextArea respuesta;
 	
-	public PanelPregCorta(Test t) {
+	public PanelCrearPregCorta(Test t) {
 		super(t);
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);

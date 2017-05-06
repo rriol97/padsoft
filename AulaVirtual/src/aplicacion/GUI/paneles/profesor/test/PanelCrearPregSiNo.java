@@ -10,40 +10,38 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearPreguntaSiNo;
 import aplicacion.clases.elemento.test.Test;
 
-public class PanelPregSiNo extends PanelEnunciado {
+public class PanelCrearPregSiNo extends PanelEnunciado {
 	private static final long serialVersionUID = 1L;
+	
 	private JRadioButton si;
 	private JRadioButton no;
 	private ButtonGroup grupo;
 	
-	public PanelPregSiNo(Test t){
+	public PanelCrearPregSiNo(Test t){
 		super(t);
-		SpringLayout layout = new SpringLayout();
-		this.setLayout(layout);
+		this.setLayout(new SpringLayout());
 		
 		this.aceptar.addActionListener(new ActionCrearPreguntaSiNo(t,this));
 		
 		JPanel respuestas = new JPanel();
-		respuestas.setLayout(new BoxLayout(respuestas,1));
+		respuestas.setLayout(new BoxLayout(respuestas, 1));
 		this.si = new JRadioButton("Si");
 		this.no = new JRadioButton("No");
 		this.si.setSelected(true);
+		
 		grupo = new ButtonGroup();
 		grupo.add(this.si);
 		grupo.add(this.no);
+		
 		respuestas.add(this.si);
 		respuestas.add(this.no);
-		respuestas.setVisible(true);
 		
 		this.add(this.panelEnun);
 		this.add(this.opciones);
 		this.add(respuestas);
-		this.add(new JPanel());
 		this.add(this.panel_botones);
 
-		SpringUtilities.makeCompactGrid(this,5, 1, 5, 5, 5, 5);
-		this.setVisible(true);
-		
+		SpringUtilities.makeCompactGrid(this, 4, 1, 5, 5, 5, 5);
 	}
 		
 	public String getRespuesta(){

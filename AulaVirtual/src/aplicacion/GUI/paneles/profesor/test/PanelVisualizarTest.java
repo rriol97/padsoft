@@ -2,7 +2,6 @@ package aplicacion.GUI.paneles.profesor.test;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -38,12 +37,7 @@ public class PanelVisualizarTest extends JPanel {
 		JLabel etiqueta_nombre = new JLabel (t.getNombre());
 		izq.add(etiqueta_nombre);
 		
-		List <Pregunta> preguntas = t.getPreguntas();
-		if (t.isAleatorio()) {
-			preguntas = t.desordenar();
-		}
-		
-		for (Pregunta p: preguntas) {
+		for (Pregunta p: t.getPreguntas()) {
 			PanelPregSol pps = new PanelPregSol(p);
 			izq.add(pps);
 		}

@@ -16,8 +16,6 @@ public class PanelCrearPregOpcUnic extends PanelEnunciado{
 		this.add(this.opciones);
 		this.add(this.panel_botones);
 		
-		 SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
-		
+		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
 	}
-	
 }

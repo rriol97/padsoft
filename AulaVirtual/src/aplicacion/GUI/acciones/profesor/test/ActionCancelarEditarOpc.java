@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
-import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcMult;
+import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcUnic;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
@@ -24,10 +24,10 @@ public class ActionCancelarEditarOpc implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (p instanceof OpcionUnica) {
 			OpcionUnica ou = (OpcionUnica) p;
-			Frame.getInstance().cambiarPanel(new PanelOpcUnic(ou, t), 1);
+			Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic(ou, t), 1);
 		} else if (p instanceof OpcionMultiple) {
 			OpcionMultiple om = (OpcionMultiple) p;
-			Frame.getInstance().cambiarPanel(new PanelOpcMult(om, t), 1);
+			Frame.getInstance().cambiarPanel(new PanelCrearOpcMult(om, t), 1);
 		}
 	}
 }

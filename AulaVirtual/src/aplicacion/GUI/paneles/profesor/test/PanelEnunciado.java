@@ -26,7 +26,6 @@ public abstract class PanelEnunciado extends JPanel {
 	protected JButton aceptar;
 	
 	public PanelEnunciado(Test t){
-
 		this.setLayout(new SpringLayout());
 		
 		this.panelEnun = new JPanel();
@@ -74,15 +73,27 @@ public abstract class PanelEnunciado extends JPanel {
 		
 	}
 	
-	public Double getValor(){
+	public String getEnunciado () {
+		return this.enunciado.getText();
+	}
+	
+	public void setEnunciado (String enun) {
+		this.enunciado.setText(enun);
+	}
+	
+	public Double getValor() {
 		return Double.parseDouble(this.c_valor.getText());
 	}
 	
-	public Double getPenalizacion(){
+	public void setValor(Double valor) {
+		this.c_valor.setText(Double.toString(valor));
+	}
+	
+	public Double getPenalizacion() {
 		return Double.parseDouble(this.c_penal.getText());
 	}
 	
-	public String getEnunciado (){
-		return this.enunciado.getText();
+	public void setPenalizacion(Double penal) {
+		this.c_penal.setText(Double.toString(penal));
 	}
 }

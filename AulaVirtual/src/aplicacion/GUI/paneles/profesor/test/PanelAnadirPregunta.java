@@ -16,7 +16,9 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
+import aplicacion.GUI.acciones.profesor.test.ActionEliminarPreg;
 import aplicacion.GUI.acciones.profesor.test.ActionFinTest;
+import aplicacion.GUI.acciones.profesor.test.ActionModificarPreg;
 import aplicacion.GUI.acciones.profesor.test.ActionNuevaPreg;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -34,43 +36,31 @@ public class PanelAnadirPregunta extends JPanel {
 		this.setLayout(layout);
 		this.setPreferredSize(new Dimension ((int)Frame.WIDTH/6, (int)Frame.HEIGHT/4));
 		
+		JPanel panel_tipoPreg = new JPanel();
+		panel_tipoPreg.setLayout(new SpringLayout());
 		
-		JPanel preg = new JPanel();
-		SpringLayout layoutAna = new SpringLayout();
-		preg.setLayout(layoutAna);
-		
-		JButton eliminar = new JButton ("Eliminar Pregunta");
-		eliminar.addActionListener(new ActionEliminarPreg(t, this));
-		preg.add(eliminar);
-		JButton modificar = new JButton ("Modificar Pregunta");
-		modificar.addActionListener(new ActionModificarPreg(this));
-		preg.add(modificar);
-		JButton anadir = new JButton ("Anadir Pregunta");
-		anadir.addActionListener(new ActionNuevaPreg(t, this));
-		preg.add(anadir);
-		JButton finTest = new JButton ("Finalizar Test");
-		finTest.addActionListener(new ActionFinTest(t));
-		preg.add(finTest);
+		JLabel etiqueta_tipo = new JLabel ("Elija tipo de pregunta:");
+		this.setFont(new Font ("Arial",12,18));
+		panel_tipoPreg.add(etiqueta_tipo);
 		
 		
-		layoutAna.putConstraint(SpringLayout.WEST, finTest, 10, SpringLayout.EAST, anadir);
-		preg.setVisible(true);
-
-		JPanel tipoPreg = new JPanel();
-		SpringLayout layoutPreg = new SpringLayout();
-		tipoPreg.setLayout(layoutPreg);
 		String[]tiposPreg = {"Respuesta unica","Respuesta multiple","Si/No","Respuesta Corta"};
 		this.tipo = new JComboBox<String>(tiposPreg);
 		this.tipo.setPreferredSize(new Dimension ((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/20)));
-		tipoPreg.add(this.tipo);
-		JLabel r = new JLabel ("Tipo de Pregunta");
-		this.setFont(new Font ("Arial",12,18));
-		tipoPreg.add(r);
-		layoutPreg.putConstraint(SpringLayout.WEST, this.tipo, (int)Frame.WIDTH/8, SpringLayout.WEST, r);
+		panel_tipoPreg.add(this.tipo);
 		
+		JButton anadir = new JButton ("Anadir Pregunta");
+		anadir.addActionListener(new ActionNuevaPreg(this, t));
+		panel_tipoPreg.add(anadir);
 		
+		SpringUtilities.makeCompactGrid(panel_tipoPreg, 3, 1, 0, 0, 5, 5);
+		this.add(panel_tipoPreg);
 		
-		
+		JPanel aux = new JPanel();
+ 		aux.setLayout(new SpringLayout());
+ 		
+ 		JLabel etiqueta_preguntas = new JLabel("Listado de Preguntas");
+ 		aux.add(etiqueta_preguntas);
 		
 		Pregunta[] preguntas = new Pregunta[t.getPreguntas().size()];
  		int i = 0;
@@ -78,30 +68,45 @@ public class PanelAnadirPregunta extends JPanel {
  			preguntas[i] = p;
  			i++;
  		}
-		
- 		JPanel aux = new JPanel();
- 		SpringLayout lay = new SpringLayout();
- 		aux.setLayout(lay);
+ 		
 		this.listaPreg = new JList<Pregunta> (preguntas);
 		this.listaPreg.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
- 		JScrollPane scrolling_Preg = new JScrollPane(this.listaPreg);
- 		JLabel listPreg = new JLabel("Listado de Preguntas");
- 		aux.add(listPreg);
- 		aux.add(scrolling_Preg);
- 		scrolling_Preg.setPreferredSize(new Dimension((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/5)));
- 		lay.putConstraint(SpringLayout.NORTH, scrolling_Preg, 10, SpringLayout.SOUTH, listPreg);
+ 		JScrollPane scrolling_preg = new JScrollPane(this.listaPreg);
+ 		scrolling_preg.setPreferredSize(new Dimension((int)Frame.WIDTH/2,(int)(Frame.HEIGHT/5)));
+ 		aux.add(scrolling_preg);
+ 		
+ 		SpringUtilities.makeCompactGrid(aux, 2, 1, 0, 0, 5, 5);
+ 		
+ 		JPanel panel_preg = new JPanel();
+ 		panel_preg.setLayout(new SpringLayout());
 		
-		JPanel panel_botones = new JPanel();
+ 		JPanel panel_botones1 = new JPanel();
+ 		panel_botones1.setLayout(new BoxLayout(panel_botones1, 1));
+ 		
+		JButton modificar = new JButton ("Modificar Pregunta");
+		modificar.addActionListener(new ActionModificarPreg(this, t));
+		panel_botones1.add(modificar);
+		JButton eliminar = new JButton ("Eliminar Pregunta");
+		eliminar.addActionListener(new ActionEliminarPreg(this, t));
+		panel_botones1.add(eliminar);
+		
+		panel_preg.add(aux);
+		panel_preg.add(panel_botones1);
+		SpringUtilities.makeCompactGrid(panel_preg, 1, 2, 0, 0, 5, 5);
+		this.add(panel_preg);
+ 		
+		JPanel panel_botones2 = new JPanel();
+		panel_botones2.setLayout(new BoxLayout(panel_botones2, 0));
 		JButton cancelar = new JButton ("Cancelar");
-		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
-		panel_botones.add(cancelar); 
 		cancelar.addActionListener(new ActionVolverAsigDeTest(t));
+		panel_botones2.add(cancelar);
+		JButton finalizar = new JButton ("Finalizar");
+		finalizar.addActionListener(new ActionFinTest(t));
+		panel_botones2.add(finalizar);
 		
-		this.add(preg);
-		this.add(aux);
-		this.add(tipoPreg);
-		this.add(panel_botones);
-		SpringUtilities.makeCompactGrid(this,4, 1, 5, 5, 5, 5);
+		this.add(panel_botones2);
+		
+		SpringUtilities.makeCompactGrid(this,3, 1, 5, 5, 5, 5);
 	}
 	
 	public String getEnunciado(){
@@ -112,5 +117,7 @@ public class PanelAnadirPregunta extends JPanel {
 		return (String) this.tipo.getSelectedItem();
 	}
 
-	
+	public Pregunta getSeleccionada() {
+		return this.listaPreg.getSelectedValue();
+	}
 }
