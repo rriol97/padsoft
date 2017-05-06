@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelOpcUnic;
-import aplicacion.GUI.paneles.profesor.test.PanelOpciones;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.PreguntaOpcion;

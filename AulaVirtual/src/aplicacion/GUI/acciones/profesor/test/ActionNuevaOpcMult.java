@@ -5,20 +5,19 @@ import java.awt.event.ActionListener;
 
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelOpciones;
-import aplicacion.clases.elemento.test.OpcionUnica;
+import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Test;
 
-public class ActionNuevaOpc implements ActionListener {
-	private OpcionUnica p;
+public class ActionNuevaOpcMult implements ActionListener {
+	private OpcionMultiple p;
 	private Test t;
 	
-	public ActionNuevaOpc (OpcionUnica p, Test t){
+	public ActionNuevaOpcMult (OpcionMultiple p, Test t){
 		this.p = p;
-		this.t= t;
+		this.t = t;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Frame.getInstance().cambiarPanel(new PanelOpciones(p, t), 1);
 	}
-
 }

@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.acciones.profesor.test.ActionAceptarOpcUnica;
+import aplicacion.GUI.acciones.profesor.test.ActionAceptarOpc;
 import aplicacion.GUI.acciones.profesor.test.ActionCancelarOpc;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
@@ -51,7 +51,7 @@ public class PanelOpciones extends JPanel {
 		JButton cancelar = new JButton ("Cancelar");
 		cancelar.addActionListener(new ActionCancelarOpc(opc,t));
 		JButton aceptar = new JButton ("Aceptar");
-		aceptar.addActionListener(new ActionAceptarOpcUnica(this, opc, t));
+		aceptar.addActionListener(new ActionAceptarOpc(this, opc, t));
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
 		panel_botones.add(cancelar);
 		panel_botones.add(aceptar);

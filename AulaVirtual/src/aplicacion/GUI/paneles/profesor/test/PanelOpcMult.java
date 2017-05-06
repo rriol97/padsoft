@@ -10,7 +10,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionAnadirOpcMult;
 import aplicacion.GUI.acciones.profesor.test.ActionEditarOpcMult;
 import aplicacion.GUI.acciones.profesor.test.ActionEliminarOpcMult;
-import aplicacion.GUI.acciones.profesor.test.ActionNuevaMult;
+import aplicacion.GUI.acciones.profesor.test.ActionNuevaOpcMult;
 import aplicacion.GUI.acciones.profesor.test.ActionVolverCrearPreg;
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionMultiple;
@@ -21,13 +21,25 @@ public class PanelOpcMult extends JPanel {
 	private JList <Opcion> listaOpc;
 	
 	public PanelOpcMult(OpcionMultiple p, Test t){
-	this.setLayout(new SpringLayout());
+		this.setLayout(new SpringLayout());
 		
 		JPanel panelOpc = new JPanel();
 		panelOpc.setLayout(new SpringLayout());
+		
+		JPanel panelBotones1 = new JPanel();
+		panelBotones1.setLayout(new BoxLayout(panelBotones1, 0));
+		
+		JButton eliminar = new JButton("Eliminar Opcion");
+		eliminar.addActionListener(new ActionEliminarOpcMult(this,t,p));
+		panelBotones1.add(eliminar);
+		JButton editar = new JButton("Editar Opcion");
+		editar.addActionListener(new ActionEditarOpcMult(this,t,p));
+		panelBotones1.add(editar);
 		JButton botonOpc = new JButton("Anadir Opcion");
-		botonOpc.addActionListener(new ActionNuevaMult(p, t));
-		panelOpc.add(botonOpc);
+		botonOpc.addActionListener(new ActionNuevaOpcMult(p, t));
+		panelBotones1.add(botonOpc);
+		
+		panelOpc.add(panelBotones1);
 		
 		Opcion[] arrayOpc = new Opcion[p.getOpciones().size()];
 		int i = 0;
@@ -38,26 +50,19 @@ public class PanelOpcMult extends JPanel {
 		listaOpc = new JList <Opcion> (arrayOpc);
 		panelOpc.add(listaOpc);
 		
+		SpringUtilities.makeCompactGrid(panelOpc,2,1,0,0,5,5);
 		this.add(panelOpc);
 		
-		SpringUtilities.makeCompactGrid(panelOpc,2,1,0,0,5,5);
-
-		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new BoxLayout(panelBotones, 0));
+		JPanel panelBotones2 = new JPanel();
+		panelBotones2.setLayout(new BoxLayout(panelBotones2, 0));
 		JButton botonCancelar = new JButton("Cancelar");
 		botonCancelar.addActionListener(new ActionVolverCrearPreg(t));
-		panelBotones.add(botonCancelar);
+		panelBotones2.add(botonCancelar);
 		JButton botonAceptar = new JButton("Aceptar");
 		botonAceptar.addActionListener(new ActionAnadirOpcMult(p, t));
-		panelBotones.add(botonAceptar);
-		JButton eliminar = new JButton("Eliminar Opcion");
-		eliminar.addActionListener(new ActionEliminarOpcMult(this,t,p));
-		panelBotones.add(eliminar);
-		JButton editar = new JButton("Editar Opcion");
-		editar.addActionListener(new ActionEditarOpcMult(this,t,p));
-		panelBotones.add(editar);
+		panelBotones2.add(botonAceptar);
 		
-		this.add(panelBotones);
+		this.add(panelBotones2);
 		
 		SpringUtilities.makeCompactGrid(this,2,1,5,5,5,5);
 	}

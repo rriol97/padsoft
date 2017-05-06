@@ -139,7 +139,7 @@ public class Controlador {
 		Frame.getInstance().cambiarPanel(new PanelOpcUnic(p, t), 1);
 	}
 	
-	public void anadirOpcionUnica(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
+	public void anadirOpcion(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
 		if (p instanceof OpcionUnica){
 			if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
 				Frame.getInstance().cambiarPanel(new PanelOpcUnic((OpcionUnica)p, t), 1);
