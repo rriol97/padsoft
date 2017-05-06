@@ -13,7 +13,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionAceptarOpcUnica;
-import aplicacion.GUI.acciones.profesor.test.ActionCancelarOpcUnica;
+import aplicacion.GUI.acciones.profesor.test.ActionCancelarOpc;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.Test;
@@ -49,11 +49,11 @@ public class PanelOpciones extends JPanel {
 		
 		JPanel panel_botones = new JPanel();
 		JButton cancelar = new JButton ("Cancelar");
-		cancelar.addActionListener(new ActionCancelarOpcUnica(this));
+		cancelar.addActionListener(new ActionCancelarOpc(opc,t));
 		JButton aceptar = new JButton ("Aceptar");
 		aceptar.addActionListener(new ActionAceptarOpcUnica(this, opc, t));
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
-		panel_botones.add(cancelar); 
+		panel_botones.add(cancelar);
 		panel_botones.add(aceptar);
 		
 		this.add(text);
@@ -68,6 +68,14 @@ public class PanelOpciones extends JPanel {
 	
 	public String getContent(){
 		return this.texto.getText();
+	}
+	
+	public void setContent(String t){
+		this.texto.setText(t);
+	}
+	
+	public void setCorrecta (boolean sel){
+		this.correcta.setSelected(sel);
 	}
 	
 	public boolean isCorrecta() {

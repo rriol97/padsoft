@@ -4,17 +4,21 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
+
 
 import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionAnadirOpcUnica;
+import aplicacion.GUI.acciones.profesor.test.ActionEditarOpcUnic;
+import aplicacion.GUI.acciones.profesor.test.ActionEliminarOpcUnic;
 import aplicacion.GUI.acciones.profesor.test.ActionNuevaOpc;
 import aplicacion.GUI.acciones.profesor.test.ActionVolverCrearPreg;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Test;
 
-public class PanelOpcUnic extends JPanel {	
+public class PanelOpcUnic extends JPanel  {	
 	private static final long serialVersionUID = 1L;
 
 	private JList <Opcion> listaOpc;
@@ -37,6 +41,8 @@ public class PanelOpcUnic extends JPanel {
 		listaOpc = new JList <Opcion> (arrayOpc);
 		panelOpc.add(listaOpc);
 		
+        listaOpc.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		this.add(panelOpc);
 		
 		SpringUtilities.makeCompactGrid(panelOpc,2,1,0,0,5,5);
@@ -49,9 +55,20 @@ public class PanelOpcUnic extends JPanel {
 		JButton botonAceptar = new JButton("Aceptar");
 		botonAceptar.addActionListener(new ActionAnadirOpcUnica(p, t));
 		panelBotones.add(botonAceptar);
+		JButton eliminar = new JButton("Eliminar Opcion");
+		eliminar.addActionListener(new ActionEliminarOpcUnic(this,t,p));
+		panelBotones.add(eliminar);
+		JButton editar = new JButton("Editar Opcion");
+		editar.addActionListener(new ActionEditarOpcUnic(this,t,p));
+		panelBotones.add(editar);
 		
 		this.add(panelBotones);
 		
 		SpringUtilities.makeCompactGrid(this,2,1,5,5,5,5);
+	}
+
+
+	public Opcion getSel() {
+		return this.listaOpc.getSelectedValue();
 	}
 }

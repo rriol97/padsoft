@@ -207,4 +207,13 @@ public class Controlador {
 		Aplicacion.getInstance().getAlumnoActual().anadirResolucion(res);
 		Frame.getInstance().cambiarPanel(new PanelAsigAlum(test.getAsignatura()), 1);
 	}
+
+	public void eliminarOpc(PreguntaOpcion u, Opcion sel,Test t) {
+		u.eliminarOpcion(sel);
+		if (u instanceof OpcionUnica){
+			Frame.getInstance().cambiarPanel(new PanelOpcUnic((OpcionUnica)u,t), 1);
+		} else{
+			Frame.getInstance().cambiarPanel(new PanelOpcMult((OpcionMultiple)u,t), 1);
+		}
+	}
 }
