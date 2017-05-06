@@ -26,6 +26,7 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	 */
 	public PreguntaOpcion(String enunciado, double valor, double penalizacion){
 		super(enunciado, valor, penalizacion);
+		this.aleatoria = false;
 	}
 	
 	public List<Opcion> getOpciones() {

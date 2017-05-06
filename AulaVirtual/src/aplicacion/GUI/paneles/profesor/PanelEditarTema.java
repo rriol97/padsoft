@@ -9,6 +9,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionEditarTema;
 import aplicacion.GUI.acciones.profesor.ActionEliminarTema;
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Tema;
 
 public class PanelEditarTema extends JPanel {
@@ -17,17 +18,12 @@ public class PanelEditarTema extends JPanel {
 	private JComboBox<String> visible;
 	
 	public PanelEditarTema (Tema tema, Object padre) {
-		this.setLayout(new BoxLayout(this,1));
-		
-		JPanel aux = new JPanel();
-		SpringLayout y = new SpringLayout();
-		aux.setLayout(y);
+		SpringLayout l = new SpringLayout();
+		this.setLayout(l);
+
 		String[] listaVisible = {"Visible", "No visible"};
 		this.visible = new JComboBox <String> (listaVisible);
-		//this.visible.setPreferredSize(new Dimension((int)Frame.WIDTH/4,(int)Frame.HEIGHT/10));
-		aux.add(visible);
-		//y.putConstraint(SpringLayout.SOUTH, visible, (int)Frame.WIDTH/4, SpringLayout.SOUTH, aux);
-		this.add(aux);
+		this.add(visible);
 		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
@@ -46,7 +42,12 @@ public class PanelEditarTema extends JPanel {
 		
 		this.add(panel_botones);
 		
-		//SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
+		l.putConstraint(SpringLayout.NORTH, visible, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+		l.putConstraint(SpringLayout.WEST, visible, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+		
+		l.putConstraint(SpringLayout.NORTH, panel_botones, 20, SpringLayout.SOUTH, visible);
+		l.putConstraint(SpringLayout.WEST, panel_botones, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+
 	}
 
 	public JComboBox<String> getVisible() {

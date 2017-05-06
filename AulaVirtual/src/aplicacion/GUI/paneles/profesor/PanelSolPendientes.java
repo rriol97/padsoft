@@ -12,7 +12,6 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
@@ -30,7 +29,8 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
 	private JList<Solicitud> listOne;
     
     public PanelSolPendientes(Aplicacion ap) {
-		this.setLayout(new SpringLayout());
+    	SpringLayout l = new SpringLayout(); 
+		this.setLayout(l);
 		
 		JLabel tit = new JLabel("Solicitudes Pendientes");
         tit.setFont(new Font ("Arial",12,18));
@@ -43,7 +43,9 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         scrollingListOne.setPreferredSize(new Dimension((int)(Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
         
-        SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
+        l.putConstraint(SpringLayout.WEST, tit, (int) (Frame.WIDTH/3), SpringLayout.WEST, this);
+        l.putConstraint(SpringLayout.WEST, scrollingListOne, (int) (Frame.WIDTH/3), SpringLayout.WEST, this);
+        l.putConstraint(SpringLayout.NORTH, scrollingListOne, 5, SpringLayout.SOUTH, tit);
         
         listOne.addListSelectionListener(this); 
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -65,18 +65,23 @@ public class PanelSolAlum extends JPanel {
         this.add(botonAcp);
         this.add(botonCnr);
         
-        layout.putConstraint(SpringLayout.NORTH,etiq,200 ,SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST,etiq ,200,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.WEST,this.listaAsig,20, SpringLayout.EAST,etiq);
-        layout.putConstraint(SpringLayout.NORTH,this.listaAsig,200, SpringLayout.NORTH,this);
-        layout.putConstraint(SpringLayout.NORTH,comment,25, SpringLayout.SOUTH,etiq);
-        layout.putConstraint(SpringLayout.WEST,comment,200,SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.WEST,texto,10, SpringLayout.EAST,comment);
-        layout.putConstraint(SpringLayout.NORTH,texto,15, SpringLayout.SOUTH,this.listaAsig);
-        layout.putConstraint(SpringLayout.NORTH,botonCnr,60, SpringLayout.SOUTH,texto);
-        layout.putConstraint(SpringLayout.WEST,botonCnr,500, SpringLayout.WEST,this);
-        layout.putConstraint(SpringLayout.WEST,botonAcp,3, SpringLayout.EAST,botonCnr);
-        layout.putConstraint(SpringLayout.NORTH,botonAcp,60, SpringLayout.SOUTH,texto);
+        layout.putConstraint(SpringLayout.NORTH, etiq, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, etiq, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        
+        layout.putConstraint(SpringLayout.WEST, this.listaAsig, 20, SpringLayout.EAST, etiq);
+        layout.putConstraint(SpringLayout.NORTH, this.listaAsig, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+        
+        layout.putConstraint(SpringLayout.NORTH, comment, 25, SpringLayout.SOUTH, etiq);
+        layout.putConstraint(SpringLayout.WEST, comment, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        
+        layout.putConstraint(SpringLayout.WEST, texto, 10, SpringLayout.EAST, comment);
+        layout.putConstraint(SpringLayout.NORTH, texto, 15, SpringLayout.SOUTH, this.listaAsig);
+        
+        layout.putConstraint(SpringLayout.NORTH, botonCnr, 60, SpringLayout.SOUTH, texto);
+        layout.putConstraint(SpringLayout.WEST, botonCnr, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        
+        layout.putConstraint(SpringLayout.WEST, botonAcp, 3, SpringLayout.EAST, botonCnr);
+        layout.putConstraint(SpringLayout.NORTH, botonAcp, 60, SpringLayout.SOUTH, texto);
         
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
     }

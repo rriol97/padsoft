@@ -68,14 +68,14 @@ public class PanelExpulsar extends JPanel {
         
         this.add(panel_botones);
         
-        layout.putConstraint(SpringLayout.WEST,etiqueta_titulo ,200,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.NORTH,etiqueta_titulo,(int)(Frame.WIDTH/20) ,SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, etiqueta_titulo, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, etiqueta_titulo, (int)(Frame.HEIGHT/10), SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.WEST,scrolling_matriculados ,200,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.NORTH,scrolling_matriculados,5, SpringLayout.SOUTH,etiqueta_titulo);
+        layout.putConstraint(SpringLayout.WEST, scrolling_matriculados, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, scrolling_matriculados, 5, SpringLayout.SOUTH, etiqueta_titulo);
         
-        layout.putConstraint(SpringLayout.WEST,panel_botones ,200,SpringLayout.WEST ,this);
-        layout.putConstraint(SpringLayout.NORTH,panel_botones,5, SpringLayout.SOUTH,scrolling_matriculados);
+        layout.putConstraint(SpringLayout.WEST, panel_botones, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, panel_botones, 5, SpringLayout.SOUTH, scrolling_matriculados);
 
         this.setPreferredSize(new Dimension((int)Frame.WIDTH/3,(int)Frame.HEIGHT/3));
 	}

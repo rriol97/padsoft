@@ -9,6 +9,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.test.Test;
@@ -18,11 +19,15 @@ public class PanelNotasAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public PanelNotasAsig(Alumno alum, Asignatura asig) {
-		this.setLayout(new SpringLayout());
+		SpringLayout l = new SpringLayout();
+		this.setLayout(l);
+		
+		JPanel aux = new JPanel();
+		aux.setLayout(new SpringLayout());
 		
 		JLabel etiqueta_titulo = new JLabel("Notas:");
 		etiqueta_titulo.setFont(new Font("Arial",12,18));
-		this.add(etiqueta_titulo);
+		aux.add(etiqueta_titulo);
 		
 		for(Test t: asig.getTests()) {
 			String nota = t.getNombre() + ": ";
@@ -34,20 +39,25 @@ public class PanelNotasAsig extends JPanel {
 			}
 			
 			JLabel etiqueta_nota = new JLabel(nota);
-			this.add(etiqueta_nota);
+			aux.add(etiqueta_nota);
 		}
 		
 		double notaFinal;
 		notaFinal = asig.calcularNotaAsig(alum);
 	
 		JLabel etiqueta_notaFinal = new JLabel("Nota final: " + notaFinal);
-		this.add(etiqueta_notaFinal);
+		aux.add(etiqueta_notaFinal);
 		
 		JButton boton_volver =  new JButton("Volver");
 		boton_volver.addActionListener(new ActionVolverAsig(asig));
-		this.add(boton_volver);
+		aux.add(boton_volver);
 		
-		SpringUtilities.makeGrid(this, asig.getTests().size() + 3, 1, 5, 5, 5, 5);
+		SpringUtilities.makeGrid(aux, asig.getTests().size() + 3, 1, 5, 5, 5, 5);
+		
+		this.add(aux);
+		
+		l.putConstraint(SpringLayout.WEST, aux, (int)(Frame.WIDTH/4), SpringLayout.WEST, this);
+		l.putConstraint(SpringLayout.NORTH, aux, (int)(Frame.HEIGHT/10), SpringLayout.NORTH, this);
 	}
 
 }

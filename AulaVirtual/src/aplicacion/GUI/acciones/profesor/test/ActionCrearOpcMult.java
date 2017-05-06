@@ -26,7 +26,7 @@ public class ActionCrearOpcMult implements ActionListener {
 		} else if (this.vista.getPenalizacion()==null){
 			JOptionPane.showMessageDialog(this.vista,"Introduzca la penalizacion por fallo");
 		}
-		Controlador.getInstance().crearPregOpcMult(t,this.vista.getEnunciado(),this.vista.getValor(),this.vista.getPenalizacion());
+		Controlador.getInstance().crearPregOpcMult(t,this.vista.getEnunciado(),this.vista.getValor(),this.vista.getPenalizacion(), this.vista.getOrden());
 
 	}
 }

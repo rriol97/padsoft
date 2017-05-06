@@ -61,9 +61,9 @@ public class PanelAsigAlum extends JPanel {
 						if (t.isFechaValida()) {
 							Frame.getInstance().cambiarPanel(new PanelTestAlum(t), 1);
 						} else if (t.isTerminado()) {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion finalizo:\n" + t.getFechaFin());
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion ha finalizado:\n" + t.getFechaFin());
 						} else {
-							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion comienza:\n" + t.getFechaIni());
+							JOptionPane.showMessageDialog(Frame.getInstance(), "El plazo de realizacion comienza:" + t.getFechaIni() + "\nEl plazo de realizacion finaliza:" + t.getFechaFin());
 						}
 					} else {
 						if (t.isTerminado() == false) {

@@ -1,16 +1,19 @@
 package aplicacion.GUI.paneles.profesor;
 
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionEditarApuntes;
 import aplicacion.GUI.acciones.profesor.ActionEliminarApuntes;
+import aplicacion.GUI.general.Frame;
 import aplicacion.clases.elemento.Apuntes;
 
 public class PanelEditarApuntes extends JPanel {
@@ -20,21 +23,18 @@ public class PanelEditarApuntes extends JPanel {
 	private JTextField texto;
 	
 	public PanelEditarApuntes (Apuntes apuntes, Object padre) {
-		this.setLayout(new SpringLayout());
-		
-		JPanel panel_edicion = new JPanel();
-		panel_edicion.setLayout(new SpringLayout());
+		SpringLayout l = new SpringLayout();
+		this.setLayout(l);
 		
 		this.texto = new JTextField();
 		this.texto.setText(apuntes.getTexto());
-		panel_edicion.add(this.texto);
+		JScrollPane scroll_texto = new JScrollPane(this.texto);
+		scroll_texto.setPreferredSize(new Dimension(250, 80));
+		this.add(scroll_texto);
 		
 		String[] listaVisible = {"Visible", "No visible"};
 		this.visible = new JComboBox <String> (listaVisible);
-		panel_edicion.add(this.visible);
-		
-		SpringUtilities.makeCompactGrid(panel_edicion, 2, 1, 0, 0, 5, 5);
-		this.add(panel_edicion);
+		this.add(this.visible);
 		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones, 0));
@@ -53,7 +53,14 @@ public class PanelEditarApuntes extends JPanel {
 		
 		this.add(panel_botones);
 		
-		SpringUtilities.makeCompactGrid(this, 2, 1, 5, 5, 5, 5);
+		l.putConstraint(SpringLayout.NORTH, scroll_texto, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+		l.putConstraint(SpringLayout.WEST, scroll_texto, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+		
+		l.putConstraint(SpringLayout.NORTH, visible, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+		l.putConstraint(SpringLayout.WEST, visible, 20, SpringLayout.EAST, scroll_texto);
+		
+		l.putConstraint(SpringLayout.NORTH, panel_botones, 20, SpringLayout.SOUTH, scroll_texto);
+		l.putConstraint(SpringLayout.WEST, panel_botones, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
 	}
 
 	public JTextField getTexto() {

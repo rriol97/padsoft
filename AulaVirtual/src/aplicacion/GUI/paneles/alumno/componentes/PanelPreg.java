@@ -1,5 +1,6 @@
 package aplicacion.GUI.paneles.alumno.componentes;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,7 @@ public class PanelPreg extends JPanel {
 				
 		} else if (p instanceof RespuestaLibre) {
 			JTextField campo_respuesta = new JTextField();
+			campo_respuesta.setPreferredSize(new Dimension(150, 30));
 			panel_opcion.add(campo_respuesta);
 			this.respuesta = campo_respuesta;
 		}

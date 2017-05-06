@@ -1,6 +1,8 @@
 package aplicacion.GUI.paneles.profesor.test;
 
 
+import javax.swing.JComboBox;
+
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearOpcUnic;
 import aplicacion.clases.elemento.test.Test;
@@ -8,14 +10,28 @@ import aplicacion.clases.elemento.test.Test;
 public class PanelCrearPregOpcUnic extends PanelEnunciado{
 	private static final long serialVersionUID = 1L;
 	
+	JComboBox<String> ordenPreguntas;
+	
 	public PanelCrearPregOpcUnic(Test t) {
 		super(t);
 		this.aceptar.addActionListener(new ActionCrearOpcUnic(this,t));
 
 		this.add(this.panelEnun);
 		this.add(this.opciones);
+		
+		String[]orden = {"Ordenadas","No Ordenadas"};
+		this.ordenPreguntas = new JComboBox<String>(orden);
+		this.add(this.ordenPreguntas);
+		
 		this.add(this.panel_botones);
 		
-		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
+		SpringUtilities.makeCompactGrid(this, 4, 1, 5, 5, 5, 5);
+	}
+	
+	public boolean getOrden() {
+		if (this.ordenPreguntas.getSelectedItem().equals("Ordenadas")) {
+			return false;
+		}
+		return true;
 	}
 }

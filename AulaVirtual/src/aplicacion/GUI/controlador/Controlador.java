@@ -135,13 +135,15 @@ public class Controlador {
 		
 	}
 
-	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion) {
+	public void crearPregOpcUnic(Test t,String enunciado, Double valor, Double penalizacion, boolean aleatoria) {
 		OpcionUnica p = new OpcionUnica(enunciado,valor,penalizacion);
+		p.setAleatoria(aleatoria);
 		Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic(p, t), 1);
 	}
 	
-	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion) {
+	public void crearPregOpcMult(Test t, String enunciado, Double valor, Double penalizacion, boolean aleatoria) {
 		OpcionMultiple p = new OpcionMultiple(enunciado,valor,penalizacion);
+		p.setAleatoria(aleatoria);
 		Frame.getInstance().cambiarPanel(new PanelCrearOpcMult(p,t), 1);
 	}
 	

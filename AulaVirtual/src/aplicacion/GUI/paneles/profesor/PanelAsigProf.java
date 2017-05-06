@@ -17,6 +17,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import aplicacion.GUI.SpringUtilities;
+import aplicacion.GUI.acciones.profesor.ActionConsultarNotasProf;
 import aplicacion.GUI.acciones.profesor.ActionCrearEle;
 import aplicacion.GUI.acciones.profesor.ActionEliminarAsig;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
@@ -40,6 +41,7 @@ public class PanelAsigProf extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private Asignatura asig;
+	JList <Alumno> alumnoMatr;
 	
 	public PanelAsigProf (Asignatura asig) {
 		this.asig = asig;
@@ -61,8 +63,11 @@ public class PanelAsigProf extends JPanel {
 		arbol.addTreeSelectionListener(new TreeSelectionListener(){
 			public void valueChanged(TreeSelectionEvent e) {
 				DefaultMutableTreeNode nodo = ((DefaultMutableTreeNode) arbol.getLastSelectedPathComponent());
-				Object padre = ((DefaultMutableTreeNode) nodo.getParent()).getUserObject();
 				Object o = nodo.getUserObject();
+				if (o instanceof Asignatura) {
+					return;
+				}
+				Object padre = ((DefaultMutableTreeNode) nodo.getParent()).getUserObject();
 				if (o instanceof Tema) {
 					Tema tema = (Tema) o;
 					Frame.getInstance().cambiarPanel(new PanelEditarTema(tema, padre), 1);
@@ -71,10 +76,12 @@ public class PanelAsigProf extends JPanel {
 					Frame.getInstance().cambiarPanel(new PanelEditarApuntes(apuntes, padre), 1);
 				} else if (o instanceof Test) {
 					Test test = (Test) o;
-					try {
-						test.corregir();
-					} catch (Exception e1) {
-						e1.printStackTrace();
+					if (test.isTerminado()) {
+						try {
+							test.corregir();
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
 					}
 					Frame.getInstance().cambiarPanel(new PanelVisualizarTest(test, padre), 1);
 				}
@@ -105,28 +112,32 @@ public class PanelAsigProf extends JPanel {
 		etiqueta_alumnos.setFont(new Font("Arial",12,18));
         der.add(etiqueta_alumnos);
 		
-		String[] alumnos = new String [asig.getMatriculados().size()];
+        Alumno[] alumnos = new Alumno[asig.getMatriculados().size()];
 		int i = 0;
 		for (Alumno a: asig.getMatriculados()) {
-			alumnos[i] = a.toString();
+			alumnos[i] = a;
 			i++;
 		}
 		
-		JList <String> alumnoMatr = new JList<String>(alumnos);
+		alumnoMatr = new JList<Alumno>(alumnos);
 		JScrollPane scrollingListOne = new JScrollPane(alumnoMatr);
 		der.add(scrollingListOne);
 		
+		JButton boton_nota = new JButton("Nota alumno");
+		boton_nota.addActionListener(new ActionConsultarNotasProf(this, asig));
+		der.add(boton_nota);
+		
 		JPanel panel_botones = new JPanel();
 		panel_botones.setLayout(new BoxLayout(panel_botones,0));
-		JButton boton_expulsar = new JButton("Expulsar alumno");
+		JButton boton_expulsar = new JButton("Expulsar alumnos");
 		boton_expulsar.addActionListener(new ActionSeleccionExpulsar(this));
 		panel_botones.add(boton_expulsar);
-		JButton boton_readmitir = new JButton("Readmitir alumno");
+		JButton boton_readmitir = new JButton("Readmitir alumnos");
 		boton_readmitir.addActionListener(new ActionSeleccionReadmitir(this));
 		panel_botones.add(boton_readmitir);
 		der.add(panel_botones);
 		
-		SpringUtilities.makeCompactGrid(der, 3, 1, 5, 5, 5, 5);
+		SpringUtilities.makeCompactGrid(der, 4, 1, 5, 5, 5, 5);
 		
 		this.add(izq);
 		this.add(der);
@@ -167,5 +178,9 @@ public class PanelAsigProf extends JPanel {
 
 	public Asignatura getAsignatura() {
 		return this.asig;
+	}
+	
+	public Alumno getSel() {
+		return this.alumnoMatr.getSelectedValue();
 	}
 }

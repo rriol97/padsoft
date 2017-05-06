@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionCancelar;
 import aplicacion.GUI.acciones.profesor.ActionAceptarCrearAsig;
 import aplicacion.GUI.general.Frame;
@@ -46,7 +45,6 @@ public class PanelCrearAsig extends JPanel {
 		aux.add(texto);
 		texto.setLabelFor(campo_asig);
 		aux.add(campo_asig);
-		this.add(new JPanel());
 		this.add(aux);
 		
 		JPanel panel_botones = new JPanel();
@@ -55,7 +53,11 @@ public class PanelCrearAsig extends JPanel {
 		panel_botones.add(acp);
 		this.add(panel_botones);
 		
-		SpringUtilities.makeCompactGrid(this, 3, 1, 5, 0, 5, 5);
+		layout.putConstraint(SpringLayout.NORTH, aux, (int)(Frame.HEIGHT/4), SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, aux, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
+		
+		layout.putConstraint(SpringLayout.NORTH, panel_botones, 10, SpringLayout.SOUTH, aux);
+		layout.putConstraint(SpringLayout.WEST, panel_botones, (int)(Frame.WIDTH/6), SpringLayout.WEST, this);
 	}
 	
 	public String getNombreAsig(){
