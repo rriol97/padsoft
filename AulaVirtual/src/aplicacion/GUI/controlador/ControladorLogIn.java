@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.GUI.login.PanelLogin;
 import aplicacion.clases.Aplicacion;

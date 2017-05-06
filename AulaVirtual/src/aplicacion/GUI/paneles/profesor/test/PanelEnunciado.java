@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.profesor.test.ActionCancelarPreg;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.Test;
 
 public abstract class PanelEnunciado extends JPanel {

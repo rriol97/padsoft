@@ -9,7 +9,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.test.Test;

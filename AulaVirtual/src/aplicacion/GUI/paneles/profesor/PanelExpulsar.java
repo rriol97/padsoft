@@ -15,7 +15,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionExpulsar;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 

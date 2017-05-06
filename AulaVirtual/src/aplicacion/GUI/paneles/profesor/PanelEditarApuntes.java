@@ -13,7 +13,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionEditarApuntes;
 import aplicacion.GUI.acciones.profesor.ActionEliminarApuntes;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.Apuntes;
 
 public class PanelEditarApuntes extends JPanel {

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregCorta;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcMult;

@@ -16,7 +16,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.alumno.ActionConsultarNotas;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Apuntes;

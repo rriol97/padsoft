@@ -1,4 +1,4 @@
-package aplicacion.GUI.general;
+package aplicacion.GUI.frame;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;

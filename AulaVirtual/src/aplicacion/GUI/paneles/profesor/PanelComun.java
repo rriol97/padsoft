@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 
 public abstract class PanelComun extends JPanel{
 	private static final long serialVersionUID = 1L;

@@ -14,7 +14,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionElegirTema;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 

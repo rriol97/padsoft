@@ -12,7 +12,7 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.acciones.ActionCancelar;
 import aplicacion.GUI.acciones.profesor.ActionAceptarCrearAsig;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 
 /**
  * Clase que implementa el panel de creacion de asignaturas de un profesor.

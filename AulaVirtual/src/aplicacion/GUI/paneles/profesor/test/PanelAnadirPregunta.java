@@ -20,7 +20,7 @@ import aplicacion.GUI.acciones.profesor.test.ActionEliminarPreg;
 import aplicacion.GUI.acciones.profesor.test.ActionFinTest;
 import aplicacion.GUI.acciones.profesor.test.ActionModificarPreg;
 import aplicacion.GUI.acciones.profesor.test.ActionNuevaPreg;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 

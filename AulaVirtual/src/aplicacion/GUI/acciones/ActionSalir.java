@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import aplicacion.GUI.controlador.Controlador;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 
 
 public class ActionSalir implements ActionListener{

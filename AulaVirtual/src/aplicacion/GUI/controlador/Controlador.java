@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import aplicacion.clases.elemento.test.*;
 import aplicacion.clases.resolucion.Resolucion;
 import aplicacion.clases.resolucion.Respuesta;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.login.FrameLogin;
 import aplicacion.GUI.paneles.alumno.PanelAsigAlum;
 import aplicacion.GUI.paneles.alumno.PanelTestAlum;

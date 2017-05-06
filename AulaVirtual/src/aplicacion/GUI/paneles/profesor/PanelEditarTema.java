@@ -9,7 +9,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionEditarTema;
 import aplicacion.GUI.acciones.profesor.ActionEliminarTema;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.Tema;
 
 public class PanelEditarTema extends JPanel {

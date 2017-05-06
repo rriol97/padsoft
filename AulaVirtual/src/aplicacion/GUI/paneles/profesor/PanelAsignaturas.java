@@ -17,7 +17,7 @@ import javax.swing.event.ListSelectionListener;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.ActionCrearAsig;
 import aplicacion.GUI.acciones.profesor.ActionMostrarSol;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 

@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarOpciones;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcUnic;
 import aplicacion.clases.elemento.test.Opcion;

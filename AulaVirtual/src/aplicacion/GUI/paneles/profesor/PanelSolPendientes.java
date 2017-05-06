@@ -12,7 +12,7 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
@@ -40,11 +40,11 @@ public class PanelSolPendientes extends JPanel implements ListSelectionListener 
         listOne = new JList<Solicitud>(arraySol);
         listOne.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollingListOne = new JScrollPane(listOne);
-        scrollingListOne.setPreferredSize(new Dimension((int)(Frame.WIDTH/6),(int)(Frame.HEIGHT/1.25)));
+        scrollingListOne.setPreferredSize(new Dimension((int)(Frame.WIDTH/4),(int)(Frame.HEIGHT/1.25)));
         this.add(scrollingListOne);
         
-        l.putConstraint(SpringLayout.WEST, tit, (int) (Frame.WIDTH/3), SpringLayout.WEST, this);
-        l.putConstraint(SpringLayout.WEST, scrollingListOne, (int) (Frame.WIDTH/3), SpringLayout.WEST, this);
+        l.putConstraint(SpringLayout.WEST, tit, (int) (Frame.WIDTH/4), SpringLayout.WEST, this);
+        l.putConstraint(SpringLayout.WEST, scrollingListOne, (int) (Frame.WIDTH/4), SpringLayout.WEST, this);
         l.putConstraint(SpringLayout.NORTH, scrollingListOne, 5, SpringLayout.SOUTH, tit);
         
         listOne.addListSelectionListener(this); 

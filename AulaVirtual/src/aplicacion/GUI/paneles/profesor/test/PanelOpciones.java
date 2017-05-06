@@ -14,7 +14,7 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionAceptarOpc;
 import aplicacion.GUI.acciones.profesor.test.ActionCancelarOpc;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.Test;
 

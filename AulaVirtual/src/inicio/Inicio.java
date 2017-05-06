@@ -1,4 +1,4 @@
-package aplicacion.GUI.general;
+package inicio;
 
 
 

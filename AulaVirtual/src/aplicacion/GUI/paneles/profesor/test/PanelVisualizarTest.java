@@ -16,7 +16,7 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.ActionSelEditarTest;
 import aplicacion.GUI.acciones.profesor.test.ActionVerResolucion;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.componentes.PanelPregSol;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;

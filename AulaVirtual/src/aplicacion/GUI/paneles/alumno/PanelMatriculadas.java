@@ -16,7 +16,7 @@ import javax.swing.event.ListSelectionListener;
 
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.alumno.ActionSolAsig;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
 
@@ -53,9 +53,8 @@ public class PanelMatriculadas extends JPanel implements ListSelectionListener {
         this.add(scrollingListOne);
         
         Button boton_solicitud = new Button("Solicitar Asignatura");
-        this.add(boton_solicitud);
-
         boton_solicitud.addActionListener(new ActionSolAsig());
+        this.add(boton_solicitud);
 
         SpringUtilities.makeCompactGrid(this, 3, 1, 5, 5, 5, 5);
         

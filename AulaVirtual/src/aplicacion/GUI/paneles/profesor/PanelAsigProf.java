@@ -22,7 +22,7 @@ import aplicacion.GUI.acciones.profesor.ActionCrearEle;
 import aplicacion.GUI.acciones.profesor.ActionEliminarAsig;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionExpulsar;
 import aplicacion.GUI.acciones.profesor.ActionSeleccionReadmitir;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelVisualizarTest;
 import aplicacion.clases.Alumno;
 import aplicacion.clases.Asignatura;
@@ -55,8 +55,10 @@ public class PanelAsigProf extends JPanel {
 		arbol.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		arbol.setFont(new Font("Arial",12, 18));
 		
-		for (Elemento e: asig.getElementos()) {
-			raiz.add(getNode(e));
+		if (asig.getElementos().isEmpty() == false) {
+			for (Elemento e: asig.getElementos()) {
+				raiz.add(getNode(e));
+			}
 		}
 		expandAllNodes(arbol, 0, arbol.getRowCount());
 		

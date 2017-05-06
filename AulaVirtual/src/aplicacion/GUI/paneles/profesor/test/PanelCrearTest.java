@@ -19,7 +19,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearTest;
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.PanelComun;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;

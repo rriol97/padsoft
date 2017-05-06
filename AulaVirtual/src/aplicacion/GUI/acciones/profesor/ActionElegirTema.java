@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import aplicacion.GUI.general.Frame;
+import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.PanelCrearApuntes;
 import aplicacion.GUI.paneles.profesor.PanelCrearEle;
 import aplicacion.GUI.paneles.profesor.PanelCrearTema;
