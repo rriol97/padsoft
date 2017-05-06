@@ -155,20 +155,20 @@ public class Controlador {
 		ou.setEnunciado(enunciado);
 		ou.setValor(valor);
 		ou.setPenalizacion(penalizacion);
-		Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic(ou, t, 0), 1);
+		Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic(ou, t), 1);
 	}
 	
 	public void editarPregOpcMult(Test t, OpcionMultiple om, String enunciado, Double valor, Double penalizacion) {
 		om.setEnunciado(enunciado);
 		om.setValor(valor);
 		om.setPenalizacion(penalizacion);
-		Frame.getInstance().cambiarPanel(new PanelCrearOpcMult(om, t, 0), 1);
+		Frame.getInstance().cambiarPanel(new PanelCrearOpcMult(om, t), 1);
 	}
 	
 	public void anadirOpcion(Test t, PreguntaOpcion p, String enunciado, boolean correcta) {
 		if (p instanceof OpcionUnica){
 			if (p.anadirOpcion(new Opcion(enunciado, correcta))) {
-				Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic((OpcionUnica)p, t, 0), 1);
+				Frame.getInstance().cambiarPanel(new PanelCrearOpcUnic((OpcionUnica)p, t), 1);
 			} else {
 				JOptionPane.showMessageDialog(vista, "Error, ya existe una opcion correcta");
 			}
@@ -240,5 +240,25 @@ public class Controlador {
 		} else{
 			Frame.getInstance().cambiarPanel(new PanelCrearOpcMult((OpcionMultiple)u,t), 1);
 		}
+	}
+
+	public void editarPregSiNo(SiNo preg, String enunciado, Double valor, Double penalizacion, String respuesta) {
+		preg.setEnunciado(enunciado);
+		preg.setValor(valor);
+		preg.setPenalizacion(penalizacion);
+		for (Opcion o:preg.getCorrectas()){
+			o.setTexto(respuesta);
+		}
+		
+	}
+
+	public void editarPreguntaCorta(RespuestaLibre preg, String enunciado, Double valor, Double penalizacion,
+			String respuesta) {
+		
+		preg.setEnunciado(enunciado);
+		preg.setValor(valor);
+		preg.setPenalizacion(penalizacion);
+		preg.setSolucion(respuesta);
+		
 	}
 }

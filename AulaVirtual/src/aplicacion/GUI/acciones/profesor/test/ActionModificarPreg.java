@@ -11,8 +11,10 @@ import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcUnic;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregCorta;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregSiNo;
+import aplicacion.GUI.paneles.profesor.test.PanelEditarPregCorta;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelEditarPregSiNo;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Pregunta;
@@ -51,9 +53,9 @@ public class ActionModificarPreg implements ActionListener {
 			p.setPenalizacion(sel.getPenalizacion());
 			Frame.getInstance().cambiarPanel(p, 1);
 		} else if (sel instanceof SiNo){
-			Frame.getInstance().cambiarPanel(new PanelEditarPregSiNo(sel), 1);
+			Frame.getInstance().cambiarPanel(new PanelEditarPregSiNo((SiNo) sel,t), 1);
 		} else if (sel instanceof RespuestaLibre) {
-			Frame.getInstance().cambiarPanel(new PanelEditarPregCorta(sel), 1);
+			Frame.getInstance().cambiarPanel(new PanelEditarPregCorta((RespuestaLibre)sel,t), 1);
 		}
 		
 	}
