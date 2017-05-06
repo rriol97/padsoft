@@ -71,6 +71,11 @@ public class PanelAsigProf extends JPanel {
 					Frame.getInstance().cambiarPanel(new PanelEditarApuntes(apuntes, padre), 1);
 				} else if (o instanceof Test) {
 					Test test = (Test) o;
+					try {
+						test.corregir();
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 					Frame.getInstance().cambiarPanel(new PanelVisualizarTest(test, padre), 1);
 				}
 			}

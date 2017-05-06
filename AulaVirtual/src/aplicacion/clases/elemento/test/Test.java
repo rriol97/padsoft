@@ -252,12 +252,14 @@ public class Test extends Elemento implements java.io.Serializable {
 	 * @return List<Pregunta> Lista de preguntas desordenadas.
 	 */
 	public List<Pregunta> desordenar() {
-		int i;
+		int i = 0;
 		List <Pregunta> preg = new ArrayList<Pregunta>(this.preguntas.size());
-		for (i = 0; i < this.preguntas.size(); i++) {
+		while (i < this.preguntas.size()) {
 			int random = (int)(Math.random() * this.preguntas.size());
-			if (preg.add(this.preguntas.get(random)) == false) {
-				return null;
+			Pregunta rand = this.preguntas.get(random);
+			if (preg.contains(rand) == false) {
+				preg.add(rand);
+				i++;
 			}
 		}
 		return preg;

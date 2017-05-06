@@ -33,6 +33,7 @@ public class Respuesta implements java.io.Serializable {
 		this.estado = EstadoRespuesta.NSNC;
 		this.respuesta = "";
 		this.pregunta = p;
+		p.anadirRespuesta(this);
 	}
 
 	public List<Opcion> getOpcionesSeleccionadas() {

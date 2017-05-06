@@ -78,12 +78,14 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	 * @return List<Opcion> Lista de preguntas desordenadas.
 	 */
 	public List<Opcion> desordenar() {
-		int i;
+		int i = 0;
 		List <Opcion> op = new ArrayList<Opcion>(this.opciones.size());
-		for (i = 0; i < this.opciones.size(); i++) {
+		while (i < this.opciones.size()) {
 			int random = (int)(Math.random() * this.opciones.size());
-			if (op.add(this.opciones.get(random)) == false) {
-				return null;
+			Opcion rand = this.opciones.get(random);
+			if (op.contains(rand) == false) {
+				op.add(rand);
+				i++;
 			}
 		}
 		return op;

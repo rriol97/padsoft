@@ -1,8 +1,6 @@
 package aplicacion.GUI.paneles.profesor.test;
 
 import aplicacion.GUI.acciones.profesor.test.ActionEditarPreguntaCorta;
-import aplicacion.GUI.acciones.profesor.test.ActionEditarPreguntaSiNo;
-import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.RespuestaLibre;
 import aplicacion.clases.elemento.test.Test;
 

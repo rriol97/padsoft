@@ -114,10 +114,10 @@ public class PanelCrearTest extends PanelComun {
 	
 	public boolean getOrden(){
 		if (this.ordenPreguntas.getSelectedItem().equals("Ordenadas")){
-			return true;
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public LocalDate getFechaIni(){

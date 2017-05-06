@@ -7,10 +7,6 @@ import javax.swing.JOptionPane;
 
 import aplicacion.GUI.general.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
-import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcMult;
-import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcUnic;
-import aplicacion.GUI.paneles.profesor.test.PanelCrearPregCorta;
-import aplicacion.GUI.paneles.profesor.test.PanelCrearPregSiNo;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregCorta;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcUnic;

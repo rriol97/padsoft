@@ -28,6 +28,7 @@ public class ActionEditarOpcUnic implements ActionListener {
 		Opcion sel = q.getSel();
 		if (sel == null) {
 			JOptionPane.showMessageDialog(q, "Elija una opcion");
+			return;
 		}
 		
 		PanelEditarOpciones opc = new PanelEditarOpciones(sel, p, t);
