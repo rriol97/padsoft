@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.frame.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
+import aplicacion.GUI.paneles.profesor.test.PanelAbstractoAnadirPreg;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregCorta;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarPregOpcUnic;
@@ -19,14 +19,15 @@ import aplicacion.clases.elemento.test.SiNo;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionModificarPreg implements ActionListener {
-	PanelAnadirPregunta vista;
+	PanelAbstractoAnadirPreg vista;
 	Test t;
 	
-	public ActionModificarPreg (PanelAnadirPregunta vista, Test t) {
+	public ActionModificarPreg (PanelAbstractoAnadirPreg vista, Test t) {
 		this.vista = vista;
 		this.t = t;
 	}
-	
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Pregunta sel = this.vista.getSeleccionada();

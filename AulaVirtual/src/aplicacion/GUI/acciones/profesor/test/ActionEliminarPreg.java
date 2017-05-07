@@ -6,15 +6,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.controlador.Controlador;
-import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
+import aplicacion.GUI.paneles.profesor.test.PanelAbstractoAnadirPreg;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionEliminarPreg implements ActionListener {
-	PanelAnadirPregunta vista;
+	PanelAbstractoAnadirPreg vista;
 	Test t;
 	
-	public ActionEliminarPreg (PanelAnadirPregunta vista, Test t) {
+	public ActionEliminarPreg (PanelAbstractoAnadirPreg vista, Test t) {
 		this.vista = vista;
 		this.t = t;
 	}

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import aplicacion.GUI.frame.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelEditarTest;
+import aplicacion.GUI.paneles.profesor.test.PanelModificarTest;
 import aplicacion.clases.elemento.test.Test;
 
 public class ActionSelEditarTest implements ActionListener {
@@ -21,7 +21,7 @@ public class ActionSelEditarTest implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (test.getResoluciones().size() == 0) {
-			Frame.getInstance().cambiarPanel(new PanelEditarTest(test, padre), 1);
+			Frame.getInstance().cambiarPanel(new PanelModificarTest(test.getAsignatura(),padre,test), 1);
 		} else {
 			JOptionPane.showMessageDialog(Frame.getInstance(), "No se puede editar un test que ya ha sido resuelto");
 		}

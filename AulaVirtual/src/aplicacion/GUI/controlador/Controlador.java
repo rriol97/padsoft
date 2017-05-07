@@ -444,4 +444,18 @@ public class Controlador {
 			Frame.getInstance().cambiarPanel(new PanelCrearOpcMult((OpcionMultiple)u,t), 1);
 		}
 	}
+
+	public void modificarTest(Test t, String nombre, boolean selec, boolean orden, LocalDate fechaIni,
+			LocalDate fechaFin, Double vpd, Double peso)  {
+		try {
+			t.setVisible(selec);
+		} catch (InvalidEmailAddressException | FailedInternetConnectionException e) {
+			e.printStackTrace();
+		}
+		t.setAleatorio(orden);
+		t.setFechaIni(fechaIni);
+		t.setFechaFin(fechaFin);
+		t.setValorDefecto(vpd);
+		t.setPeso(peso);
+	}
 }

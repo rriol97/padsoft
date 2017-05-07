@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import aplicacion.GUI.frame.Frame;
-import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
+import aplicacion.GUI.paneles.profesor.test.PanelAbstractoAnadirPreg;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregOpcUnic;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearPregCorta;
@@ -13,9 +13,8 @@ import aplicacion.clases.elemento.test.Test;
 
 public class ActionNuevaPreg implements ActionListener {
 	private Test t;
-	private PanelAnadirPregunta p;
-	
-	public ActionNuevaPreg(PanelAnadirPregunta p, Test t){
+	private PanelAbstractoAnadirPreg p;
+	public ActionNuevaPreg(PanelAbstractoAnadirPreg p, Test t){
 		this.p = p;
 		this.t = t;
 	}
