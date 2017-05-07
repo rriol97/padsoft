@@ -15,6 +15,12 @@ import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 
+/**
+ * Clase que implementa el panel mostrado cuando un alumno accede a las notas de una asignatura.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelNotasAsig extends JPanel {
 	private static final long serialVersionUID = 1L;
 

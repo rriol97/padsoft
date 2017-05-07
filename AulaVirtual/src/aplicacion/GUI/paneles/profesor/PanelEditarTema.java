@@ -12,6 +12,12 @@ import aplicacion.GUI.acciones.profesor.ActionEliminarTema;
 import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.Tema;
 
+/**
+ * Clase que implementa el panel de edicion de temas.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarTema extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

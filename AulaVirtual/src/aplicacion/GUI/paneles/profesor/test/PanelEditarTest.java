@@ -10,6 +10,12 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.ActionVolverAsig;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de un test de profesor.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarTest extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

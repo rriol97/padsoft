@@ -76,7 +76,7 @@ public abstract class PreguntaOpcion extends Pregunta implements java.io.Seriali
 	/**
 	 * Metodo para mostrar la lista de opciones de una pregunta desordenada.
 	 * 
-	 * @return List<Opcion> Lista de preguntas desordenadas.
+	 * @return Lista de preguntas desordenadas.
 	 */
 	public List<Opcion> desordenar() {
 		int i = 0;

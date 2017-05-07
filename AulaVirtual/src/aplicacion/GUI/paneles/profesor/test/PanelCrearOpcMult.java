@@ -16,6 +16,12 @@ import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de creacion de una pregunta de opcion multiple.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearOpcMult extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JList <Opcion> listaOpc;

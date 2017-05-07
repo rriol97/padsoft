@@ -18,6 +18,12 @@ import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 
+/**
+ * Clase que implementa el panel en el cual se elige que tipo de elemento se quiere crear.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearEle extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

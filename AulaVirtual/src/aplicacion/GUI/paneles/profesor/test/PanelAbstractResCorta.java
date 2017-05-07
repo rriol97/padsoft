@@ -8,6 +8,12 @@ import javax.swing.SpringLayout;
 import aplicacion.GUI.SpringUtilities;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa un panel abstracto.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public abstract class PanelAbstractResCorta extends PanelEnunciado {
 	private static final long serialVersionUID = 1L;
 	private JTextArea respuesta;

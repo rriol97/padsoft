@@ -12,6 +12,12 @@ import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 
+/**
+ * Clase que implementa el panel mostrado cuando un alumno accede a la correccion de un test.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCorrAlum extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

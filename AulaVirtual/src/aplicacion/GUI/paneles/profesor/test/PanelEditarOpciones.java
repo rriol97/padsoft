@@ -19,6 +19,12 @@ import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de las opciones de una pregunta de opciones.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarOpciones extends JPanel {
 private static final long serialVersionUID = 1L;
 	

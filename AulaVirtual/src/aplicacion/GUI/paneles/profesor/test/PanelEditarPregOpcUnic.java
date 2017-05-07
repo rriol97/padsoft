@@ -5,6 +5,12 @@ import aplicacion.GUI.acciones.profesor.test.ActionEditarPregOpcUnic;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de una pregunta de opcion unica.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarPregOpcUnic extends PanelEnunciado {
 	private static final long serialVersionUID = 1L;
 

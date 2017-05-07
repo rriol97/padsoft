@@ -11,6 +11,12 @@ import aplicacion.GUI.acciones.profesor.ActionCrearTema;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 
+/**
+ * Clase que implementa el panel de creacion de temas de profesor.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearTema extends PanelComun {
 	private static final long serialVersionUID = 1L;
 	

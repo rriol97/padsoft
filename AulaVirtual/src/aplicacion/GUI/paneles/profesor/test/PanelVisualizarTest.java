@@ -22,6 +22,12 @@ import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 import aplicacion.clases.resolucion.Resolucion;
 
+/**
+ * Clase que implementa el panel de vsializacion de un test de profesor.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelVisualizarTest extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

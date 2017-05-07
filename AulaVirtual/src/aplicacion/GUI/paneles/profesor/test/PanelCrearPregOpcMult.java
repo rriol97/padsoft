@@ -6,7 +6,12 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearOpcMult;
 import aplicacion.clases.elemento.test.Test;
 
-
+/**
+ * Clase que implementa el panel de creacion de una pregunta de opcion multiple.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearPregOpcMult extends PanelEnunciado{
 	private static final long serialVersionUID = 1L;
 	

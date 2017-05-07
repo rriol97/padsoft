@@ -249,7 +249,7 @@ public class Test extends Elemento implements java.io.Serializable {
 	/**
 	 * Metodo para mostrar la lista de preguntas de un test desordenada.
 	 * 
-	 * @return List<Pregunta> Lista de preguntas desordenadas.
+	 * @return Lista de preguntas desordenadas.
 	 */
 	public List<Pregunta> desordenar() {
 		int i = 0;

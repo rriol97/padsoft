@@ -24,6 +24,12 @@ import aplicacion.GUI.paneles.profesor.PanelComun;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 
+/**
+ * Clase que implementa el panel de creacion de un test.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearTest extends PanelComun {
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> ordenPreguntas;

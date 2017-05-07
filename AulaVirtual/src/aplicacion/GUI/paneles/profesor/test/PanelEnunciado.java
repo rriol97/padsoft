@@ -14,6 +14,12 @@ import aplicacion.GUI.acciones.profesor.test.ActionCancelarPreg;
 import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa un panel abstracto.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public abstract class PanelEnunciado extends JPanel {
 	private static final long serialVersionUID = 1L;
 	protected JPanel panelEnun;

@@ -18,6 +18,12 @@ import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de creacion de una opcion.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelOpciones extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

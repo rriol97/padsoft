@@ -7,6 +7,12 @@ import aplicacion.GUI.SpringUtilities;
 import aplicacion.GUI.acciones.profesor.test.ActionCrearOpcUnic;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de creacion de una pregunta de opcion unica.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearPregOpcUnic extends PanelEnunciado{
 	private static final long serialVersionUID = 1L;
 	

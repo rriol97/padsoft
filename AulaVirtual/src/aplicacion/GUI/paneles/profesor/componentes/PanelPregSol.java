@@ -18,6 +18,12 @@ import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.PreguntaOpcion;
 import aplicacion.clases.elemento.test.RespuestaLibre;
 
+/**
+ * Panel Clase qu eimplementa un panel que muestra la solucion a una pregunta y los porcentajes de aciertos, fallos y nsnc. Utilizado en PanelVisualizarTest
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelPregSol extends JPanel {
 	private static final long serialVersionUID = 1L;
 

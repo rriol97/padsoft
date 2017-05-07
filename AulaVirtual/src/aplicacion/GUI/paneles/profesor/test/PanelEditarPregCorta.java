@@ -4,6 +4,12 @@ import aplicacion.GUI.acciones.profesor.test.ActionEditarPreguntaCorta;
 import aplicacion.clases.elemento.test.RespuestaLibre;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de una pregunta de respuesta libre.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarPregCorta extends PanelAbstractResCorta {
 	
 	public PanelEditarPregCorta(RespuestaLibre preg,Test t) {

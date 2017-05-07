@@ -16,6 +16,12 @@ import aplicacion.GUI.acciones.profesor.ActionEliminarApuntes;
 import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.Apuntes;
 
+/**
+ * Clase que implementa el panel de edicion de apuntes.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarApuntes extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

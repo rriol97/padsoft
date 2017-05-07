@@ -13,6 +13,12 @@ import javax.swing.SpringLayout;
 
 import aplicacion.GUI.frame.Frame;
 
+/**
+ * Clase que implementa comun en la creacion de elementos.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public abstract class PanelComun extends JPanel{
 	private static final long serialVersionUID = 1L;
 	

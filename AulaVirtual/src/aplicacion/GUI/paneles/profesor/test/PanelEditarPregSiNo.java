@@ -5,6 +5,12 @@ import aplicacion.clases.elemento.test.Opcion;
 import aplicacion.clases.elemento.test.SiNo;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de una pregunta si/no.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarPregSiNo extends PanelAbstractSiNo {
 	private static final long serialVersionUID = 1L;
 

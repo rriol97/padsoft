@@ -5,6 +5,12 @@ import aplicacion.GUI.acciones.profesor.test.ActionEditarPregOpcMult;
 import aplicacion.clases.elemento.test.OpcionMultiple;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de edicion de una pregunta de opcion multiple.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelEditarPregOpcMult extends PanelEnunciado {
 	
 	private static final long serialVersionUID = 1L;

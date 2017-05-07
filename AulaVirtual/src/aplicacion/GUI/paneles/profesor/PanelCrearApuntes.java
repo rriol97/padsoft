@@ -10,9 +10,10 @@ import aplicacion.clases.Asignatura;
 import aplicacion.clases.elemento.Tema;
 
 /**
- * 
- * @author Ricardo Riol y Adri�n Fern�ndez
  * Clase que implementa el panel de la creacion de apuntes desde el punto de vista del profesor
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ * 
  */
 
 public class PanelCrearApuntes extends PanelComun {

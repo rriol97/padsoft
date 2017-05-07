@@ -18,6 +18,12 @@ import aplicacion.GUI.acciones.profesor.test.ActionVolverCrearPreg;
 import aplicacion.clases.elemento.test.OpcionUnica;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel de creaciond e una pregunta de opcion unica.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelCrearOpcUnic extends JPanel  {	
 	private static final long serialVersionUID = 1L;
 

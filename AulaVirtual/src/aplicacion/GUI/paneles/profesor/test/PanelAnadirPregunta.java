@@ -24,6 +24,12 @@ import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.Pregunta;
 import aplicacion.clases.elemento.test.Test;
 
+/**
+ * Clase que implementa el panel en el que se anaden preguntas a un test.
+ * @author Adrian Fernandez
+ * @author Ricardo Riol
+ *
+ */
 public class PanelAnadirPregunta extends JPanel {
 
 	private static final long serialVersionUID = 1L;
