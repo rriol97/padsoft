@@ -10,12 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
-
 import aplicacion.GUI.SpringUtilities;
-import aplicacion.GUI.acciones.ActionVolverAsigDeTest;
 import aplicacion.GUI.acciones.profesor.test.ActionFinTest;
 import aplicacion.GUI.frame.Frame;
 import aplicacion.clases.elemento.test.Pregunta;

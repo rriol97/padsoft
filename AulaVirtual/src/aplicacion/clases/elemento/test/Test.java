@@ -197,11 +197,8 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setPeso(double peso) {
-		if (isFechaValida()){
 			this.peso = peso;
 			return true;
-		}
-		return false;
 	}
 
 	public double getValorDefecto() {
@@ -209,11 +206,8 @@ public class Test extends Elemento implements java.io.Serializable {
 	}
 
 	public boolean setValorDefecto(double valorDefecto) {
-		if (isFechaValida()){
 			this.valorDefecto = valorDefecto;
 			return true;
-		}
-		return false;
 	}
 	
 	public Tema getTema() {

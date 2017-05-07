@@ -147,19 +147,12 @@ public abstract class PanelAbstractoCrearTest extends PanelComun{
 		return date;
 	}
 	
-	public void setFechaIni(LocalDate l){
-		this.fechaIni.getModel().setDate(l.getDayOfMonth(), l.getMonthValue(), l.getYear());
-	}
-	
 	public LocalDate getFechaFin(){
 		Date input = (Date)this.fechaFin.getModel().getValue();
 		LocalDate date = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		return date;	
 	}
 	
-	public void setFechaFin(LocalDate l){
-		this.fechaFin.getModel().setDate(l.getDayOfMonth(), l.getMonthValue(), l.getYear());
-	}
 	
 	public Double getVpd(){
 		return Double.parseDouble(this.campoVpd.getText());

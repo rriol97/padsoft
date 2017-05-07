@@ -12,8 +12,6 @@ public class PanelModificarTest extends PanelAbstractoCrearTest {
 		this.setNombre(t.getNombre());
 		this.setSele(t.isVisible());
 		this.setOrden(t.isAleatorio());
-		this.setFechaIni(t.getFechaIni());
-		this.setFechaFin(t.getFechaFin());
 		this.setVpd(t.getValorDefecto());
 		this.setPeso(t.getPeso());
 		
