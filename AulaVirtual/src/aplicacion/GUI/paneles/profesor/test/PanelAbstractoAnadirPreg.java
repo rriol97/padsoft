@@ -43,6 +43,7 @@ public abstract class PanelAbstractoAnadirPreg extends JPanel{
 		
 		JLabel etiqueta_tipo = new JLabel ("Elija tipo de pregunta:");
 		this.setFont(new Font ("Arial",12,18));
+		panel_tipoPreg.add(new JPanel());
 		panel_tipoPreg.add(etiqueta_tipo);
 		
 		
@@ -54,7 +55,7 @@ public abstract class PanelAbstractoAnadirPreg extends JPanel{
 		anadir = new JButton ("Anadir Pregunta");
 		panel_tipoPreg.add(anadir);
 		
-		SpringUtilities.makeCompactGrid(panel_tipoPreg, 3, 1, 0, 0, 5, 5);
+		SpringUtilities.makeCompactGrid(panel_tipoPreg, 4, 1, 0, 0, 5, 5);
 		this.add(panel_tipoPreg);
 		
 		JPanel aux = new JPanel();

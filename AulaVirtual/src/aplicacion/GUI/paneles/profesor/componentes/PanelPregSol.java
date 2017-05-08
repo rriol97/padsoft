@@ -92,6 +92,7 @@ public class PanelPregSol extends JPanel {
 		l.putConstraint(SpringLayout.NORTH, panel_opcion, 5, SpringLayout.SOUTH, etiqueta_enunciado);
 		l.putConstraint(SpringLayout.WEST, panel_opcion, 40, SpringLayout.WEST, this);
 		
-		l.putConstraint(SpringLayout.WEST, panel_porcentajes, 50, SpringLayout.EAST, etiqueta_enunciado);
+		l.putConstraint(SpringLayout.WEST, panel_porcentajes, 250, SpringLayout.EAST, panel_opcion);
+
 	}
 }

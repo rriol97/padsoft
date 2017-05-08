@@ -3,8 +3,6 @@ package aplicacion.GUI.acciones.profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import aplicacion.GUI.frame.Frame;
 import aplicacion.GUI.paneles.profesor.test.PanelEditarFechaFin;
 import aplicacion.GUI.paneles.profesor.test.PanelModificarTest;
