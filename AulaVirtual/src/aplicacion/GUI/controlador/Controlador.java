@@ -19,6 +19,7 @@ import aplicacion.GUI.paneles.profesor.PanelAsignaturas;
 import aplicacion.GUI.paneles.profesor.test.PanelAnadirPregunta;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcMult;
 import aplicacion.GUI.paneles.profesor.test.PanelCrearOpcUnic;
+import aplicacion.GUI.paneles.profesor.test.PanelVisualizarTest;
 import aplicacion.clases.Aplicacion;
 import aplicacion.clases.Asignatura;
 import aplicacion.clases.Solicitud;
@@ -457,5 +458,10 @@ public class Controlador {
 		t.setFechaFin(fechaFin);
 		t.setValorDefecto(vpd);
 		t.setPeso(peso);
+	}
+
+	public void editarFechaFinTest(Test t,LocalDate fechaFin) {
+		t.setFechaFin(fechaFin);
+		Frame.getInstance().cambiarPanel(new PanelVisualizarTest(t,t.getAsignatura()), 1);
 	}
 }
